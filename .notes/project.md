@@ -1,101 +1,197 @@
-# Project: Mozilla Spontaneous Speech ASR Challenge
+# Project: ASR for Endangered Languages
+## Course Term Project (6 Weeks)
 
-## Timeline
-- **Week 1 (Days 1-7):** Setup, Baseline Replication, Data Sourcing & Augmentation.
-- **Week 2 (Days 8-14):** Main Fine-Tuning Experiments for all Tasks.
-- **Week 3 (Days 15-18):** Final Model Selection, Test Set Inference, and Report Writing.
+### Project Overview
+This term project explores automatic speech recognition (ASR) for low-resource and endangered languages using Mozilla Common Voice's spontaneous speech datasets. The project evaluates baseline and improved ASR architectures across 21 underrepresented languages from Africa, Asia, Europe, and the Americas.
 
-## Folder Structure
-
-/project/
-|-- /data/
-|   |-- /mozilla_speech_data/  # Provided competition data
-|   |   |-- /train/
-|   |   |-- /dev/
-|   |-- /external_data/        # Any other data you find
-|-- /scripts/
-|   |-- 01_setup_env.sh
-|   |-- 02_prepare_data.py
-|   |-- 03_run_baseline.py     # MMS fine-tuning
-|   |-- 04_run_whisper_large.py  # For Tasks 1, 2, 4
-|   |-- 05_run_whisper_small.py  # For Task 3
-|-- /notebooks/
-|   |-- Data_Exploration.ipynb
-|   |-- Baseline_Evaluation.ipynb
-|   |-- Results_Analysis.ipynb
-|-- /models/
-|   |-- /mms_baseline/
-|   |-- /whisper_large_multilingual/
-|   |-- /whisper_small_multilingual/
-|-- /submissions/
-|   |-- /task1_submission/
-|   |-- /task2_submission/
-|   |-- etc...
-|-- /.notes/
-|   |-- project.md  # This file
-|-- report.pdf  # Your final system description paper
+### Research Objectives
+1. **Establish Baselines**: Evaluate baseline ASR models (MMS, Whisper) on all 21 languages
+2. **Literature Review**: Research state-of-the-art ASR techniques for low-resource languages
+3. **Architecture Improvement**: Implement and evaluate improved architectures on 21 languages
+4. **Linguistic Error Analysis**: Conduct detailed error analysis on 2 languages with available linguistic resources
 
 ---
 
-## Step-by-Step Plan
+## Languages
 
-### Phase 1: Setup & Data (Days 1-3)
+| Region | Language | ISO 639 |
+|--------|----------|---------|
+| _Africa_ | Bukusu | bxk |
+| | Chiga | cgg |
+| | Nubi | kcn |
+| | Konzo | koo |
+| | Lendu | led |
+| | Kenyi | lke |
+| | Thur | lth |
+| | Ruuli | ruc |
+| | Amba | rwm |
+| | Rutoro | ttj |
+| | Kuku | ukv |
+| _Americas_ | Wixárika | hch |
+| | Southwestern Tlaxiaco Mixtec | meh |
+| | Michoacán Mazahua | mmc |
+| | Papantla Totonac | top |
+| | Toba Qom | tob |
+| _Europe_ | Gheg Albanian | aln |
+| | Cypriot Greek | el-CY |
+| | Scots | sco |
+| _Asia_ | Betawi | bew |
+| | Western Penan | pne |
 
-1.  **[ ] Environment Setup (`scripts/01_setup_env.sh`):**
-    *   Install PyTorch, Hugging Face Transformers, Datasets, Accelerate, `jiwer`, `libsndfile`, `ffmpeg`, `bitsandbytes`.
-    *   Log in to Hugging Face Hub: `huggingface-cli login`.
+---
 
-2.  **[ ] Download Data:**
-    *   Get the 21 language datasets from the Mozilla Data Collective link.
-    *   Organize them into `/data/mozilla_speech_data/`.
+## Timeline (6 Weeks)
 
-3.  **[ ] Data Preparation (`scripts/02_prepare_data.py`):**
-    *   Write a script to load all 21 language datasets using Hugging Face `datasets`.
-    *   Create and save a combined `train` and `dev` dataset for multilingual training.
-    *   Ensure all audio is resampled to 16kHz, as required by Whisper and MMS.
-    *   Normalize the transcription text (lowercase, remove punctuation) to create a consistent vocabulary.
+### Week 1: Environment Setup & Data Preparation
+- [ ] Set up development environment (PyTorch, Transformers, Datasets, jiwer)
+- [ ] Download 21 language datasets from Mozilla Data Collective
+- [ ] Organize data into standardized folder structure
+- [ ] Create data loading and preprocessing scripts (16kHz resampling, text normalization)
+- [ ] Begin literature search for ASR SOTA papers
 
-4.  **[ ] Data Sourcing (Parallel Task, Days 2-7):**
-    *   **ACTION:** Dedicate several hours to searching for openly-licensed audio data for the 21 languages AND the 5 unseen languages (or related languages).
-    *   Track findings, licenses, and URLs in a spreadsheet.
+### Week 2: Baseline Establishment
+- [ ] Implement MMS (Massively Multilingual Speech) baseline
+- [ ] Implement Whisper baseline (whisper-small and whisper-large-v3)
+- [ ] Run baseline evaluation on all 21 languages
+- [ ] Document baseline WER scores for each language
+- [ ] Continue literature review; create annotated bibliography
 
-### Phase 2: Baseline & Initial Models (Days 3-7)
+### Week 3: Literature Review & Architecture Research
+- [ ] Complete literature review on low-resource ASR techniques
+- [ ] Research adaptation methods: adapter tuning, LoRA, prompt tuning
+- [ ] Research data augmentation: SpecAugment, speed perturbation, noise injection
+- [ ] Research cross-lingual transfer and multilingual training strategies
+- [ ] Identify 2 languages for linguistic error analysis (based on resource availability)
+- [ ] Write literature review section of report
 
-1.  **[ ] Replicate Baseline (`scripts/03_run_baseline.py`):**
-    *   Adapt a Hugging Face MMS adapter-tuning script.
-    *   Train on a single language (e.g., `aln` - Gheg Albanian) and verify your dev WER is close to the `0.548` in the PDF.
-    *   This validates your entire pipeline.
+### Week 4: Improved Architecture Implementation
+- [ ] Implement selected improvement techniques
+- [ ] Fine-tune models with chosen methods (e.g., adapter tuning, data augmentation)
+- [ ] Train multilingual models on combined dataset
+- [ ] Begin evaluation on dev sets
+- [ ] Gather linguistic resources for error analysis languages
 
-2.  **[ ] First Whisper Fine-tune (`scripts/05_run_whisper_small.py`):**
-    *   Start fine-tuning `openai/whisper-small` on the combined 21-language dataset. This is for **Task 3**.
-    *   Use a Colab Pro high-RAM instance.
-    *   Incorporate SpecAugment directly in the data processing function.
-    *   This will be your first real model and will likely already beat the baseline on many languages.
+### Week 5: Evaluation & Error Analysis
+- [ ] Complete evaluation of improved models on all 21 languages
+- [ ] Compare improved models against baselines (WER improvement analysis)
+- [ ] Conduct linguistic error analysis on 2 selected languages
+  - Analyze error types: substitutions, deletions, insertions
+  - Categorize errors by phonological/morphological features
+  - Identify language-specific challenges
+- [ ] Create visualizations and result tables
 
-### Phase 3: Advanced Models & Winning (Days 8-14)
+### Week 6: Report Writing & Finalization
+- [ ] Write methodology section
+- [ ] Write results and analysis section
+- [ ] Write linguistic error analysis section
+- [ ] Complete discussion and conclusions
+- [ ] Prepare final presentation/slides
+- [ ] Code cleanup and documentation
+- [ ] Submit final report
 
-1.  **[ ] Full-Scale Large Model Training (`scripts/04_run_whisper_large.py`):**
-    *   Fine-tune `openai/whisper-large-v3` on the combined dataset (Mozilla data + any external data you found). This is your primary model for **Tasks 1, 2, and 4**.
-    *   This will take significant time. Use the `Accelerate` library for efficient multi-GPU/TPU training if available, or just let it run for a day or two on your Colab Pro GPU.
-    *   Push intermediate checkpoints to the Hugging Face Hub so you don't lose progress.
+---
 
-2.  **[ ] Iterate and Analyze (`notebooks/Results_Analysis.ipynb`):**
-    *   As models finish, evaluate their WER on the dev set for *every* language.
-    *   Identify which languages are performing poorly. Maybe they need more specific data or augmentation.
-    *   Decide on a single language to target for **Task 2** (Best Improvement). A good candidate is one where the baseline is very high (e.g., `tob` or `top`), as you have more room for improvement.
+## Folder Structure
 
-### Phase 4: Submission (Days 15-18)
+```
+/project/
+├── /data/
+│   ├── /mozilla_speech_data/       # Mozilla Common Voice spontaneous speech
+│   │   ├── /train/
+│   │   └── /dev/
+│   └── /linguistic_resources/      # Grammars, phoneme inventories, etc.
+├── /scripts/
+│   ├── 01_setup_env.sh
+│   ├── 02_prepare_data.py
+│   ├── 03_run_mms_baseline.py
+│   ├── 04_run_whisper_baseline.py
+│   ├── 05_finetune_improved.py
+│   └── 06_error_analysis.py
+├── /notebooks/
+│   ├── Data_Exploration.ipynb
+│   ├── Baseline_Evaluation.ipynb
+│   ├── Results_Analysis.ipynb
+│   └── Linguistic_Error_Analysis.ipynb
+├── /models/
+│   ├── /mms_baseline/
+│   ├── /whisper_baseline/
+│   └── /improved_models/
+├── /results/
+│   ├── /baseline_results/
+│   ├── /improved_results/
+│   └── /error_analysis/
+├── /literature/
+│   ├── annotated_bibliography.md
+│   └── /papers/
+├── /.notes/
+│   └── project.md                  # This file
+└── report.pdf                      # Final term paper
+```
 
-1.  **[ ] Test Data Release (Dec 1st):**
-    *   The test audio (unlabeled) is released. Download it immediately.
+---
 
-2.  **[ ] Final Inference (Deadline is Dec 8th):**
-    *   Load your best `whisper-large-v3` model and transcribe the test sets for Tasks 1, 2, and 4.
-    *   Load your best `whisper-small` model and transcribe the test set for Task 3.
-    *   Format the output into the required `.tsv` files and zip them according to the submission guidelines.
+## Deliverables
 
-3.  **[ ] Write System Description Paper (`report.pdf`):**
-    *   **DO NOT leave this to the last minute.** Start writing as soon as you have your first baseline results.
-    *   Use the provided ACL template.
-    *   Describe your approach: foundation model used (Whisper), data preparation, augmentation techniques, external data sources (be transparent!), and fine-tuning parameters.
-    *   Include a table comparing your dev set results against the official baseline. This shows the effectiveness of your method.
+1. **Baseline Results Table**: WER scores for MMS and Whisper on all 21 languages
+2. **Improved Model Results**: WER comparison showing improvement over baselines
+3. **Linguistic Error Analysis Report**: Detailed analysis for 2 languages
+4. **Literature Review**: Annotated bibliography and synthesis of ASR SOTA
+5. **Final Report**: Complete term paper documenting methodology, results, and analysis
+6. **Codebase**: Documented scripts for reproducibility
+
+---
+
+## Baseline Models to Evaluate
+
+### MMS (Massively Multilingual Speech)
+- Model: `facebook/mms-1b-all`
+- Approach: Adapter-based fine-tuning for each language
+- Reference: Pratap et al. (2023) "Scaling Speech Technology to 1,000+ Languages"
+
+### Whisper
+- Models: `openai/whisper-small` (~242 MB), `openai/whisper-large-v3` (~1.5 GB)
+- Approach: Multilingual fine-tuning on combined dataset
+- Reference: Radford et al. (2022) "Robust Speech Recognition via Large-Scale Weak Supervision"
+
+---
+
+## Potential Improvement Techniques
+
+1. **Adapter Tuning**: Efficient fine-tuning with language-specific adapters
+2. **LoRA (Low-Rank Adaptation)**: Parameter-efficient fine-tuning
+3. **SpecAugment**: Time/frequency masking for data augmentation
+4. **Cross-lingual Transfer**: Leverage related high-resource languages
+5. **Curriculum Learning**: Train on easier examples first
+6. **Self-Training**: Use pseudo-labels from confident predictions
+
+---
+
+## Languages for Linguistic Error Analysis (Candidates)
+
+Select 2 languages based on:
+- Availability of grammatical descriptions/phoneme inventories
+- Typological diversity (different language families/regions)
+- Sufficient dev set size for meaningful analysis
+
+**Potential candidates**:
+- Gheg Albanian (aln) - Indo-European, good linguistic documentation
+- Scots (sco) - Germanic, well-documented
+- Cypriot Greek (el-CY) - Indo-European, related to well-documented Greek
+- Wixárika (hch) - Uto-Aztecan, growing linguistic documentation
+
+---
+
+## Key Metrics
+
+- **Primary**: Word Error Rate (WER)
+- **Secondary**: Character Error Rate (CER)
+- **Analysis**: Error type distribution (substitution/deletion/insertion rates)
+
+---
+
+## Resources
+
+- [Mozilla Data Collective Datasets](https://community.mozilladatacollective.com/)
+- [Hugging Face Transformers](https://huggingface.co/docs/transformers)
+- [MMS Paper](https://arxiv.org/abs/2305.13516)
+- [Whisper Paper](https://arxiv.org/abs/2212.04356)
