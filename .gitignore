@@ -205,3 +205,38 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ML/ASR Project Specific
+# Model checkpoints and weights
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+models/
+!models/.gitkeep
+
+# Data files (large audio/datasets)
+data/mozilla_speech_data/*
+!data/mozilla_speech_data/.gitkeep
+data/linguistic_resources/*
+!data/linguistic_resources/.gitkeep
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# Results (can be large)
+results/*
+!results/.gitkeep
+
+# Hugging Face cache
+.cache/
+huggingface/
+
+# Weights & Biases
+wandb/
+
+# Tensorboard
+runs/
+logs/
