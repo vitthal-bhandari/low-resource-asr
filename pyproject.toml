@@ -1,0 +1,54 @@
+[project]
+name = "low-resource-asr"
+version = "0.1.0"
+description = "ASR for Endangered Languages - Term Project"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    # Core ML
+    "torch>=2.6.0",
+    "transformers>=4.36.0",
+    "datasets>=2.16.0",
+    "accelerate>=0.25.0",
+    
+    # Audio processing
+    "librosa>=0.10.0",
+    "soundfile>=0.12.0",
+    
+    # Evaluation
+    "jiwer>=3.0.0",
+    
+    # Data handling
+    "pandas>=2.3.3",
+    "numpy>=2.0.0",
+    
+    # Utilities
+    "tqdm>=4.67.1",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.4",
+    "ruff>=0.1.0",
+    "ipykernel>=6.27.0",
+    "jupyter>=1.0.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.4",
+    "ruff>=0.1.0",
+    "ipykernel>=6.27.0",
+    "jupyter>=1.0.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
