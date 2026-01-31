@@ -2,12 +2,12 @@
 
 from src.data.download import (
     LANGUAGES,
-    download_all_languages,
-    download_and_prepare_language,
+    UNSEEN_LANGUAGES,
+    download_dataset,
 )
 
 __all__ = [
     "LANGUAGES",
-    "download_all_languages",
-    "download_and_prepare_language",
+    "UNSEEN_LANGUAGES",
+    "download_dataset",
 ]
