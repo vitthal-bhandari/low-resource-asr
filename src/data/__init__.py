@@ -1,13 +1,7 @@
 """Data loading and preprocessing utilities."""
 
-from src.data.download import (
-    LANGUAGES,
-    download_all_languages,
-    download_and_prepare_language,
-)
+from src.data.download import LANGUAGES
 
 __all__ = [
     "LANGUAGES",
-    "download_all_languages",
-    "download_and_prepare_language",
 ]
