@@ -1,35 +1,28 @@
 """
-Script to download Mozilla Common Voice Spontaneous Speech datasets.
+Script to download and organize Mozilla Common Voice Spontaneous Speech datasets.
 
-Downloads data from Mozilla Data Collective API and organizes it into the expected format:
+Downloads data from Mozilla Data Collective API and organizes into:
     data/mozilla_speech_data/
-        {lang_code}/
-            train/
-                audios/
-                metadata.csv
-            validation/
-                audios/
-                metadata.csv
+        shared_train_validation_audios/   # All train/validation audio files
+        shared_test_audios/               # All test audio files  
+        {lang_code}/                      # TSV files for each language
+            ss-corpus-{lang}.tsv          # Train/validation metadata
+            ss-reported-audios-{lang}.tsv # Reported audios
+            test-{lang}.tsv               # Test metadata
 
 Usage:
-    # Download train/dev data for all languages
-    uv run python -m src.data.download --split train-dev
-    
-    # Download test data
-    uv run python -m src.data.download --split test
-    
-    # Download both
-    uv run python -m src.data.download --split all
+    uv run python -m src.data.download
+
+Prerequisites:
+    Set MDC_API_KEY in .env file
 """
 
-import argparse
-import os
 import shutil
-import subprocess
 import tarfile
 import tempfile
 from pathlib import Path
 
+import pandas as pd
 import requests
 from tqdm import tqdm
 
@@ -64,15 +57,6 @@ LANGUAGES = {
     "pne": "Western Penan",
 }
 
-# 5 unseen languages (test only, no training data)
-UNSEEN_LANGUAGES = {
-    "ady": "Adyghe",
-    "kbd": "Kabardian",
-    "bas": "Basaa",
-    "qxp": "Puno Quechua",
-    "ush": "Ushojo",
-}
-
 
 def get_download_url(dataset_id: str, api_key: str) -> str:
     """
@@ -84,10 +68,6 @@ def get_download_url(dataset_id: str, api_key: str) -> str:
         
     Returns:
         The download URL for the dataset
-        
-    Raises:
-        requests.HTTPError: If the API request fails
-        ValueError: If the response doesn't contain a download URL
     """
     url = config.get_mdc_download_url(dataset_id)
     headers = {
@@ -108,22 +88,11 @@ def get_download_url(dataset_id: str, api_key: str) -> str:
 
 
 def download_file(url: str, output_path: Path, desc: str = "Downloading") -> Path:
-    """
-    Download a file with progress bar.
-    
-    Args:
-        url: URL to download from
-        output_path: Path to save the file
-        desc: Description for progress bar
-        
-    Returns:
-        Path to the downloaded file
-    """
+    """Download a file with progress bar."""
     response = requests.get(url, stream=True)
     response.raise_for_status()
     
     total_size = int(response.headers.get("content-length", 0))
-    
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(output_path, "wb") as f:
@@ -136,223 +105,288 @@ def download_file(url: str, output_path: Path, desc: str = "Downloading") -> Pat
 
 
 def extract_tarball(tarball_path: Path, extract_dir: Path) -> Path:
-    """
-    Extract a tar.gz file.
-    
-    Args:
-        tarball_path: Path to the tarball
-        extract_dir: Directory to extract to
-        
-    Returns:
-        Path to the extraction directory
-    """
+    """Extract a tar/tar.gz file with progress."""
     print(f"Extracting {tarball_path.name}...")
     extract_dir.mkdir(parents=True, exist_ok=True)
     
-    with tarfile.open(tarball_path, "r:gz") as tar:
-        # Get total members for progress
+    # Determine compression
+    if tarball_path.suffix == ".gz" or tarball_path.name.endswith(".tar.gz"):
+        mode = "r:gz"
+    else:
+        mode = "r"
+    
+    with tarfile.open(tarball_path, mode) as tar:
         members = tar.getmembers()
-        for member in tqdm(members, desc="Extracting"):
+        for member in tqdm(members, desc="  Extracting"):
             tar.extract(member, extract_dir)
     
     return extract_dir
 
 
-def organize_extracted_data(
-    extracted_dir: Path,
-    output_dir: Path,
-    split_type: str,
-) -> dict[str, bool]:
-    """
-    Organize extracted data into the expected folder structure.
+def extract_lang_code_from_dirname(dirname: str) -> str | None:
+    """Extract language code from directory names like 'sps-corpus-1.0-2025-09-05-aln'."""
+    if dirname in LANGUAGES:
+        return dirname
     
-    The Mozilla tarball structure is expected to be:
-        {lang_code}/
-            train/
-                audios/
-                metadata.csv
-            dev/ or validation/
-                audios/
-                metadata.csv
+    if dirname.startswith("sps-corpus-"):
+        if dirname.endswith("-el-CY"):
+            return "el-CY"
+        last_segment = dirname.split("-")[-1]
+        if last_segment in LANGUAGES:
+            return last_segment
     
-    Args:
-        extracted_dir: Directory where tarball was extracted
-        output_dir: Target output directory (data/mozilla_speech_data/)
-        split_type: "train-dev" or "test"
-        
-    Returns:
-        Dictionary mapping language codes to success status
-    """
-    results = {}
-    
-    # Find all language directories in extracted data
-    # The structure might have a top-level directory from the tarball
-    search_dirs = [extracted_dir]
-    
-    # Check if there's a single top-level directory
-    subdirs = [d for d in extracted_dir.iterdir() if d.is_dir()]
-    if len(subdirs) == 1 and not any(subdirs[0].name == lang for lang in LANGUAGES):
-        search_dirs = [subdirs[0]]
-    
-    for search_dir in search_dirs:
-        for item in search_dir.iterdir():
-            if not item.is_dir():
-                continue
-            
-            lang_code = item.name
-            
-            # Check if this is a known language
-            all_langs = {**LANGUAGES, **UNSEEN_LANGUAGES}
-            if lang_code not in all_langs:
-                print(f"  Skipping unknown directory: {lang_code}")
-                continue
-            
-            print(f"  Processing {lang_code} ({all_langs[lang_code]})...")
-            
-            target_lang_dir = output_dir / lang_code
-            target_lang_dir.mkdir(parents=True, exist_ok=True)
-            
-            try:
-                # Copy/move the data
-                for split in ["train", "dev", "validation", "test"]:
-                    source_split = item / split
-                    if source_split.exists():
-                        # Normalize "dev" to "validation"
-                        target_split_name = "validation" if split == "dev" else split
-                        target_split = target_lang_dir / target_split_name
-                        
-                        if target_split.exists():
-                            shutil.rmtree(target_split)
-                        
-                        shutil.copytree(source_split, target_split)
-                        print(f"    {split} -> {target_split_name}: OK")
-                
-                results[lang_code] = True
-                
-            except Exception as e:
-                print(f"    ERROR: {e}")
-                results[lang_code] = False
-    
-    return results
+    return None
 
 
-def download_dataset(
-    split: str,
-    output_dir: Path,
-    api_key: str,
-    keep_tarball: bool = False,
-) -> dict[str, bool]:
+def organize_train_validation_data(source_dir: Path, output_dir: Path) -> dict[str, int]:
     """
-    Download and extract a dataset split.
+    Organize train/validation data.
     
     Args:
-        split: "train-dev" or "test"
-        output_dir: Output directory for organized data
-        api_key: Mozilla Data Collective API key
-        keep_tarball: Whether to keep the downloaded tarball
+        source_dir: Extracted train/validation data directory
+        output_dir: Target output directory (mozilla_speech_data/)
         
     Returns:
-        Dictionary mapping language codes to success status
+        Dictionary with counts: {lang_code: audio_count}
     """
-    # Determine dataset ID
-    if split == "train-dev":
-        dataset_id = config.mdc_train_dev_dataset_id
-        tarball_name = "mdc_train_dev.tar.gz"
-    elif split == "test":
-        dataset_id = config.mdc_test_dataset_id
-        tarball_name = "mdc_test.tar.gz"
+    audio_counts = {}
+    shared_audio_dir = output_dir / "shared_train_validation_audios"
+    shared_audio_dir.mkdir(parents=True, exist_ok=True)
+    
+    print("\nOrganizing train/validation data...")
+    
+    # Find the actual data directory (may be nested)
+    search_dir = source_dir
+    subdirs = [d for d in source_dir.iterdir() if d.is_dir()]
+    if len(subdirs) == 1 and extract_lang_code_from_dirname(subdirs[0].name) is None:
+        # There's a wrapper directory
+        search_dir = subdirs[0]
+    
+    for item in sorted(search_dir.iterdir()):
+        if not item.is_dir():
+            continue
+        
+        lang_code = extract_lang_code_from_dirname(item.name)
+        if lang_code is None:
+            continue
+        
+        print(f"  [{lang_code}] {LANGUAGES[lang_code]}")
+        
+        lang_dir = output_dir / lang_code
+        lang_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Copy TSV files
+        for tsv_file in item.glob("*.tsv"):
+            target_tsv = lang_dir / tsv_file.name
+            shutil.copy(tsv_file, target_tsv)
+            print(f"    Copied {tsv_file.name}")
+        
+        # Copy audio files to shared directory
+        audio_dir = item / "audios"
+        if audio_dir.exists():
+            audio_files = list(audio_dir.glob("*.mp3"))
+            audio_counts[lang_code] = len(audio_files)
+            
+            for audio_file in tqdm(audio_files, desc=f"    Copying audios", leave=False):
+                target_audio = shared_audio_dir / audio_file.name
+                if not target_audio.exists():
+                    shutil.copy(audio_file, target_audio)
+            
+            print(f"    Copied {len(audio_files)} audio files")
+        else:
+            audio_counts[lang_code] = 0
+            print(f"    WARNING: No audios directory found")
+    
+    return audio_counts
+
+
+def organize_test_data(source_dir: Path, output_dir: Path) -> dict[str, int]:
+    """
+    Organize test data (21 languages only, skip unseen).
+    
+    Args:
+        source_dir: Extracted test data directory
+        output_dir: Target output directory (mozilla_speech_data/)
+        
+    Returns:
+        Dictionary with counts: {lang_code: audio_count}
+    """
+    audio_counts = {}
+    shared_audio_dir = output_dir / "shared_test_audios"
+    shared_audio_dir.mkdir(parents=True, exist_ok=True)
+    
+    print("\nOrganizing test data...")
+    
+    # Find the multilingual-general directory (may be nested)
+    multilingual_dir = source_dir / "multilingual-general"
+    actual_source = source_dir
+    
+    if not multilingual_dir.exists():
+        for subdir in source_dir.iterdir():
+            if subdir.is_dir():
+                potential = subdir / "multilingual-general"
+                if potential.exists():
+                    multilingual_dir = potential
+                    actual_source = subdir
+                    break
+    
+    if not multilingual_dir.exists():
+        print("  ERROR: multilingual-general directory not found")
+        return audio_counts
+    
+    # Copy test TSV files for each language
+    for tsv_file in sorted(multilingual_dir.glob("*.tsv")):
+        lang_code = tsv_file.stem
+        
+        if lang_code not in LANGUAGES:
+            print(f"  Skipping unseen language: {lang_code}")
+            continue
+        
+        lang_dir = output_dir / lang_code
+        lang_dir.mkdir(parents=True, exist_ok=True)
+        
+        target_tsv = lang_dir / f"test-{lang_code}.tsv"
+        shutil.copy(tsv_file, target_tsv)
+        print(f"  [{lang_code}] Copied test TSV")
+    
+    # Copy test audio files to shared directory (21 languages only)
+    audio_dir = actual_source / "audios"
+    if audio_dir.exists():
+        audio_files = list(audio_dir.glob("*.mp3"))
+        copied = 0
+        
+        for audio_file in tqdm(audio_files, desc="  Copying test audios"):
+            parts = audio_file.stem.split("-")
+            if len(parts) >= 3:
+                if "el-CY" in audio_file.name:
+                    file_lang = "el-CY"
+                else:
+                    file_lang = parts[2]
+                
+                if file_lang in LANGUAGES:
+                    target_audio = shared_audio_dir / audio_file.name
+                    if not target_audio.exists():
+                        shutil.copy(audio_file, target_audio)
+                    copied += 1
+                    audio_counts[file_lang] = audio_counts.get(file_lang, 0) + 1
+        
+        print(f"  Copied {copied} audio files (21 languages only)")
     else:
-        raise ValueError(f"Unknown split: {split}. Use 'train-dev' or 'test'")
+        print("  WARNING: No audios directory found")
     
-    print(f"\n{'='*60}")
-    print(f"Downloading {split} data")
-    print(f"{'='*60}")
+    return audio_counts
+
+
+def verify_counts(output_dir: Path) -> bool:
+    """Verify that TSV file counts match audio file counts."""
+    print("\n" + "=" * 60)
+    print("Verifying data integrity...")
+    print("=" * 60)
     
-    # Get download URL
-    print("Getting download URL from MDC API...")
-    try:
-        download_url = get_download_url(dataset_id, api_key)
-        print("  Download URL obtained")
-    except requests.HTTPError as e:
-        print(f"  ERROR: API request failed - {e}")
-        print("  Check that your MDC_API_KEY is valid")
-        return {}
-    except Exception as e:
-        print(f"  ERROR: {e}")
-        return {}
+    all_match = True
     
-    # Download tarball
-    tarball_path = output_dir / tarball_name
-    print(f"\nDownloading to {tarball_path}...")
-    try:
-        download_file(download_url, tarball_path, desc=f"Downloading {split}")
-    except Exception as e:
-        print(f"  ERROR: Download failed - {e}")
-        return {}
+    train_val_audio_dir = output_dir / "shared_train_validation_audios"
+    test_audio_dir = output_dir / "shared_test_audios"
     
-    # Extract
-    with tempfile.TemporaryDirectory() as temp_dir:
-        extract_dir = Path(temp_dir) / "extracted"
-        try:
-            extract_tarball(tarball_path, extract_dir)
-        except Exception as e:
-            print(f"  ERROR: Extraction failed - {e}")
-            return {}
+    train_val_audio_files = set(f.name for f in train_val_audio_dir.glob("*.mp3")) if train_val_audio_dir.exists() else set()
+    test_audio_files = set(f.name for f in test_audio_dir.glob("*.mp3")) if test_audio_dir.exists() else set()
+    
+    print(f"\nShared audio directories:")
+    print(f"  Train/Validation: {len(train_val_audio_files)} files")
+    print(f"  Test: {len(test_audio_files)} files")
+    
+    print(f"\nPer-language verification:")
+    print(f"{'Lang':<8} {'Train':<8} {'Val':<8} {'Test':<8} {'Status'}")
+    print("-" * 50)
+    
+    total_train = 0
+    total_val = 0
+    total_test = 0
+    tsv_train_val_files = set()
+    tsv_test_files = set()
+    
+    for lang_code in sorted(LANGUAGES.keys()):
+        lang_dir = output_dir / lang_code
+        if not lang_dir.exists():
+            print(f"{lang_code:<8} {'N/A':<8} {'N/A':<8} {'N/A':<8} MISSING")
+            all_match = False
+            continue
         
-        # Organize into expected structure
-        print("\nOrganizing data...")
-        results = organize_extracted_data(extract_dir, output_dir, split)
+        corpus_tsv = lang_dir / f"ss-corpus-{lang_code}.tsv"
+        train_count = 0
+        val_count = 0
+        
+        if corpus_tsv.exists():
+            df = pd.read_csv(corpus_tsv, sep="\t")
+            if "split" in df.columns and "audio_file" in df.columns:
+                train_count = len(df[df["split"] == "train"])
+                val_count = len(df[df["split"] == "dev"])
+                
+                for _, row in df.iterrows():
+                    if pd.notna(row.get("audio_file")):
+                        tsv_train_val_files.add(row["audio_file"])
+        
+        test_tsv = lang_dir / f"test-{lang_code}.tsv"
+        test_count = 0
+        
+        if test_tsv.exists():
+            df = pd.read_csv(test_tsv, sep="\t")
+            if "audio_file" in df.columns:
+                test_count = len(df)
+                for _, row in df.iterrows():
+                    if pd.notna(row.get("audio_file")):
+                        tsv_test_files.add(row["audio_file"])
+        
+        total_train += train_count
+        total_val += val_count
+        total_test += test_count
+        
+        print(f"{lang_code:<8} {train_count:<8} {val_count:<8} {test_count:<8} OK")
     
-    # Cleanup tarball
-    if not keep_tarball and tarball_path.exists():
-        print(f"\nRemoving tarball...")
-        tarball_path.unlink()
+    print("-" * 50)
+    print(f"{'TOTAL':<8} {total_train:<8} {total_val:<8} {total_test:<8}")
     
-    return results
+    print(f"\nFile matching verification:")
+    
+    tsv_total = len(tsv_train_val_files)
+    audio_total = len(train_val_audio_files)
+    missing_audios = tsv_train_val_files - train_val_audio_files
+    
+    print(f"  Train/Val TSV entries: {tsv_total}")
+    print(f"  Train/Val audio files: {audio_total}")
+    
+    if missing_audios:
+        print(f"  WARNING: {len(missing_audios)} audio files listed in TSV but not found")
+        all_match = False
+    else:
+        print(f"  MATCH: All TSV audio references found")
+    
+    tsv_total_test = len(tsv_test_files)
+    audio_total_test = len(test_audio_files)
+    missing_test = tsv_test_files - test_audio_files
+    
+    print(f"\n  Test TSV entries: {tsv_total_test}")
+    print(f"  Test audio files: {audio_total_test}")
+    
+    if missing_test:
+        print(f"  WARNING: {len(missing_test)} audio files listed in TSV but not found")
+        all_match = False
+    else:
+        print(f"  MATCH: All TSV audio references found")
+    
+    return all_match
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Download Mozilla Common Voice Spontaneous Speech datasets"
-    )
-    parser.add_argument(
-        "--split",
-        choices=["train-dev", "test", "all"],
-        default="train-dev",
-        help="Which split to download (default: train-dev)",
-    )
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=None,
-        help="Output directory (default: data/mozilla_speech_data)",
-    )
-    parser.add_argument(
-        "--keep-tarball",
-        action="store_true",
-        help="Keep the downloaded tarball after extraction",
-    )
-    parser.add_argument(
-        "--list-languages",
-        action="store_true",
-        help="List all available languages and exit",
-    )
+    """Main entry point - download and organize all data."""
+    print("=" * 60)
+    print("Mozilla Common Voice Spontaneous Speech Dataset Downloader")
+    print("=" * 60)
     
-    args = parser.parse_args()
-    
-    if args.list_languages:
-        print("Training languages (21):")
-        for code, name in sorted(LANGUAGES.items()):
-            print(f"  {code}: {name}")
-        print("\nUnseen/test-only languages (5):")
-        for code, name in sorted(UNSEEN_LANGUAGES.items()):
-            print(f"  {code}: {name}")
-        return
-    
-    # Validate config
+    # Validate API key
     missing = config.validate()
     if missing:
-        print("ERROR: Missing required configuration:")
+        print("\nERROR: Missing required configuration:")
         for key in missing:
             print(f"  - {key}")
         print("\nPlease create a .env file with your API key:")
@@ -360,50 +394,76 @@ def main():
         print("  # Then edit .env and add your MDC_API_KEY")
         return
     
-    # Set output directory
-    output_dir = args.output_dir or config.mozilla_data_dir
+    output_dir = config.mozilla_data_dir
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    print("Mozilla Common Voice Spontaneous Speech Dataset Downloader")
-    print(f"Output directory: {output_dir}")
+    print(f"\nOutput directory: {output_dir}")
     
-    all_results = {}
-    
-    # Download requested splits
-    if args.split in ["train-dev", "all"]:
-        results = download_dataset(
-            "train-dev",
-            output_dir,
-            config.mdc_api_key,
-            args.keep_tarball,
-        )
-        all_results.update(results)
-    
-    if args.split in ["test", "all"]:
-        results = download_dataset(
-            "test",
-            output_dir,
-            config.mdc_api_key,
-            args.keep_tarball,
-        )
-        all_results.update(results)
-    
-    # Summary
-    print("\n" + "=" * 60)
-    print("Download Summary")
-    print("=" * 60)
-    
-    if all_results:
-        successful = sum(all_results.values())
-        print(f"Languages processed: {successful}/{len(all_results)}")
+    # Use temporary directory for downloads and extraction
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
         
-        failed = [lang for lang, success in all_results.items() if not success]
-        if failed:
-            print(f"Failed: {', '.join(failed)}")
-    else:
-        print("No data was downloaded. Check errors above.")
+        # Download and process train/dev data
+        print("\n" + "=" * 60)
+        print("Downloading Train/Dev Data")
+        print("=" * 60)
+        
+        try:
+            print("Getting download URL from MDC API...")
+            train_url = get_download_url(config.mdc_train_dev_dataset_id, config.mdc_api_key)
+            print("  Download URL obtained")
+            
+            train_tarball = temp_path / "train_dev.tar.gz"
+            download_file(train_url, train_tarball, desc="Downloading train/dev")
+            
+            train_extract_dir = temp_path / "train_dev_extracted"
+            extract_tarball(train_tarball, train_extract_dir)
+            
+            organize_train_validation_data(train_extract_dir, output_dir)
+            
+        except requests.HTTPError as e:
+            print(f"ERROR: API request failed - {e}")
+            print("Check that your MDC_API_KEY is valid")
+            return
+        except Exception as e:
+            print(f"ERROR: {e}")
+            return
+        
+        # Download and process test data
+        print("\n" + "=" * 60)
+        print("Downloading Test Data")
+        print("=" * 60)
+        
+        try:
+            print("Getting download URL from MDC API...")
+            test_url = get_download_url(config.mdc_test_dataset_id, config.mdc_api_key)
+            print("  Download URL obtained")
+            
+            test_tarball = temp_path / "test.tar.gz"
+            download_file(test_url, test_tarball, desc="Downloading test")
+            
+            test_extract_dir = temp_path / "test_extracted"
+            extract_tarball(test_tarball, test_extract_dir)
+            
+            organize_test_data(test_extract_dir, output_dir)
+            
+        except requests.HTTPError as e:
+            print(f"ERROR: API request failed - {e}")
+            return
+        except Exception as e:
+            print(f"ERROR: {e}")
+            return
     
+    # Verify counts
+    verify_counts(output_dir)
+    
+    print("\n" + "=" * 60)
+    print("Download complete!")
+    print("=" * 60)
     print(f"\nData saved to: {output_dir}")
+    print(f"  Languages: {len(LANGUAGES)}")
+    print(f"  Train/Val audios: {output_dir / 'shared_train_validation_audios'}")
+    print(f"  Test audios: {output_dir / 'shared_test_audios'}")
 
 
 if __name__ == "__main__":
