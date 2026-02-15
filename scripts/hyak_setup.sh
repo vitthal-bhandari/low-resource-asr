@@ -83,7 +83,15 @@ fi
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
-echo "  Syncing dependencies (uv sync --no-dev)..."
+# Use Python 3.12 so torchcodec (datasets[audio]) has wheels; 3.14 is not supported
+PYTHON_VERSION="${HYAK_PYTHON_VERSION:-3.12}"
+if ! uv python find "$PYTHON_VERSION" &>/dev/null; then
+    echo "  Installing Python $PYTHON_VERSION (required for datasets[audio] / torchcodec)..."
+    uv python install "$PYTHON_VERSION"
+fi
+echo "  Using Python $PYTHON_VERSION for .venv"
+rm -rf .venv
+uv venv --python "$PYTHON_VERSION"
 uv sync --no-dev
 
 echo "  Done."

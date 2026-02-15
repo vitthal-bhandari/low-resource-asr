@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft-all
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=gpu-l40s        # Prefer L40S (48GB); else gpu-2080ti, gpu-140, gpu-140s
+#SBATCH --partition=gpu-2080ti      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
