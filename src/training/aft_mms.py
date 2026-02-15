@@ -210,9 +210,9 @@ def load_and_preprocess_data(lang: str) -> tuple[Dataset, Dataset]:
     print(f"    Train: {len(train_df)} samples")
     print(f"    Validation: {len(val_df)} samples")
     
-    # Add full audio path
-    train_df["audio"] = train_df["audio_file"].apply(lambda x: str(audio_dir / x))
-    val_df["audio"] = val_df["audio_file"].apply(lambda x: str(audio_dir / x))
+    # Add full audio path as dict for datasets Audio feature (avoids PyArrow cast issues)
+    train_df["audio"] = [{"path": str(audio_dir / x)} for x in train_df["audio_file"]]
+    val_df["audio"] = [{"path": str(audio_dir / x)} for x in val_df["audio_file"]]
     
     # Rename transcription to sentence for consistency
     train_df = train_df.rename(columns={"transcription": "sentence"})
@@ -222,7 +222,7 @@ def load_and_preprocess_data(lang: str) -> tuple[Dataset, Dataset]:
     train_dataset = Dataset.from_pandas(train_df, preserve_index=False)
     val_dataset = Dataset.from_pandas(val_df, preserve_index=False)
     
-    # Cast audio column to Audio type
+    # Cast audio column to Audio type (decode on load from path)
     train_dataset = train_dataset.cast_column("audio", Audio(sampling_rate=16_000))
     val_dataset = val_dataset.cast_column("audio", Audio(sampling_rate=16_000))
     
