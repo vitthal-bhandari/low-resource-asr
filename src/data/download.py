@@ -1,26 +1,34 @@
 """
 Script to download and organize Mozilla Common Voice Spontaneous Speech datasets.
 
-Downloads data from Mozilla Data Collective API and organizes into:
+Downloads train/dev data only from Mozilla Data Collective API and organizes into:
     data/mozilla_speech_data/
         shared_train_validation_audios/   # All train/validation audio files
-        shared_test_audios/               # All test audio files  
         {lang_code}/                      # TSV files for each language
             ss-corpus-{lang}.tsv          # Train/validation metadata
-            ss-reported-audios-{lang}.tsv # Reported audios
-            test-{lang}.tsv               # Test metadata
+            ss-reported-audios-{lang}.tsv # Reported audios (if present)
+
+Test data is not downloaded. Validation can later be split into test/val via
+scripts/split_dev_to_test_val.py.
 
 Usage:
     uv run python -m src.data.download
+    # Or from project root: python src/data/download.py
 
 Prerequisites:
     Set MDC_API_KEY in .env file
 """
 
 import shutil
+import sys
 import tarfile
 import tempfile
 from pathlib import Path
+
+# Ensure project root is on path when run as script (e.g. python src/data/download.py)
+_project_root = Path(__file__).resolve().parent.parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
 
 import pandas as pd
 import requests
@@ -280,35 +288,29 @@ def organize_test_data(source_dir: Path, output_dir: Path) -> dict[str, int]:
 def verify_counts(output_dir: Path) -> bool:
     """Verify that TSV file counts match audio file counts."""
     print("\n" + "=" * 60)
-    print("Verifying data integrity...")
+    print("Verifying data integrity (train/val only)...")
     print("=" * 60)
     
     all_match = True
     
     train_val_audio_dir = output_dir / "shared_train_validation_audios"
-    test_audio_dir = output_dir / "shared_test_audios"
-    
     train_val_audio_files = set(f.name for f in train_val_audio_dir.glob("*.mp3")) if train_val_audio_dir.exists() else set()
-    test_audio_files = set(f.name for f in test_audio_dir.glob("*.mp3")) if test_audio_dir.exists() else set()
     
-    print(f"\nShared audio directories:")
+    print(f"\nShared audio directory:")
     print(f"  Train/Validation: {len(train_val_audio_files)} files")
-    print(f"  Test: {len(test_audio_files)} files")
     
     print(f"\nPer-language verification:")
-    print(f"{'Lang':<8} {'Train':<8} {'Val':<8} {'Test':<8} {'Status'}")
-    print("-" * 50)
+    print(f"{'Lang':<8} {'Train':<8} {'Val':<8} {'Status'}")
+    print("-" * 40)
     
     total_train = 0
     total_val = 0
-    total_test = 0
     tsv_train_val_files = set()
-    tsv_test_files = set()
     
     for lang_code in sorted(LANGUAGES.keys()):
         lang_dir = output_dir / lang_code
         if not lang_dir.exists():
-            print(f"{lang_code:<8} {'N/A':<8} {'N/A':<8} {'N/A':<8} MISSING")
+            print(f"{lang_code:<8} {'N/A':<8} {'N/A':<8} MISSING")
             all_match = False
             continue
         
@@ -321,55 +323,26 @@ def verify_counts(output_dir: Path) -> bool:
             if "split" in df.columns and "audio_file" in df.columns:
                 train_count = len(df[df["split"] == "train"])
                 val_count = len(df[df["split"] == "dev"])
-                
                 for _, row in df.iterrows():
                     if pd.notna(row.get("audio_file")):
                         tsv_train_val_files.add(row["audio_file"])
         
-        test_tsv = lang_dir / f"test-{lang_code}.tsv"
-        test_count = 0
-        
-        if test_tsv.exists():
-            df = pd.read_csv(test_tsv, sep="\t")
-            if "audio_file" in df.columns:
-                test_count = len(df)
-                for _, row in df.iterrows():
-                    if pd.notna(row.get("audio_file")):
-                        tsv_test_files.add(row["audio_file"])
-        
         total_train += train_count
         total_val += val_count
-        total_test += test_count
-        
-        print(f"{lang_code:<8} {train_count:<8} {val_count:<8} {test_count:<8} OK")
+        print(f"{lang_code:<8} {train_count:<8} {val_count:<8} OK")
     
-    print("-" * 50)
-    print(f"{'TOTAL':<8} {total_train:<8} {total_val:<8} {total_test:<8}")
+    print("-" * 40)
+    print(f"{'TOTAL':<8} {total_train:<8} {total_val:<8}")
     
     print(f"\nFile matching verification:")
-    
     tsv_total = len(tsv_train_val_files)
     audio_total = len(train_val_audio_files)
     missing_audios = tsv_train_val_files - train_val_audio_files
     
     print(f"  Train/Val TSV entries: {tsv_total}")
     print(f"  Train/Val audio files: {audio_total}")
-    
     if missing_audios:
         print(f"  WARNING: {len(missing_audios)} audio files listed in TSV but not found")
-        all_match = False
-    else:
-        print(f"  MATCH: All TSV audio references found")
-    
-    tsv_total_test = len(tsv_test_files)
-    audio_total_test = len(test_audio_files)
-    missing_test = tsv_test_files - test_audio_files
-    
-    print(f"\n  Test TSV entries: {tsv_total_test}")
-    print(f"  Test audio files: {audio_total_test}")
-    
-    if missing_test:
-        print(f"  WARNING: {len(missing_test)} audio files listed in TSV but not found")
         all_match = False
     else:
         print(f"  MATCH: All TSV audio references found")
@@ -428,33 +401,8 @@ def main():
         except Exception as e:
             print(f"ERROR: {e}")
             return
-        
-        # Download and process test data
-        print("\n" + "=" * 60)
-        print("Downloading Test Data")
-        print("=" * 60)
-        
-        try:
-            print("Getting download URL from MDC API...")
-            test_url = get_download_url(config.mdc_test_dataset_id, config.mdc_api_key)
-            print("  Download URL obtained")
-            
-            test_tarball = temp_path / "test.tar.gz"
-            download_file(test_url, test_tarball, desc="Downloading test")
-            
-            test_extract_dir = temp_path / "test_extracted"
-            extract_tarball(test_tarball, test_extract_dir)
-            
-            organize_test_data(test_extract_dir, output_dir)
-            
-        except requests.HTTPError as e:
-            print(f"ERROR: API request failed - {e}")
-            return
-        except Exception as e:
-            print(f"ERROR: {e}")
-            return
     
-    # Verify counts
+    # Verify counts (train/val only; test data not downloaded)
     verify_counts(output_dir)
     
     print("\n" + "=" * 60)
@@ -463,7 +411,6 @@ def main():
     print(f"\nData saved to: {output_dir}")
     print(f"  Languages: {len(LANGUAGES)}")
     print(f"  Train/Val audios: {output_dir / 'shared_train_validation_audios'}")
-    print(f"  Test audios: {output_dir / 'shared_test_audios'}")
 
 
 if __name__ == "__main__":

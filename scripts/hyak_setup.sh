@@ -68,6 +68,11 @@ echo ""
 
 echo "Step 2: Setting up uv..."
 
+# Use scratch for uv cache to avoid filling home (10GB quota on Hyak)
+export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
+mkdir -p "$UV_CACHE_DIR"
+echo "  UV cache: $UV_CACHE_DIR"
+
 if ! command -v uv &>/dev/null; then
     echo "  Installing uv..."
     curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -78,7 +83,7 @@ fi
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
-echo "  Syncing dependencies (uv sync)..."
+echo "  Syncing dependencies (uv sync --no-dev)..."
 uv sync --no-dev
 
 echo "  Done."
@@ -90,7 +95,7 @@ echo ""
 
 echo "Step 3: Verifying Python environment..."
 
-uv run python -c "
+uv run --no-dev python -c "
 import torch
 print(f'PyTorch version: {torch.__version__}')
 print(f'CUDA available: {torch.cuda.is_available()}')
