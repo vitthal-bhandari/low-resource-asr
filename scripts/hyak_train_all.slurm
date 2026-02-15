@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft-all
-#SBATCH --account=YOUR_ACCOUNT      # TODO: Replace with your Hyak account
+#SBATCH --account=vitthal1         # UW NetID (no lab account; project under /gscratch/scrubbed/$USER/)
 #SBATCH --partition=gpu-rtx6k       # GPU partition
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -23,6 +23,11 @@
 # =============================================================================
 
 set -e  # Exit on error
+
+# Configuration: set PROJECT_DIR to match hyak_setup.sh
+# No lab: /gscratch/scrubbed/$USER/low-resource-asr
+# With lab: /gscratch/YOUR_ACCOUNT/low-resource-asr
+PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
 
 # All 21 languages
 LANGUAGES=(
@@ -66,25 +71,18 @@ echo ""
 mkdir -p logs
 
 # =============================================================================
-# Environment Setup
+# Environment Setup (uv)
 # =============================================================================
 
-# Option 1: Using Miniconda
-# source /gscratch/scrubbed/$USER/miniconda3/etc/profile.d/conda.sh
-# conda activate low-resource-asr
-
-# Option 2: Using uv
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Navigate to project directory
-cd /gscratch/YOUR_ACCOUNT/low-resource-asr  # TODO: Replace with your project path
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+cd "$PROJECT_DIR"
 
 # =============================================================================
 # GPU Check
 # =============================================================================
 
 echo "Checking GPU availability..."
-python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
+uv run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
 echo ""
 
 # =============================================================================

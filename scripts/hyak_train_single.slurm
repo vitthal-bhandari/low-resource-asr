@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft
-#SBATCH --account=YOUR_ACCOUNT      # TODO: Replace with your Hyak account (e.g., stf, escience)
+#SBATCH --account=vitthal1         # UW NetID (no lab account; project under /gscratch/scrubbed/$USER/)
 #SBATCH --partition=gpu-rtx6k       # GPU partition (gpu-rtx6k, gpu-a40, or ckpt-gpu)
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -21,6 +21,11 @@
 
 set -e  # Exit on error
 
+# Configuration: set PROJECT_DIR to match hyak_setup.sh
+# No lab: /gscratch/scrubbed/$USER/low-resource-asr
+# With lab: /gscratch/YOUR_ACCOUNT/low-resource-asr
+PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
+
 # Get language from command line argument
 LANG=${1:-"aln"}
 
@@ -38,30 +43,18 @@ echo ""
 mkdir -p logs
 
 # =============================================================================
-# Environment Setup
+# Environment Setup (uv)
 # =============================================================================
 
-# Option 1: Using Miniconda (recommended for development)
-# Uncomment and modify the path below if using conda
-# source /gscratch/scrubbed/$USER/miniconda3/etc/profile.d/conda.sh
-# conda activate low-resource-asr
-
-# Option 2: Using uv (if installed on Hyak)
-# Ensure uv is in PATH and venv exists
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Navigate to project directory
-cd /gscratch/YOUR_ACCOUNT/low-resource-asr  # TODO: Replace with your project path
-
-# Sync dependencies (if needed)
-# uv sync
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+cd "$PROJECT_DIR"
 
 # =============================================================================
 # GPU Check
 # =============================================================================
 
 echo "Checking GPU availability..."
-python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
+uv run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
 echo ""
 
 # =============================================================================

@@ -2,6 +2,9 @@
 # =============================================================================
 # Hyak Setup Script
 # Run this once to set up your environment on Hyak
+#
+# For users WITHOUT a lab: use PROJECT_DIR under scrubbed (21-day purge).
+# For users WITH a lab: set ACCOUNT and use PROJECT_DIR under /gscratch/$ACCOUNT/.
 # =============================================================================
 
 set -e
@@ -11,8 +14,19 @@ echo "Setting up Low-Resource ASR on Hyak"
 echo "=========================================="
 
 # Configuration - EDIT THESE
-ACCOUNT="YOUR_ACCOUNT"              # Your Hyak account (e.g., stf, escience)
-PROJECT_DIR="/gscratch/$ACCOUNT/low-resource-asr"
+# ACCOUNT: your Hyak account (UW NetID if no lab, e.g. vitthal1; or lab name if in a lab)
+ACCOUNT="${HYAK_ACCOUNT:-vitthal1}"
+
+# PROJECT_DIR: no lab = scrubbed (21-day purge); with lab = /gscratch/$ACCOUNT/low-resource-asr
+# Set USE_LAB=1 if you have a lab and want project under /gscratch/$ACCOUNT/
+USE_LAB="${USE_LAB:-0}"
+if [ "$USE_LAB" = "1" ] && [ -n "$ACCOUNT" ]; then
+    PROJECT_DIR="/gscratch/$ACCOUNT/low-resource-asr"
+else
+    PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
+fi
+
+# Optional: Miniconda (only if not using uv)
 CONDA_DIR="/gscratch/scrubbed/$USER/miniconda3"
 ENV_NAME="low-resource-asr"
 
@@ -20,7 +34,6 @@ echo ""
 echo "Configuration:"
 echo "  Account: $ACCOUNT"
 echo "  Project dir: $PROJECT_DIR"
-echo "  Conda dir: $CONDA_DIR"
 echo ""
 
 # =============================================================================
@@ -44,90 +57,46 @@ cd "$PROJECT_DIR"
 mkdir -p logs
 mkdir -p models
 mkdir -p data/mozilla_speech_data
+mkdir -p results/training_logs
 
 echo "  Done."
 echo ""
 
 # =============================================================================
-# Step 2: Install Miniconda (if not already installed)
+# Step 2: Install uv (recommended - matches local Mac workflow and lockfile)
 # =============================================================================
 
-echo "Step 2: Setting up Miniconda..."
+echo "Step 2: Setting up uv..."
 
-if [ ! -d "$CONDA_DIR" ]; then
-    echo "  Downloading Miniconda..."
-    wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
-    
-    echo "  Installing Miniconda to $CONDA_DIR..."
-    bash /tmp/miniconda.sh -b -p "$CONDA_DIR"
-    rm /tmp/miniconda.sh
-    
-    # Initialize conda
-    "$CONDA_DIR/bin/conda" init bash
-    source ~/.bashrc
+if ! command -v uv &>/dev/null; then
+    echo "  Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 else
-    echo "  Miniconda already installed."
+    echo "  uv already installed."
 fi
 
-# Source conda
-source "$CONDA_DIR/etc/profile.d/conda.sh"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
+echo "  Syncing dependencies (uv sync)..."
+uv sync --no-dev
 
 echo "  Done."
 echo ""
 
 # =============================================================================
-# Step 3: Create conda environment
+# Step 3: Verify GPU access (optional; only works on a GPU node)
 # =============================================================================
 
-echo "Step 3: Setting up conda environment..."
+echo "Step 3: Verifying Python environment..."
 
-ENV_PATH="/gscratch/scrubbed/$USER/$ENV_NAME"
-
-if [ ! -d "$ENV_PATH" ]; then
-    echo "  Creating environment: $ENV_NAME..."
-    conda create -p "$ENV_PATH" python=3.11 -y
-else
-    echo "  Environment exists."
-fi
-
-# Activate environment
-conda activate "$ENV_PATH"
-
-echo "  Done."
-echo ""
-
-# =============================================================================
-# Step 4: Install dependencies
-# =============================================================================
-
-echo "Step 4: Installing dependencies..."
-
-cd "$PROJECT_DIR"
-
-# Install PyTorch with CUDA
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
-# Install project dependencies
-pip install transformers datasets accelerate evaluate jiwer safetensors \
-    huggingface_hub pandas numpy tqdm python-dotenv requests librosa soundfile
-
-echo "  Done."
-echo ""
-
-# =============================================================================
-# Step 5: Verify GPU access
-# =============================================================================
-
-echo "Step 5: Verifying setup..."
-
-python -c "
+uv run python -c "
 import torch
 print(f'PyTorch version: {torch.__version__}')
 print(f'CUDA available: {torch.cuda.is_available()}')
 if torch.cuda.is_available():
     print(f'CUDA version: {torch.version.cuda}')
     print(f'GPU count: {torch.cuda.device_count()}')
-
 import transformers
 print(f'Transformers version: {transformers.__version__}')
 "
@@ -138,12 +107,22 @@ echo "Setup complete!"
 echo "=========================================="
 echo ""
 echo "Next steps:"
-echo "  1. Copy your .env file to $PROJECT_DIR/.env"
-echo "  2. Upload your data to $PROJECT_DIR/data/mozilla_speech_data/"
-echo "  3. Edit the SLURM scripts in scripts/ with your account name"
-echo "  4. Submit jobs with: sbatch scripts/hyak_train_all.slurm"
+echo "  1. Set ACCOUNT in SLURM scripts: edit ACCOUNT= in scripts/hyak_train_single.slurm and hyak_train_all.slurm"
+echo "     (or export HYAK_ACCOUNT=stf before running this script to use scrubbed path)"
+echo "  2. Copy your .env file to $PROJECT_DIR/.env"
+echo "  3. Upload your data to $PROJECT_DIR/data/mozilla_speech_data/"
+echo "  4. Submit jobs: sbatch scripts/hyak_train_single.slurm aln"
+echo "                  sbatch scripts/hyak_train_single.slurm sco"
 echo ""
-echo "To activate your environment in future sessions:"
-echo "  source $CONDA_DIR/etc/profile.d/conda.sh"
-echo "  conda activate $ENV_PATH"
+echo "To run training in future sessions:"
+echo "  cd $PROJECT_DIR"
+echo "  uv run python -m src.training.aft_mms <lang> [options]"
+echo ""
+echo "Optional - Miniconda alternative (if you prefer conda over uv):"
+echo "  Install: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+echo "           bash Miniconda3-*.sh -b -p $CONDA_DIR"
+echo "  Then: source $CONDA_DIR/etc/profile.d/conda.sh"
+echo "        conda create -p /gscratch/scrubbed/\$USER/$ENV_NAME python=3.11 -y"
+echo "        conda activate /gscratch/scrubbed/\$USER/$ENV_NAME"
+echo "        pip install -e . (or pip install from pyproject.toml)"
 echo ""

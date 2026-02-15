@@ -19,6 +19,7 @@ import json
 import os
 import re
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Union
 
@@ -507,6 +508,7 @@ transcription = processor.batch_decode(predicted_ids)
 
 def main():
     """Main training function."""
+    run_start_time = datetime.now()
     args = parse_args()
     
     # Validate language code
@@ -518,6 +520,9 @@ def main():
     
     # Setup paths
     output_dir = Path(args.output_dir) if args.output_dir else config.models_dir / "mms" / lang
+    training_logs_dir = config.results_dir / "training_logs"
+    training_logs_dir.mkdir(parents=True, exist_ok=True)
+    training_log_path = training_logs_dir / f"mms_aft_{lang}_{run_start_time:%Y%m%d_%H%M%S}.log"
     
     print("=" * 60)
     print(f"MMS Adapter Fine-tuning for {lang} ({LANGUAGES[lang]})")
@@ -532,6 +537,7 @@ def main():
     # Load and preprocess data
     #
     train, val = load_and_preprocess_data(lang)
+    n_train, n_val = len(train), len(val)
     
     # Build vocabulary
     print("\nBuilding vocabulary...")
@@ -703,6 +709,33 @@ def main():
     with open(results_path, "w") as f:
         json.dump(eval_results, f, indent=2)
     print(f"  Results saved to: {results_path}")
+    
+    # Write training log (datetime-named) for future reference
+    run_end_time = datetime.now()
+    best_wer = eval_results.get("eval_wer", float("nan"))
+    log_lines = [
+        f"# MMS Adapter Fine-tuning Run Log",
+        f"run_start={run_start_time.isoformat()}",
+        f"run_end={run_end_time.isoformat()}",
+        f"model=facebook/mms-1b-all",
+        f"language={lang}",
+        f"language_name={LANGUAGES.get(lang, lang)}",
+        f"output_dir={output_dir}",
+        f"num_train_samples={n_train}",
+        f"num_validation_samples={n_val}",
+        f"num_epochs={args.num_epochs}",
+        f"batch_size={args.batch_size}",
+        f"gradient_accumulation_steps={args.gradient_accumulation_steps}",
+        f"effective_batch_size={args.batch_size * args.gradient_accumulation_steps}",
+        f"learning_rate={args.learning_rate}",
+        f"validation_wer={best_wer:.6f}",
+    ]
+    if hasattr(trainer.state, "best_metric") and trainer.state.best_metric is not None:
+        log_lines.append(f"best_validation_wer={trainer.state.best_metric:.6f}")
+    log_lines.append("")
+    with open(training_log_path, "w") as f:
+        f.write("\n".join(log_lines))
+    print(f"  Training log saved to: {training_log_path}")
     
     ############################################################################
     # Push to Hugging Face Hub (if requested)
