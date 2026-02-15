@@ -470,11 +470,11 @@ transcription = processor.batch_decode(predicted_ids)
     
     # Push model
     print("  Pushing model...")
-    model.push_to_hub(repo_id, use_auth_token=hf_token)
+    model.push_to_hub(repo_id, token=hf_token)
     
     # Push processor
     print("  Pushing processor...")
-    processor.push_to_hub(repo_id, use_auth_token=hf_token)
+    processor.push_to_hub(repo_id, token=hf_token)
     
     # Push adapter file
     adapter_file = WAV2VEC2_ADAPTER_SAFE_FILE.format(lang)
