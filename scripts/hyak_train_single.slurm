@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft
-#SBATCH --account=vitthal1         # UW NetID (no lab account; project under /gscratch/scrubbed/$USER/)
-#SBATCH --partition=gpu-rtx6k       # GPU partition (gpu-rtx6k, gpu-a40, or ckpt-gpu)
+#SBATCH --account=stf               # From hyakalloc (free student allocation)
+#SBATCH --partition=gpu-l40s        # Prefer L40S (48GB); else gpu-2080ti, gpu-140, gpu-140s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
