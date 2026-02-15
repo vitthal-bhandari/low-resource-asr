@@ -25,8 +25,10 @@ from typing import Dict, List, Union
 
 import numpy as np
 import pandas as pd
+import soundfile as sf
 import torch
-from datasets import Audio, Dataset
+import librosa
+from datasets import Dataset
 from evaluate import load as load_metric
 from huggingface_hub import HfApi, login
 from safetensors.torch import save_file as safe_save_file
@@ -218,15 +220,10 @@ def load_and_preprocess_data(lang: str) -> tuple[Dataset, Dataset]:
     train_df = train_df.rename(columns={"transcription": "sentence"})
     val_df = val_df.rename(columns={"transcription": "sentence"})
     
-    # Convert to Hugging Face Dataset
+    # Convert to Hugging Face Dataset; audio column = {"path": path} (decoded in prepare_dataset)
+    # We do not cast to Audio() so we avoid torchcodec/FFmpeg (libavutil.so) on HPC nodes
     train_dataset = Dataset.from_pandas(train_df, preserve_index=False)
     val_dataset = Dataset.from_pandas(val_df, preserve_index=False)
-    
-    # Cast audio column to Audio type; decoding uses torchcodec from datasets[audio]
-    # (requires Python 3.11–3.13 on Hyak; use uv venv --python 3.12 and uv sync)
-    train_dataset = train_dataset.cast_column("audio", Audio(sampling_rate=16_000))
-    val_dataset = val_dataset.cast_column("audio", Audio(sampling_rate=16_000))
-    
     return train_dataset, val_dataset
 
 
@@ -339,19 +336,17 @@ class DataCollatorCTCWithPadding:
 def create_prepare_dataset_fn(processor: Wav2Vec2Processor):
     """
     Create a dataset preparation function with the processor in closure.
-    
-    Args:
-        processor: Wav2Vec2Processor to use for feature extraction
-        
-    Returns:
-        Function that prepares a single dataset example
+    Loads audio from path with soundfile/librosa to avoid torchcodec/FFmpeg on HPC.
     """
+    TARGET_SR = 16_000
 
     def prepare_dataset(batch: dict) -> dict:
-        audio = batch["audio"]
-        batch["input_values"] = processor(
-            audio["array"], sampling_rate=audio["sampling_rate"]
-        ).input_values[0]
+        path = batch["audio"]["path"]
+        array, sr = sf.read(path, dtype="float32")
+        if sr != TARGET_SR:
+            array = librosa.resample(array, orig_sr=sr, target_sr=TARGET_SR)
+            sr = TARGET_SR
+        batch["input_values"] = processor(array, sampling_rate=sr).input_values[0]
         batch["input_length"] = len(batch["input_values"])
         batch["labels"] = processor(text=batch["sentence"]).input_ids
         return batch
