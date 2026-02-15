@@ -13,15 +13,22 @@ scripts/split_dev_to_test_val.py.
 
 Usage:
     uv run python -m src.data.download
+    # Or from project root: python src/data/download.py
 
 Prerequisites:
     Set MDC_API_KEY in .env file
 """
 
 import shutil
+import sys
 import tarfile
 import tempfile
 from pathlib import Path
+
+# Ensure project root is on path when run as script (e.g. python src/data/download.py)
+_project_root = Path(__file__).resolve().parent.parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
 
 import pandas as pd
 import requests
