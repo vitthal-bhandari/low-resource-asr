@@ -47,6 +47,7 @@ mkdir -p logs
 # =============================================================================
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
 cd "$PROJECT_DIR"
 
 # =============================================================================
