@@ -222,7 +222,8 @@ def load_and_preprocess_data(lang: str) -> tuple[Dataset, Dataset]:
     train_dataset = Dataset.from_pandas(train_df, preserve_index=False)
     val_dataset = Dataset.from_pandas(val_df, preserve_index=False)
     
-    # Cast audio column to Audio type (decode on load from path)
+    # Cast audio column to Audio type; decoding uses torchcodec from datasets[audio]
+    # (requires Python 3.11–3.13 on Hyak; use uv venv --python 3.12 and uv sync)
     train_dataset = train_dataset.cast_column("audio", Audio(sampling_rate=16_000))
     val_dataset = val_dataset.cast_column("audio", Audio(sampling_rate=16_000))
     

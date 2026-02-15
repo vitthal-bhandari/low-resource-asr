@@ -10,7 +10,7 @@ dependencies = [
     # Core ML
     "torch>=2.0.0",
     "transformers>=4.36.0",
-    "datasets>=2.16.0",
+    "datasets[audio]>=2.16.0",   # [audio] pulls in torchcodec for decoding (needs Python 3.11–3.13 on some platforms)
     "accelerate>=0.25.0",
     
     # Audio processing
