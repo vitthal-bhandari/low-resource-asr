@@ -227,8 +227,8 @@ data/linguistic_resources/*
 *.ogg
 
 # Results (can be large)
-results/*
-!results/.gitkeep
+# results/*
+# !results/.gitkeep
 
 # Hugging Face cache
 .cache/
@@ -239,4 +239,4 @@ wandb/
 
 # Tensorboard
 runs/
-logs/
+# logs/
