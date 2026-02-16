@@ -394,6 +394,19 @@ def get_device() -> str:
         return "cpu"
 
 
+def _model_card_language_metadata(lang: str) -> str:
+    """
+    Return YAML lines for model card 'language' (and optionally 'language_bcp47').
+    HF requires 'language' to be lowercase ISO 639-1/2/3; BCP-47 codes go in language_bcp47.
+    """
+    lang_lower = lang.lower()
+    # BCP-47 style (e.g. el-CY): use base code for language, full for language_bcp47
+    if "-" in lang_lower:
+        base = lang_lower.split("-")[0]
+        return f"language: {base}\nlanguage_bcp47: {lang_lower}"
+    return f"language: {lang_lower}"
+
+
 def push_to_hub(
     model: Wav2Vec2ForCTC,
     processor: Wav2Vec2Processor,
@@ -420,9 +433,10 @@ def push_to_hub(
     else:
         print("  No HF_TOKEN found in .env, attempting login with cached credentials...")
     
-    # Create model card
+    # Create model card (HF requires lowercase ISO for 'language'; BCP-47 in language_bcp47)
+    language_yaml = _model_card_language_metadata(lang)
     model_card = f"""---
-language: {lang}
+{language_yaml}
 tags:
 - audio
 - automatic-speech-recognition
