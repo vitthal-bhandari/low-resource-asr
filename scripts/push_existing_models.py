@@ -146,16 +146,24 @@ def find_models_from_job_id(job_id: str) -> list[tuple[str, str]]:
     return list(dict.fromkeys(models))  # Preserves order, removes duplicates
 
 
+def _model_weights_exist(model_dir: Path) -> bool:
+    """Check that at least one of model.safetensors or pytorch_model.bin exists."""
+    return (model_dir / "model.safetensors").exists() or (model_dir / "pytorch_model.bin").exists()
+
+
 def push_model(lang: str, split: str) -> bool:
     """Load and push a single model from models/mms/{lang}/{split}/."""
     model_dir = config.models_dir / "mms" / lang / split
     if not model_dir.exists():
         print(f"  {lang}/{split}: Model directory not found: {model_dir}")
         return False
-    
+    if not _model_weights_exist(model_dir):
+        print(f"  {lang}/{split}: Skipping — no model.safetensors or pytorch_model.bin in {model_dir} (training may not have completed).")
+        return False
+
     print(f"\nPushing {lang}/{split}...")
     print(f"  Model dir: {model_dir}")
-    
+
     try:
         # Load model and processor
         model = Wav2Vec2ForCTC.from_pretrained(str(model_dir))
