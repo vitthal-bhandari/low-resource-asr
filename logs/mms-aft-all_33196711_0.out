@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: aln  Split: one (task 0 of 21)
+Job ID: 33200882 (Array Job: 33196711)
+Node: g3103
+GPUs: 0
+Start time: Mon Feb 16 06:01:06 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=one)...
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/one
+Device: cuda
+Push to HF: False
+
+Loading data for aln (Gheg Albanian) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-one_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 162 samples (1.00 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/one/vocab.json (70 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,243,400 / 964,740,808 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '34.75', 'grad_norm': '10.35', 'learning_rate': '0.00049', 'epoch': '4.585'}
+{'train_runtime': '199.3', 'train_samples_per_second': '4.063', 'train_steps_per_second': '0.276', 'train_loss': '31.96', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/one/adapter.aln.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.5936
+  CER: 0.2120
+
+Evaluating on test set...
+  Test WER: 0.7961
+  Test CER: 0.3854
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_aln_20260216_060527.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/one
+
+==========================================
+Training complete for aln!
+End time: Mon Feb 16 06:12:20 PST 2026
+==========================================

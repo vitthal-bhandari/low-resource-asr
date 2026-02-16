@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: hch  Split: one (task 5 of 21)
+Job ID: 33201489 (Array Job: 33196711)
+Node: g3101
+GPUs: 0
+Start time: Mon Feb 16 06:53:49 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for hch (split=one)...
+============================================================
+MMS Adapter Fine-tuning for hch (Wixárika) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one
+Device: cuda
+Push to HF: False
+
+Loading data for hch (Wixárika) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-one_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 185 samples (0.99 h)
+  Validation: 310 samples (0.97 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one/vocab.json (60 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,230,590 / 964,727,998 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '50.25', 'grad_norm': '7.551', 'learning_rate': '0.00049', 'epoch': '4.17'}
+{'train_runtime': '191.4', 'train_samples_per_second': '4.832', 'train_steps_per_second': '0.313', 'train_loss': '43.15', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one/adapter.hch.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.9985
+  CER: 0.3544
+
+Evaluating on test set...
+  Test WER: 0.9987
+  Test CER: 0.3734
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_hch_20260216_065456.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one
+
+==========================================
+Training complete for hch!
+End time: Mon Feb 16 07:00:56 PST 2026
+==========================================

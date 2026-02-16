@@ -1,0 +1,69 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: el-CY  Split: one (task 4 of 21)
+Job ID: 33201314 (Array Job: 33196711)
+Node: g3101
+GPUs: 0
+Start time: Mon Feb 16 06:43:48 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for el-CY (split=one)...
+============================================================
+MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/one
+Device: cuda
+Push to HF: False
+
+Loading data for el-CY (Cypriot Greek) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-one_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 61 samples (1.00 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/one/vocab.json (118 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,304,888 / 964,802,296 (0.24%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'train_runtime': '291.1', 'train_samples_per_second': '1.048', 'train_steps_per_second': '0.069', 'train_loss': '172', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/one/adapter.el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.7052
+  CER: 1.2846
+
+Evaluating on test set...
+  Test WER: 2.0688
+  Test CER: 1.3926
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_el-CY_20260216_064454.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/one
+
+==========================================
+Training complete for el-CY!
+End time: Mon Feb 16 06:52:39 PST 2026
+==========================================

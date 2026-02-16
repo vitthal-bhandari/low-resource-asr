@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: cgg  Split: one (task 3 of 21)
+Job ID: 33201149 (Array Job: 33196711)
+Node: g3102
+GPUs: 0
+Start time: Mon Feb 16 06:32:04 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for cgg (split=one)...
+============================================================
+MMS Adapter Fine-tuning for cgg (Chiga) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/one
+Device: cuda
+Push to HF: False
+
+Loading data for cgg (Chiga) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/train-one_cgg.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/validation_cgg.tsv
+  Train: 161 samples (1.00 h)
+  Validation: 308 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/one/vocab.json (50 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,217,780 / 964,715,188 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '40.63', 'grad_norm': '11.32', 'learning_rate': '0.00049', 'epoch': '4.585'}
+{'train_runtime': '231.8', 'train_samples_per_second': '3.474', 'train_steps_per_second': '0.237', 'train_loss': '38.43', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/one/adapter.cgg.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0000
+  CER: 0.9917
+
+Evaluating on test set...
+  Test WER: 1.0000
+  Test CER: 0.9900
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_cgg_20260216_063607.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/one
+
+==========================================
+Training complete for cgg!
+End time: Mon Feb 16 06:42:48 PST 2026
+==========================================

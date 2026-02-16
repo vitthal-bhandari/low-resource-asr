@@ -1,0 +1,69 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: sco  Split: one (task 16 of 21)
+Job ID: 33204125 (Array Job: 33196711)
+Node: g3104
+GPUs: 0
+Start time: Mon Feb 16 08:29:58 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for sco (split=one)...
+============================================================
+MMS Adapter Fine-tuning for sco (Scots) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one
+Device: cuda
+Push to HF: False
+
+Loading data for sco (Scots) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-one_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 108 samples (0.99 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one/vocab.json (66 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,238,276 / 964,735,684 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'train_runtime': '235.6', 'train_samples_per_second': '2.292', 'train_steps_per_second': '0.149', 'train_loss': '39.79', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one/adapter.sco.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0000
+  CER: 0.9994
+
+Evaluating on test set...
+  Test WER: 1.0000
+  Test CER: 0.9982
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_sco_20260216_083327.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one
+
+==========================================
+Training complete for sco!
+End time: Mon Feb 16 08:40:17 PST 2026
+==========================================

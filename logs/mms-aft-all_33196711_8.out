@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: led  Split: one (task 8 of 21)
+Job ID: 33201897 (Array Job: 33196711)
+Node: g3101
+GPUs: 0
+Start time: Mon Feb 16 07:21:18 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for led (split=one)...
+============================================================
+MMS Adapter Fine-tuning for led (Lendu) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/one
+Device: cuda
+Push to HF: False
+
+Loading data for led (Lendu) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/train-one_led.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/validation_led.tsv
+  Train: 192 samples (1.00 h)
+  Validation: 104 samples (0.56 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/one/vocab.json (81 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,257,491 / 964,754,899 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '53.35', 'grad_norm': '13.42', 'learning_rate': '0.00049', 'epoch': '4.167'}
+{'train_runtime': '184.1', 'train_samples_per_second': '5.215', 'train_steps_per_second': '0.326', 'train_loss': '46.13', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/one/adapter.led.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.9751
+  CER: 0.4530
+
+Evaluating on test set...
+  Test WER: 0.9610
+  Test CER: 0.4652
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_led_20260216_072210.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/one
+
+==========================================
+Training complete for led!
+End time: Mon Feb 16 07:27:30 PST 2026
+==========================================
