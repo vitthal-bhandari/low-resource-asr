@@ -1,0 +1,14 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: aln
+Job ID: 33171239
+Node: g3004
+GPUs: 0
+Start time: Sat Feb 14 23:46:37 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA GeForce RTX 2080 Ti
+
+Starting training for aln...
