@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: pne  Split: one (task 13 of 21)
+Job ID: 33203045 (Array Job: 33196711)
+Node: g3109
+GPUs: 0
+Start time: Mon Feb 16 08:00:14 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for pne (split=one)...
+============================================================
+MMS Adapter Fine-tuning for pne (Western Penan) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/one
+Device: cuda
+Push to HF: False
+
+Loading data for pne (Western Penan) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-one_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: 213 samples (1.00 h)
+  Validation: 310 samples (1.30 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/one/vocab.json (53 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,221,623 / 964,719,031 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '39.15', 'grad_norm': '8.064', 'learning_rate': '0.00049', 'epoch': '3.593'}
+{'train_runtime': '206', 'train_samples_per_second': '5.169', 'train_steps_per_second': '0.34', 'train_loss': '30.42', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/one/adapter.pne.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.8598
+  CER: 0.3076
+
+Evaluating on test set...
+  Test WER: 0.8432
+  Test CER: 0.3017
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_pne_20260216_080311.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/one
+
+==========================================
+Training complete for pne!
+End time: Mon Feb 16 08:10:06 PST 2026
+==========================================

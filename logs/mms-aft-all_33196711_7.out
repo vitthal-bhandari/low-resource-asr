@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: koo  Split: one (task 7 of 21)
+Job ID: 33201733 (Array Job: 33196711)
+Node: g3101
+GPUs: 0
+Start time: Mon Feb 16 07:13:27 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for koo (split=one)...
+============================================================
+MMS Adapter Fine-tuning for koo (Konzo) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/one
+Device: cuda
+Push to HF: False
+
+Loading data for koo (Konzo) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-one_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: 229 samples (1.00 h)
+  Validation: 99 samples (0.59 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/one/vocab.json (48 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,215,218 / 964,712,626 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '47.27', 'grad_norm': '34.97', 'learning_rate': '0.00049', 'epoch': '3.345'}
+{'train_runtime': '201.3', 'train_samples_per_second': '5.687', 'train_steps_per_second': '0.373', 'train_loss': '34.36', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/one/adapter.koo.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.9673
+  CER: 0.3702
+
+Evaluating on test set...
+  Test WER: 0.9165
+  Test CER: 0.2921
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_koo_20260216_071426.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/one
+
+==========================================
+Training complete for koo!
+End time: Mon Feb 16 07:20:19 PST 2026
+==========================================

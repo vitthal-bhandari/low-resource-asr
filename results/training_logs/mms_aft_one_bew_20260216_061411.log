@@ -1,0 +1,19 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T06:14:11.032928
+run_end=2026-02-16T06:20:58.208982
+model=facebook/mms-1b-all
+language=bew
+split=one
+language_name=Betawi
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/one
+num_train_samples=135
+num_validation_samples=240
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.992354
+validation_cer=0.628527
+test_wer=0.994664
+test_cer=0.627073

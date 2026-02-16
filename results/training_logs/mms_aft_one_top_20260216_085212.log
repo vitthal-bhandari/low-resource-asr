@@ -1,0 +1,19 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T08:52:12.141267
+run_end=2026-02-16T09:00:07.602151
+model=facebook/mms-1b-all
+language=top
+split=one
+language_name=Papantla Totonac
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/one
+num_train_samples=46
+num_validation_samples=59
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=1.052263
+validation_cer=3.027517
+test_wer=1.095377
+test_cer=1.732758

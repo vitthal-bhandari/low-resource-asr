@@ -1,0 +1,70 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: one (task 19 of 21)
+Job ID: 33204814 (Array Job: 33196711)
+Node: g3124
+GPUs: 0
+Start time: Mon Feb 16 09:00:40 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ttj (split=one)...
+============================================================
+MMS Adapter Fine-tuning for ttj (Rutoro) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one
+Device: cuda
+Push to HF: False
+
+Loading data for ttj (Rutoro) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-one_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 187 samples (1.00 h)
+  Validation: 156 samples (0.92 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one/vocab.json (52 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,220,342 / 964,717,750 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '34.66', 'grad_norm': '11.93', 'learning_rate': '0.00049', 'epoch': '4.17'}
+{'train_runtime': '252.7', 'train_samples_per_second': '3.7', 'train_steps_per_second': '0.237', 'train_loss': '31.75', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one/adapter.ttj.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.9985
+  CER: 0.9615
+
+Evaluating on test set...
+  Test WER: 0.9986
+  Test CER: 0.9657
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_ttj_20260216_090321.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one
+
+==========================================
+Training complete for ttj!
+End time: Mon Feb 16 09:11:21 PST 2026
+==========================================
