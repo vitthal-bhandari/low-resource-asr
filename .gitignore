@@ -226,10 +226,6 @@ data/linguistic_resources/*
 *.flac
 *.ogg
 
-# Results (can be large)
-# results/*
-# !results/.gitkeep
-
 # Hugging Face cache
 .cache/
 huggingface/
