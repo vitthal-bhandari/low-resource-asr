@@ -13,13 +13,13 @@
 
 # =============================================================================
 # MMS Adapter Fine-tuning Script for Hyak
-# Job Array: Trains ALL 21 languages in parallel (one GPU each)
+# Job Array: Trains ALL 21 languages (one GPU per language).
+# Primary differentiator: --split (one | mid | all).
 #
 # Usage:
-#   sbatch scripts/hyak_train_all.slurm
-#
-# This will submit 21 jobs, each training one language.
-# Jobs run in parallel based on available resources.
+#   sbatch scripts/hyak_train_all.slurm [one|mid|all]
+#   sbatch scripts/hyak_train_all.slurm one
+#   sbatch scripts/hyak_train_all.slurm all
 # =============================================================================
 
 set -e  # Exit on error
@@ -28,6 +28,9 @@ set -e  # Exit on error
 # No lab: /gscratch/scrubbed/$USER/low-resource-asr
 # With lab: /gscratch/YOUR_ACCOUNT/low-resource-asr
 PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
+
+# Split: one (1h), mid (tier 3/5/10h), all (full). Default all.
+SPLIT=${1:-"all"}
 
 # All 21 languages
 LANGUAGES=(
@@ -60,7 +63,7 @@ LANG=${LANGUAGES[$SLURM_ARRAY_TASK_ID]}
 echo "=========================================="
 echo "MMS Adapter Fine-tuning on Hyak"
 echo "=========================================="
-echo "Language: $LANG (task $SLURM_ARRAY_TASK_ID of ${#LANGUAGES[@]})"
+echo "Language: $LANG  Split: $SPLIT (task $SLURM_ARRAY_TASK_ID of ${#LANGUAGES[@]})"
 echo "Job ID: $SLURM_JOB_ID (Array Job: $SLURM_ARRAY_JOB_ID)"
 echo "Node: $SLURMD_NODENAME"
 echo "GPUs: $CUDA_VISIBLE_DEVICES"
@@ -90,9 +93,10 @@ echo ""
 # Run Training
 # =============================================================================
 
-echo "Starting training for $LANG..."
+echo "Starting training for $LANG (split=$SPLIT)..."
 
 uv run python -m src.training.aft_mms "$LANG" \
+    --split "$SPLIT" \
     --num-epochs 5 \
     --batch-size 4 \
     --gradient-accumulation-steps 4 \

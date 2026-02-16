@@ -56,7 +56,7 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
+# *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -226,10 +226,6 @@ data/linguistic_resources/*
 *.flac
 *.ogg
 
-# Results (can be large)
-results/*
-!results/.gitkeep
-
 # Hugging Face cache
 .cache/
 huggingface/
@@ -239,4 +235,4 @@ wandb/
 
 # Tensorboard
 runs/
-logs/
+# logs/

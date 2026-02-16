@@ -1,0 +1,51 @@
+Map:   0%|          | 0/965 [00:00<?, ? examples/s]Map: 100%|██████████| 965/965 [00:00<00:00, 146984.18 examples/s]
+Map:   0%|          | 0/268 [00:00<?, ? examples/s]Map: 100%|██████████| 268/268 [00:00<00:00, 81313.19 examples/s]
+Processing train:   0%|          | 0/965 [00:00<?, ? examples/s]Processing train:   0%|          | 0/965 [00:00<?, ? examples/s]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 756, in <module>
+    main()
+    ~~~~^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 584, in main
+    train = train.map(
+        prepare_dataset,
+        remove_columns=train.column_names,
+        desc="Processing train",
+    )
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/arrow_dataset.py", line 562, in wrapper
+    out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
+                                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/arrow_dataset.py", line 3343, in map
+    for rank, done, content in Dataset._map_single(**unprocessed_kwargs):
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/arrow_dataset.py", line 3675, in _map_single
+    for i, example in iter_outputs(shard_iterable):
+                      ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/arrow_dataset.py", line 3649, in iter_outputs
+    yield i, apply_function(example, i, offset=offset)
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/arrow_dataset.py", line 3572, in apply_function
+    processed_inputs = function(*fn_args, *additional_args, **fn_kwargs)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 350, in prepare_dataset
+    audio = batch["audio"]
+            ~~~~~^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/formatting/formatting.py", line 285, in __getitem__
+    value = self.format(key)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/formatting/formatting.py", line 380, in format
+    return self.formatter.format_column(self.pa_table.select([key]))[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/formatting/formatting.py", line 465, in format_column
+    column = self.python_features_decoder.decode_column(column, pa_table.column_names[0])
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/formatting/formatting.py", line 228, in decode_column
+    self.features.decode_column(column, column_name, token_per_repo_id=self.token_per_repo_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/features/features.py", line 2135, in decode_column
+    decode_nested_example(self[column_name], value, token_per_repo_id=token_per_repo_id)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/features/features.py", line 1419, in decode_nested_example
+    return schema.decode_example(obj, token_per_repo_id=token_per_repo_id) if obj is not None else None
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/features/audio.py", line 186, in decode_example
+    raise ImportError("To support decoding audio data, please install 'torchcodec'.")
+ImportError: To support decoding audio data, please install 'torchcodec'.

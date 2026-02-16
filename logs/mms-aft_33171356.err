@@ -1,0 +1,53 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 756, in <module>
+    main()
+    ~~~~^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 539, in main
+    train, val = load_and_preprocess_data(lang)
+                 ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 226, in load_and_preprocess_data
+    train_dataset = train_dataset.cast_column("audio", Audio(sampling_rate=16_000))
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/fingerprint.py", line 468, in wrapper
+    out = func(dataset, *args, **kwargs)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/arrow_dataset.py", line 2201, in cast_column
+    dataset._data = dataset._data.cast(dataset.features.arrow_schema)
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 859, in cast
+    return InMemoryTable(table_cast(self.table, *args, **kwargs))
+                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 2272, in table_cast
+    return cast_table_to_schema(table, schema)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 2224, in cast_table_to_schema
+    cast_array_to_feature(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        table[name] if name in table_column_names else pa.array([None] * len(table), type=schema.field(name).type),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        feature,
+        ^^^^^^^^
+    )
+    ^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 1795, in wrapper
+    return pa.chunked_array([func(chunk, *args, **kwargs) for chunk in array.chunks])
+                             ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 1995, in cast_array_to_feature
+    return feature.cast_storage(array)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/features/audio.py", line 272, in cast_storage
+    return array_cast(storage, self.pa_type)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 1797, in wrapper
+    return func(array, *args, **kwargs)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/datasets/table.py", line 1949, in array_cast
+    return array.cast(pa_type)
+           ~~~~~~~~~~^^^^^^^^^
+  File "pyarrow/array.pxi", line 1161, in pyarrow.lib.Array.cast
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.14/site-packages/pyarrow/compute.py", line 414, in cast
+    return call_function("cast", [arr], options, memory_pool)
+  File "pyarrow/_compute.pyx", line 604, in pyarrow._compute.call_function
+  File "pyarrow/_compute.pyx", line 399, in pyarrow._compute.Function.call
+    result = GetResultValue(
+  File "pyarrow/error.pxi", line 155, in pyarrow.lib.pyarrow_internal_check_status
+  File "pyarrow/error.pxi", line 92, in pyarrow.lib.check_status
+    raise convert_status(status)
+pyarrow.lib.ArrowNotImplementedError: Unsupported cast from large_string to struct using function cast_struct
