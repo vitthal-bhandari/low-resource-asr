@@ -91,7 +91,13 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Push the fine-tuned model to Hugging Face Hub",
     )
-    
+    parser.add_argument(
+        "--split",
+        type=str,
+        choices=["one", "mid", "all"],
+        default="all",
+        help="Training data split: one=1h, mid=tier-dependent (3/5/10h), all=full (default: all)",
+    )
     return parser.parse_args()
 
 
@@ -99,9 +105,9 @@ def parse_args() -> argparse.Namespace:
 HF_USERNAME = "vitthalbhandari"
 
 
-def get_hf_repo_id(lang: str) -> str:
-    """Get the Hugging Face repo ID for a language."""
-    return f"{HF_USERNAME}/mms-1b-all-aft-{lang}"
+def get_hf_repo_id(lang: str, split: str = "all") -> str:
+    """Get the Hugging Face repo ID for a language and split."""
+    return f"{HF_USERNAME}/mms-1b-all-aft-{split}-{lang}"
 
 
 ################################################################################
@@ -142,89 +148,83 @@ def clean_transcript(text: str) -> str:
     return text.strip()
 
 
-def load_and_preprocess_data(lang: str) -> tuple[Dataset, Dataset]:
+def load_and_preprocess_data(lang: str, split: str = "all") -> tuple[Dataset, Dataset]:
     """
-    Load and preprocess train and validation datasets from TSV files.
-    
-    Args:
-        lang: Language ISO code (e.g., 'aln')
-        
-    Returns:
-        Tuple of (train_dataset, val_dataset) as Hugging Face Datasets
+    Load and preprocess train and validation from precomputed split TSVs.
+    Run scripts/create_splits.py --all first to generate train-{split}_{lang}.tsv
+    and validation_{lang}.tsv.
     """
-    # Paths
     lang_dir = config.mozilla_data_dir / lang
-    tsv_path = lang_dir / f"ss-corpus-{lang}.tsv"
+    train_tsv = lang_dir / f"train-{split}_{lang}.tsv"
+    val_tsv = lang_dir / f"validation_{lang}.tsv"
     audio_dir = config.mozilla_data_dir / "shared_train_validation_audios"
-    
-    if not tsv_path.exists():
-        raise FileNotFoundError(f"TSV file not found: {tsv_path}")
+
+    if not train_tsv.exists():
+        raise FileNotFoundError(
+            f"Train split TSV not found: {train_tsv}. Run: uv run python scripts/create_splits.py --all"
+        )
+    if not val_tsv.exists():
+        raise FileNotFoundError(
+            f"Validation TSV not found: {val_tsv}. Run: uv run python scripts/create_splits.py --all"
+        )
     if not audio_dir.exists():
         raise FileNotFoundError(f"Audio directory not found: {audio_dir}")
-    
-    print(f"\nLoading data for {lang} ({LANGUAGES.get(lang, 'Unknown')})...")
-    print(f"  TSV: {tsv_path}")
-    print(f"  Audio dir: {audio_dir}")
-    
-    # Load TSV
-    df = pd.read_csv(tsv_path, sep="\t")
-    original_count = len(df)
-    print(f"  Total rows in TSV: {original_count}")
-    
-    # Check required columns
+
+    print(f"\nLoading data for {lang} ({LANGUAGES.get(lang, 'Unknown')}) split={split}...")
+    print(f"  Train: {train_tsv}")
+    print(f"  Val: {val_tsv}")
+
     required_cols = ["audio_file", "transcription", "duration_ms", "split"]
-    missing_cols = [c for c in required_cols if c not in df.columns]
-    if missing_cols:
-        raise ValueError(f"Missing required columns: {missing_cols}")
-    
-    # Filter out rows with duration_ms = 0 or NaN
-    df = df[df["duration_ms"] > 0]
-    filtered_count = len(df)
-    excluded = original_count - filtered_count
-    if excluded > 0:
-        print(f"  Excluded {excluded} rows with duration_ms = 0")
-    
-    # Filter out rows with empty transcription
-    df = df[df["transcription"].notna() & (df["transcription"].str.strip() != "")]
-    empty_transcript_excluded = filtered_count - len(df)
-    if empty_transcript_excluded > 0:
-        print(f"  Excluded {empty_transcript_excluded} rows with empty transcription")
-    
-    # Clean transcriptions
-    df["transcription"] = df["transcription"].apply(clean_transcript)
-    
-    # Filter out rows that became empty after cleaning
-    df = df[df["transcription"].str.strip() != ""]
-    
-    # Print statistics by split
-    print(f"\n  Dataset statistics:")
-    for split_name in df["split"].unique():
-        split_df = df[df["split"] == split_name]
-        total_ms = split_df["duration_ms"].sum()
-        total_hours = total_ms / (1000 * 60 * 60)
-        print(f"    {split_name}: {len(split_df)} samples, {total_hours:.2f} hours")
-    
-    # Split into train and validation
-    train_df = df[df["split"] == "train"].copy()
-    val_df = df[df["split"] == "dev"].copy()
-    
-    print(f"\n  Final counts:")
-    print(f"    Train: {len(train_df)} samples")
-    print(f"    Validation: {len(val_df)} samples")
-    
-    # Add full audio path as dict for datasets Audio feature (avoids PyArrow cast issues)
+    train_df = pd.read_csv(train_tsv, sep="\t")
+    val_df = pd.read_csv(val_tsv, sep="\t")
+    for name, d in [("train", train_df), ("val", val_df)]:
+        missing = [c for c in required_cols if c not in d.columns]
+        if missing:
+            raise ValueError(f"Missing columns in {name} TSV: {missing}")
+
+    train_df = train_df[train_df["duration_ms"] > 0]
+    train_df = train_df[train_df["transcription"].notna() & (train_df["transcription"].str.strip() != "")]
+    val_df = val_df[val_df["duration_ms"] > 0]
+    val_df = val_df[val_df["transcription"].notna() & (val_df["transcription"].str.strip() != "")]
+
+    train_df["transcription"] = train_df["transcription"].apply(clean_transcript)
+    val_df["transcription"] = val_df["transcription"].apply(clean_transcript)
+    train_df = train_df[train_df["transcription"].str.strip() != ""]
+    val_df = val_df[val_df["transcription"].str.strip() != ""]
+
+    train_h = train_df["duration_ms"].sum() / (1000 * 60 * 60)
+    val_h = val_df["duration_ms"].sum() / (1000 * 60 * 60)
+    print(f"  Train: {len(train_df)} samples ({train_h:.2f} h)")
+    print(f"  Validation: {len(val_df)} samples ({val_h:.2f} h)")
+
     train_df["audio"] = [{"path": str(audio_dir / x)} for x in train_df["audio_file"]]
     val_df["audio"] = [{"path": str(audio_dir / x)} for x in val_df["audio_file"]]
-    
-    # Rename transcription to sentence for consistency
     train_df = train_df.rename(columns={"transcription": "sentence"})
     val_df = val_df.rename(columns={"transcription": "sentence"})
-    
-    # Convert to Hugging Face Dataset; audio column = {"path": path} (decoded in prepare_dataset)
-    # We do not cast to Audio() so we avoid torchcodec/FFmpeg (libavutil.so) on HPC nodes
+
     train_dataset = Dataset.from_pandas(train_df, preserve_index=False)
     val_dataset = Dataset.from_pandas(val_df, preserve_index=False)
     return train_dataset, val_dataset
+
+
+def load_test_data(lang: str) -> Dataset | None:
+    """Load test set from test_{lang}.tsv if present (created by create_splits.py)."""
+    lang_dir = config.mozilla_data_dir / lang
+    test_tsv = lang_dir / f"test_{lang}.tsv"
+    audio_dir = config.mozilla_data_dir / "shared_train_validation_audios"
+    if not test_tsv.exists() or not audio_dir.exists():
+        return None
+    required_cols = ["audio_file", "transcription", "duration_ms", "split"]
+    test_df = pd.read_csv(test_tsv, sep="\t")
+    if any(c not in test_df.columns for c in required_cols):
+        return None
+    test_df = test_df[test_df["duration_ms"] > 0]
+    test_df = test_df[test_df["transcription"].notna() & (test_df["transcription"].str.strip() != "")]
+    test_df["transcription"] = test_df["transcription"].apply(clean_transcript)
+    test_df = test_df[test_df["transcription"].str.strip() != ""]
+    test_df["audio"] = [{"path": str(audio_dir / x)} for x in test_df["audio_file"]]
+    test_df = test_df.rename(columns={"transcription": "sentence"})
+    return Dataset.from_pandas(test_df, preserve_index=False)
 
 
 def extract_all_chars(batch: dict) -> dict:
@@ -365,6 +365,7 @@ def create_compute_metrics_fn(processor: Wav2Vec2Processor):
         Function that computes WER metric
     """
     wer_metric = load_metric("wer")
+    cer_metric = load_metric("cer")
 
     def compute_metrics(pred) -> dict:
         pred_logits = pred.predictions
@@ -373,11 +374,12 @@ def create_compute_metrics_fn(processor: Wav2Vec2Processor):
         pred_str = processor.batch_decode(pred_ids)
         # We do not want to group tokens when computing the metrics
         label_str = processor.batch_decode(pred.label_ids, group_tokens=False)
-        # Normalize case for fair WER comparison
+        # Normalize case for fair WER/CER comparison
         pred_str = [p.lower() for p in pred_str]
         label_str = [l.lower() for l in label_str]
         wer = wer_metric.compute(predictions=pred_str, references=label_str)
-        return {"wer": wer}
+        cer = cer_metric.compute(predictions=pred_str, references=label_str)
+        return {"wer": wer, "cer": cer}
 
     return compute_metrics
 
@@ -514,25 +516,25 @@ def main():
         print(f"Available languages: {', '.join(sorted(LANGUAGES.keys()))}")
         return
     
-    # Setup paths
-    output_dir = Path(args.output_dir) if args.output_dir else config.models_dir / "mms" / lang
+    # Setup paths (include split so one/mid/all don't overwrite)
+    output_dir = Path(args.output_dir) if args.output_dir else config.models_dir / "mms" / lang / args.split
     training_logs_dir = config.results_dir / "training_logs"
     training_logs_dir.mkdir(parents=True, exist_ok=True)
-    training_log_path = training_logs_dir / f"mms_aft_{lang}_{run_start_time:%Y%m%d_%H%M%S}.log"
+    training_log_path = training_logs_dir / f"mms_aft_{args.split}_{lang}_{run_start_time:%Y%m%d_%H%M%S}.log"
     
     print("=" * 60)
-    print(f"MMS Adapter Fine-tuning for {lang} ({LANGUAGES[lang]})")
+    print(f"MMS Adapter Fine-tuning for {lang} ({LANGUAGES[lang]}) split={args.split}")
     print("=" * 60)
     print(f"Output directory: {output_dir}")
     print(f"Device: {get_device()}")
     print(f"Push to HF: {args.save_to_hf}")
     if args.save_to_hf:
-        print(f"HF Repo: {get_hf_repo_id(lang)}")
+        print(f"HF Repo: {get_hf_repo_id(lang, args.split)}")
     
     ############################################################################
-    # Load and preprocess data
+    # Load and preprocess data (train/val from precomputed split TSVs)
     #
-    train, val = load_and_preprocess_data(lang)
+    train, val = load_and_preprocess_data(lang, args.split)
     n_train, n_val = len(train), len(val)
     
     # Build vocabulary
@@ -695,10 +697,35 @@ def main():
     model.save_pretrained(str(output_dir))
     processor.save_pretrained(str(output_dir))
     
-    # Final evaluation
-    print("\nFinal evaluation:")
+    # Final evaluation (validation set)
+    print("\nFinal evaluation (validation):")
     eval_results = trainer.evaluate()
-    print(f"  WER: {eval_results['eval_wer']:.4f}")
+    eval_wer = eval_results.get("eval_wer", float("nan"))
+    eval_cer = eval_results.get("eval_cer", float("nan"))
+    print(f"  WER: {eval_wer:.4f}")
+    print(f"  CER: {eval_cer:.4f}")
+
+    # Evaluate on test set if available
+    test_wer, test_cer = float("nan"), float("nan")
+    test_dataset = load_test_data(lang)
+    if test_dataset is not None and len(test_dataset) > 0:
+        print("\nEvaluating on test set...")
+        test_dataset = test_dataset.remove_columns(
+            [c for c in test_dataset.column_names if c not in ["audio", "sentence"]]
+        )
+        test_dataset = test_dataset.map(
+            prepare_dataset,
+            remove_columns=test_dataset.column_names,
+            desc="Processing test",
+        )
+        test_pred = trainer.predict(test_dataset)
+        test_metrics = compute_metrics(test_pred)
+        test_wer = test_metrics["wer"]
+        test_cer = test_metrics["cer"]
+        print(f"  Test WER: {test_wer:.4f}")
+        print(f"  Test CER: {test_cer:.4f}")
+        eval_results["test_wer"] = test_wer
+        eval_results["test_cer"] = test_cer
     
     # Save eval results
     results_path = output_dir / "eval_results.json"
@@ -708,13 +735,13 @@ def main():
     
     # Write training log (datetime-named) for future reference
     run_end_time = datetime.now()
-    best_wer = eval_results.get("eval_wer", float("nan"))
     log_lines = [
         f"# MMS Adapter Fine-tuning Run Log",
         f"run_start={run_start_time.isoformat()}",
         f"run_end={run_end_time.isoformat()}",
         f"model=facebook/mms-1b-all",
         f"language={lang}",
+        f"split={args.split}",
         f"language_name={LANGUAGES.get(lang, lang)}",
         f"output_dir={output_dir}",
         f"num_train_samples={n_train}",
@@ -724,7 +751,10 @@ def main():
         f"gradient_accumulation_steps={args.gradient_accumulation_steps}",
         f"effective_batch_size={args.batch_size * args.gradient_accumulation_steps}",
         f"learning_rate={args.learning_rate}",
-        f"validation_wer={best_wer:.6f}",
+        f"validation_wer={eval_wer:.6f}",
+        f"validation_cer={eval_cer:.6f}",
+        f"test_wer={test_wer:.6f}",
+        f"test_cer={test_cer:.6f}",
     ]
     if hasattr(trainer.state, "best_metric") and trainer.state.best_metric is not None:
         log_lines.append(f"best_validation_wer={trainer.state.best_metric:.6f}")
@@ -737,7 +767,7 @@ def main():
     # Push to Hugging Face Hub (if requested)
     #
     if args.save_to_hf:
-        repo_id = get_hf_repo_id(lang)
+        repo_id = get_hf_repo_id(lang, args.split)
         push_to_hub(model, processor, output_dir, repo_id, lang)
     
     print("\n" + "=" * 60)
@@ -745,7 +775,7 @@ def main():
     print("=" * 60)
     print(f"Model saved to: {output_dir}")
     if args.save_to_hf:
-        print(f"Model pushed to: https://huggingface.co/{get_hf_repo_id(lang)}")
+        print(f"Model pushed to: https://huggingface.co/{get_hf_repo_id(lang, args.split)}")
 
 
 if __name__ == "__main__":
