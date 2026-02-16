@@ -11,6 +11,11 @@ Usage:
     # Push all models for a language (all splits)
     uv run python scripts/push_existing_models.py bew --all-splits
     
+    # Push all languages for a specific split
+    uv run python scripts/push_existing_models.py --all-langs --split-arg one
+    uv run python scripts/push_existing_models.py --all-langs --split-arg mid
+    uv run python scripts/push_existing_models.py --all-langs --split-arg all
+    
     # Push models from a SLURM job ID (auto-detects lang/split from logs)
     uv run python scripts/push_existing_models.py --job-id 33196711_15
     uv run python scripts/push_existing_models.py --job-id 33196711  # array job, all tasks
@@ -184,7 +189,14 @@ def main() -> None:
         nargs="?",
         type=str,
         choices=["one", "mid", "all"],
-        help="Split (one/mid/all). Omit with --all-splits or --job-id.",
+        help="Split (one/mid/all). Positional argument. Use --split-arg with --all-langs.",
+    )
+    parser.add_argument(
+        "--split-arg",
+        type=str,
+        dest="split_arg",
+        choices=["one", "mid", "all"],
+        help="Specify a single split to use (useful with --all-langs). Overrides positional split arg.",
     )
     parser.add_argument(
         "--job-id",
@@ -220,13 +232,23 @@ def main() -> None:
         langs = [lang for lang, _ in models]
         splits = [split for _, split in models]
     else:
-        splits = ["one", "mid", "all"] if args.all_splits else ([args.split] if args.split else ["all"])
+        # Determine splits: --split-arg takes precedence, then --all-splits, then positional split, then default "all"
+        if args.split_arg:  # --split-arg flag (named argument)
+            splits = [args.split_arg]
+        elif args.all_splits:
+            splits = ["one", "mid", "all"]
+        elif args.split:  # positional split argument
+            splits = [args.split]
+        else:
+            splits = ["all"]
+        
+        # Determine languages
         langs = sorted(LANGUAGES.keys()) if args.all_langs else ([args.lang] if args.lang else [])
 
         if not langs:
             parser.error("Provide lang, --all-langs, or --job-id. Available langs: " + ", ".join(sorted(LANGUAGES.keys())))
         if not splits:
-            parser.error("Provide split (one/mid/all) or --all-splits")
+            parser.error("Provide split (one/mid/all), --split, or --all-splits")
 
     print(f"\nPushing models to Hugging Face Hub")
     print(f"Languages: {', '.join(langs)}")
