@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T15:20:06.984569
+run_end=2026-02-16T15:35:17.118406
+model=facebook/mms-1b-all
+language=meh
+split=mid
+language_name=Southwestern Tlaxiaco Mixtec
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/mid
+num_train_samples=359
+num_validation_samples=93
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.956283
+validation_cer=0.740163
+test_wer=0.954051
+test_cer=0.760780
+best_validation_wer=0.962057

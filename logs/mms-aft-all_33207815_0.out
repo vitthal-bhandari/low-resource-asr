@@ -1,0 +1,82 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: aln  Split: mid (task 0 of 21)
+Job ID: 33207816 (Array Job: 33207815)
+Node: g3112
+GPUs: 0
+Start time: Mon Feb 16 11:29:52 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-aln
+
+Loading data for aln (Gheg Albanian) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-mid_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 471 samples (3.00 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid/vocab.json (74 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,248,524 / 964,745,932 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '38', 'grad_norm': '15.23', 'learning_rate': '0.00049', 'epoch': '1.678'}
+{'loss': '6.222', 'grad_norm': '5.832', 'learning_rate': '0.00099', 'epoch': '3.339'}
+{'eval_loss': '0.9421', 'eval_wer': '0.5856', 'eval_cer': '0.2041', 'eval_runtime': '27.52', 'eval_samples_per_second': '5.451', 'eval_steps_per_second': '1.381', 'epoch': '3.339'}
+{'loss': '4.41', 'grad_norm': '2.307', 'learning_rate': '2e-05', 'epoch': '5'}
+{'train_runtime': '545.6', 'train_samples_per_second': '4.316', 'train_steps_per_second': '0.275', 'train_loss': '16.21', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid/adapter.aln.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.5254
+  CER: 0.1879
+
+Evaluating on test set...
+  Test WER: 0.6824
+  Test CER: 0.3092
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_aln_20260216_113042.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-aln
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-aln
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-aln
+
+==========================================
+Training complete for aln!
+End time: Mon Feb 16 11:43:32 PST 2026
+==========================================

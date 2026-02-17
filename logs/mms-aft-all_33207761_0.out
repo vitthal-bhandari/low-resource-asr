@@ -1,0 +1,31 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: aln  Split: mid (task 0 of 21)
+Job ID: 33207762 (Array Job: 33207761)
+Node: g3104
+GPUs: 0
+Start time: Mon Feb 16 11:22:56 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid
+Device: cuda
+Push to HF: False
+
+Loading data for aln (Gheg Albanian) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-mid_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 471 samples (3.00 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/mid/vocab.json (74 tokens)
+
+Preparing datasets...

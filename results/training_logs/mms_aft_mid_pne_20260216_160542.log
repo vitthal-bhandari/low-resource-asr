@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T16:05:42.796077
+run_end=2026-02-16T16:25:10.608766
+model=facebook/mms-1b-all
+language=pne
+split=mid
+language_name=Western Penan
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/mid
+num_train_samples=1084
+num_validation_samples=310
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.460776
+validation_cer=0.157627
+test_wer=0.491985
+test_cer=0.168549
+best_validation_wer=0.417084
