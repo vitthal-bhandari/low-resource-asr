@@ -1,0 +1,85 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: rwm  Split: mid (task 15 of 21)
+Job ID: 33214716 (Array Job: 33207815)
+Node: g3105
+GPUs: 0
+Start time: Mon Feb 16 16:45:32 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for rwm (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for rwm (Amba) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-rwm
+
+Loading data for rwm (Amba) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-mid_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: 838 samples (5.00 h)
+  Validation: 140 samples (0.77 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/mid/vocab.json (55 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,224,185 / 964,721,593 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '37.7', 'grad_norm': '14.89', 'learning_rate': '0.00049', 'epoch': '0.9524'}
+{'loss': '5.104', 'grad_norm': '4.173', 'learning_rate': '0.00099', 'epoch': '1.895'}
+{'eval_loss': '1.23', 'eval_wer': '0.8246', 'eval_cer': '0.2946', 'eval_runtime': '15.01', 'eval_samples_per_second': '9.328', 'eval_steps_per_second': '2.332', 'epoch': '1.895'}
+{'loss': '3.923', 'grad_norm': '2.457', 'learning_rate': '0.000703', 'epoch': '2.838'}
+{'loss': '3.739', 'grad_norm': '4.98', 'learning_rate': '0.0004', 'epoch': '3.781'}
+{'eval_loss': '1.201', 'eval_wer': '0.7637', 'eval_cer': '0.2716', 'eval_runtime': '14.33', 'eval_samples_per_second': '9.773', 'eval_steps_per_second': '2.443', 'epoch': '3.781'}
+{'loss': '3.562', 'grad_norm': '3.473', 'learning_rate': '9.697e-05', 'epoch': '4.724'}
+{'train_runtime': '913', 'train_samples_per_second': '4.59', 'train_steps_per_second': '0.29', 'train_loss': '10.38', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/mid/adapter.rwm.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.7640
+  CER: 0.2715
+
+Evaluating on test set...
+  Test WER: 0.7189
+  Test CER: 0.2248
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_rwm_20260216_164839.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-rwm
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-rwm
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-rwm
+
+==========================================
+Training complete for rwm!
+End time: Mon Feb 16 17:08:04 PST 2026
+==========================================

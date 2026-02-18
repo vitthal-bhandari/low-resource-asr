@@ -397,13 +397,13 @@ def get_device() -> str:
 def _model_card_language_metadata(lang: str) -> str:
     """
     Return YAML lines for model card 'language' (and optionally 'language_bcp47').
-    HF requires 'language' to be lowercase ISO 639-1/2/3; BCP-47 codes go in language_bcp47.
+    HF requires 'language' to be lowercase ISO 639-1/2/3; BCP-47 codes go in language_bcp47 (as array).
     """
     lang_lower = lang.lower()
-    # BCP-47 style (e.g. el-CY): use base code for language, full for language_bcp47
+    # BCP-47 style (e.g. el-CY): use base code for language, full for language_bcp47 (must be array)
     if "-" in lang_lower:
         base = lang_lower.split("-")[0]
-        return f"language: {base}\nlanguage_bcp47: {lang_lower}"
+        return f"language: {base}\nlanguage_bcp47:\n- {lang_lower}"
     return f"language: {lang_lower}"
 
 

@@ -1,0 +1,85 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: kcn  Split: mid (task 6 of 21)
+Job ID: 33210689 (Array Job: 33207815)
+Node: g3124
+GPUs: 0
+Start time: Mon Feb 16 13:35:30 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for kcn (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for kcn (Nubi) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-kcn
+
+Loading data for kcn (Nubi) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-mid_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 866 samples (5.00 h)
+  Validation: 152 samples (0.57 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/mid/vocab.json (60 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,230,590 / 964,727,998 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '35.71', 'grad_norm': '8.41', 'learning_rate': '0.00049', 'epoch': '0.9217'}
+{'loss': '5.305', 'grad_norm': '3.593', 'learning_rate': '0.00099', 'epoch': '1.829'}
+{'eval_loss': '0.8723', 'eval_wer': '0.6854', 'eval_cer': '0.2151', 'eval_runtime': '23.83', 'eval_samples_per_second': '6.379', 'eval_steps_per_second': '1.595', 'epoch': '1.829'}
+{'loss': '4.22', 'grad_norm': '58.2', 'learning_rate': '0.00072', 'epoch': '2.737'}
+{'loss': '3.85', 'grad_norm': '6.012', 'learning_rate': '0.0004343', 'epoch': '3.645'}
+{'eval_loss': '0.7315', 'eval_wer': '0.5957', 'eval_cer': '0.1847', 'eval_runtime': '23.93', 'eval_samples_per_second': '6.352', 'eval_steps_per_second': '1.588', 'epoch': '3.645'}
+{'loss': '3.674', 'grad_norm': '17.39', 'learning_rate': '0.0001486', 'epoch': '4.553'}
+{'train_runtime': '1290', 'train_samples_per_second': '3.356', 'train_steps_per_second': '0.213', 'train_loss': '9.905', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/mid/adapter.kcn.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.5957
+  CER: 0.1851
+
+Evaluating on test set...
+  Test WER: 0.7489
+  Test CER: 0.3187
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_kcn_20260216_133622.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-kcn
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-kcn
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-kcn
+
+==========================================
+Training complete for kcn!
+End time: Mon Feb 16 14:04:31 PST 2026
+==========================================

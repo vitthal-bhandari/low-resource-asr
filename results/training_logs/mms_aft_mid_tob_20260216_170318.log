@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T17:03:18.779541
+run_end=2026-02-16T17:24:49.044263
+model=facebook/mms-1b-all
+language=tob
+split=mid
+language_name=Toba Qom
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid
+num_train_samples=688
+num_validation_samples=306
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=1.000000
+validation_cer=0.895581
+test_wer=1.000410
+test_cer=0.898835
+best_validation_wer=0.999711

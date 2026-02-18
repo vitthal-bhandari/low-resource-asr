@@ -1,0 +1,81 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: bew  Split: mid (task 1 of 21)
+Job ID: 33207992 (Array Job: 33207815)
+Node: g3123
+GPUs: 0
+Start time: Mon Feb 16 11:44:03 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for bew (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for bew (Betawi) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-bew
+
+Loading data for bew (Betawi) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-mid_bew.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
+  Train: 404 samples (2.99 h)
+  Validation: 240 samples (2.23 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/mid/vocab.json (74 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,248,524 / 964,745,932 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '28.66', 'grad_norm': '10.51', 'learning_rate': '0.00049', 'epoch': '1.95'}
+{'loss': '3.395', 'grad_norm': '5.986', 'learning_rate': '0.00099', 'epoch': '3.871'}
+{'eval_loss': '0.7878', 'eval_wer': '0.5557', 'eval_cer': '0.1855', 'eval_runtime': '70.81', 'eval_samples_per_second': '3.389', 'eval_steps_per_second': '0.847', 'epoch': '3.871'}
+{'train_runtime': '860.4', 'train_samples_per_second': '2.348', 'train_steps_per_second': '0.151', 'train_loss': '12.96', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/mid/adapter.bew.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.5429
+  CER: 0.1818
+
+Evaluating on test set...
+  Test WER: 0.5449
+  Test CER: 0.1848
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_bew_20260216_114655.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-bew
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-bew
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-bew
+
+==========================================
+Training complete for bew!
+End time: Mon Feb 16 12:07:31 PST 2026
+==========================================

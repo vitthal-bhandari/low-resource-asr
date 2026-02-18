@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T16:26:30.820729
+run_end=2026-02-16T16:44:38.790756
+model=facebook/mms-1b-all
+language=ruc
+split=mid
+language_name=Ruuli
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/mid
+num_train_samples=737
+num_validation_samples=77
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.679245
+validation_cer=0.175460
+test_wer=0.621649
+test_cer=0.146211
+best_validation_wer=0.679817

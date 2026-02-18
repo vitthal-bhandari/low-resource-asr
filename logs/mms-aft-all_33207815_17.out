@@ -1,0 +1,84 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: tob  Split: mid (task 17 of 21)
+Job ID: 33215062 (Array Job: 33207815)
+Node: g3123
+GPUs: 0
+Start time: Mon Feb 16 17:02:29 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for tob (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for tob (Toba Qom) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-tob
+
+Loading data for tob (Toba Qom) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-mid_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: 688 samples (2.98 h)
+  Validation: 306 samples (1.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid/vocab.json (71 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,244,681 / 964,742,089 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '72.33', 'grad_norm': '65.38', 'learning_rate': '0.00049', 'epoch': '1.163'}
+{'loss': '22.97', 'grad_norm': '52.33', 'learning_rate': '0.00099', 'epoch': '2.326'}
+{'eval_loss': '4.444', 'eval_wer': '0.9997', 'eval_cer': '0.9232', 'eval_runtime': '65.5', 'eval_samples_per_second': '4.671', 'eval_steps_per_second': '1.175', 'epoch': '2.326'}
+{'loss': '17.53', 'grad_norm': '23.28', 'learning_rate': '0.0005739', 'epoch': '3.488'}
+{'loss': '15.44', 'grad_norm': '14.65', 'learning_rate': '0.0001391', 'epoch': '4.651'}
+{'eval_loss': '4', 'eval_wer': '1', 'eval_cer': '0.867', 'eval_runtime': '63.08', 'eval_samples_per_second': '4.851', 'eval_steps_per_second': '1.221', 'epoch': '4.651'}
+{'train_runtime': '993.7', 'train_samples_per_second': '3.462', 'train_steps_per_second': '0.216', 'train_loss': '31.08', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid/adapter.tob.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0000
+  CER: 0.8956
+
+Evaluating on test set...
+  Test WER: 1.0004
+  Test CER: 0.8988
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_tob_20260216_170318.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-tob
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-tob
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-tob
+
+==========================================
+Training complete for tob!
+End time: Mon Feb 16 17:25:56 PST 2026
+==========================================

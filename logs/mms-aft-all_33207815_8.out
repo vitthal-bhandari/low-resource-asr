@@ -1,0 +1,85 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: led  Split: mid (task 8 of 21)
+Job ID: 33211601 (Array Job: 33207815)
+Node: g3101
+GPUs: 0
+Start time: Mon Feb 16 14:32:55 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for led (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for led (Lendu) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-led
+
+Loading data for led (Lendu) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/train-mid_led.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/validation_led.tsv
+  Train: 934 samples (4.99 h)
+  Validation: 104 samples (0.56 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/mid/vocab.json (84 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,261,334 / 964,758,742 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '51.6', 'grad_norm': '32.67', 'learning_rate': '0.00049', 'epoch': '0.8547'}
+{'loss': '6.188', 'grad_norm': '9.256', 'learning_rate': '0.00099', 'epoch': '1.701'}
+{'eval_loss': '0.7797', 'eval_wer': '0.6347', 'eval_cer': '0.2223', 'eval_runtime': '12.94', 'eval_samples_per_second': '8.04', 'eval_steps_per_second': '2.01', 'epoch': '1.701'}
+{'loss': '2.795', 'grad_norm': '2.814', 'learning_rate': '0.0007487', 'epoch': '2.547'}
+{'loss': '2.2', 'grad_norm': '2.566', 'learning_rate': '0.0004923', 'epoch': '3.393'}
+{'eval_loss': '0.5092', 'eval_wer': '0.4198', 'eval_cer': '0.1331', 'eval_runtime': '14.92', 'eval_samples_per_second': '6.972', 'eval_steps_per_second': '1.743', 'epoch': '3.393'}
+{'loss': '1.924', 'grad_norm': '2.055', 'learning_rate': '0.0002359', 'epoch': '4.239'}
+{'train_runtime': '874.3', 'train_samples_per_second': '5.341', 'train_steps_per_second': '0.337', 'train_loss': '11.25', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/mid/adapter.led.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.4209
+  CER: 0.1335
+
+Evaluating on test set...
+  Test WER: 0.4330
+  Test CER: 0.1512
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_led_20260216_143348.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-led
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-led
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-led
+
+==========================================
+Training complete for led!
+End time: Mon Feb 16 14:52:25 PST 2026
+==========================================

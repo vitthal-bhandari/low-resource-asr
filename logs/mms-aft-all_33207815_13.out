@@ -1,0 +1,87 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: pne  Split: mid (task 13 of 21)
+Job ID: 33214050 (Array Job: 33207815)
+Node: g3110
+GPUs: 0
+Start time: Mon Feb 16 16:04:57 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for pne (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for pne (Western Penan) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-pne
+
+Loading data for pne (Western Penan) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-mid_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: 1084 samples (5.00 h)
+  Validation: 310 samples (1.30 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/mid/vocab.json (59 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,229,309 / 964,726,717 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '40.95', 'grad_norm': '8.515', 'learning_rate': '0.00049', 'epoch': '0.738'}
+{'loss': '6.197', 'grad_norm': '6.97', 'learning_rate': '0.00099', 'epoch': '1.472'}
+{'eval_loss': '0.8421', 'eval_wer': '0.5933', 'eval_cer': '0.2039', 'eval_runtime': '26.06', 'eval_samples_per_second': '11.89', 'eval_steps_per_second': '2.993', 'epoch': '1.472'}
+{'loss': '3.238', 'grad_norm': '4.467', 'learning_rate': '0.0007958', 'epoch': '2.207'}
+{'loss': '2.942', 'grad_norm': '3.394', 'learning_rate': '0.0005875', 'epoch': '2.945'}
+{'eval_loss': '0.6366', 'eval_wer': '0.4608', 'eval_cer': '0.1576', 'eval_runtime': '25.19', 'eval_samples_per_second': '12.31', 'eval_steps_per_second': '3.096', 'epoch': '2.945'}
+{'loss': '2.662', 'grad_norm': '3.928', 'learning_rate': '0.0003792', 'epoch': '3.679'}
+{'loss': '2.54', 'grad_norm': '3.757', 'learning_rate': '0.0001708', 'epoch': '4.413'}
+{'eval_loss': '0.5937', 'eval_wer': '0.4171', 'eval_cer': '0.1455', 'eval_runtime': '25.12', 'eval_samples_per_second': '12.34', 'eval_steps_per_second': '3.105', 'epoch': '4.413'}
+{'train_runtime': '953.9', 'train_samples_per_second': '5.682', 'train_steps_per_second': '0.356', 'train_loss': '8.889', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/mid/adapter.pne.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.4608
+  CER: 0.1576
+
+Evaluating on test set...
+  Test WER: 0.4920
+  Test CER: 0.1685
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_pne_20260216_160542.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-pne
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-pne
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-pne
+
+==========================================
+Training complete for pne!
+End time: Mon Feb 16 16:25:50 PST 2026
+==========================================

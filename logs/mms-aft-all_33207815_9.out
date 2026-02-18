@@ -1,0 +1,88 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: lke  Split: mid (task 9 of 21)
+Job ID: 33211884 (Array Job: 33207815)
+Node: g3104
+GPUs: 0
+Start time: Mon Feb 16 14:52:53 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for lke (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for lke (Kenyi) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-lke
+
+Loading data for lke (Kenyi) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/train-mid_lke.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
+  Train: 1141 samples (5.00 h)
+  Validation: 146 samples (0.66 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/mid/vocab.json (58 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,228,028 / 964,725,436 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '49.43', 'grad_norm': '340.2', 'learning_rate': '0.00049', 'epoch': '0.6993'}
+{'loss': '16.85', 'grad_norm': '4.564', 'learning_rate': '0.00099', 'epoch': '1.392'}
+{'eval_loss': '0.9623', 'eval_wer': '0.7271', 'eval_cer': '0.2171', 'eval_runtime': '12.58', 'eval_samples_per_second': '11.61', 'eval_steps_per_second': '2.942', 'epoch': '1.392'}
+{'loss': '3.334', 'grad_norm': '6.678', 'learning_rate': '0.0008115', 'epoch': '2.084'}
+{'loss': '3.091', 'grad_norm': '3.448', 'learning_rate': '0.0006192', 'epoch': '2.783'}
+{'eval_loss': '0.7536', 'eval_wer': '0.6536', 'eval_cer': '0.196', 'eval_runtime': '12.6', 'eval_samples_per_second': '11.59', 'eval_steps_per_second': '2.936', 'epoch': '2.783'}
+{'loss': '3.126', 'grad_norm': '5.625', 'learning_rate': '0.0004269', 'epoch': '3.476'}
+{'loss': '2.631', 'grad_norm': '3.264', 'learning_rate': '0.0002346', 'epoch': '4.168'}
+{'eval_loss': '0.7182', 'eval_wer': '0.6293', 'eval_cer': '0.1872', 'eval_runtime': '12.26', 'eval_samples_per_second': '11.91', 'eval_steps_per_second': '3.017', 'epoch': '4.168'}
+{'loss': '2.883', 'grad_norm': '3.25', 'learning_rate': '4.231e-05', 'epoch': '4.867'}
+{'train_runtime': '901.2', 'train_samples_per_second': '6.33', 'train_steps_per_second': '0.399', 'train_loss': '11.37', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/mid/adapter.lke.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.6549
+  CER: 0.1966
+
+Evaluating on test set...
+  Test WER: 0.6252
+  Test CER: 0.1588
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_lke_20260216_145338.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-lke
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-lke
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-lke
+
+==========================================
+Training complete for lke!
+End time: Mon Feb 16 15:12:35 PST 2026
+==========================================

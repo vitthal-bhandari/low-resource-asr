@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-16T17:09:46.369965
+run_end=2026-02-16T17:28:46.040050
+model=facebook/mms-1b-all
+language=ukv
+split=mid
+language_name=Kuku
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
+num_train_samples=922
+num_validation_samples=142
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.496230
+validation_cer=0.157766
+test_wer=0.456223
+test_cer=0.138359
+best_validation_wer=0.495423

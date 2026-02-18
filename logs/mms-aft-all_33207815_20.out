@@ -1,0 +1,85 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ukv  Split: mid (task 20 of 21)
+Job ID: 33207815 (Array Job: 33207815)
+Node: g3103
+GPUs: 0
+Start time: Mon Feb 16 17:08:33 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ukv (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for ukv (Kuku) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-ukv
+
+Loading data for ukv (Kuku) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-mid_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: 922 samples (5.00 h)
+  Validation: 142 samples (0.65 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/vocab.json (59 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,229,309 / 964,726,717 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '33.76', 'grad_norm': '14.55', 'learning_rate': '0.00049', 'epoch': '0.8658'}
+{'loss': '4.321', 'grad_norm': '3.816', 'learning_rate': '0.00099', 'epoch': '1.727'}
+{'eval_loss': '0.7718', 'eval_wer': '0.6831', 'eval_cer': '0.2046', 'eval_runtime': '12.37', 'eval_samples_per_second': '11.48', 'eval_steps_per_second': '2.911', 'epoch': '1.727'}
+{'loss': '3.339', 'grad_norm': '2.462', 'learning_rate': '0.0007421', 'epoch': '2.589'}
+{'loss': '2.953', 'grad_norm': '2.458', 'learning_rate': '0.0004789', 'epoch': '3.45'}
+{'eval_loss': '0.6246', 'eval_wer': '0.4954', 'eval_cer': '0.1577', 'eval_runtime': '12.02', 'eval_samples_per_second': '11.82', 'eval_steps_per_second': '2.996', 'epoch': '3.45'}
+{'loss': '2.882', 'grad_norm': '2.433', 'learning_rate': '0.0002158', 'epoch': '4.312'}
+{'train_runtime': '944.1', 'train_samples_per_second': '4.883', 'train_steps_per_second': '0.307', 'train_loss': '8.509', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/adapter.ukv.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.4962
+  CER: 0.1578
+
+Evaluating on test set...
+  Test WER: 0.4562
+  Test CER: 0.1384
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_ukv_20260216_170946.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-ukv
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-ukv
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-ukv
+
+==========================================
+Training complete for ukv!
+End time: Mon Feb 16 17:29:44 PST 2026
+==========================================

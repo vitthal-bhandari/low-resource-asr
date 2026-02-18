@@ -1,0 +1,87 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: koo  Split: mid (task 7 of 21)
+Job ID: 33211487 (Array Job: 33207815)
+Node: g3120
+GPUs: 0
+Start time: Mon Feb 16 14:04:51 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for koo (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for koo (Konzo) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-koo
+
+Loading data for koo (Konzo) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-mid_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: 1081 samples (5.00 h)
+  Validation: 99 samples (0.59 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid/vocab.json (57 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,226,747 / 964,724,155 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '54.04', 'grad_norm': '43.62', 'learning_rate': '0.00049', 'epoch': '0.738'}
+{'loss': '16.36', 'grad_norm': '20.36', 'learning_rate': '0.00099', 'epoch': '1.472'}
+{'eval_loss': '3.378', 'eval_wer': '1.051', 'eval_cer': '0.7975', 'eval_runtime': '17.87', 'eval_samples_per_second': '5.541', 'eval_steps_per_second': '1.399', 'epoch': '1.472'}
+{'loss': '13.05', 'grad_norm': '11.24', 'learning_rate': '0.0007958', 'epoch': '2.207'}
+{'loss': '12.33', 'grad_norm': '28.72', 'learning_rate': '0.0005875', 'epoch': '2.945'}
+{'eval_loss': '2.972', 'eval_wer': '1.017', 'eval_cer': '0.7804', 'eval_runtime': '17.75', 'eval_samples_per_second': '5.577', 'eval_steps_per_second': '1.408', 'epoch': '2.945'}
+{'loss': '11.83', 'grad_norm': '31.41', 'learning_rate': '0.0003792', 'epoch': '3.679'}
+{'loss': '11.33', 'grad_norm': '10.11', 'learning_rate': '0.0001708', 'epoch': '4.413'}
+{'eval_loss': '2.538', 'eval_wer': '1.007', 'eval_cer': '0.6902', 'eval_runtime': '17', 'eval_samples_per_second': '5.823', 'eval_steps_per_second': '1.47', 'epoch': '4.413'}
+{'train_runtime': '1271', 'train_samples_per_second': '4.252', 'train_steps_per_second': '0.267', 'train_loss': '18.69', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid/adapter.koo.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0170
+  CER: 0.7804
+
+Evaluating on test set...
+  Test WER: 1.0243
+  Test CER: 0.7728
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_koo_20260216_140535.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-koo
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-koo
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-koo
+
+==========================================
+Training complete for koo!
+End time: Mon Feb 16 14:32:04 PST 2026
+==========================================

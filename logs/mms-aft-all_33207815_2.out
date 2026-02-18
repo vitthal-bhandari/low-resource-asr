@@ -1,0 +1,87 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: bxk  Split: mid (task 2 of 21)
+Job ID: 33208322 (Array Job: 33207815)
+Node: g3102
+GPUs: 0
+Start time: Mon Feb 16 12:08:43 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for bxk (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for bxk (Bukusu) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-bxk
+
+Loading data for bxk (Bukusu) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/train-mid_bxk.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/validation_bxk.tsv
+  Train: 990 samples (5.00 h)
+  Validation: 118 samples (0.61 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/mid/vocab.json (56 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,225,466 / 964,722,874 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '41.48', 'grad_norm': '13.82', 'learning_rate': '0.00049', 'epoch': '0.8065'}
+{'loss': '3.5', 'grad_norm': '2.449', 'learning_rate': '0.00099', 'epoch': '1.613'}
+{'eval_loss': '0.6303', 'eval_wer': '0.6253', 'eval_cer': '0.1575', 'eval_runtime': '11.7', 'eval_samples_per_second': '10.09', 'eval_steps_per_second': '2.565', 'epoch': '1.613'}
+{'loss': '2.142', 'grad_norm': '2.13', 'learning_rate': '0.0007667', 'epoch': '2.419'}
+{'loss': '1.967', 'grad_norm': '1.947', 'learning_rate': '0.0005286', 'epoch': '3.226'}
+{'eval_loss': '0.5293', 'eval_wer': '0.5231', 'eval_cer': '0.1323', 'eval_runtime': '11.18', 'eval_samples_per_second': '10.56', 'eval_steps_per_second': '2.684', 'epoch': '3.226'}
+{'loss': '1.857', 'grad_norm': '1.675', 'learning_rate': '0.0002905', 'epoch': '4.032'}
+{'loss': '1.805', 'grad_norm': '1.317', 'learning_rate': '5.238e-05', 'epoch': '4.839'}
+{'eval_loss': '0.5072', 'eval_wer': '0.5087', 'eval_cer': '0.1288', 'eval_runtime': '11.18', 'eval_samples_per_second': '10.55', 'eval_steps_per_second': '2.683', 'epoch': '4.839'}
+{'train_runtime': '913.8', 'train_samples_per_second': '5.417', 'train_steps_per_second': '0.339', 'train_loss': '8.56', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/mid/adapter.bxk.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.5231
+  CER: 0.1325
+
+Evaluating on test set...
+  Test WER: 0.5719
+  Test CER: 0.1588
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_bxk_20260216_120923.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-bxk
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-bxk
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-bxk
+
+==========================================
+Training complete for bxk!
+End time: Mon Feb 16 12:28:17 PST 2026
+==========================================
