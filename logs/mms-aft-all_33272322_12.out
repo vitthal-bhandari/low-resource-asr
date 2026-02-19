@@ -1,0 +1,34 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: mmc  Split: all (task 12 of 21)
+Job ID: 33282344 (Array Job: 33272322)
+Node: g3116
+GPUs: 0
+Start time: Thu Feb 19 00:47:07 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for mmc (split=all)...
+============================================================
+MMS Adapter Fine-tuning for mmc (Michoacán Mazahua) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-mmc
+
+Loading data for mmc (Michoacán Mazahua) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/train-all_mmc.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/validation_mmc.tsv
+  Train: 473 samples (7.22 h)
+  Validation: 172 samples (1.54 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all/vocab.json (91 tokens)
+
+Preparing datasets...
+
+Loading MMS model...

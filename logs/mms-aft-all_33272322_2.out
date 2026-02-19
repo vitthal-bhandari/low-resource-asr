@@ -51,3 +51,44 @@ Starting training...
 {'eval_loss': '2.672', 'eval_wer': '1', 'eval_cer': '0.9649', 'eval_runtime': '20.23', 'eval_samples_per_second': '5.833', 'eval_steps_per_second': '1.483', 'epoch': '1.944'}
 {'loss': '4.836', 'grad_norm': '9.478', 'learning_rate': '0.000641', 'epoch': '2.428'}
 {'loss': '2.486', 'grad_norm': '2.192', 'learning_rate': '0.0005205', 'epoch': '2.915'}
+{'eval_loss': '0.5819', 'eval_wer': '0.5885', 'eval_cer': '0.1471', 'eval_runtime': '18.08', 'eval_samples_per_second': '6.526', 'eval_steps_per_second': '1.659', 'epoch': '2.915'}
+{'loss': '2.238', 'grad_norm': '1.937', 'learning_rate': '0.0004', 'epoch': '3.399'}
+{'loss': '2.167', 'grad_norm': '3.257', 'learning_rate': '0.0002795', 'epoch': '3.886'}
+{'eval_loss': '0.5385', 'eval_wer': '0.5351', 'eval_cer': '0.137', 'eval_runtime': '18.12', 'eval_samples_per_second': '6.513', 'eval_steps_per_second': '1.656', 'epoch': '3.886'}
+{'loss': '2.076', 'grad_norm': '4.165', 'learning_rate': '0.000159', 'epoch': '4.37'}
+{'loss': '2.056', 'grad_norm': '8.637', 'learning_rate': '3.855e-05', 'epoch': '4.856'}
+{'eval_loss': '0.5321', 'eval_wer': '0.5343', 'eval_cer': '0.1364', 'eval_runtime': '19.28', 'eval_samples_per_second': '6.12', 'eval_steps_per_second': '1.556', 'epoch': '4.856'}
+{'train_runtime': '2115', 'train_samples_per_second': '3.882', 'train_steps_per_second': '0.244', 'train_loss': '9.473', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/all/adapter.bxk.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.5347
+  CER: 0.1371
+
+Evaluating on test set...
+  Test WER: 0.5954
+  Test CER: 0.1674
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_bxk_all_20260218_185159.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_bxk_20260218_185159.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-bxk
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-bxk
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bxk/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-bxk
+
+==========================================
+Training complete for bxk!
+End time: Wed Feb 18 19:34:06 PST 2026
+==========================================

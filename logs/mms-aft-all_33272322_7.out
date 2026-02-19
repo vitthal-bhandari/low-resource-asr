@@ -1,0 +1,94 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: koo  Split: all (task 7 of 21)
+Job ID: 33278364 (Array Job: 33272322)
+Node: g3116
+GPUs: 0
+Start time: Wed Feb 18 22:07:01 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for koo (split=all)...
+============================================================
+MMS Adapter Fine-tuning for koo (Konzo) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-koo
+
+Loading data for koo (Konzo) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-all_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: 1739 samples (7.83 h)
+  Validation: 99 samples (0.59 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/all/vocab.json (58 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,228,028 / 964,725,436 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '86.44', 'grad_norm': '22.17', 'learning_rate': '0.00049', 'epoch': '0.4598'}
+{'loss': '36.06', 'grad_norm': '14.48', 'learning_rate': '0.00099', 'epoch': '0.9195'}
+{'eval_loss': '3.403', 'eval_wer': '1.035', 'eval_cer': '0.7777', 'eval_runtime': '20.44', 'eval_samples_per_second': '4.844', 'eval_steps_per_second': '1.223', 'epoch': '0.9195'}
+{'loss': '36.25', 'grad_norm': '665.4', 'learning_rate': '0.0008899', 'epoch': '1.377'}
+{'loss': '35.42', 'grad_norm': '1530', 'learning_rate': '0.0007775', 'epoch': '1.837'}
+{'eval_loss': '3.112', 'eval_wer': '1.03', 'eval_cer': '0.8125', 'eval_runtime': '19.98', 'eval_samples_per_second': '4.955', 'eval_steps_per_second': '1.251', 'epoch': '1.837'}
+{'loss': '43', 'grad_norm': '612.8', 'learning_rate': '0.0006652', 'epoch': '2.294'}
+{'loss': '28.39', 'grad_norm': '13.28', 'learning_rate': '0.0005528', 'epoch': '2.754'}
+{'eval_loss': '3.001', 'eval_wer': '1.01', 'eval_cer': '0.8143', 'eval_runtime': '17.25', 'eval_samples_per_second': '5.74', 'eval_steps_per_second': '1.449', 'epoch': '2.754'}
+{'loss': '12.43', 'grad_norm': '7.989', 'learning_rate': '0.0004404', 'epoch': '3.211'}
+{'loss': '12.27', 'grad_norm': '11.13', 'learning_rate': '0.0003281', 'epoch': '3.671'}
+{'eval_loss': '2.892', 'eval_wer': '1.016', 'eval_cer': '0.7074', 'eval_runtime': '17.53', 'eval_samples_per_second': '5.648', 'eval_steps_per_second': '1.426', 'epoch': '3.671'}
+{'loss': '11.41', 'grad_norm': '11.34', 'learning_rate': '0.0002157', 'epoch': '4.129'}
+{'loss': '8.312', 'grad_norm': '11.48', 'learning_rate': '0.0001034', 'epoch': '4.589'}
+{'eval_loss': '1.662', 'eval_wer': '0.9795', 'eval_cer': '0.4103', 'eval_runtime': '15.75', 'eval_samples_per_second': '6.287', 'eval_steps_per_second': '1.588', 'epoch': '4.589'}
+{'train_runtime': '1550', 'train_samples_per_second': '5.611', 'train_steps_per_second': '0.352', 'train_loss': '28.97', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/all/adapter.koo.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0296
+  CER: 0.8125
+
+Evaluating on test set...
+  Test WER: 1.0200
+  Test CER: 0.8054
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_koo_all_20260218_220742.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_koo_20260218_220742.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-koo
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-koo
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-koo
+
+==========================================
+Training complete for koo!
+End time: Wed Feb 18 22:38:35 PST 2026
+==========================================

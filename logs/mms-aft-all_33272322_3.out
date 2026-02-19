@@ -1,0 +1,95 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: cgg  Split: all (task 3 of 21)
+Job ID: 33274713 (Array Job: 33272322)
+Node: g3090
+GPUs: 0
+Start time: Wed Feb 18 19:34:20 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for cgg (split=all)...
+============================================================
+MMS Adapter Fine-tuning for cgg (Chiga) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-cgg
+
+Loading data for cgg (Chiga) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/train-all_cgg.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/validation_cgg.tsv
+  Train: 1769 samples (7.02 h)
+  Validation: 308 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all/vocab.json (59 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,229,309 / 964,726,717 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '38.03', 'grad_norm': '63.14', 'learning_rate': '0.00049', 'epoch': '0.4515'}
+{'loss': '19.63', 'grad_norm': '58.72', 'learning_rate': '0.00099', 'epoch': '0.9029'}
+{'eval_loss': '4.145', 'eval_wer': '1', 'eval_cer': '0.8583', 'eval_runtime': '37.25', 'eval_samples_per_second': '8.268', 'eval_steps_per_second': '2.067', 'epoch': '0.9029'}
+{'loss': '10.92', 'grad_norm': '4', 'learning_rate': '0.0008923', 'epoch': '1.352'}
+{'loss': '2.474', 'grad_norm': '13.79', 'learning_rate': '0.0007824', 'epoch': '1.804'}
+{'eval_loss': '0.5143', 'eval_wer': '0.5836', 'eval_cer': '0.1255', 'eval_runtime': '36.37', 'eval_samples_per_second': '8.469', 'eval_steps_per_second': '2.117', 'epoch': '1.804'}
+{'loss': '2.13', 'grad_norm': '14.56', 'learning_rate': '0.0006725', 'epoch': '2.253'}
+{'loss': '1.994', 'grad_norm': '4.85', 'learning_rate': '0.0005626', 'epoch': '2.704'}
+{'eval_loss': '0.4396', 'eval_wer': '0.5082', 'eval_cer': '0.1074', 'eval_runtime': '35.6', 'eval_samples_per_second': '8.651', 'eval_steps_per_second': '2.163', 'epoch': '2.704'}
+{'loss': '1.96', 'grad_norm': '2.523', 'learning_rate': '0.0004527', 'epoch': '3.153'}
+{'loss': '1.971', 'grad_norm': '2.305', 'learning_rate': '0.0003429', 'epoch': '3.605'}
+{'eval_loss': '0.4161', 'eval_wer': '0.4795', 'eval_cer': '0.1035', 'eval_runtime': '29.45', 'eval_samples_per_second': '10.46', 'eval_steps_per_second': '2.615', 'epoch': '3.605'}
+{'loss': '1.844', 'grad_norm': '2.163', 'learning_rate': '0.000233', 'epoch': '4.054'}
+{'loss': '1.797', 'grad_norm': '2.106', 'learning_rate': '0.0001231', 'epoch': '4.506'}
+{'eval_loss': '0.4064', 'eval_wer': '0.4739', 'eval_cer': '0.1004', 'eval_runtime': '29.49', 'eval_samples_per_second': '10.45', 'eval_steps_per_second': '2.611', 'epoch': '4.506'}
+{'loss': '1.671', 'grad_norm': '3.067', 'learning_rate': '1.319e-05', 'epoch': '4.957'}
+{'train_runtime': '2064', 'train_samples_per_second': '4.286', 'train_steps_per_second': '0.269', 'train_loss': '7.623', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all/adapter.cgg.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.4791
+  CER: 0.1036
+
+Evaluating on test set...
+  Test WER: 0.5148
+  Test CER: 0.1286
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_cgg_all_20260218_193709.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_cgg_20260218_193709.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-cgg
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-cgg
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-cgg
+
+==========================================
+Training complete for cgg!
+End time: Wed Feb 18 20:18:55 PST 2026
+==========================================
