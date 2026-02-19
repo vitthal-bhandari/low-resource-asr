@@ -98,6 +98,11 @@ def parse_args() -> argparse.Namespace:
         default="all",
         help="Training data split: one=1h, mid=tier-dependent (3/5/10h), all=full (default: all)",
     )
+    parser.add_argument(
+        "--save-transcriptions",
+        action="store_true",
+        help="Save test-set gold and model transcriptions to a TSV file (language, split, datetime in filename).",
+    )
     return parser.parse_args()
 
 
@@ -724,12 +729,15 @@ def main():
     test_dataset = load_test_data(lang)
     if test_dataset is not None and len(test_dataset) > 0:
         print("\nEvaluating on test set...")
+        # Keep audio_file so we can save it in transcriptions TSV when --save-transcriptions
+        cols_to_keep = ["audio", "sentence", "audio_file"]
         test_dataset = test_dataset.remove_columns(
-            [c for c in test_dataset.column_names if c not in ["audio", "sentence"]]
+            [c for c in test_dataset.column_names if c not in cols_to_keep]
         )
+        # Remove only columns consumed by prepare_dataset so audio_file remains for export
         test_dataset = test_dataset.map(
             prepare_dataset,
-            remove_columns=test_dataset.column_names,
+            remove_columns=[c for c in test_dataset.column_names if c != "audio_file"],
             desc="Processing test",
         )
         test_pred = trainer.predict(test_dataset)
@@ -740,6 +748,37 @@ def main():
         print(f"  Test CER: {test_cer:.4f}")
         eval_results["test_wer"] = test_wer
         eval_results["test_cer"] = test_cer
+
+        # Optionally save gold and model transcriptions for analysis
+        # reference = cleaned gold (after clean_transcript); reference_raw = unprocessed from TSV
+        if args.save_transcriptions:
+            pred_ids = np.argmax(test_pred.predictions, axis=-1)
+            test_pred.label_ids[test_pred.label_ids == -100] = processor.tokenizer.pad_token_id
+            pred_str = processor.batch_decode(pred_ids)
+            label_str = processor.batch_decode(test_pred.label_ids, group_tokens=False)
+            pred_str = [p.strip() for p in pred_str]
+            label_str = [l.strip() for l in label_str]
+            audio_files = test_dataset["audio_file"]
+            # Load raw reference from test TSV (unprocessed) for optional column
+            test_tsv = config.mozilla_data_dir / lang / f"test_{lang}.tsv"
+            raw_by_file = {}
+            if test_tsv.exists():
+                raw_df = pd.read_csv(test_tsv, sep="\t")
+                if "audio_file" in raw_df.columns and "transcription" in raw_df.columns:
+                    raw_by_file = dict(zip(raw_df["audio_file"], raw_df["transcription"].astype(str)))
+            trans_dir = config.results_dir / "transcriptions"
+            trans_dir.mkdir(parents=True, exist_ok=True)
+            run_ts = run_start_time.strftime("%Y%m%d_%H%M%S")
+            trans_path = trans_dir / f"transcriptions_{lang}_{args.split}_{run_ts}.tsv"
+            def _tsv_cell(s: str) -> str:
+                return s.replace("\t", " ").replace("\n", " ").replace("\r", " ")
+
+            with open(trans_path, "w", encoding="utf-8") as f:
+                f.write("audio_file\treference\treference_raw\thypothesis\n")
+                for af, ref, hyp in zip(audio_files, label_str, pred_str):
+                    raw = raw_by_file.get(af, "")
+                    f.write(f"{_tsv_cell(af)}\t{_tsv_cell(ref)}\t{_tsv_cell(raw)}\t{_tsv_cell(hyp)}\n")
+            print(f"  Transcriptions saved to: {trans_path}")
     
     # Save eval results
     results_path = output_dir / "eval_results.json"

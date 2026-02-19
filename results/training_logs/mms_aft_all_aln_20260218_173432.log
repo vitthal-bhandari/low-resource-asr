@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-18T17:34:32.553831
+run_end=2026-02-18T18:10:41.111932
+model=facebook/mms-1b-all
+language=aln
+split=all
+language_name=Gheg Albanian
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/all
+num_train_samples=965
+num_validation_samples=150
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.537083
+validation_cer=0.192324
+test_wer=0.688455
+test_cer=0.309636
+best_validation_wer=0.517636

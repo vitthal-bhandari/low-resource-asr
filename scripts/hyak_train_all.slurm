@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft-all
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=gpu-l40s      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
+#SBATCH --partition=gpu-l40      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
@@ -101,7 +101,8 @@ uv run python -m src.training.aft_mms "$LANG" \
     --batch-size 4 \
     --gradient-accumulation-steps 4 \
     --learning-rate 1e-3 \
-    --save-to-hf
+    --save-to-hf \
+    --save-transcriptions
 
 echo ""
 echo "=========================================="
