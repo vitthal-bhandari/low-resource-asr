@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-19T03:33:17.448238
+run_end=2026-02-19T04:00:42.291185
+model=facebook/mms-1b-all
+language=ttj
+split=all
+language_name=Rutoro
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
+num_train_samples=1436
+num_validation_samples=156
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.338117
+validation_cer=0.058224
+test_wer=0.302585
+test_cer=0.052838
+best_validation_wer=0.336812

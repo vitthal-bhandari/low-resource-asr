@@ -1,0 +1,95 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: pne  Split: all (task 13 of 21)
+Job ID: 33283599 (Array Job: 33272322)
+Node: g3117
+GPUs: 0
+Start time: Thu Feb 19 01:25:57 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for pne (split=all)...
+============================================================
+MMS Adapter Fine-tuning for pne (Western Penan) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-pne
+
+Loading data for pne (Western Penan) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: 1811 samples (8.48 h)
+  Validation: 310 samples (1.30 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/vocab.json (61 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,231,871 / 964,729,279 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '39.72', 'grad_norm': '32.17', 'learning_rate': '0.00049', 'epoch': '0.4415'}
+{'loss': '6.143', 'grad_norm': '3.345', 'learning_rate': '0.00099', 'epoch': '0.883'}
+{'eval_loss': '0.816', 'eval_wer': '0.5772', 'eval_cer': '0.1992', 'eval_runtime': '25.03', 'eval_samples_per_second': '12.39', 'eval_steps_per_second': '3.117', 'epoch': '0.883'}
+{'loss': '3.226', 'grad_norm': '3.001', 'learning_rate': '0.0008957', 'epoch': '1.318'}
+{'loss': '2.874', 'grad_norm': '3.137', 'learning_rate': '0.0007894', 'epoch': '1.759'}
+{'eval_loss': '0.6296', 'eval_wer': '0.4496', 'eval_cer': '0.1543', 'eval_runtime': '24.74', 'eval_samples_per_second': '12.53', 'eval_steps_per_second': '3.153', 'epoch': '1.759'}
+{'loss': '2.754', 'grad_norm': '2.605', 'learning_rate': '0.000683', 'epoch': '2.194'}
+{'loss': '2.507', 'grad_norm': '4.321', 'learning_rate': '0.0005766', 'epoch': '2.636'}
+{'eval_loss': '0.5883', 'eval_wer': '0.3971', 'eval_cer': '0.1416', 'eval_runtime': '24.73', 'eval_samples_per_second': '12.54', 'eval_steps_per_second': '3.155', 'epoch': '2.636'}
+{'loss': '2.575', 'grad_norm': '3.058', 'learning_rate': '0.0004702', 'epoch': '3.071'}
+{'loss': '2.428', 'grad_norm': '9.792', 'learning_rate': '0.0003638', 'epoch': '3.512'}
+{'eval_loss': '0.5445', 'eval_wer': '0.3754', 'eval_cer': '0.1329', 'eval_runtime': '24.88', 'eval_samples_per_second': '12.46', 'eval_steps_per_second': '3.135', 'epoch': '3.512'}
+{'loss': '2.422', 'grad_norm': '5.015', 'learning_rate': '0.0002574', 'epoch': '3.954'}
+{'loss': '2.338', 'grad_norm': '3.39', 'learning_rate': '0.0001511', 'epoch': '4.389'}
+{'eval_loss': '0.5338', 'eval_wer': '0.3602', 'eval_cer': '0.1287', 'eval_runtime': '25.04', 'eval_samples_per_second': '12.38', 'eval_steps_per_second': '3.115', 'epoch': '4.389'}
+{'loss': '2.243', 'grad_norm': '3.707', 'learning_rate': '4.468e-05', 'epoch': '4.83'}
+{'train_runtime': '1700', 'train_samples_per_second': '5.328', 'train_steps_per_second': '0.335', 'train_loss': '6.15', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/adapter.pne.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.3754
+  CER: 0.1329
+
+Evaluating on test set...
+  Test WER: 0.3991
+  Test CER: 0.1407
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_pne_all_20260219_012800.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_pne_20260219_012800.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-pne
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-pne
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-pne
+
+==========================================
+Training complete for pne!
+End time: Thu Feb 19 02:01:30 PST 2026
+==========================================

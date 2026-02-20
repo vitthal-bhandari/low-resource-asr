@@ -1,0 +1,91 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ruc  Split: all (task 14 of 21)
+Job ID: 33284374 (Array Job: 33272322)
+Node: g3116
+GPUs: 0
+Start time: Thu Feb 19 02:01:34 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for ruc (split=all)...
+============================================================
+MMS Adapter Fine-tuning for ruc (Ruuli) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-ruc
+
+Loading data for ruc (Ruuli) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: 1346 samples (8.30 h)
+  Validation: 77 samples (0.27 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/all/vocab.json (57 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,226,747 / 964,724,155 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '42.78', 'grad_norm': '22.56', 'learning_rate': '0.00049', 'epoch': '0.5935'}
+{'loss': '22.63', 'grad_norm': '20.41', 'learning_rate': '0.00099', 'epoch': '1.178'}
+{'eval_loss': '3.45', 'eval_wer': '1.114', 'eval_cer': '0.7708', 'eval_runtime': '5.583', 'eval_samples_per_second': '13.79', 'eval_steps_per_second': '3.582', 'epoch': '1.178'}
+{'loss': '12.66', 'grad_norm': '9.4', 'learning_rate': '0.0008492', 'epoch': '1.772'}
+{'loss': '4.684', 'grad_norm': '6.519', 'learning_rate': '0.0006954', 'epoch': '2.356'}
+{'eval_loss': '0.8108', 'eval_wer': '0.7439', 'eval_cer': '0.2047', 'eval_runtime': '5.367', 'eval_samples_per_second': '14.35', 'eval_steps_per_second': '3.727', 'epoch': '2.356'}
+{'loss': '2.845', 'grad_norm': '4.175', 'learning_rate': '0.0005415', 'epoch': '2.95'}
+{'loss': '2.581', 'grad_norm': '1.473', 'learning_rate': '0.0003877', 'epoch': '3.534'}
+{'eval_loss': '0.7142', 'eval_wer': '0.7095', 'eval_cer': '0.1873', 'eval_runtime': '5.378', 'eval_samples_per_second': '14.32', 'eval_steps_per_second': '3.719', 'epoch': '3.534'}
+{'loss': '2.454', 'grad_norm': '4.09', 'learning_rate': '0.0002338', 'epoch': '4.119'}
+{'loss': '2.387', 'grad_norm': '2.566', 'learning_rate': '8e-05', 'epoch': '4.712'}
+{'eval_loss': '0.6791', 'eval_wer': '0.6947', 'eval_cer': '0.1805', 'eval_runtime': '5.377', 'eval_samples_per_second': '14.32', 'eval_steps_per_second': '3.72', 'epoch': '4.712'}
+{'train_runtime': '1612', 'train_samples_per_second': '4.175', 'train_steps_per_second': '0.264', 'train_loss': '11.09', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/all/adapter.ruc.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.6935
+  CER: 0.1800
+
+Evaluating on test set...
+  Test WER: 0.6407
+  Test CER: 0.1496
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_ruc_all_20260219_020211.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_ruc_20260219_020211.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-ruc
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ruc
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ruc
+
+==========================================
+Training complete for ruc!
+End time: Thu Feb 19 02:33:01 PST 2026
+==========================================

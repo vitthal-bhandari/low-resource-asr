@@ -1,0 +1,92 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: all (task 19 of 21)
+Job ID: 33284599 (Array Job: 33272322)
+Node: g3117
+GPUs: 0
+Start time: Thu Feb 19 03:32:48 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for ttj (split=all)...
+============================================================
+MMS Adapter Fine-tuning for ttj (Rutoro) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-ttj
+
+Loading data for ttj (Rutoro) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 1436 samples (7.26 h)
+  Validation: 156 samples (0.92 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/vocab.json (58 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,228,028 / 964,725,436 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '36.88', 'grad_norm': '11', 'learning_rate': '0.00049', 'epoch': '0.5571'}
+{'loss': '17.17', 'grad_norm': '29.51', 'learning_rate': '0.00099', 'epoch': '1.111'}
+{'eval_loss': '3.292', 'eval_wer': '1', 'eval_cer': '0.905', 'eval_runtime': '18.57', 'eval_samples_per_second': '8.399', 'eval_steps_per_second': '2.1', 'epoch': '1.111'}
+{'loss': '6.762', 'grad_norm': '3.334', 'learning_rate': '0.00086', 'epoch': '1.669'}
+{'loss': '1.697', 'grad_norm': '1.443', 'learning_rate': '0.0007171', 'epoch': '2.223'}
+{'eval_loss': '0.2617', 'eval_wer': '0.3788', 'eval_cer': '0.06384', 'eval_runtime': '18.43', 'eval_samples_per_second': '8.465', 'eval_steps_per_second': '2.116', 'epoch': '2.223'}
+{'loss': '1.513', 'grad_norm': '3.811', 'learning_rate': '0.0005743', 'epoch': '2.78'}
+{'loss': '1.373', 'grad_norm': '3.766', 'learning_rate': '0.0004314', 'epoch': '3.334'}
+{'eval_loss': '0.2335', 'eval_wer': '0.3422', 'eval_cer': '0.05855', 'eval_runtime': '18.41', 'eval_samples_per_second': '8.473', 'eval_steps_per_second': '2.118', 'epoch': '3.334'}
+{'loss': '1.293', 'grad_norm': '1.059', 'learning_rate': '0.0002886', 'epoch': '3.891'}
+{'loss': '1.337', 'grad_norm': '1.423', 'learning_rate': '0.0001457', 'epoch': '4.446'}
+{'eval_loss': '0.2278', 'eval_wer': '0.3368', 'eval_cer': '0.05803', 'eval_runtime': '18.43', 'eval_samples_per_second': '8.466', 'eval_steps_per_second': '2.116', 'epoch': '4.446'}
+{'loss': '1.267', 'grad_norm': '1.31', 'learning_rate': '2.857e-06', 'epoch': '5'}
+{'train_runtime': '1434', 'train_samples_per_second': '5.008', 'train_steps_per_second': '0.314', 'train_loss': '7.7', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/adapter.ttj.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.3381
+  CER: 0.0582
+
+Evaluating on test set...
+  Test WER: 0.3026
+  Test CER: 0.0528
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_ttj_all_20260219_033317.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_ttj_20260219_033317.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-ttj
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ttj
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ttj
+
+==========================================
+Training complete for ttj!
+End time: Thu Feb 19 04:01:22 PST 2026
+==========================================

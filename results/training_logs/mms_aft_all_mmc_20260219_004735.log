@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-19T00:47:35.092232
+run_end=2026-02-19T01:24:56.738389
+model=facebook/mms-1b-all
+language=mmc
+split=all
+language_name=Michoacán Mazahua
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all
+num_train_samples=473
+num_validation_samples=172
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.841730
+validation_cer=0.437586
+test_wer=0.876504
+test_cer=0.439440
+best_validation_wer=0.945793

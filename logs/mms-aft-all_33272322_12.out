@@ -32,3 +32,52 @@ Building vocabulary...
 Preparing datasets...
 
 Loading MMS model...
+  Trainable parameters: 2,270,301 / 964,767,709 (0.24%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '68.37', 'grad_norm': '64.75', 'learning_rate': '0.00049', 'epoch': '1.672'}
+{'loss': '20.97', 'grad_norm': '4.445', 'learning_rate': '0.00099', 'epoch': '3.336'}
+{'eval_loss': '3.631', 'eval_wer': '0.9458', 'eval_cer': '0.7385', 'eval_runtime': '50.2', 'eval_samples_per_second': '3.426', 'eval_steps_per_second': '0.857', 'epoch': '3.336'}
+{'loss': '9.718', 'grad_norm': '14.03', 'learning_rate': '2e-05', 'epoch': '5'}
+{'train_runtime': '1997', 'train_samples_per_second': '1.184', 'train_steps_per_second': '0.075', 'train_loss': '33.02', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all/adapter.mmc.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.8417
+  CER: 0.4376
+
+Evaluating on test set...
+  Test WER: 0.8765
+  Test CER: 0.4394
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mmc_all_20260219_004735.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_mmc_20260219_004735.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-mmc
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-mmc
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-mmc
+
+==========================================
+Training complete for mmc!
+End time: Thu Feb 19 01:25:49 PST 2026
+==========================================
