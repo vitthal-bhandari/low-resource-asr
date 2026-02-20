@@ -1,0 +1,91 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: rwm  Split: all (task 15 of 21)
+Job ID: 33284410 (Array Job: 33272322)
+Node: g3117
+GPUs: 0
+Start time: Thu Feb 19 02:33:25 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for rwm (split=all)...
+============================================================
+MMS Adapter Fine-tuning for rwm (Amba) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-rwm
+
+Loading data for rwm (Amba) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: 1326 samples (7.56 h)
+  Validation: 140 samples (0.77 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/vocab.json (57 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,226,747 / 964,724,155 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '40.89', 'grad_norm': '5.726', 'learning_rate': '0.00049', 'epoch': '0.6024'}
+{'loss': '13.29', 'grad_norm': '7.452', 'learning_rate': '0.00099', 'epoch': '1.205'}
+{'eval_loss': '3.071', 'eval_wer': '1.063', 'eval_cer': '0.6935', 'eval_runtime': '15.38', 'eval_samples_per_second': '9.105', 'eval_steps_per_second': '2.276', 'epoch': '1.205'}
+{'loss': '12.68', 'grad_norm': '5.198', 'learning_rate': '0.0008444', 'epoch': '1.807'}
+{'loss': '9.733', 'grad_norm': '9.628', 'learning_rate': '0.0006857', 'epoch': '2.41'}
+{'eval_loss': '2.052', 'eval_wer': '1', 'eval_cer': '0.562', 'eval_runtime': '15.17', 'eval_samples_per_second': '9.232', 'eval_steps_per_second': '2.308', 'epoch': '2.41'}
+{'loss': '5.361', 'grad_norm': '7.694', 'learning_rate': '0.000527', 'epoch': '3.012'}
+{'loss': '4.477', 'grad_norm': '3.563', 'learning_rate': '0.0003683', 'epoch': '3.614'}
+{'eval_loss': '1.237', 'eval_wer': '0.8254', 'eval_cer': '0.303', 'eval_runtime': '15.2', 'eval_samples_per_second': '9.213', 'eval_steps_per_second': '2.303', 'epoch': '3.614'}
+{'loss': '4.223', 'grad_norm': '6.67', 'learning_rate': '0.0002095', 'epoch': '4.217'}
+{'loss': '4.125', 'grad_norm': '3.602', 'learning_rate': '5.079e-05', 'epoch': '4.819'}
+{'eval_loss': '1.187', 'eval_wer': '0.8299', 'eval_cer': '0.2946', 'eval_runtime': '15.19', 'eval_samples_per_second': '9.216', 'eval_steps_per_second': '2.304', 'epoch': '4.819'}
+{'train_runtime': '1523', 'train_samples_per_second': '4.353', 'train_steps_per_second': '0.272', 'train_loss': '11.56', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/adapter.rwm.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0000
+  CER: 0.5618
+
+Evaluating on test set...
+  Test WER: 1.0000
+  Test CER: 0.5350
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_rwm_all_20260219_023359.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_rwm_20260219_023359.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-rwm
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-rwm
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-rwm
+
+==========================================
+Training complete for rwm!
+End time: Thu Feb 19 03:03:17 PST 2026
+==========================================

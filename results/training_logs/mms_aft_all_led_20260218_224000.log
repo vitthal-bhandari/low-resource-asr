@@ -1,0 +1,20 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-02-18T22:40:00.874709
+run_end=2026-02-18T23:17:39.340936
+model=facebook/mms-1b-all
+language=led
+split=all
+language_name=Lendu
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/led/all
+num_train_samples=1491
+num_validation_samples=104
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.360798
+validation_cer=0.116482
+test_wer=0.390832
+test_cer=0.138505
+best_validation_wer=0.360798

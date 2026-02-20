@@ -1,0 +1,45 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: top  Split: all (task 18 of 21)
+Job ID: 33284589 (Array Job: 33272322)
+Node: g3116
+GPUs: 0
+Start time: Thu Feb 19 03:30:05 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for top (split=all)...
+============================================================
+MMS Adapter Fine-tuning for top (Papantla Totonac) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-top
+
+Loading data for top (Papantla Totonac) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: 189 samples (5.87 h)
+  Validation: 59 samples (1.68 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/vocab.json (74 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,248,524 / 964,745,932 (0.23%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
