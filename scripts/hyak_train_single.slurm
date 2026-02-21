@@ -70,8 +70,9 @@ uv run python -m src.training.aft_mms "$LANG" \
     --num-epochs 10 \
     --batch-size 4 \
     --gradient-accumulation-steps 4 \
-    --learning-rate 5e-4 \
-    --save-transcriptions
+    --learning-rate 1e-4 \
+    --save-transcriptions \
+    --seed 42
 
 echo ""
 echo "=========================================="

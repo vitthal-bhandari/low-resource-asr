@@ -103,6 +103,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Save test-set gold and model transcriptions to a TSV file (language, split, datetime in filename).",
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Random seed for reproducibility. If set, fixes torch/numpy/python seeds.",
+    )
     return parser.parse_args()
 
 
@@ -523,11 +529,25 @@ transcription = processor.batch_decode(predicted_ids)
     print(f"  Successfully pushed to: https://huggingface.co/{repo_id}")
 
 
+def set_seed(seed: int) -> None:
+    """Set random seed for reproducibility across torch, numpy, and python."""
+    import random
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
 def main():
     """Main training function."""
     run_start_time = datetime.now()
     args = parse_args()
-    
+
+    if args.seed is not None:
+        set_seed(args.seed)
+        print(f"Random seed set to: {args.seed}")
+
     # Validate language code
     lang = args.lang
     if lang not in LANGUAGES:
@@ -674,6 +694,7 @@ def main():
         metric_for_best_model="wer",
         greater_is_better=False,
         report_to="none",
+        seed=args.seed if args.seed is not None else 42,
     )
     
     print(f"\nTraining configuration:")
@@ -793,6 +814,7 @@ def main():
         f"gradient_accumulation_steps={args.gradient_accumulation_steps}",
         f"effective_batch_size={args.batch_size * args.gradient_accumulation_steps}",
         f"learning_rate={args.learning_rate}",
+        f"seed={args.seed if args.seed is not None else 42}",
         f"validation_wer={eval_wer:.6f}",
         f"validation_cer={eval_cer:.6f}",
         f"test_wer={test_wer:.6f}",
