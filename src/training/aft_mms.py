@@ -341,6 +341,22 @@ class DataCollatorCTCWithPadding:
             labels_batch.attention_mask.ne(1), -100
         )
         batch["labels"] = labels
+
+        # Ensure attention_mask is present (Wav2Vec2FeatureExtractor with return_attention_mask=True
+        # may include it; if not, build from input_length so the model ignores padded positions)
+        if "attention_mask" not in batch:
+            lengths = [f["input_length"] for f in features]
+            max_len = batch["input_values"].shape[1]
+            attention_mask = torch.zeros(len(features), max_len, dtype=torch.long)
+            for i, L in enumerate(lengths):
+                attention_mask[i, :L] = 1
+            batch["attention_mask"] = attention_mask
+
+        # One-time print to verify batch contents during a test run
+        if not getattr(self, "_logged_batch_keys", False):
+            print("  DataCollator batch.keys():", list(batch.keys()))
+            self._logged_batch_keys = True
+
         return batch
 
 
@@ -638,10 +654,10 @@ def main():
     print("\nLoading MMS model...")
     model = Wav2Vec2ForCTC.from_pretrained(
         "facebook/mms-1b-all",
-        attention_dropout=0.0,
-        hidden_dropout=0.0,
+        attention_dropout=0.1,
+        hidden_dropout=0.1,
         feat_proj_dropout=0.0,
-        layerdrop=0.0,
+        layerdrop=0.1,
         ctc_loss_reduction="mean",
         pad_token_id=processor.tokenizer.pad_token_id,
         vocab_size=len(processor.tokenizer),
@@ -651,11 +667,18 @@ def main():
     # Initialize and configure adapter layers
     model.init_adapter_layers()
     model.freeze_base_model()
-    
+
+    # lm_head is randomly reinitialized (ignore_mismatched_sizes=True) and must be trainable
+    for param in model.lm_head.parameters():
+        param.requires_grad = True
+
     adapter_weights = model._get_adapters()
     for param in adapter_weights.values():
         param.requires_grad = True
-    
+
+    # Verify lm_head is trainable (frozen lm_head would prevent learning output distribution)
+    print("  lm_head trainable:", all(p.requires_grad for p in model.lm_head.parameters()))
+
     # Count trainable parameters
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total_params = sum(p.numel() for p in model.parameters())
