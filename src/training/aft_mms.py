@@ -663,11 +663,12 @@ def main():
         gradient_checkpointing=True,
         fp16=use_fp16,
         bf16=use_bf16,
-        save_steps=200,
+        save_steps=100,
         eval_steps=100,
         logging_steps=50,
         learning_rate=args.learning_rate,
-        warmup_steps=100,
+        warmup_ratio=0.1,
+        weight_decay=0.005,
         save_total_limit=2,
         load_best_model_at_end=True,
         metric_for_best_model="wer",
@@ -750,7 +751,6 @@ def main():
         eval_results["test_cer"] = test_cer
 
         # Optionally save gold and model transcriptions for analysis
-        # reference = cleaned gold (after clean_transcript); reference_raw = unprocessed from TSV
         if args.save_transcriptions:
             pred_ids = np.argmax(test_pred.predictions, axis=-1)
             test_pred.label_ids[test_pred.label_ids == -100] = processor.tokenizer.pad_token_id
@@ -759,25 +759,14 @@ def main():
             pred_str = [p.strip() for p in pred_str]
             label_str = [l.strip() for l in label_str]
             audio_files = test_dataset["audio_file"]
-            # Load raw reference from test TSV (unprocessed) for optional column
-            test_tsv = config.mozilla_data_dir / lang / f"test_{lang}.tsv"
-            raw_by_file = {}
-            if test_tsv.exists():
-                raw_df = pd.read_csv(test_tsv, sep="\t")
-                if "audio_file" in raw_df.columns and "transcription" in raw_df.columns:
-                    raw_by_file = dict(zip(raw_df["audio_file"], raw_df["transcription"].astype(str)))
             trans_dir = config.results_dir / "transcriptions"
             trans_dir.mkdir(parents=True, exist_ok=True)
             run_ts = run_start_time.strftime("%Y%m%d_%H%M%S")
             trans_path = trans_dir / f"transcriptions_{lang}_{args.split}_{run_ts}.tsv"
-            def _tsv_cell(s: str) -> str:
-                return s.replace("\t", " ").replace("\n", " ").replace("\r", " ")
-
             with open(trans_path, "w", encoding="utf-8") as f:
-                f.write("audio_file\treference\treference_raw\thypothesis\n")
+                f.write("audio_file\treference\thypothesis\n")
                 for af, ref, hyp in zip(audio_files, label_str, pred_str):
-                    raw = raw_by_file.get(af, "")
-                    f.write(f"{_tsv_cell(af)}\t{_tsv_cell(ref)}\t{_tsv_cell(raw)}\t{_tsv_cell(hyp)}\n")
+                    f.write(f"{af}\t{ref}\t{hyp}\n")
             print(f"  Transcriptions saved to: {trans_path}")
     
     # Save eval results
