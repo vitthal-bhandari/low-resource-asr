@@ -71,7 +71,6 @@ uv run python -m src.training.aft_mms "$LANG" \
     --batch-size 4 \
     --gradient-accumulation-steps 4 \
     --learning-rate 5e-4 \
-    --save-to-hf \
     --save-transcriptions
 
 echo ""
