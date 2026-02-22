@@ -103,12 +103,6 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Save test-set gold and model transcriptions to a TSV file (language, split, datetime in filename).",
     )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=None,
-        help="Random seed for reproducibility. If set, fixes torch/numpy/python seeds.",
-    )
     return parser.parse_args()
 
 
@@ -341,22 +335,6 @@ class DataCollatorCTCWithPadding:
             labels_batch.attention_mask.ne(1), -100
         )
         batch["labels"] = labels
-
-        # Ensure attention_mask is present (Wav2Vec2FeatureExtractor with return_attention_mask=True
-        # may include it; if not, build from input_length so the model ignores padded positions)
-        if "attention_mask" not in batch:
-            lengths = [f["input_length"] for f in features]
-            max_len = batch["input_values"].shape[1]
-            attention_mask = torch.zeros(len(features), max_len, dtype=torch.long)
-            for i, L in enumerate(lengths):
-                attention_mask[i, :L] = 1
-            batch["attention_mask"] = attention_mask
-
-        # One-time print to verify batch contents during a test run
-        if not getattr(self, "_logged_batch_keys", False):
-            print("  DataCollator batch.keys():", list(batch.keys()))
-            self._logged_batch_keys = True
-
         return batch
 
 
@@ -545,25 +523,11 @@ transcription = processor.batch_decode(predicted_ids)
     print(f"  Successfully pushed to: https://huggingface.co/{repo_id}")
 
 
-def set_seed(seed: int) -> None:
-    """Set random seed for reproducibility across torch, numpy, and python."""
-    import random
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)
-
-
 def main():
     """Main training function."""
     run_start_time = datetime.now()
     args = parse_args()
-
-    if args.seed is not None:
-        set_seed(args.seed)
-        print(f"Random seed set to: {args.seed}")
-
+    
     # Validate language code
     lang = args.lang
     if lang not in LANGUAGES:
@@ -654,10 +618,10 @@ def main():
     print("\nLoading MMS model...")
     model = Wav2Vec2ForCTC.from_pretrained(
         "facebook/mms-1b-all",
-        attention_dropout=0.1,
-        hidden_dropout=0.1,
+        attention_dropout=0.0,
+        hidden_dropout=0.0,
         feat_proj_dropout=0.0,
-        layerdrop=0.1,
+        layerdrop=0.0,
         ctc_loss_reduction="mean",
         pad_token_id=processor.tokenizer.pad_token_id,
         vocab_size=len(processor.tokenizer),
@@ -667,18 +631,11 @@ def main():
     # Initialize and configure adapter layers
     model.init_adapter_layers()
     model.freeze_base_model()
-
-    # lm_head is randomly reinitialized (ignore_mismatched_sizes=True) and must be trainable
-    for param in model.lm_head.parameters():
-        param.requires_grad = True
-
+    
     adapter_weights = model._get_adapters()
     for param in adapter_weights.values():
         param.requires_grad = True
-
-    # Verify lm_head is trainable (frozen lm_head would prevent learning output distribution)
-    print("  lm_head trainable:", all(p.requires_grad for p in model.lm_head.parameters()))
-
+    
     # Count trainable parameters
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total_params = sum(p.numel() for p in model.parameters())
@@ -706,18 +663,16 @@ def main():
         gradient_checkpointing=True,
         fp16=use_fp16,
         bf16=use_bf16,
-        save_steps=100,
+        save_steps=200,
         eval_steps=100,
         logging_steps=50,
         learning_rate=args.learning_rate,
-        warmup_ratio=0.1,
-        weight_decay=0.005,
+        warmup_steps=100,
         save_total_limit=2,
         load_best_model_at_end=True,
         metric_for_best_model="wer",
         greater_is_better=False,
         report_to="none",
-        seed=args.seed if args.seed is not None else 42,
     )
     
     print(f"\nTraining configuration:")
@@ -837,7 +792,6 @@ def main():
         f"gradient_accumulation_steps={args.gradient_accumulation_steps}",
         f"effective_batch_size={args.batch_size * args.gradient_accumulation_steps}",
         f"learning_rate={args.learning_rate}",
-        f"seed={args.seed if args.seed is not None else 42}",
         f"validation_wer={eval_wer:.6f}",
         f"validation_cer={eval_cer:.6f}",
         f"test_wer={test_wer:.6f}",
