@@ -67,12 +67,11 @@ echo "Starting training for $LANG (split=$SPLIT)..."
 
 uv run python -m src.training.aft_mms "$LANG" \
     --split "$SPLIT" \
-    --num-epochs 10 \
+    --num-epochs 5 \
     --batch-size 4 \
     --gradient-accumulation-steps 4 \
-    --learning-rate 1e-4 \
-    --save-transcriptions \
-    --seed 42
+    --learning-rate 1e-3 \
+    --save-to-hf
 
 echo ""
 echo "=========================================="
