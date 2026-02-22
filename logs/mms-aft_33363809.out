@@ -1,0 +1,86 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ukv  Split: mid
+Job ID: 33363809
+Node: g3090
+GPUs: 0
+Start time: Fri Feb 20 23:52:30 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for ukv (split=mid)...
+============================================================
+MMS Adapter Fine-tuning for ukv (Kuku) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
+Device: cuda
+Push to HF: False
+
+Loading data for ukv (Kuku) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-mid_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: 922 samples (5.00 h)
+  Validation: 142 samples (0.65 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/vocab.json (59 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,229,309 / 964,726,717 (0.23%)
+
+Training configuration:
+  Epochs: 10
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.0005
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '40.5', 'grad_norm': '14.55', 'learning_rate': '0.0004224', 'epoch': '0.8658'}
+{'loss': '5.344', 'grad_norm': '21.48', 'learning_rate': '0.0004607', 'epoch': '1.727'}
+{'eval_loss': '0.8511', 'eval_wer': '0.7636', 'eval_cer': '0.228', 'eval_runtime': '22.8', 'eval_samples_per_second': '6.228', 'eval_steps_per_second': '1.579', 'epoch': '1.727'}
+{'loss': '3.652', 'grad_norm': '2.653', 'learning_rate': '0.0004128', 'epoch': '2.589'}
+{'loss': '3.329', 'grad_norm': '3.166', 'learning_rate': '0.0003649', 'epoch': '3.45'}
+{'eval_loss': '0.69', 'eval_wer': '0.6074', 'eval_cer': '0.1832', 'eval_runtime': '19.39', 'eval_samples_per_second': '7.322', 'eval_steps_per_second': '1.856', 'epoch': '3.45'}
+{'loss': '3.131', 'grad_norm': '4.606', 'learning_rate': '0.000317', 'epoch': '4.312'}
+{'loss': '2.853', 'grad_norm': '2.713', 'learning_rate': '0.0002692', 'epoch': '5.173'}
+{'eval_loss': '0.6274', 'eval_wer': '0.5132', 'eval_cer': '0.1609', 'eval_runtime': '19.34', 'eval_samples_per_second': '7.342', 'eval_steps_per_second': '1.861', 'epoch': '5.173'}
+{'loss': '2.964', 'grad_norm': '23.9', 'learning_rate': '0.0002213', 'epoch': '6.035'}
+{'loss': '2.821', 'grad_norm': '6.098', 'learning_rate': '0.0001734', 'epoch': '6.9'}
+{'eval_loss': '0.6075', 'eval_wer': '0.4968', 'eval_cer': '0.1577', 'eval_runtime': '22.29', 'eval_samples_per_second': '6.369', 'eval_steps_per_second': '1.615', 'epoch': '6.9'}
+{'loss': '2.733', 'grad_norm': '20.97', 'learning_rate': '0.0001255', 'epoch': '7.762'}
+{'loss': '2.798', 'grad_norm': '2.63', 'learning_rate': '7.759e-05', 'epoch': '8.623'}
+{'eval_loss': '0.5964', 'eval_wer': '0.4763', 'eval_cer': '0.1536', 'eval_runtime': '21.28', 'eval_samples_per_second': '6.674', 'eval_steps_per_second': '1.692', 'epoch': '8.623'}
+{'loss': '2.537', 'grad_norm': '2.8', 'learning_rate': '2.969e-05', 'epoch': '9.485'}
+{'train_runtime': '2646', 'train_samples_per_second': '3.485', 'train_steps_per_second': '0.219', 'train_loss': '6.409', 'epoch': '10'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/adapter.ukv.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.4755
+  CER: 0.1536
+
+Evaluating on test set...
+  Test WER: 0.4429
+  Test CER: 0.1357
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_ukv_mid_20260220_235533.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_ukv_20260220_235533.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
+
+==========================================
+Training complete!
+End time: Sat Feb 21 00:44:32 PST 2026
+==========================================

@@ -1,0 +1,99 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ukv  Split: all
+Job ID: 33375505
+Node: g3091
+GPUs: 0
+Start time: Sat Feb 21 03:13:12 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for ukv (split=all)...
+Random seed set to: 42
+============================================================
+MMS Adapter Fine-tuning for ukv (Kuku) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/all
+Device: cuda
+Push to HF: False
+
+Loading data for ukv (Kuku) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-all_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: 1505 samples (7.21 h)
+  Validation: 142 samples (0.65 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/all/vocab.json (61 tokens)
+
+Preparing datasets...
+
+Loading MMS model...
+  Trainable parameters: 2,231,871 / 964,729,279 (0.23%)
+
+Training configuration:
+  Epochs: 10
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '79.55', 'grad_norm': '128.9', 'learning_rate': '5.158e-05', 'epoch': '0.5305'}
+{'loss': '43.46', 'grad_norm': '32.55', 'learning_rate': '9.953e-05', 'epoch': '1.053'}
+{'eval_loss': '5.617', 'eval_wer': '0.9806', 'eval_cer': '0.9923', 'eval_runtime': '23.69', 'eval_samples_per_second': '5.995', 'eval_steps_per_second': '1.52', 'epoch': '1.053'}
+{'loss': '20.99', 'grad_norm': '13.8', 'learning_rate': '9.368e-05', 'epoch': '1.584'}
+{'loss': '17.83', 'grad_norm': '18.39', 'learning_rate': '8.784e-05', 'epoch': '2.106'}
+{'eval_loss': '3.879', 'eval_wer': '0.9838', 'eval_cer': '0.8093', 'eval_runtime': '27.31', 'eval_samples_per_second': '5.2', 'eval_steps_per_second': '1.318', 'epoch': '2.106'}
+{'loss': '16.86', 'grad_norm': '13.54', 'learning_rate': '8.199e-05', 'epoch': '2.637'}
+{'loss': '15.9', 'grad_norm': '9.706', 'learning_rate': '7.614e-05', 'epoch': '3.159'}
+{'eval_loss': '3.513', 'eval_wer': '1', 'eval_cer': '0.835', 'eval_runtime': '20.28', 'eval_samples_per_second': '7.001', 'eval_steps_per_second': '1.775', 'epoch': '3.159'}
+{'loss': '16.5', 'grad_norm': '6.654', 'learning_rate': '7.029e-05', 'epoch': '3.69'}
+{'loss': '15.25', 'grad_norm': '8.981', 'learning_rate': '6.444e-05', 'epoch': '4.212'}
+{'eval_loss': '3.281', 'eval_wer': '0.9532', 'eval_cer': '0.8008', 'eval_runtime': '21', 'eval_samples_per_second': '6.761', 'eval_steps_per_second': '1.714', 'epoch': '4.212'}
+{'loss': '14.36', 'grad_norm': '6.017', 'learning_rate': '5.86e-05', 'epoch': '4.743'}
+{'loss': '16.89', 'grad_norm': '10.43', 'learning_rate': '5.275e-05', 'epoch': '5.265'}
+{'eval_loss': '3.127', 'eval_wer': '0.9515', 'eval_cer': '0.8949', 'eval_runtime': '20.73', 'eval_samples_per_second': '6.848', 'eval_steps_per_second': '1.736', 'epoch': '5.265'}
+{'loss': '13.94', 'grad_norm': '6.196', 'learning_rate': '4.69e-05', 'epoch': '5.796'}
+{'loss': '14.02', 'grad_norm': '9.407', 'learning_rate': '4.105e-05', 'epoch': '6.318'}
+{'eval_loss': '3.063', 'eval_wer': '0.9567', 'eval_cer': '0.8891', 'eval_runtime': '20.49', 'eval_samples_per_second': '6.929', 'eval_steps_per_second': '1.757', 'epoch': '6.318'}
+{'loss': '14.38', 'grad_norm': '6.448', 'learning_rate': '3.52e-05', 'epoch': '6.849'}
+{'loss': '13.42', 'grad_norm': '4.555', 'learning_rate': '2.936e-05', 'epoch': '7.371'}
+{'eval_loss': '3.042', 'eval_wer': '0.9604', 'eval_cer': '0.8831', 'eval_runtime': '19.56', 'eval_samples_per_second': '7.26', 'eval_steps_per_second': '1.841', 'epoch': '7.371'}
+{'loss': '13.2', 'grad_norm': '8.959', 'learning_rate': '2.351e-05', 'epoch': '7.902'}
+{'loss': '13.11', 'grad_norm': '4.555', 'learning_rate': '1.766e-05', 'epoch': '8.424'}
+{'eval_loss': '3.029', 'eval_wer': '0.958', 'eval_cer': '0.8743', 'eval_runtime': '19.64', 'eval_samples_per_second': '7.23', 'eval_steps_per_second': '1.833', 'epoch': '8.424'}
+{'loss': '14.47', 'grad_norm': '42.57', 'learning_rate': '1.181e-05', 'epoch': '8.955'}
+{'loss': '13.15', 'grad_norm': '29.37', 'learning_rate': '5.965e-06', 'epoch': '9.477'}
+{'eval_loss': '3.019', 'eval_wer': '0.9572', 'eval_cer': '0.882', 'eval_runtime': '19.58', 'eval_samples_per_second': '7.251', 'eval_steps_per_second': '1.838', 'epoch': '9.477'}
+{'loss': '13.93', 'grad_norm': '7.585', 'learning_rate': '1.17e-07', 'epoch': '10'}
+{'train_runtime': '4008', 'train_samples_per_second': '3.755', 'train_steps_per_second': '0.237', 'train_loss': '20.06', 'epoch': '10'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/all/adapter.ukv.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.9505
+  CER: 0.8943
+
+Evaluating on test set...
+  Test WER: 0.9504
+  Test CER: 0.8909
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_ukv_all_20260221_031558.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_ukv_20260221_031558.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/all
+
+==========================================
+Training complete!
+End time: Sat Feb 21 04:28:44 PST 2026
+==========================================
