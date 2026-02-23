@@ -1,0 +1,21 @@
+# XLS-R 1B Adapter Fine-tuning Run Log
+run_start=2026-02-23T06:36:12.752671
+run_end=2026-02-23T07:22:39.470018
+model=facebook/wav2vec2-xls-r-1b
+adapter_attn_dim=256
+language=pne
+split=all
+language_name=Western Penan
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/pne/all
+num_train_samples=1811
+num_validation_samples=310
+num_epochs=5
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.530072
+validation_cer=0.184202
+test_wer=0.556293
+test_cer=0.197519
+best_validation_wer=0.461103

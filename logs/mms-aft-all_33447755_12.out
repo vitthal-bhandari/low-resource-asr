@@ -1,0 +1,50 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: mmc  Split: all (task 12 of 21)
+Job ID: 33451210 (Array Job: 33447755)
+Node: g3097
+GPUs: 0
+Start time: Mon Feb 23 05:57:52 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for mmc (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for mmc (Michoacán Mazahua) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/mmc/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-mmc
+
+Loading data for mmc (Michoacán Mazahua) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/train-all_mmc.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/validation_mmc.tsv
+  Train: 473 samples (7.22 h)
+  Validation: 172 samples (1.54 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/mmc/all/vocab.json (91 tokens)
+
+Preparing datasets...
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,773,021 / 994,270,429 (3.20%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '47.2', 'grad_norm': '74.63', 'learning_rate': '0.00049', 'epoch': '1.672'}
+{'loss': '25.36', 'grad_norm': '25.69', 'learning_rate': '0.00099', 'epoch': '3.336'}
+{'eval_loss': '4.28', 'eval_wer': '1', 'eval_cer': '1', 'eval_runtime': '63.38', 'eval_samples_per_second': '2.714', 'eval_steps_per_second': '0.678', 'epoch': '3.336'}
