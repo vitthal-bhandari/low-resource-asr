@@ -1,30 +1,32 @@
 """
 Push already-trained models to Hugging Face Hub.
 
-Loads saved models from models/mms/{lang}/{split}/ and pushes them to HF.
+Loads saved models from models/{model}/{lang}/{split}/ and pushes them to HF.
 Useful when training completed without --save-to-hf flag.
 
+Supported --model values: mms, xlsr (whisperv3 etc. can be added when implemented).
+
 Usage:
-    # Push one model
+    # Push one model (default: mms)
     uv run python scripts/push_existing_models.py bew one
-    
+    uv run python scripts/push_existing_models.py bew one --model xlsr
+
     # Push all models for a language (all splits)
-    uv run python scripts/push_existing_models.py bew --all-splits
-    
+    uv run python scripts/push_existing_models.py bew --all-splits --model xlsr
+
     # Push all languages for a specific split
-    uv run python scripts/push_existing_models.py --all-langs --split-arg one
-    uv run python scripts/push_existing_models.py --all-langs --split-arg mid
-    uv run python scripts/push_existing_models.py --all-langs --split-arg all
-    
+    uv run python scripts/push_existing_models.py --all-langs --split-arg one --model mms
+    uv run python scripts/push_existing_models.py --all-langs --split-arg all --model xlsr
+
     # Push models from a SLURM job ID (auto-detects lang/split from logs)
-    uv run python scripts/push_existing_models.py --job-id 33196711_15
-    uv run python scripts/push_existing_models.py --job-id 33196711  # array job, all tasks
-    
+    uv run python scripts/push_existing_models.py --job-id 33196711_15 --model mms
+
     # Push all models (all languages, all splits) - use with caution
-    uv run python scripts/push_existing_models.py --all-langs --all-splits
+    uv run python scripts/push_existing_models.py --all-langs --all-splits --model xlsr
 """
 
 import argparse
+import importlib
 import re
 import sys
 from pathlib import Path
@@ -38,22 +40,46 @@ from transformers import Wav2Vec2Processor, Wav2Vec2ForCTC
 
 from src.config import config
 from src.data.download import LANGUAGES
-from src.training.aft_mms import get_hf_repo_id, push_to_hub
+
+# Model name -> (module_path, get_hf_repo_id_name, push_to_hub_name)
+# Each module must provide get_hf_repo_id(lang, split) and push_to_hub(model, processor, output_dir, repo_id, lang).
+PUSH_REGISTRY = {
+    "mms": ("src.training.aft_mms", "get_hf_repo_id", "push_to_hub"),
+    "xlsr": ("src.training.aft_xlsr", "get_hf_repo_id", "push_to_hub"),
+}
 
 
-def find_models_from_job_id(job_id: str) -> list[tuple[str, str]]:
+def _get_push_helpers(model_name: str):
+    """Resolve get_hf_repo_id and push_to_hub for the given model name."""
+    if model_name not in PUSH_REGISTRY:
+        supported = ", ".join(sorted(PUSH_REGISTRY.keys()))
+        raise ValueError(
+            f"Unknown model '{model_name}'. Supported: {supported}. "
+            "Add support in PUSH_REGISTRY for other models (e.g. whisperv3)."
+        )
+    mod_path, repo_fn, push_fn = PUSH_REGISTRY[model_name]
+    mod = importlib.import_module(mod_path)
+    return getattr(mod, repo_fn), getattr(mod, push_fn)
+
+
+def find_models_from_job_id(job_id: str, model_name: str) -> list[tuple[str, str]]:
     """
     Find (lang, split) pairs from a SLURM job ID by reading SLURM output logs.
-    
+
     Job ID format: "33196711" (single job) or "33196711_15" (array job ID_task ID).
-    Reads SLURM .out logs to extract language and split, then verifies model exists.
+    Reads SLURM .out logs to extract language and split, then verifies model exists
+    under models/{model_name}/{lang}/{split}/.
     """
     models = []
     slurm_logs_dir = Path("logs")
-    
+    models_base = config.models_dir / model_name
+
     if not slurm_logs_dir.exists():
         return []
-    
+
+    # Log filename patterns: mms-aft*, xlsr-aft* (job name from SLURM script)
+    job_name_prefix = "mms-aft" if model_name == "mms" else "xlsr-aft"
+
     # Parse job ID
     if "_" in job_id:
         array_job_id, task_id_str = job_id.rsplit("_", 1)
@@ -61,45 +87,32 @@ def find_models_from_job_id(job_id: str) -> list[tuple[str, str]]:
             task_id = int(task_id_str)
         except ValueError:
             return []
-        # Look for array job logs: mms-aft-all_{array_job_id}_{task_id}.out
-        patterns = [f"*_{array_job_id}_{task_id}.out"]
+        patterns = [f"{job_name_prefix}*_{array_job_id}_{task_id}.out"]
     else:
         array_job_id = job_id
-        task_id = None
-        # Look for all logs from this job:
-        # - Single job: mms-aft_{job_id}.out
-        # - Array job (all tasks): mms-aft-all_{array_job_id}_*.out
         patterns = [
-            f"*_{array_job_id}.out",      # Single job
-            f"*_{array_job_id}_*.out",     # Array job, all tasks
+            f"{job_name_prefix}_{array_job_id}.out",
+            f"{job_name_prefix}-all_{array_job_id}_*.out",
         ]
-    
-    # Find matching SLURM output logs
+
     log_files = set()
     for pattern in patterns:
         log_files.update(slurm_logs_dir.glob(pattern))
-    
+
     for log_file in log_files:
         try:
             with open(log_file, "r") as f:
                 content = f.read()
-                # Extract language and split from log content
-                # Pattern 1: "Language: aln  Split: one" (from SLURM script echo)
                 lang_match = re.search(r"Language:\s*(\S+)", content)
                 split_match = re.search(r"Split:\s*(\S+)", content)
-                
-                # Pattern 2: "split=one" or "split=mid" or "split=all" (from training script)
                 if not split_match:
                     split_match = re.search(r"split[=:]\s*(\S+)", content, re.IGNORECASE)
-                
-                # Pattern 3: "MMS Adapter Fine-tuning for aln (Gheg Albanian) split=one"
                 if not lang_match:
                     lang_match = re.search(r"for\s+(\S+)\s+\([^)]+\)\s+split=(\S+)", content)
                     if lang_match:
                         lang = lang_match.group(1).strip()
                         split = lang_match.group(2).strip()
                     else:
-                        # Pattern 4: "Starting training for aln (split=one)..."
                         match = re.search(r"for\s+(\S+)\s+\(split=(\S+)\)", content)
                         if match:
                             lang = match.group(1).strip()
@@ -110,24 +123,21 @@ def find_models_from_job_id(job_id: str) -> list[tuple[str, str]]:
                 else:
                     lang = lang_match.group(1).strip()
                     split = split_match.group(1).strip() if split_match else "all"
-                
+
                 if lang and lang in LANGUAGES:
                     if not split or split not in ["one", "mid", "all"]:
-                        split = "all"  # Default if not found
-                    
-                    # Verify model directory exists
-                    model_dir = config.models_dir / "mms" / lang / split
+                        split = "all"
+                    model_dir = models_base / lang / split
                     if model_dir.exists() and (model_dir / "config.json").exists():
                         models.append((lang, split))
         except Exception:
             continue
-    
-    # If no matches from SLURM logs, check all training logs and match by approximate time
-    # (less reliable, but fallback)
-    if not models:
+
+    if not models and models_base.exists():
         training_logs_dir = config.results_dir / "training_logs"
+        log_glob = "mms_aft_*.log" if model_name == "mms" else "xlsr_aft_*.log"
         if training_logs_dir.exists():
-            for log_file in training_logs_dir.glob("mms_aft_*.log"):
+            for log_file in training_logs_dir.glob(log_glob):
                 try:
                     with open(log_file, "r") as f:
                         content = f.read()
@@ -136,14 +146,13 @@ def find_models_from_job_id(job_id: str) -> list[tuple[str, str]]:
                         if lang_match and split_match:
                             lang = lang_match.group(1)
                             split = split_match.group(1)
-                            model_dir = config.models_dir / "mms" / lang / split
+                            model_dir = models_base / lang / split
                             if model_dir.exists() and (model_dir / "config.json").exists():
                                 models.append((lang, split))
                 except Exception:
                     pass
-    
-    # Remove duplicates
-    return list(dict.fromkeys(models))  # Preserves order, removes duplicates
+
+    return list(dict.fromkeys(models))
 
 
 def _model_weights_exist(model_dir: Path) -> bool:
@@ -151,34 +160,30 @@ def _model_weights_exist(model_dir: Path) -> bool:
     return (model_dir / "model.safetensors").exists() or (model_dir / "pytorch_model.bin").exists()
 
 
-def push_model(lang: str, split: str) -> bool:
-    """Load and push a single model from models/mms/{lang}/{split}/."""
-    model_dir = config.models_dir / "mms" / lang / split
+def push_model(lang: str, split: str, model_name: str) -> bool:
+    """Load and push a single model from models/{model_name}/{lang}/{split}/."""
+    model_dir = config.models_dir / model_name / lang / split
     if not model_dir.exists():
-        print(f"  {lang}/{split}: Model directory not found: {model_dir}")
+        print(f"  {model_name}/{lang}/{split}: Model directory not found: {model_dir}")
         return False
     if not _model_weights_exist(model_dir):
-        print(f"  {lang}/{split}: Skipping — no model.safetensors or pytorch_model.bin in {model_dir} (training may not have completed).")
+        print(f"  {model_name}/{lang}/{split}: Skipping — no model.safetensors or pytorch_model.bin in {model_dir} (training may not have completed).")
         return False
 
-    print(f"\nPushing {lang}/{split}...")
+    print(f"\nPushing {model_name}/{lang}/{split}...")
     print(f"  Model dir: {model_dir}")
 
     try:
-        # Load model and processor
+        get_hf_repo_id_fn, push_to_hub_fn = _get_push_helpers(model_name)
         model = Wav2Vec2ForCTC.from_pretrained(str(model_dir))
         processor = Wav2Vec2Processor.from_pretrained(str(model_dir))
-        
-        # Get repo ID
-        repo_id = get_hf_repo_id(lang, split)
+        repo_id = get_hf_repo_id_fn(lang, split)
         print(f"  HF Repo: {repo_id}")
-        
-        # Push to hub
-        push_to_hub(model, processor, model_dir, repo_id, lang)
-        print(f"  ✓ Successfully pushed {lang}/{split}")
+        push_to_hub_fn(model, processor, model_dir, repo_id, lang)
+        print(f"  ✓ Successfully pushed {model_name}/{lang}/{split}")
         return True
     except Exception as e:
-        print(f"  ✗ Failed to push {lang}/{split}: {e}")
+        print(f"  ✗ Failed to push {model_name}/{lang}/{split}: {e}")
         return False
 
 
@@ -198,6 +203,13 @@ def main() -> None:
         type=str,
         choices=["one", "mid", "all"],
         help="Split (one/mid/all). Positional argument. Use --split-arg with --all-langs.",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default="mms",
+        choices=list(PUSH_REGISTRY.keys()),
+        help="Model name (e.g. mms, xlsr). Determines models/{model}/{lang}/{split}/ and HF push logic. Default: mms.",
     )
     parser.add_argument(
         "--split-arg",
@@ -225,8 +237,8 @@ def main() -> None:
 
     # Auto-detect from job ID
     if args.job_id:
-        print(f"Finding models for job ID: {args.job_id}")
-        models = find_models_from_job_id(args.job_id)
+        print(f"Finding models for job ID: {args.job_id} (model: {args.model})")
+        models = find_models_from_job_id(args.job_id, args.model)
         if models:
             print(f"  Found {len(models)} model(s): {', '.join(f'{l}/{s}' for l, s in models)}")
         else:
@@ -234,8 +246,8 @@ def main() -> None:
             print("  Check that:")
             print("    - SLURM output logs exist in logs/ directory")
             print("    - Training completed successfully")
-            print("    - Model directories exist in models/mms/{lang}/{split}/")
-            print("  You can also manually specify: python scripts/push_existing_models.py <lang> <split>")
+            print(f"    - Model directories exist in models/{args.model}/{{lang}}/{{split}}/")
+            print("  You can also manually specify: python scripts/push_existing_models.py <lang> <split> --model <model>")
             return
         langs = [lang for lang, _ in models]
         splits = [split for _, split in models]
@@ -258,7 +270,7 @@ def main() -> None:
         if not splits:
             parser.error("Provide split (one/mid/all), --split, or --all-splits")
 
-    print(f"\nPushing models to Hugging Face Hub")
+    print(f"\nPushing models to Hugging Face Hub (model: {args.model})")
     print(f"Languages: {', '.join(langs)}")
     print(f"Splits: {', '.join(splits)}")
     print("")
@@ -268,7 +280,7 @@ def main() -> None:
 
     for lang in langs:
         for split in splits:
-            if push_model(lang, split):
+            if push_model(lang, split, args.model):
                 success_count += 1
 
     print(f"\n{'='*60}")
