@@ -1,0 +1,79 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: all (task 19 of 21)
+Job ID: 33458829 (Array Job: 33447755)
+Node: g3099
+GPUs: 0
+Start time: Mon Feb 23 09:27:04 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for ttj (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for ttj (Rutoro) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-ttj
+
+Loading data for ttj (Rutoro) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 1436 samples (7.26 h)
+  Validation: 156 samples (0.92 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all/vocab.json (58 tokens)
+
+Preparing datasets...
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,730,748 / 994,228,156 (3.19%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '21.06', 'grad_norm': '28.99', 'learning_rate': '0.00049', 'epoch': '0.5571'}
+{'loss': '9.749', 'grad_norm': '3.435', 'learning_rate': '0.00099', 'epoch': '1.111'}
+{'eval_loss': '0.7926', 'eval_wer': '0.925', 'eval_cer': '0.242', 'eval_runtime': '29.36', 'eval_samples_per_second': '5.314', 'eval_steps_per_second': '1.328', 'epoch': '1.111'}
+{'loss': '2.488', 'grad_norm': '1.944', 'learning_rate': '0.00086', 'epoch': '1.669'}
+{'loss': '1.747', 'grad_norm': '2.132', 'learning_rate': '0.0007171', 'epoch': '2.223'}
+{'eval_loss': '0.4122', 'eval_wer': '0.6349', 'eval_cer': '0.1197', 'eval_runtime': '28.96', 'eval_samples_per_second': '5.386', 'eval_steps_per_second': '1.347', 'epoch': '2.223'}
+{'loss': '1.354', 'grad_norm': '1.755', 'learning_rate': '0.0005743', 'epoch': '2.78'}
+{'loss': '1.099', 'grad_norm': '1.737', 'learning_rate': '0.0004314', 'epoch': '3.334'}
+{'eval_loss': '0.3287', 'eval_wer': '0.4997', 'eval_cer': '0.09321', 'eval_runtime': '27.86', 'eval_samples_per_second': '5.599', 'eval_steps_per_second': '1.4', 'epoch': '3.334'}
+{'loss': '0.8999', 'grad_norm': '1.401', 'learning_rate': '0.0002886', 'epoch': '3.891'}
+{'loss': '0.7956', 'grad_norm': '0.955', 'learning_rate': '0.0001457', 'epoch': '4.446'}
+{'eval_loss': '0.2943', 'eval_wer': '0.449', 'eval_cer': '0.08102', 'eval_runtime': '27.94', 'eval_samples_per_second': '5.584', 'eval_steps_per_second': '1.396', 'epoch': '4.446'}
+{'loss': '0.6978', 'grad_norm': '0.9088', 'learning_rate': '2.857e-06', 'epoch': '5'}
+{'train_runtime': '1948', 'train_samples_per_second': '3.687', 'train_steps_per_second': '0.231', 'train_loss': '4.432', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all/adapter_ttj.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.4488
+  CER: 0.0810
+
+Evaluating on test set...
+  Test WER: 0.4169
+  Test CER: 0.0756
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_ttj_all_20260223_092745.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_ttj_20260223_092745.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-ttj
+  Pushing model...

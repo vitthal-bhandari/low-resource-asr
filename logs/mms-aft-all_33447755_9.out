@@ -1,0 +1,81 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: lke  Split: all (task 9 of 21)
+Job ID: 33451100 (Array Job: 33447755)
+Node: g3090
+GPUs: 0
+Start time: Mon Feb 23 04:56:10 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for lke (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for lke (Kenyi) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lke/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-lke
+
+Loading data for lke (Kenyi) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/train-all_lke.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
+  Train: 1712 samples (7.44 h)
+  Validation: 146 samples (0.66 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lke/all/vocab.json (58 tokens)
+
+Preparing datasets...
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,730,748 / 994,228,156 (3.19%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '30.78', 'grad_norm': '14', 'learning_rate': '0.00049', 'epoch': '0.4673'}
+{'loss': '12.13', 'grad_norm': '19.96', 'learning_rate': '0.00099', 'epoch': '0.9346'}
+{'eval_loss': '3.009', 'eval_wer': '1', 'eval_cer': '0.9932', 'eval_runtime': '26.45', 'eval_samples_per_second': '5.519', 'eval_steps_per_second': '1.399', 'epoch': '0.9346'}
+{'loss': '10.73', 'grad_norm': '14.84', 'learning_rate': '0.0008874', 'epoch': '1.402'}
+{'loss': '5.16', 'grad_norm': '5.458', 'learning_rate': '0.0007724', 'epoch': '1.869'}
+{'eval_loss': '1.084', 'eval_wer': '0.9159', 'eval_cer': '0.3154', 'eval_runtime': '27.21', 'eval_samples_per_second': '5.365', 'eval_steps_per_second': '1.36', 'epoch': '1.869'}
+{'loss': '4.215', 'grad_norm': '3.035', 'learning_rate': '0.0006575', 'epoch': '2.336'}
+{'loss': '3.557', 'grad_norm': '1.985', 'learning_rate': '0.0005425', 'epoch': '2.804'}
+{'eval_loss': '0.9574', 'eval_wer': '0.8507', 'eval_cer': '0.2821', 'eval_runtime': '26.23', 'eval_samples_per_second': '5.566', 'eval_steps_per_second': '1.411', 'epoch': '2.804'}
+{'loss': '3.407', 'grad_norm': '6.878', 'learning_rate': '0.0004276', 'epoch': '3.271'}
+{'loss': '3.139', 'grad_norm': '6.577', 'learning_rate': '0.0003126', 'epoch': '3.738'}
+{'eval_loss': '0.9237', 'eval_wer': '0.7842', 'eval_cer': '0.2411', 'eval_runtime': '26.12', 'eval_samples_per_second': '5.589', 'eval_steps_per_second': '1.417', 'epoch': '3.738'}
+{'loss': '2.896', 'grad_norm': '2.455', 'learning_rate': '0.0001977', 'epoch': '4.206'}
+{'loss': '2.679', 'grad_norm': '2.046', 'learning_rate': '8.276e-05', 'epoch': '4.673'}
+{'eval_loss': '0.8692', 'eval_wer': '0.7613', 'eval_cer': '0.242', 'eval_runtime': '25.57', 'eval_samples_per_second': '5.711', 'eval_steps_per_second': '1.447', 'epoch': '4.673'}
+{'train_runtime': '1987', 'train_samples_per_second': '4.309', 'train_steps_per_second': '0.269', 'train_loss': '7.518', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lke/all/adapter_lke.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.7836
+  CER: 0.2399
+
+Evaluating on test set...
+  Test WER: 0.7540
+  Test CER: 0.2052
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lke_all_20260223_045655.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lke/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_lke_20260223_045655.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-lke
+  Pushing model...

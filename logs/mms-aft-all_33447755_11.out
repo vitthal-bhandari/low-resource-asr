@@ -1,0 +1,47 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: meh  Split: all (task 11 of 21)
+Job ID: 33451188 (Array Job: 33447755)
+Node: g3099
+GPUs: 0
+Start time: Mon Feb 23 05:43:49 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for meh (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for meh (Southwestern Tlaxiaco Mixtec) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-meh
+
+Loading data for meh (Southwestern Tlaxiaco Mixtec) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
+  Train: 666 samples (6.64 h)
+  Validation: 93 samples (1.00 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/vocab.json (62 tokens)
+
+Preparing datasets...
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,735,872 / 994,233,280 (3.19%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...

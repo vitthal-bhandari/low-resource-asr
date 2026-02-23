@@ -1,0 +1,73 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: tob  Split: all (task 17 of 21)
+Job ID: 33458059 (Array Job: 33447755)
+Node: g3099
+GPUs: 0
+Start time: Mon Feb 23 08:50:41 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for tob (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for tob (Toba Qom) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-tob
+
+Loading data for tob (Toba Qom) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: 836 samples (4.67 h)
+  Validation: 306 samples (1.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/vocab.json (74 tokens)
+
+Preparing datasets...
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,751,244 / 994,248,652 (3.19%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '41.84', 'grad_norm': '11.44', 'learning_rate': '0.00049', 'epoch': '0.9569'}
+{'loss': '11.19', 'grad_norm': '11.5', 'learning_rate': '0.00099', 'epoch': '1.9'}
+{'eval_loss': '1.997', 'eval_wer': '1', 'eval_cer': '0.7569', 'eval_runtime': '66.74', 'eval_samples_per_second': '4.585', 'eval_steps_per_second': '1.154', 'epoch': '1.9'}
+{'loss': '4.79', 'grad_norm': '3.228', 'learning_rate': '0.000703', 'epoch': '2.842'}
+{'loss': '2.927', 'grad_norm': '1.469', 'learning_rate': '0.0004', 'epoch': '3.785'}
+{'eval_loss': '0.9372', 'eval_wer': '0.709', 'eval_cer': '0.2154', 'eval_runtime': '65.19', 'eval_samples_per_second': '4.694', 'eval_steps_per_second': '1.181', 'epoch': '3.785'}
+{'loss': '2.361', 'grad_norm': '2.99', 'learning_rate': '9.697e-05', 'epoch': '4.727'}
+{'train_runtime': '1514', 'train_samples_per_second': '2.761', 'train_steps_per_second': '0.175', 'train_loss': '12.01', 'epoch': '5'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/adapter_tob.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 0.7105
+  CER: 0.2157
+
+Evaluating on test set...
+  Test WER: 0.7096
+  Test CER: 0.2189
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_tob_all_20260223_085115.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_tob_20260223_085115.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-tob
+  Pushing model...

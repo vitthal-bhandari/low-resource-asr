@@ -1,0 +1,47 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: lth  Split: all (task 10 of 21)
+Job ID: 33451173 (Array Job: 33447755)
+Node: g3097
+GPUs: 0
+Start time: Mon Feb 23 05:36:46 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for lth (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for lth (Thur) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-lth
+
+Loading data for lth (Thur) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/train-all_lth.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
+  Train: 1434 samples (7.49 h)
+  Validation: 52 samples (0.27 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all/vocab.json (63 tokens)
+
+Preparing datasets...
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,737,153 / 994,234,561 (3.19%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
