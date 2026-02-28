@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft-all
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=gpu-l40      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
+#SBATCH --partition=gpu-l40s      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
@@ -79,6 +79,15 @@ mkdir -p logs
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
+export HF_CACHE_BASE="/gscratch/scrubbed/$USER/.cache/huggingface"
+export HF_HOME="$HF_CACHE_BASE"
+export HF_HUB_CACHE="$HF_CACHE_BASE/hub"
+export HUGGINGFACE_HUB_CACHE="$HF_HUB_CACHE"
+export HF_DATASETS_CACHE="$HF_CACHE_BASE/datasets"
+export TRANSFORMERS_CACHE="$HF_CACHE_BASE/transformers"
+export TORCH_HOME="/gscratch/scrubbed/$USER/.cache/torch"
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
 
 # =============================================================================
@@ -97,12 +106,13 @@ echo "Starting training for $LANG (split=$SPLIT)..."
 
 uv run python -m src.training.aft_xlsr "$LANG" \
     --split "$SPLIT" \
-    --num-epochs 5 \
-    --batch-size 4 \
-    --gradient-accumulation-steps 4 \
-    --learning-rate 1e-3 \
+    --num-epochs 15 \
+    --batch-size 2 \
+    --gradient-accumulation-steps 8 \
+    --learning-rate 1e-4 \
     --save-to-hf \
-    --save-transcriptions
+    --save-transcriptions \
+    --max-audio-sec-from-csv corpus_stats.csv
 
 echo ""
 echo "=========================================="
