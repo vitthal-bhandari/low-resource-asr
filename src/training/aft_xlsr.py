@@ -113,6 +113,20 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Save test-set gold and model transcriptions to a TSV file.",
     )
+    parser.add_argument(
+        "--max-audio-sec",
+        type=float,
+        default=None,
+        metavar="SEC",
+        help="Drop train/val samples longer than this (seconds) to avoid OOM. Ignored if --max-audio-sec-from-csv is set.",
+    )
+    parser.add_argument(
+        "--max-audio-sec-from-csv",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help="Path to corpus_stats CSV with columns lang,p97_5_sec. Use p97.5 for current language as max length (drop longer utterances).",
+    )
     return parser.parse_args()
 
 
@@ -123,6 +137,28 @@ HF_USERNAME = "vitthalbhandari"
 def get_hf_repo_id(lang: str, split: str = "all") -> str:
     """Get the Hugging Face repo ID for a language and split."""
     return f"{HF_USERNAME}/xlsr-1b-aft-{split}-{lang}"
+
+
+def _max_sec_from_corpus_csv(csv_path: Path, lang: str) -> float | None:
+    """
+    Read corpus_stats CSV (columns lang, p97_5_sec) and return p97.5 seconds for the given language.
+    Returns None if file missing, lang not found, or column missing.
+    """
+    if not csv_path.exists():
+        return None
+    try:
+        df = pd.read_csv(csv_path)
+        if "lang" not in df.columns or "p97_5_sec" not in df.columns:
+            return None
+        row = df[df["lang"] == lang]
+        if row.empty:
+            return None
+        val = row["p97_5_sec"].iloc[0]
+        if pd.isna(val):
+            return None
+        return float(val)
+    except Exception:
+        return None
 
 
 ################################################################################
@@ -591,6 +627,27 @@ def main():
         remove_columns=val.column_names,
         desc="Processing validation",
     )
+
+    # Resolve max length: from CSV (p97.5 per language) or from --max-audio-sec
+    max_audio_sec = None
+    if args.max_audio_sec_from_csv:
+        max_audio_sec = _max_sec_from_corpus_csv(Path(args.max_audio_sec_from_csv), lang)
+        if max_audio_sec is not None:
+            print(f"  Max audio length from CSV (p97.5 for {lang}): {max_audio_sec}s")
+    if max_audio_sec is None and args.max_audio_sec is not None:
+        max_audio_sec = args.max_audio_sec
+
+    if max_audio_sec is not None:
+        max_samples = int(max_audio_sec * processor.feature_extractor.sampling_rate)
+        n_train_before, n_val_before = len(train), len(val)
+        train = train.filter(lambda x: x["input_length"] <= max_samples, desc="Filter train by length")
+        val = val.filter(lambda x: x["input_length"] <= max_samples, desc="Filter val by length")
+        n_drop_train = n_train_before - len(train)
+        n_drop_val = n_val_before - len(val)
+        if n_drop_train or n_drop_val:
+            print(f"  Dropped {n_drop_train} train, {n_drop_val} val samples (over {max_audio_sec}s).")
+        if len(train) == 0:
+            raise ValueError(f"No training samples left after filtering to max {max_audio_sec}s.")
 
     data_collator = DataCollatorCTCWithPadding(processor=processor, padding=True)
 
