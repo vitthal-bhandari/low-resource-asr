@@ -49,6 +49,15 @@ mkdir -p logs
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
+export HF_CACHE_BASE="/gscratch/scrubbed/$USER/.cache/huggingface"
+export HF_HOME="$HF_CACHE_BASE"
+export HF_HUB_CACHE="$HF_CACHE_BASE/hub"
+export HUGGINGFACE_HUB_CACHE="$HF_HUB_CACHE"
+export HF_DATASETS_CACHE="$HF_CACHE_BASE/datasets"
+export TRANSFORMERS_CACHE="$HF_CACHE_BASE/transformers"
+export TORCH_HOME="/gscratch/scrubbed/$USER/.cache/torch"
+export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
 
 # =============================================================================
@@ -67,10 +76,10 @@ echo "Starting training for $LANG (split=$SPLIT)..."
 
 uv run python -m src.training.aft_xlsr "$LANG" \
     --split "$SPLIT" \
-    --num-epochs 10 \
-    --batch-size 4 \
-    --gradient-accumulation-steps 4 \
-    --learning-rate 5e-4 \
+    --num-epochs 15 \
+    --batch-size 2 \
+    --gradient-accumulation-steps 8 \
+    --learning-rate 1e-4 \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv
 
