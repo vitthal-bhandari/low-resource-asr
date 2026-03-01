@@ -6,19 +6,32 @@ architecture as MMS, so we can inject attention adapter layers via
 adapter_attn_dim in the config. This yields parameter-efficient fine-tuning
 identical to the MMS adapter approach.
 
+Optionally supports LM-decoded evaluation (--use-lm) using pyctcdecode beam
+search with an n-gram KenLM language model built from training transcriptions.
+LM decoding is applied only to final evaluation (val + test), not during
+training, so training speed is unaffected.
+
 The output of the script is:
 - A tokenizer for this specific language
 - Adapter layers + CTC head fine-tuned on your data
+- (Optional) KenLM ARPA file + Wav2Vec2ProcessorWithLM for LM decoding
 
 Usage:
     python -m src.training.aft_xlsr aln
     python -m src.training.aft_xlsr aln --num-epochs 10 --batch-size 4
     python -m src.training.aft_xlsr aln --save-to-hf --split one
+
+    # With LM decoding (auto-builds n-gram LM from training text):
+    python -m src.training.aft_xlsr aln --use-lm
+    python -m src.training.aft_xlsr aln --use-lm --lm-arpa-path /path/to/lm.arpa
+    python -m src.training.aft_xlsr aln --use-lm --beam-width 50 --lm-alpha 0.5 --lm-beta 1.0
+
+Dependencies for LM decoding:
+    pip install pyctcdecode kenlm
 """
 
 import argparse
 import json
-import os
 import re
 from dataclasses import dataclass
 from datetime import datetime
@@ -45,6 +58,14 @@ from transformers import (
 
 from src.config import config
 from src.data.download import LANGUAGES
+
+try:
+    from pyctcdecode import build_ctcdecoder
+    from transformers import Wav2Vec2ProcessorWithLM
+
+    _PYCTCDECODE_AVAILABLE = True
+except ImportError:
+    _PYCTCDECODE_AVAILABLE = False
 
 # XLS-R uses the same adapter file naming convention as MMS
 ADAPTER_SAFE_FILE = "adapter_{}.safetensors"
@@ -126,6 +147,36 @@ def parse_args() -> argparse.Namespace:
         default=None,
         metavar="PATH",
         help="Path to corpus_stats CSV with columns lang,p97_5_sec. Use p97.5 for current language as max length (drop longer utterances).",
+    )
+    parser.add_argument(
+        "--use-lm",
+        action="store_true",
+        help="Enable LM decoding for final evaluation (requires pyctcdecode). Training uses greedy decoding regardless.",
+    )
+    parser.add_argument(
+        "--lm-arpa-path",
+        type=str,
+        default=None,
+        metavar="PATH",
+        help="Path to a pre-built KenLM ARPA file. If omitted with --use-lm, one is built from training text (requires lmplz) or beam search with unigrams is used as fallback.",
+    )
+    parser.add_argument(
+        "--beam-width",
+        type=int,
+        default=100,
+        help="Beam width for LM decoding (default: 100). Only used with --use-lm.",
+    )
+    parser.add_argument(
+        "--lm-alpha",
+        type=float,
+        default=0.5,
+        help="LM weight (alpha) for beam search (default: 0.5).",
+    )
+    parser.add_argument(
+        "--lm-beta",
+        type=float,
+        default=1.0,
+        help="Word insertion bonus (beta) for beam search (default: 1.0).",
     )
     return parser.parse_args()
 
@@ -425,6 +476,153 @@ def create_compute_metrics_fn(processor: Wav2Vec2Processor):
     return compute_metrics
 
 
+################################################################################
+# LM decoding helpers (pyctcdecode / KenLM)
+
+
+def _build_arpa_from_text(
+    sentences: list[str], output_dir: Path, order: int = 3
+) -> Path | None:
+    """
+    Build an n-gram ARPA language model from training sentences using KenLM's lmplz.
+    Returns the ARPA path on success, None if lmplz is unavailable.
+    """
+    import shutil
+    import subprocess
+
+    lmplz = shutil.which("lmplz")
+    if lmplz is None:
+        return None
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    text_path = output_dir / "lm_train.txt"
+    arpa_path = output_dir / f"lm_{order}gram.arpa"
+
+    with open(text_path, "w", encoding="utf-8") as f:
+        for s in sentences:
+            cleaned = s.lower().strip()
+            if cleaned:
+                f.write(cleaned + "\n")
+
+    try:
+        with open(text_path, "r") as stdin, open(arpa_path, "w") as stdout:
+            subprocess.run(
+                [lmplz, "-o", str(order), "--discount_fallback"],
+                stdin=stdin,
+                stdout=stdout,
+                check=True,
+                capture_output=False,
+                stderr=subprocess.DEVNULL,
+            )
+        print(f"  Built {order}-gram ARPA LM: {arpa_path}")
+        return arpa_path
+    except (subprocess.CalledProcessError, OSError):
+        return None
+
+
+def _build_lm_processor(
+    processor: Wav2Vec2Processor,
+    sentences: list[str],
+    output_dir: Path,
+    arpa_path: str | None = None,
+    alpha: float = 0.5,
+    beta: float = 1.0,
+):
+    """
+    Build a Wav2Vec2ProcessorWithLM for beam-search decoding.
+
+    Priority: provided ARPA > auto-built ARPA > unigram-only beam search.
+    Returns (Wav2Vec2ProcessorWithLM, description_str) or (None, reason).
+    """
+    if not _PYCTCDECODE_AVAILABLE:
+        return None, "pyctcdecode not installed"
+
+    # Vocabulary in index order, with CTC-blank mapped to ""
+    vocab_dict = processor.tokenizer.get_vocab()
+    sorted_vocab = sorted(vocab_dict.items(), key=lambda item: item[1])
+    labels = []
+    for char, _idx in sorted_vocab:
+        if char == processor.tokenizer.pad_token:
+            labels.append("")
+        elif char == processor.tokenizer.word_delimiter_token:
+            labels.append(" ")
+        else:
+            labels.append(char)
+
+    # Unigrams from training text (word list)
+    unigrams = list(
+        {w for s in sentences for w in s.lower().strip().split() if w}
+    )
+
+    # Resolve ARPA file
+    resolved_arpa = None
+    if arpa_path is not None:
+        p = Path(arpa_path)
+        if p.exists():
+            resolved_arpa = str(p)
+            print(f"  Using provided ARPA: {resolved_arpa}")
+        else:
+            print(f"  WARNING: --lm-arpa-path {arpa_path} not found, attempting auto-build.")
+
+    if resolved_arpa is None:
+        built = _build_arpa_from_text(sentences, output_dir)
+        if built is not None:
+            resolved_arpa = str(built)
+
+    if resolved_arpa is not None:
+        decoder = build_ctcdecoder(
+            labels=labels,
+            kenlm_model=resolved_arpa,
+            unigrams=unigrams,
+            alpha=alpha,
+            beta=beta,
+        )
+        desc = f"n-gram LM ({resolved_arpa})"
+    else:
+        decoder = build_ctcdecoder(
+            labels=labels,
+            unigrams=unigrams,
+        )
+        desc = "beam search with unigrams (no ARPA)"
+
+    lm_processor = Wav2Vec2ProcessorWithLM(
+        feature_extractor=processor.feature_extractor,
+        tokenizer=processor.tokenizer,
+        decoder=decoder,
+    )
+    return lm_processor, desc
+
+
+def _decode_with_lm(
+    pred_logits: np.ndarray,
+    label_ids: np.ndarray,
+    processor: Wav2Vec2Processor,
+    lm_processor,
+    beam_width: int = 100,
+) -> tuple[list[str], list[str]]:
+    """
+    Decode predictions with LM beam search and return (pred_str, label_str).
+    """
+    pred_str = lm_processor.batch_decode(
+        pred_logits, beam_width=beam_width
+    ).text
+    label_ids_copy = label_ids.copy()
+    label_ids_copy[label_ids_copy == -100] = processor.tokenizer.pad_token_id
+    label_str = processor.batch_decode(label_ids_copy, group_tokens=False)
+    pred_str = [p.lower() for p in pred_str]
+    label_str = [l.lower() for l in label_str]
+    return pred_str, label_str
+
+
+def compute_wer_cer(pred_str: list[str], label_str: list[str]) -> dict:
+    """Compute WER and CER from pre-decoded prediction and label strings."""
+    wer_metric = load_metric("wer")
+    cer_metric = load_metric("cer")
+    wer = wer_metric.compute(predictions=pred_str, references=label_str)
+    cer = cer_metric.compute(predictions=pred_str, references=label_str)
+    return {"wer": wer, "cer": cer}
+
+
 def get_device() -> str:
     """Determine the best available device."""
     if torch.cuda.is_available():
@@ -580,6 +778,9 @@ def main():
     # Load and preprocess data (train/val from precomputed split TSVs)
     train, val = load_and_preprocess_data(lang, args.split)
     n_train, n_val = len(train), len(val)
+
+    # Snapshot training sentences for LM building (before columns are removed)
+    train_sentences: list[str] = train["sentence"]
 
     # Build vocabulary (flat dict — no language-key wrapper unlike MMS)
     print("\nBuilding vocabulary...")
@@ -752,19 +953,20 @@ def main():
     model.save_pretrained(str(output_dir))
     processor.save_pretrained(str(output_dir))
 
-    # Final evaluation (validation set)
-    print("\nFinal evaluation (validation):")
+    # Final evaluation (validation set — greedy decoding)
+    print("\nFinal evaluation (validation, greedy):")
     eval_results = trainer.evaluate()
     eval_wer = eval_results.get("eval_wer", float("nan"))
     eval_cer = eval_results.get("eval_cer", float("nan"))
-    print(f"  WER: {eval_wer:.4f}")
-    print(f"  CER: {eval_cer:.4f}")
+    print(f"  Greedy WER: {eval_wer:.4f}")
+    print(f"  Greedy CER: {eval_cer:.4f}")
 
-    # Evaluate on test set if available
+    # Evaluate on test set if available (greedy)
     test_wer, test_cer = float("nan"), float("nan")
     test_dataset = load_test_data(lang)
+    test_pred = None
     if test_dataset is not None and len(test_dataset) > 0:
-        print("\nEvaluating on test set...")
+        print("\nEvaluating on test set (greedy)...")
         cols_to_keep = ["audio", "sentence", "audio_file"]
         test_dataset = test_dataset.remove_columns(
             [c for c in test_dataset.column_names if c not in cols_to_keep]
@@ -778,8 +980,8 @@ def main():
         test_metrics = compute_metrics(test_pred)
         test_wer = test_metrics["wer"]
         test_cer = test_metrics["cer"]
-        print(f"  Test WER: {test_wer:.4f}")
-        print(f"  Test CER: {test_cer:.4f}")
+        print(f"  Test WER (greedy): {test_wer:.4f}")
+        print(f"  Test CER (greedy): {test_cer:.4f}")
         eval_results["test_wer"] = test_wer
         eval_results["test_cer"] = test_cer
 
@@ -800,6 +1002,77 @@ def main():
                 for af, ref, hyp in zip(audio_files, label_str, pred_str):
                     f.write(f"{af}\t{ref}\t{hyp}\n")
             print(f"  Transcriptions saved to: {trans_path}")
+
+    ############################################################################
+    # LM-decoded evaluation (only after training, does not affect training loop)
+    lm_val_wer, lm_val_cer = float("nan"), float("nan")
+    lm_test_wer, lm_test_cer = float("nan"), float("nan")
+
+    if args.use_lm:
+        print("\nBuilding LM decoder...")
+        lm_processor, lm_desc = _build_lm_processor(
+            processor,
+            train_sentences,
+            output_dir,
+            arpa_path=args.lm_arpa_path,
+            alpha=args.lm_alpha,
+            beta=args.lm_beta,
+        )
+        if lm_processor is None:
+            print(f"  WARNING: Could not build LM processor ({lm_desc}). Skipping LM evaluation.")
+        else:
+            print(f"  LM decoder: {lm_desc} (beam_width={args.beam_width})")
+
+            # LM eval on validation
+            print("\nFinal evaluation (validation, LM decoding)...")
+            val_pred = trainer.predict(val)
+            lm_pred_str, lm_label_str = _decode_with_lm(
+                val_pred.predictions, val_pred.label_ids, processor, lm_processor, args.beam_width
+            )
+            lm_val_metrics = compute_wer_cer(lm_pred_str, lm_label_str)
+            lm_val_wer = lm_val_metrics["wer"]
+            lm_val_cer = lm_val_metrics["cer"]
+            print(f"  LM WER: {lm_val_wer:.4f}")
+            print(f"  LM CER: {lm_val_cer:.4f}")
+            eval_results["eval_lm_wer"] = lm_val_wer
+            eval_results["eval_lm_cer"] = lm_val_cer
+
+            # LM eval on test
+            if test_pred is not None:
+                print("\nEvaluating on test set (LM decoding)...")
+                lm_test_pred_str, lm_test_label_str = _decode_with_lm(
+                    test_pred.predictions, test_pred.label_ids, processor, lm_processor, args.beam_width
+                )
+                lm_test_metrics = compute_wer_cer(lm_test_pred_str, lm_test_label_str)
+                lm_test_wer = lm_test_metrics["wer"]
+                lm_test_cer = lm_test_metrics["cer"]
+                print(f"  Test LM WER: {lm_test_wer:.4f}")
+                print(f"  Test LM CER: {lm_test_cer:.4f}")
+                eval_results["test_lm_wer"] = lm_test_wer
+                eval_results["test_lm_cer"] = lm_test_cer
+
+                if args.save_transcriptions:
+                    lm_pred_str_raw = lm_processor.batch_decode(
+                        test_pred.predictions, beam_width=args.beam_width
+                    ).text
+                    lm_pred_str_raw = [p.strip() for p in lm_pred_str_raw]
+                    label_ids_cp = test_pred.label_ids.copy()
+                    label_ids_cp[label_ids_cp == -100] = processor.tokenizer.pad_token_id
+                    lm_label_str_raw = processor.batch_decode(label_ids_cp, group_tokens=False)
+                    lm_label_str_raw = [l.strip() for l in lm_label_str_raw]
+                    audio_files = test_dataset["audio_file"]
+                    trans_dir = config.results_dir / "transcriptions"
+                    trans_dir.mkdir(parents=True, exist_ok=True)
+                    run_ts = run_start_time.strftime("%Y%m%d_%H%M%S")
+                    lm_trans_path = trans_dir / f"transcriptions_xlsr_lm_{lang}_{args.split}_{run_ts}.tsv"
+                    with open(lm_trans_path, "w", encoding="utf-8") as fh:
+                        fh.write("audio_file\treference\thypothesis\n")
+                        for af, ref, hyp in zip(audio_files, lm_label_str_raw, lm_pred_str_raw):
+                            fh.write(f"{af}\t{ref}\t{hyp}\n")
+                    print(f"  LM transcriptions saved to: {lm_trans_path}")
+
+            # Save the LM decoder artifacts alongside the model
+            lm_processor.save_pretrained(str(output_dir))
 
     results_path = output_dir / "eval_results.json"
     with open(results_path, "w") as f:
@@ -829,6 +1102,11 @@ def main():
         f"validation_cer={eval_cer:.6f}",
         f"test_wer={test_wer:.6f}",
         f"test_cer={test_cer:.6f}",
+        f"use_lm={args.use_lm}",
+        f"validation_lm_wer={lm_val_wer:.6f}",
+        f"validation_lm_cer={lm_val_cer:.6f}",
+        f"test_lm_wer={lm_test_wer:.6f}",
+        f"test_lm_cer={lm_test_cer:.6f}",
     ]
     if hasattr(trainer.state, "best_metric") and trainer.state.best_metric is not None:
         log_lines.append(f"best_validation_wer={trainer.state.best_metric:.6f}")
