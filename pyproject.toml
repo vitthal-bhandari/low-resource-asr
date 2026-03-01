@@ -12,27 +12,24 @@ dependencies = [
     "transformers>=4.36.0",
     "datasets[audio]>=2.16.0",   # [audio] pulls in torchcodec for decoding (needs Python 3.11–3.13 on some platforms)
     "accelerate>=0.25.0",
-    
     # Audio processing
     "librosa>=0.10.0",
     "soundfile>=0.12.0",
-    
     # Evaluation
     "jiwer>=3.0.0",
     "evaluate>=0.4.0",
-    
     # Model serialization
     "safetensors>=0.4.0",
     "huggingface_hub>=0.20.0",
-    
     # Data handling
     "pandas>=2.0.0",
     "numpy>=1.24.0",
-    
     # Utilities
     "tqdm>=4.66.0",
     "python-dotenv>=1.0.0",
     "requests>=2.31.0",
+    "pyctcdecode>=0.5.0",
+    "kenlm>=0.3.0",
 ]
 
 [project.optional-dependencies]

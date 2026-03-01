@@ -1,0 +1,20 @@
+# XLS-R 1B Adapter Fine-tuning Run Log
+run_start=2026-02-28T11:51:48.420501
+run_end=2026-02-28T11:56:22.328041
+model=facebook/wav2vec2-xls-r-1b
+adapter_attn_dim=256
+language=lth
+split=one
+language_name=Thur
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/one
+num_train_samples=90
+num_validation_samples=52
+num_epochs=10
+batch_size=4
+gradient_accumulation_steps=4
+effective_batch_size=16
+learning_rate=0.0005
+validation_wer=1.000000
+validation_cer=1.000000
+test_wer=1.000000
+test_cer=1.000000

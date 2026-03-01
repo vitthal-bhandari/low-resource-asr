@@ -1,0 +1,75 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: lth  Split: one
+Job ID: 33580002
+Node: g3107
+GPUs: 0
+Start time: Sat Feb 28 11:48:41 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for lth (split=one)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for lth (Thur) split=one
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/one
+Device: cuda
+Push to HF: False
+
+Loading data for lth (Thur) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/train-one_lth.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
+  Train: 90 samples (1.00 h)
+  Validation: 52 samples (0.27 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/one/vocab.json (53 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for lth): 28.3s
+  Dropped 19 train, 0 val samples (over 28.3s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,724,343 / 994,221,751 (3.19%)
+
+Training configuration:
+  Epochs: 10
+  Batch size: 4
+  Gradient accumulation: 4
+  Effective batch size: 16
+  Learning rate: 0.0005
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '28.13', 'grad_norm': '2.077', 'learning_rate': '0.000245', 'epoch': '10'}
+{'train_runtime': '150.9', 'train_samples_per_second': '4.705', 'train_steps_per_second': '0.331', 'train_loss': '28.13', 'epoch': '10'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/one/adapter_lth.safetensors
+  Saving full model...
+
+Final evaluation (validation):
+  WER: 1.0000
+  CER: 1.0000
+
+Evaluating on test set...
+  Test WER: 1.0000
+  Test CER: 1.0000
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lth_one_20260228_115148.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_one_lth_20260228_115148.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/one
+
+==========================================
+Training complete!
+End time: Sat Feb 28 11:56:30 PST 2026
+==========================================

@@ -81,7 +81,8 @@ uv run python -m src.training.aft_xlsr "$LANG" \
     --gradient-accumulation-steps 8 \
     --learning-rate 1e-4 \
     --save-transcriptions \
-    --max-audio-sec-from-csv corpus_stats.csv
+    --max-audio-sec-from-csv corpus_stats.csv \
+    --use-lm
 
 echo ""
 echo "=========================================="
