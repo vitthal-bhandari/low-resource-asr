@@ -104,7 +104,7 @@ echo ""
 
 echo "Starting training for $LANG (split=$SPLIT)..."
 
-uv run python -m src.training.aft_xlsr "$LANG" \
+uv run python -m src.training.aft_mms "$LANG" \
     --split "$SPLIT" \
     --num-epochs 15 \
     --batch-size 2 \
