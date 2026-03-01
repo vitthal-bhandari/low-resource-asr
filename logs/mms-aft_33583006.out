@@ -1,0 +1,123 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: lth  Split: all
+Job ID: 33583006
+Node: g3110
+GPUs: 0
+Start time: Sat Feb 28 18:26:49 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for lth (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for lth (Thur) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all
+Device: cuda
+Push to HF: False
+
+Loading data for lth (Thur) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/train-all_lth.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
+  Train: 1434 samples (7.49 h)
+  Validation: 52 samples (0.27 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all/vocab.json (63 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for lth): 28.3s
+  Dropped 64 train, 0 val samples (over 28.3s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,737,153 / 994,234,561 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '114.1', 'grad_norm': '29.59', 'learning_rate': '4.9e-05', 'epoch': '0.5839'}
+{'loss': '45.65', 'grad_norm': '15.9', 'learning_rate': '9.9e-05', 'epoch': '1.164'}
+{'eval_loss': '4.376', 'eval_wer': '1', 'eval_cer': '0.9772', 'eval_runtime': '5.567', 'eval_samples_per_second': '9.34', 'eval_steps_per_second': '4.67', 'epoch': '1.164'}
+{'loss': '53.11', 'grad_norm': '55.75', 'learning_rate': '9.588e-05', 'epoch': '1.747'}
+{'loss': '32.51', 'grad_norm': '29.46', 'learning_rate': '9.168e-05', 'epoch': '2.327'}
+{'eval_loss': '3.149', 'eval_wer': '1', 'eval_cer': '0.9585', 'eval_runtime': '5.315', 'eval_samples_per_second': '9.784', 'eval_steps_per_second': '4.892', 'epoch': '2.327'}
+{'loss': '37.76', 'grad_norm': '20', 'learning_rate': '8.748e-05', 'epoch': '2.911'}
+{'loss': '28.74', 'grad_norm': '175.3', 'learning_rate': '8.328e-05', 'epoch': '3.491'}
+{'eval_loss': '3.074', 'eval_wer': '1', 'eval_cer': '0.971', 'eval_runtime': '5.347', 'eval_samples_per_second': '9.726', 'eval_steps_per_second': '4.863', 'epoch': '3.491'}
+{'loss': '23.88', 'grad_norm': '8.789', 'learning_rate': '7.908e-05', 'epoch': '4.07'}
+{'loss': '23.66', 'grad_norm': '42.1', 'learning_rate': '7.487e-05', 'epoch': '4.654'}
+{'eval_loss': '2.928', 'eval_wer': '1', 'eval_cer': '0.9953', 'eval_runtime': '5.38', 'eval_samples_per_second': '9.665', 'eval_steps_per_second': '4.833', 'epoch': '4.654'}
+{'loss': '22.74', 'grad_norm': '13.97', 'learning_rate': '7.067e-05', 'epoch': '5.234'}
+{'loss': '17.96', 'grad_norm': '13.58', 'learning_rate': '6.647e-05', 'epoch': '5.818'}
+{'eval_loss': '1.839', 'eval_wer': '1', 'eval_cer': '0.7954', 'eval_runtime': '5.337', 'eval_samples_per_second': '9.744', 'eval_steps_per_second': '4.872', 'epoch': '5.818'}
+{'loss': '11.25', 'grad_norm': '9.738', 'learning_rate': '6.227e-05', 'epoch': '6.397'}
+{'loss': '8.572', 'grad_norm': '19.48', 'learning_rate': '5.807e-05', 'epoch': '6.981'}
+{'eval_loss': '1.085', 'eval_wer': '0.7938', 'eval_cer': '0.2981', 'eval_runtime': '5.308', 'eval_samples_per_second': '9.796', 'eval_steps_per_second': '4.898', 'epoch': '6.981'}
+{'loss': '7.29', 'grad_norm': '11.77', 'learning_rate': '5.387e-05', 'epoch': '7.561'}
+{'loss': '6.549', 'grad_norm': '7.778', 'learning_rate': '4.966e-05', 'epoch': '8.14'}
+{'eval_loss': '0.9225', 'eval_wer': '0.711', 'eval_cer': '0.2695', 'eval_runtime': '8.586', 'eval_samples_per_second': '6.057', 'eval_steps_per_second': '3.028', 'epoch': '8.14'}
+{'loss': '5.769', 'grad_norm': '10.8', 'learning_rate': '4.546e-05', 'epoch': '8.724'}
+{'loss': '5.604', 'grad_norm': '7.62', 'learning_rate': '4.126e-05', 'epoch': '9.304'}
+{'eval_loss': '0.8507', 'eval_wer': '0.6968', 'eval_cer': '0.26', 'eval_runtime': '8.953', 'eval_samples_per_second': '5.808', 'eval_steps_per_second': '2.904', 'epoch': '9.304'}
+{'loss': '5.267', 'grad_norm': '9.732', 'learning_rate': '3.706e-05', 'epoch': '9.888'}
+{'loss': '4.806', 'grad_norm': '8.891', 'learning_rate': '3.286e-05', 'epoch': '10.47'}
+{'eval_loss': '0.8322', 'eval_wer': '0.6347', 'eval_cer': '0.2477', 'eval_runtime': '10.98', 'eval_samples_per_second': '4.735', 'eval_steps_per_second': '2.368', 'epoch': '10.47'}
+{'loss': '4.699', 'grad_norm': '8.51', 'learning_rate': '2.866e-05', 'epoch': '11.05'}
+{'loss': '4.569', 'grad_norm': '9.024', 'learning_rate': '2.445e-05', 'epoch': '11.63'}
+{'eval_loss': '0.8185', 'eval_wer': '0.6464', 'eval_cer': '0.2508', 'eval_runtime': '13.72', 'eval_samples_per_second': '3.79', 'eval_steps_per_second': '1.895', 'epoch': '11.63'}
+{'loss': '4.35', 'grad_norm': '8.479', 'learning_rate': '2.025e-05', 'epoch': '12.21'}
+{'loss': '4.2', 'grad_norm': '9.928', 'learning_rate': '1.605e-05', 'epoch': '12.79'}
+{'eval_loss': '0.7977', 'eval_wer': '0.5743', 'eval_cer': '0.2228', 'eval_runtime': '12.18', 'eval_samples_per_second': '4.271', 'eval_steps_per_second': '2.135', 'epoch': '12.79'}
+{'loss': '4.317', 'grad_norm': '8.206', 'learning_rate': '1.185e-05', 'epoch': '13.37'}
+{'loss': '4.031', 'grad_norm': '10.52', 'learning_rate': '7.647e-06', 'epoch': '13.96'}
+{'eval_loss': '0.8126', 'eval_wer': '0.6297', 'eval_cer': '0.2447', 'eval_runtime': '13.15', 'eval_samples_per_second': '3.954', 'eval_steps_per_second': '1.977', 'epoch': '13.96'}
+{'loss': '4.014', 'grad_norm': '8.746', 'learning_rate': '3.445e-06', 'epoch': '14.54'}
+{'train_runtime': '3419', 'train_samples_per_second': '6.011', 'train_steps_per_second': '0.377', 'train_loss': '18.93', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all/adapter_lth.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.6947
+  Greedy CER: 0.2599
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6674
+  Test CER (greedy): 0.2425
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lth_all_20260228_182924.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.6531
+  LM CER: 0.2597
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.6252
+  Test LM CER: 0.2379
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_lth_all_20260228_182924.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_lth_20260228_182924.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/lth/all
+
+==========================================
+Training complete!
+End time: Sat Feb 28 19:33:42 PST 2026
+==========================================

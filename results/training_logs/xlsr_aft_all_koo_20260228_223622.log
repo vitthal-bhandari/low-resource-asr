@@ -1,0 +1,26 @@
+# XLS-R 1B Adapter Fine-tuning Run Log
+run_start=2026-02-28T22:36:22.128953
+run_end=2026-02-28T23:56:50.685722
+model=facebook/wav2vec2-xls-r-1b
+adapter_attn_dim=256
+language=koo
+split=all
+language_name=Konzo
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/koo/all
+num_train_samples=1739
+num_validation_samples=99
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.0001
+validation_wer=0.991583
+validation_cer=0.410279
+test_wer=0.955007
+test_cer=0.317848
+use_lm=True
+validation_lm_wer=0.987174
+validation_lm_cer=0.421544
+test_lm_wer=0.943396
+test_lm_cer=0.352973
+best_validation_wer=0.989579

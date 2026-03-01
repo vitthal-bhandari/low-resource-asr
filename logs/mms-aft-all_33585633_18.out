@@ -1,0 +1,99 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: top  Split: all (task 18 of 21)
+Job ID: 33587327 (Array Job: 33585633)
+Node: g3100
+GPUs: 0
+Start time: Sun Mar  1 01:07:42 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for top (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for top (Papantla Totonac) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-top
+
+Loading data for top (Papantla Totonac) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: 189 samples (5.87 h)
+  Validation: 59 samples (1.68 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/vocab.json (74 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for top): 253.01s
+  Dropped 8 train, 0 val samples (over 253.01s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,751,244 / 994,248,652 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '349.4', 'grad_norm': '47.39', 'learning_rate': '4.9e-05', 'epoch': '4.176'}
+{'loss': '25.81', 'grad_norm': '23.66', 'learning_rate': '9.9e-05', 'epoch': '8.352'}
+{'eval_loss': '15.05', 'eval_wer': '1', 'eval_cer': '0.9995', 'eval_runtime': '38.74', 'eval_samples_per_second': '1.523', 'eval_steps_per_second': '0.774', 'epoch': '8.352'}
+{'loss': '20.44', 'grad_norm': '12.88', 'learning_rate': '3.875e-05', 'epoch': '12.53'}
+{'train_runtime': '4183', 'train_samples_per_second': '0.649', 'train_steps_per_second': '0.043', 'train_loss': '112.9', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/adapter_top.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 1.0000
+  Greedy CER: 0.8564
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 1.0000
+  Test CER (greedy): 0.8630
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_top_all_20260301_010818.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 1.0013
+  LM CER: 0.7727
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 1.0791
+  Test LM CER: 0.7047
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_top_all_20260301_010818.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_top_20260301_010818.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-top
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-top
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-top
+
+==========================================
+Training complete for top!
+End time: Sun Mar  1 02:27:27 PST 2026
+==========================================
