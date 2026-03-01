@@ -1,0 +1,113 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: meh  Split: all (task 11 of 21)
+Job ID: 33586593 (Array Job: 33585633)
+Node: g3106
+GPUs: 0
+Start time: Sat Feb 28 22:52:01 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for meh (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for meh (Southwestern Tlaxiaco Mixtec) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-meh
+
+Loading data for meh (Southwestern Tlaxiaco Mixtec) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
+  Train: 666 samples (6.64 h)
+  Validation: 93 samples (1.00 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/vocab.json (62 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for meh): 118.16s
+  Dropped 17 train, 0 val samples (over 118.16s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,735,872 / 994,233,280 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '325.1', 'grad_norm': '84.13', 'learning_rate': '4.9e-05', 'epoch': '1.222'}
+{'loss': '25.92', 'grad_norm': '5.133', 'learning_rate': '9.9e-05', 'epoch': '2.443'}
+{'eval_loss': '2.792', 'eval_wer': '1', 'eval_cer': '1', 'eval_runtime': '21.02', 'eval_samples_per_second': '4.425', 'eval_steps_per_second': '2.236', 'epoch': '2.443'}
+{'loss': '20.13', 'grad_norm': '11.49', 'learning_rate': '9.049e-05', 'epoch': '3.665'}
+{'loss': '11.74', 'grad_norm': '14.06', 'learning_rate': '8.078e-05', 'epoch': '4.886'}
+{'eval_loss': '0.9724', 'eval_wer': '0.7847', 'eval_cer': '0.3036', 'eval_runtime': '19.8', 'eval_samples_per_second': '4.696', 'eval_steps_per_second': '2.373', 'epoch': '4.886'}
+{'loss': '6.844', 'grad_norm': '16.23', 'learning_rate': '7.107e-05', 'epoch': '6.098'}
+{'loss': '5.462', 'grad_norm': '7.684', 'learning_rate': '6.136e-05', 'epoch': '7.32'}
+{'eval_loss': '0.7555', 'eval_wer': '0.5975', 'eval_cer': '0.2063', 'eval_runtime': '19.39', 'eval_samples_per_second': '4.796', 'eval_steps_per_second': '2.424', 'epoch': '7.32'}
+{'loss': '4.999', 'grad_norm': '4.036', 'learning_rate': '5.165e-05', 'epoch': '8.542'}
+{'loss': '4.268', 'grad_norm': '5.193', 'learning_rate': '4.194e-05', 'epoch': '9.763'}
+{'eval_loss': '0.7145', 'eval_wer': '0.5756', 'eval_cer': '0.1999', 'eval_runtime': '19.6', 'eval_samples_per_second': '4.744', 'eval_steps_per_second': '2.398', 'epoch': '9.763'}
+{'loss': '3.825', 'grad_norm': '6.573', 'learning_rate': '3.223e-05', 'epoch': '10.98'}
+{'loss': '3.488', 'grad_norm': '8.701', 'learning_rate': '2.252e-05', 'epoch': '12.2'}
+{'eval_loss': '0.7139', 'eval_wer': '0.5481', 'eval_cer': '0.1866', 'eval_runtime': '19.44', 'eval_samples_per_second': '4.783', 'eval_steps_per_second': '2.417', 'epoch': '12.2'}
+{'loss': '3.26', 'grad_norm': '8.343', 'learning_rate': '1.282e-05', 'epoch': '13.42'}
+{'loss': '3.077', 'grad_norm': '5.488', 'learning_rate': '3.107e-06', 'epoch': '14.64'}
+{'eval_loss': '0.7334', 'eval_wer': '0.5576', 'eval_cer': '0.1907', 'eval_runtime': '19.45', 'eval_samples_per_second': '4.782', 'eval_steps_per_second': '2.417', 'epoch': '14.64'}
+{'train_runtime': '3495', 'train_samples_per_second': '2.785', 'train_steps_per_second': '0.176', 'train_loss': '34.07', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/adapter_meh.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.5753
+  Greedy CER: 0.1998
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6071
+  Test CER (greedy): 0.2250
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_meh_all_20260228_225332.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.5444
+  LM CER: 0.1872
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.5878
+  Test LM CER: 0.2129
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_meh_all_20260228_225332.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_meh_20260228_225332.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-meh
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-meh
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-meh
+
+==========================================
+Training complete for meh!
+End time: Sat Feb 28 23:59:24 PST 2026
+==========================================

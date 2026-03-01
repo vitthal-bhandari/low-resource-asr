@@ -1,0 +1,117 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: bew  Split: all (task 1 of 21)
+Job ID: 33585661 (Array Job: 33585633)
+Node: g3100
+GPUs: 0
+Start time: Sat Feb 28 21:22:21 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for bew (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for bew (Betawi) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bew/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-bew
+
+Loading data for bew (Betawi) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-all_bew.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
+  Train: 814 samples (5.79 h)
+  Validation: 240 samples (2.23 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bew/all/vocab.json (74 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for bew): 70.47s
+  Dropped 8 train, 14 val samples (over 70.47s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,751,244 / 994,248,652 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '93.21', 'grad_norm': '22.98', 'learning_rate': '4.9e-05', 'epoch': '0.9926'}
+{'loss': '23.93', 'grad_norm': '17.6', 'learning_rate': '9.9e-05', 'epoch': '1.973'}
+{'eval_loss': '2.974', 'eval_wer': '1', 'eval_cer': '1', 'eval_runtime': '35.32', 'eval_samples_per_second': '6.399', 'eval_steps_per_second': '3.2', 'epoch': '1.973'}
+{'loss': '22.35', 'grad_norm': '23.79', 'learning_rate': '9.263e-05', 'epoch': '2.953'}
+{'loss': '13.68', 'grad_norm': '6.765', 'learning_rate': '8.511e-05', 'epoch': '3.933'}
+{'eval_loss': '2.427', 'eval_wer': '1', 'eval_cer': '0.9398', 'eval_runtime': '35.41', 'eval_samples_per_second': '6.382', 'eval_steps_per_second': '3.191', 'epoch': '3.933'}
+{'loss': '8.389', 'grad_norm': '10.82', 'learning_rate': '7.759e-05', 'epoch': '4.913'}
+{'loss': '6.883', 'grad_norm': '6.276', 'learning_rate': '7.008e-05', 'epoch': '5.893'}
+{'eval_loss': '2.194', 'eval_wer': '1', 'eval_cer': '0.8107', 'eval_runtime': '35.7', 'eval_samples_per_second': '6.331', 'eval_steps_per_second': '3.166', 'epoch': '5.893'}
+{'loss': '5.994', 'grad_norm': '8.773', 'learning_rate': '6.256e-05', 'epoch': '6.873'}
+{'loss': '5.369', 'grad_norm': '6.068', 'learning_rate': '5.504e-05', 'epoch': '7.854'}
+{'eval_loss': '2.036', 'eval_wer': '0.9985', 'eval_cer': '0.7216', 'eval_runtime': '35.72', 'eval_samples_per_second': '6.327', 'eval_steps_per_second': '3.163', 'epoch': '7.854'}
+{'loss': '5.043', 'grad_norm': '5.262', 'learning_rate': '4.752e-05', 'epoch': '8.834'}
+{'loss': '4.762', 'grad_norm': '7.598', 'learning_rate': '4e-05', 'epoch': '9.814'}
+{'eval_loss': '2.494', 'eval_wer': '0.9998', 'eval_cer': '0.8548', 'eval_runtime': '35.97', 'eval_samples_per_second': '6.283', 'eval_steps_per_second': '3.141', 'epoch': '9.814'}
+{'loss': '4.404', 'grad_norm': '5.212', 'learning_rate': '3.248e-05', 'epoch': '10.79'}
+{'loss': '4.269', 'grad_norm': '5.732', 'learning_rate': '2.496e-05', 'epoch': '11.77'}
+{'eval_loss': '2.505', 'eval_wer': '0.9992', 'eval_cer': '0.8171', 'eval_runtime': '35.92', 'eval_samples_per_second': '6.291', 'eval_steps_per_second': '3.146', 'epoch': '11.77'}
+{'loss': '4.102', 'grad_norm': '6.674', 'learning_rate': '1.744e-05', 'epoch': '12.75'}
+{'loss': '3.906', 'grad_norm': '4.754', 'learning_rate': '9.925e-06', 'epoch': '13.73'}
+{'eval_loss': '2.591', 'eval_wer': '0.9996', 'eval_cer': '0.8384', 'eval_runtime': '39.38', 'eval_samples_per_second': '5.739', 'eval_steps_per_second': '2.87', 'epoch': '13.73'}
+{'loss': '3.838', 'grad_norm': '9.277', 'learning_rate': '2.406e-06', 'epoch': '14.71'}
+{'train_runtime': '3386', 'train_samples_per_second': '3.571', 'train_steps_per_second': '0.226', 'train_loss': '13.81', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bew/all/adapter_bew.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.9985
+  Greedy CER: 0.7220
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.9972
+  Test CER (greedy): 0.6926
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_bew_all_20260228_212747.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.9971
+  LM CER: 0.6853
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.9962
+  Test LM CER: 0.6660
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_bew_all_20260228_212747.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bew/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_bew_20260228_212747.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-bew
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-bew
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bew/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-bew
+
+==========================================
+Training complete for bew!
+End time: Sat Feb 28 22:35:26 PST 2026
+==========================================
