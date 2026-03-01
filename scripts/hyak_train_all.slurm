@@ -112,7 +112,8 @@ uv run python -m src.training.aft_xlsr "$LANG" \
     --learning-rate 1e-4 \
     --save-to-hf \
     --save-transcriptions \
-    --max-audio-sec-from-csv corpus_stats.csv
+    --max-audio-sec-from-csv corpus_stats.csv \
+    --use-lm
 
 echo ""
 echo "=========================================="
