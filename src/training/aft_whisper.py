@@ -348,6 +348,7 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
     processor: Any
     decoder_start_token_id: int
+    input_dtype: torch.dtype | None = None
 
     def __call__(
         self,
@@ -359,6 +360,8 @@ class DataCollatorSpeechSeq2SeqWithPadding:
         batch = self.processor.feature_extractor.pad(
             input_features, return_tensors="pt"
         )
+        if self.input_dtype is not None:
+            batch["input_features"] = batch["input_features"].to(dtype=self.input_dtype)
 
         label_features = [{"input_ids": feature["labels"]} for feature in features]
         labels_batch = self.processor.tokenizer.pad(
@@ -707,6 +710,7 @@ def main():
     data_collator = DataCollatorSpeechSeq2SeqWithPadding(
         processor=processor,
         decoder_start_token_id=model.config.decoder_start_token_id,
+        input_dtype=model.dtype,
     )
 
     ############################################################################
