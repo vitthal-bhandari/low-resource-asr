@@ -109,7 +109,7 @@ uv run python -m src.training.aft_mms "$LANG" \
     --num-epochs 15 \
     --batch-size 2 \
     --gradient-accumulation-steps 8 \
-    --learning-rate 1e-4 \
+    --learning-rate 1e-3 \
     --save-to-hf \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
