@@ -1,0 +1,37 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: meh  Split: all (task 11 of 21)
+Job ID: 33603797 (Array Job: 33600007)
+Node: g3109
+GPUs: 0
+Start time: Mon Mar  2 03:14:47 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for meh (split=all)...
+============================================================
+MMS Adapter Fine-tuning for meh (Southwestern Tlaxiaco Mixtec) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-meh
+
+Loading data for meh (Southwestern Tlaxiaco Mixtec) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
+  Train: 666 samples (6.64 h)
+  Validation: 93 samples (1.00 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/all/vocab.json (62 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for meh): 118.16s
+  Dropped 17 train, 0 val samples (over 118.16s).
+
+Loading MMS model...
+  Trainable parameters: 2,233,152 / 964,730,560 (0.23%)

@@ -1,0 +1,114 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: el-CY  Split: all (task 4 of 21)
+Job ID: 33603689 (Array Job: 33600007)
+Node: g3103
+GPUs: 0
+Start time: Mon Mar  2 02:30:12 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for el-CY (split=all)...
+============================================================
+MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 782 samples (7.15 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/vocab.json (141 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 29 train, 0 val samples (over 79.43s).
+
+Loading MMS model...
+  Trainable parameters: 2,334,351 / 964,831,759 (0.24%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '121', 'grad_norm': '38.04', 'learning_rate': '0.00049', 'epoch': '1.042'}
+{'loss': '59.41', 'grad_norm': '59.82', 'learning_rate': '0.00099', 'epoch': '2.085'}
+{'eval_loss': '3.521', 'eval_wer': '0.9959', 'eval_cer': '0.9934', 'eval_runtime': '29.05', 'eval_samples_per_second': '9.535', 'eval_steps_per_second': '4.785', 'epoch': '2.085'}
+{'loss': '26.94', 'grad_norm': '10.7', 'learning_rate': '0.000921', 'epoch': '3.127'}
+{'loss': '15.8', 'grad_norm': '10.56', 'learning_rate': '0.0008403', 'epoch': '4.17'}
+{'eval_loss': '1.598', 'eval_wer': '0.5952', 'eval_cer': '0.2002', 'eval_runtime': '28.6', 'eval_samples_per_second': '9.685', 'eval_steps_per_second': '4.86', 'epoch': '4.17'}
+{'loss': '12.32', 'grad_norm': '6.313', 'learning_rate': '0.0007597', 'epoch': '5.212'}
+{'loss': '15.6', 'grad_norm': '10.15', 'learning_rate': '0.000679', 'epoch': '6.255'}
+{'eval_loss': '1.513', 'eval_wer': '0.523', 'eval_cer': '0.1747', 'eval_runtime': '28.75', 'eval_samples_per_second': '9.635', 'eval_steps_per_second': '4.835', 'epoch': '6.255'}
+{'loss': '11.85', 'grad_norm': '4.935', 'learning_rate': '0.0005984', 'epoch': '7.297'}
+{'loss': '13.85', 'grad_norm': '4.894', 'learning_rate': '0.0005177', 'epoch': '8.34'}
+{'eval_loss': '1.537', 'eval_wer': '0.4791', 'eval_cer': '0.1605', 'eval_runtime': '28.96', 'eval_samples_per_second': '9.564', 'eval_steps_per_second': '4.799', 'epoch': '8.34'}
+{'loss': '16', 'grad_norm': '63.57', 'learning_rate': '0.0004371', 'epoch': '9.382'}
+{'loss': '15.36', 'grad_norm': '13', 'learning_rate': '0.0003565', 'epoch': '10.42'}
+{'eval_loss': '1.449', 'eval_wer': '0.4682', 'eval_cer': '0.1579', 'eval_runtime': '29.09', 'eval_samples_per_second': '9.522', 'eval_steps_per_second': '4.778', 'epoch': '10.42'}
+{'loss': '5.154', 'grad_norm': '5.8', 'learning_rate': '0.0002758', 'epoch': '11.47'}
+{'loss': '16.58', 'grad_norm': '16.52', 'learning_rate': '0.0001952', 'epoch': '12.51'}
+{'eval_loss': '1.435', 'eval_wer': '0.4519', 'eval_cer': '0.1511', 'eval_runtime': '29.06', 'eval_samples_per_second': '9.531', 'eval_steps_per_second': '4.783', 'epoch': '12.51'}
+{'loss': '10.37', 'grad_norm': '4.365', 'learning_rate': '0.0001145', 'epoch': '13.55'}
+{'loss': '9.882', 'grad_norm': '18.32', 'learning_rate': '3.387e-05', 'epoch': '14.59'}
+{'eval_loss': '1.512', 'eval_wer': '0.4435', 'eval_cer': '0.1484', 'eval_runtime': '29.16', 'eval_samples_per_second': '9.5', 'eval_steps_per_second': '4.767', 'epoch': '14.59'}
+{'train_runtime': '3888', 'train_samples_per_second': '2.905', 'train_steps_per_second': '0.185', 'train_loss': '24.48', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/adapter.el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4514
+  Greedy CER: 0.1510
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.4642
+  Test CER (greedy): 0.1442
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_all_20260302_023534.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.4474
+  LM CER: 0.1493
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.4577
+  Test LM CER: 0.1405
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_el-CY_all_20260302_023534.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_el-CY_20260302_023534.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-el-CY
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-el-CY
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-el-CY
+
+==========================================
+Training complete for el-CY!
+End time: Mon Mar  2 03:54:30 PST 2026
+==========================================

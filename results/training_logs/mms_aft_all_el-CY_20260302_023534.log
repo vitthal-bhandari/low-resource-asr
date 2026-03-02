@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-02T02:35:34.314195
+run_end=2026-03-02T03:52:53.992351
+model=facebook/mms-1b-all
+language=el-CY
+split=all
+language_name=Cypriot Greek
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
+num_train_samples=782
+num_validation_samples=277
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.451413
+validation_cer=0.151030
+test_wer=0.464202
+test_cer=0.144220
+use_lm=True
+validation_lm_wer=0.447418
+validation_lm_cer=0.149265
+test_lm_wer=0.457651
+test_lm_cer=0.140516
+best_validation_wer=0.443523
