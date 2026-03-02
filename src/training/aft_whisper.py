@@ -675,19 +675,34 @@ def main():
             )
 
     ############################################################################
-    # Load pretrained Whisper model
-    print(f"\nLoading Whisper model ({BASE_MODEL})...")
-    model = WhisperForConditionalGeneration.from_pretrained(BASE_MODEL)
+    # Determine training precision first (needed for model loading dtype)
+    use_fp16 = torch.cuda.is_available()
+    use_bf16 = False
+    if torch.cuda.is_available() and torch.cuda.is_bf16_supported():
+        use_bf16 = True
+        use_fp16 = False
 
-    # Configure generation settings
+    if use_bf16:
+        compute_dtype = torch.bfloat16
+    elif use_fp16:
+        compute_dtype = torch.float16
+    else:
+        compute_dtype = torch.float32
+
+    ############################################################################
+    # Load pretrained Whisper model in the matching dtype to avoid
+    # "Input type (float) and bias type (c10::Half) should be the same"
+    print(f"\nLoading Whisper model ({BASE_MODEL}) in {compute_dtype}...")
+    model = WhisperForConditionalGeneration.from_pretrained(
+        BASE_MODEL, torch_dtype=compute_dtype
+    )
+
     model.generation_config.language = whisper_language
     model.generation_config.task = "transcribe"
     model.generation_config.forced_decoder_ids = None
 
-    # Optionally freeze the encoder (only decoder is fine-tuned)
     if args.freeze_encoder:
         model.freeze_encoder()
-        # Disable gradient checkpointing on the frozen encoder to save memory
         model.model.encoder.gradient_checkpointing = False
         print("  Encoder frozen — only decoder parameters are trainable.")
 
@@ -707,11 +722,6 @@ def main():
 
     ############################################################################
     # Training configuration
-    use_fp16 = torch.cuda.is_available()
-    use_bf16 = False
-    if torch.cuda.is_available() and torch.cuda.is_bf16_supported():
-        use_bf16 = True
-        use_fp16 = False
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=str(output_dir),
