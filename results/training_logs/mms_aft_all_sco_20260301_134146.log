@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-01T13:41:46.172160
+run_end=2026-03-01T15:15:32.549102
+model=facebook/mms-1b-all
+language=sco
+split=all
+language_name=Scots
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/all
+num_train_samples=423
+num_validation_samples=37
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.0001
+validation_wer=0.999170
+validation_cer=0.910745
+test_wer=0.998050
+test_cer=0.890560
+use_lm=True
+validation_lm_wer=1.460568
+validation_lm_cer=0.797477
+test_lm_wer=1.328784
+test_lm_cer=0.767726
+best_validation_wer=0.999170

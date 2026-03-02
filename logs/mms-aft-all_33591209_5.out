@@ -1,0 +1,117 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: hch  Split: all (task 5 of 21)
+Job ID: 33592455 (Array Job: 33591209)
+Node: g3095
+GPUs: 0
+Start time: Sun Mar  1 14:35:38 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for hch (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for hch (Wixárika) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/hch/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-hch
+
+Loading data for hch (Wixárika) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-all_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 844 samples (6.27 h)
+  Validation: 310 samples (0.97 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/hch/all/vocab.json (78 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for hch): 70.46s
+  Dropped 33 train, 0 val samples (over 70.46s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,756,368 / 994,253,776 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '58.97', 'grad_norm': '29.99', 'learning_rate': '0.00049', 'epoch': '0.9852'}
+{'loss': '24.31', 'grad_norm': '63.97', 'learning_rate': '0.00099', 'epoch': '1.966'}
+{'eval_loss': '3.059', 'eval_wer': '1', 'eval_cer': '0.9999', 'eval_runtime': '31.58', 'eval_samples_per_second': '9.817', 'eval_steps_per_second': '4.909', 'epoch': '1.966'}
+{'loss': '18.3', 'grad_norm': '15.32', 'learning_rate': '0.0009263', 'epoch': '2.946'}
+{'loss': '7.102', 'grad_norm': '7.157', 'learning_rate': '0.0008511', 'epoch': '3.926'}
+{'eval_loss': '0.7256', 'eval_wer': '0.8576', 'eval_cer': '0.2104', 'eval_runtime': '31.65', 'eval_samples_per_second': '9.796', 'eval_steps_per_second': '4.898', 'epoch': '3.926'}
+{'loss': '4.748', 'grad_norm': '4.443', 'learning_rate': '0.0007759', 'epoch': '4.906'}
+{'loss': '3.472', 'grad_norm': '3.546', 'learning_rate': '0.0007008', 'epoch': '5.887'}
+{'eval_loss': '0.5615', 'eval_wer': '0.6654', 'eval_cer': '0.1434', 'eval_runtime': '31.82', 'eval_samples_per_second': '9.742', 'eval_steps_per_second': '4.871', 'epoch': '5.887'}
+{'loss': '2.711', 'grad_norm': '3.562', 'learning_rate': '0.0006256', 'epoch': '6.867'}
+{'loss': '2.132', 'grad_norm': '3.151', 'learning_rate': '0.0005504', 'epoch': '7.847'}
+{'eval_loss': '0.6282', 'eval_wer': '0.6369', 'eval_cer': '0.135', 'eval_runtime': '31.98', 'eval_samples_per_second': '9.693', 'eval_steps_per_second': '4.846', 'epoch': '7.847'}
+{'loss': '1.725', 'grad_norm': '2.491', 'learning_rate': '0.0004752', 'epoch': '8.828'}
+{'loss': '1.424', 'grad_norm': '2.059', 'learning_rate': '0.0004', 'epoch': '9.808'}
+{'eval_loss': '0.6828', 'eval_wer': '0.6183', 'eval_cer': '0.1325', 'eval_runtime': '32.05', 'eval_samples_per_second': '9.671', 'eval_steps_per_second': '4.836', 'epoch': '9.808'}
+{'loss': '1.196', 'grad_norm': '2.438', 'learning_rate': '0.0003248', 'epoch': '10.79'}
+{'loss': '0.8952', 'grad_norm': '1.757', 'learning_rate': '0.0002496', 'epoch': '11.77'}
+{'eval_loss': '0.673', 'eval_wer': '0.5631', 'eval_cer': '0.1216', 'eval_runtime': '32.32', 'eval_samples_per_second': '9.592', 'eval_steps_per_second': '4.796', 'epoch': '11.77'}
+{'loss': '0.7572', 'grad_norm': '1.605', 'learning_rate': '0.0001744', 'epoch': '12.75'}
+{'loss': '0.6427', 'grad_norm': '1.712', 'learning_rate': '9.925e-05', 'epoch': '13.73'}
+{'eval_loss': '0.7645', 'eval_wer': '0.5567', 'eval_cer': '0.119', 'eval_runtime': '32.4', 'eval_samples_per_second': '9.569', 'eval_steps_per_second': '4.784', 'epoch': '13.73'}
+{'loss': '0.6004', 'grad_norm': '2.123', 'learning_rate': '2.406e-05', 'epoch': '14.71'}
+{'train_runtime': '4892', 'train_samples_per_second': '2.487', 'train_steps_per_second': '0.156', 'train_loss': '8.44', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/hch/all/adapter_hch.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.5628
+  Greedy CER: 0.1214
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.5596
+  Test CER (greedy): 0.1304
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_hch_all_20260301_143651.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.5622
+  LM CER: 0.1258
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.5511
+  Test LM CER: 0.1305
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_hch_all_20260301_143651.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/hch/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_hch_20260301_143651.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-hch
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-hch
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/hch/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-hch
+
+==========================================
+Training complete for hch!
+End time: Sun Mar  1 16:09:39 PST 2026
+==========================================

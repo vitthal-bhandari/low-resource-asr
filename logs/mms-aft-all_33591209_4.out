@@ -1,0 +1,116 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: el-CY  Split: all (task 4 of 21)
+Job ID: 33592441 (Array Job: 33591209)
+Node: g3115
+GPUs: 0
+Start time: Sun Mar  1 14:34:13 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for el-CY (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for el-CY (Cypriot Greek) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/el-CY/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 782 samples (7.15 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/el-CY/all/vocab.json (141 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 29 train, 0 val samples (over 79.43s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,837,071 / 994,334,479 (3.20%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '107.3', 'grad_norm': '21.1', 'learning_rate': '0.00049', 'epoch': '1.042'}
+{'loss': '28.61', 'grad_norm': '37.81', 'learning_rate': '0.00099', 'epoch': '2.085'}
+{'eval_loss': '3.478', 'eval_wer': '1', 'eval_cer': '1', 'eval_runtime': '37.7', 'eval_samples_per_second': '7.347', 'eval_steps_per_second': '3.687', 'epoch': '2.085'}
+{'loss': '29.63', 'grad_norm': '37.81', 'learning_rate': '0.000921', 'epoch': '3.127'}
+{'loss': '27.47', 'grad_norm': '25.39', 'learning_rate': '0.0008403', 'epoch': '4.17'}
+{'eval_loss': '3.398', 'eval_wer': '1', 'eval_cer': '1', 'eval_runtime': '38.1', 'eval_samples_per_second': '7.269', 'eval_steps_per_second': '3.648', 'epoch': '4.17'}
+{'loss': '26.97', 'grad_norm': '9.707', 'learning_rate': '0.0007597', 'epoch': '5.212'}
+{'loss': '27.46', 'grad_norm': '5.129', 'learning_rate': '0.000679', 'epoch': '6.255'}
+{'eval_loss': '3.346', 'eval_wer': '0.9979', 'eval_cer': '0.9954', 'eval_runtime': '35.16', 'eval_samples_per_second': '7.877', 'eval_steps_per_second': '3.953', 'epoch': '6.255'}
+{'loss': '24.63', 'grad_norm': '11.63', 'learning_rate': '0.0005984', 'epoch': '7.297'}
+{'loss': '20.81', 'grad_norm': '8.867', 'learning_rate': '0.0005177', 'epoch': '8.34'}
+{'eval_loss': '2.285', 'eval_wer': '0.9998', 'eval_cer': '0.6166', 'eval_runtime': '35.95', 'eval_samples_per_second': '7.706', 'eval_steps_per_second': '3.867', 'epoch': '8.34'}
+{'loss': '20.87', 'grad_norm': '8.942', 'learning_rate': '0.0004371', 'epoch': '9.382'}
+{'loss': '18.69', 'grad_norm': '5.35', 'learning_rate': '0.0003565', 'epoch': '10.42'}
+{'eval_loss': '2.119', 'eval_wer': '0.9586', 'eval_cer': '0.4566', 'eval_runtime': '34.47', 'eval_samples_per_second': '8.035', 'eval_steps_per_second': '4.032', 'epoch': '10.42'}
+{'loss': '10.64', 'grad_norm': '14.57', 'learning_rate': '0.0002758', 'epoch': '11.47'}
+{'loss': '20.92', 'grad_norm': '7.652', 'learning_rate': '0.0001952', 'epoch': '12.51'}
+{'eval_loss': '2.152', 'eval_wer': '0.9311', 'eval_cer': '0.4188', 'eval_runtime': '37.13', 'eval_samples_per_second': '7.461', 'eval_steps_per_second': '3.744', 'epoch': '12.51'}
+{'loss': '13.83', 'grad_norm': '4.256', 'learning_rate': '0.0001145', 'epoch': '13.55'}
+{'loss': '13.37', 'grad_norm': '4.151', 'learning_rate': '3.387e-05', 'epoch': '14.59'}
+{'eval_loss': '2.229', 'eval_wer': '0.9306', 'eval_cer': '0.4092', 'eval_runtime': '38', 'eval_samples_per_second': '7.29', 'eval_steps_per_second': '3.658', 'epoch': '14.59'}
+{'train_runtime': '4261', 'train_samples_per_second': '2.651', 'train_steps_per_second': '0.169', 'train_loss': '27.4', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/el-CY/all/adapter_el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.9313
+  Greedy CER: 0.4187
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.9219
+  Test CER (greedy): 0.3915
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_el-CY_all_20260301_143621.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.9349
+  LM CER: 0.4430
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.9235
+  Test LM CER: 0.4801
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_el-CY_all_20260301_143621.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/el-CY/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_el-CY_20260301_143621.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-el-CY
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-el-CY
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/el-CY/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-el-CY
+
+==========================================
+Training complete for el-CY!
+End time: Sun Mar  1 16:00:38 PST 2026
+==========================================

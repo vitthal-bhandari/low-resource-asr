@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-01T11:05:21.537616
+run_end=2026-03-01T12:25:13.097728
+model=facebook/mms-1b-all
+language=lke
+split=all
+language_name=Kenyi
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/all
+num_train_samples=1712
+num_validation_samples=146
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.0001
+validation_wer=0.998221
+validation_cer=0.777712
+test_wer=0.998582
+test_cer=0.761498
+use_lm=True
+validation_lm_wer=1.049110
+validation_lm_cer=0.728068
+test_lm_wer=1.064397
+test_lm_cer=0.746809
+best_validation_wer=0.997509

@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-01T10:04:46.160448
+run_end=2026-03-01T11:04:24.628826
+model=facebook/mms-1b-all
+language=hch
+split=all
+language_name=Wixárika
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/all
+num_train_samples=844
+num_validation_samples=310
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.0001
+validation_wer=0.999709
+validation_cer=0.906801
+test_wer=0.999554
+test_cer=0.897195
+use_lm=True
+validation_lm_wer=1.000000
+validation_lm_cer=0.816260
+test_lm_wer=1.005801
+test_lm_cer=0.787105
+best_validation_wer=0.999709

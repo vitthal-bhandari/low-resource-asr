@@ -1,0 +1,26 @@
+# XLS-R 1B Adapter Fine-tuning Run Log
+run_start=2026-03-01T17:08:02.586430
+run_end=2026-03-01T18:43:39.713005
+model=facebook/wav2vec2-xls-r-1b
+adapter_attn_dim=256
+language=meh
+split=all
+language_name=Southwestern Tlaxiaco Mixtec
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all
+num_train_samples=666
+num_validation_samples=93
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.404454
+validation_cer=0.149713
+test_wer=0.445424
+test_cer=0.183099
+use_lm=True
+validation_lm_wer=0.390432
+validation_lm_cer=0.144968
+test_lm_wer=0.435484
+test_lm_cer=0.177729
+best_validation_wer=0.368436

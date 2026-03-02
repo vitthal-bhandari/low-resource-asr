@@ -1,0 +1,97 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: top  Split: all (task 18 of 21)
+Job ID: 33591879 (Array Job: 33589036)
+Node: g3124
+GPUs: 0
+Start time: Sun Mar  1 13:52:07 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for top (split=all)...
+============================================================
+MMS Adapter Fine-tuning for top (Papantla Totonac) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-top
+
+Loading data for top (Papantla Totonac) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: 189 samples (5.87 h)
+  Validation: 59 samples (1.68 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/vocab.json (74 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for top): 253.01s
+  Dropped 8 train, 0 val samples (over 253.01s).
+
+Loading MMS model...
+  Trainable parameters: 2,248,524 / 964,745,932 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '535.4', 'grad_norm': '493.4', 'learning_rate': '4.9e-05', 'epoch': '4.176'}
+{'loss': '302.6', 'grad_norm': '1216', 'learning_rate': '9.9e-05', 'epoch': '8.352'}
+{'eval_loss': '46.02', 'eval_wer': '1', 'eval_cer': '0.89', 'eval_runtime': '58.37', 'eval_samples_per_second': '1.011', 'eval_steps_per_second': '0.514', 'epoch': '8.352'}
+{'loss': '60.5', 'grad_norm': '172', 'learning_rate': '3.875e-05', 'epoch': '12.53'}
+{'train_runtime': '5265', 'train_samples_per_second': '0.516', 'train_steps_per_second': '0.034', 'train_loss': '256.9', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/adapter.top.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 1.0000
+  Greedy CER: 0.9980
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 1.0000
+  Test CER (greedy): 1.0011
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_top_all_20260301_135248.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 1.0088
+  LM CER: 0.8840
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 1.1391
+  Test LM CER: 1.1045
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_top_all_20260301_135248.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_top_20260301_135248.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-top
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-top
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-top
+
+==========================================
+Training complete for top!
+End time: Sun Mar  1 15:37:14 PST 2026
+==========================================
