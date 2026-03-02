@@ -1,0 +1,67 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: aln  Split: all (task 0 of 21)
+Job ID: 33600008 (Array Job: 33600007)
+Node: g3112
+GPUs: 0
+Start time: Sun Mar  1 22:29:29 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=all)...
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-aln
+
+Loading data for aln (Gheg Albanian) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 965 samples (6.39 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/all/vocab.json (87 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for aln): 38.86s
+  Dropped 10 train, 24 val samples (over 38.86s).
+
+Loading MMS model...
+  Trainable parameters: 2,265,177 / 964,762,585 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '117.7', 'grad_norm': '101.8', 'learning_rate': '0.00049', 'epoch': '0.8368'}
+{'loss': '42.87', 'grad_norm': '54.51', 'learning_rate': '0.00099', 'epoch': '1.669'}
+{'eval_loss': '3.462', 'eval_wer': '0.9742', 'eval_cer': '0.8787', 'eval_runtime': '26.18', 'eval_samples_per_second': '4.812', 'eval_steps_per_second': '2.406', 'epoch': '1.669'}
+{'loss': '38.52', 'grad_norm': '126', 'learning_rate': '0.0009388', 'epoch': '2.502'}
+{'loss': '24.38', 'grad_norm': '28.28', 'learning_rate': '0.0008762', 'epoch': '3.335'}
+{'eval_loss': '2.995', 'eval_wer': '1', 'eval_cer': '0.9998', 'eval_runtime': '24', 'eval_samples_per_second': '5.25', 'eval_steps_per_second': '2.625', 'epoch': '3.335'}
+{'loss': '17.52', 'grad_norm': '9.799', 'learning_rate': '0.0008138', 'epoch': '4.167'}
+{'loss': '10.49', 'grad_norm': '9.053', 'learning_rate': '0.0007512', 'epoch': '5'}
+{'eval_loss': '0.8854', 'eval_wer': '0.5662', 'eval_cer': '0.1935', 'eval_runtime': '24.19', 'eval_samples_per_second': '5.209', 'eval_steps_per_second': '2.605', 'epoch': '5'}
+{'loss': '9.432', 'grad_norm': '20.69', 'learning_rate': '0.0006888', 'epoch': '5.837'}
+{'loss': '8.903', 'grad_norm': '43.77', 'learning_rate': '0.0006262', 'epoch': '6.669'}
+{'eval_loss': '0.8418', 'eval_wer': '0.5295', 'eval_cer': '0.1834', 'eval_runtime': '25.6', 'eval_samples_per_second': '4.922', 'eval_steps_per_second': '2.461', 'epoch': '6.669'}
+{'loss': '8.587', 'grad_norm': '11.49', 'learning_rate': '0.0005638', 'epoch': '7.502'}
+{'loss': '8.419', 'grad_norm': '22.71', 'learning_rate': '0.0005012', 'epoch': '8.335'}
+{'eval_loss': '0.8405', 'eval_wer': '0.5126', 'eval_cer': '0.178', 'eval_runtime': '21.88', 'eval_samples_per_second': '5.76', 'eval_steps_per_second': '2.88', 'epoch': '8.335'}
+{'loss': '8.422', 'grad_norm': '5.848', 'learning_rate': '0.0004387', 'epoch': '9.167'}
+{'loss': '7.856', 'grad_norm': '7.197', 'learning_rate': '0.0003762', 'epoch': '10'}
+{'eval_loss': '0.8136', 'eval_wer': '0.4932', 'eval_cer': '0.1712', 'eval_runtime': '21.89', 'eval_samples_per_second': '5.756', 'eval_steps_per_second': '2.878', 'epoch': '10'}
+{'loss': '7.78', 'grad_norm': '6.833', 'learning_rate': '0.0003137', 'epoch': '10.84'}
+{'loss': '7.765', 'grad_norm': '5.009', 'learning_rate': '0.0002512', 'epoch': '11.67'}

@@ -77,3 +77,59 @@ Starting training...
 {'loss': '0.7466', 'grad_norm': '2.353', 'learning_rate': '0.0003208', 'epoch': '10.56'}
 {'loss': '0.5561', 'grad_norm': '1.502', 'learning_rate': '0.0002808', 'epoch': '11.11'}
 {'eval_loss': '0.2961', 'eval_wer': '0.3598', 'eval_cer': '0.06486', 'eval_runtime': '26.09', 'eval_samples_per_second': '5.672', 'eval_steps_per_second': '2.836', 'epoch': '11.11'}
+{'loss': '0.5541', 'grad_norm': '2.487', 'learning_rate': '0.0002408', 'epoch': '11.67'}
+{'loss': '0.5787', 'grad_norm': '2.024', 'learning_rate': '0.0002008', 'epoch': '12.22'}
+{'eval_loss': '0.3082', 'eval_wer': '0.362', 'eval_cer': '0.06465', 'eval_runtime': '26.06', 'eval_samples_per_second': '5.679', 'eval_steps_per_second': '2.839', 'epoch': '12.22'}
+{'loss': '0.4488', 'grad_norm': '1.381', 'learning_rate': '0.0001608', 'epoch': '12.79'}
+{'loss': '0.5158', 'grad_norm': '1.743', 'learning_rate': '0.0001208', 'epoch': '13.34'}
+{'eval_loss': '0.3102', 'eval_wer': '0.3748', 'eval_cer': '0.06612', 'eval_runtime': '25.99', 'eval_samples_per_second': '5.695', 'eval_steps_per_second': '2.848', 'epoch': '13.34'}
+{'loss': '0.3993', 'grad_norm': '1.642', 'learning_rate': '8.08e-05', 'epoch': '13.9'}
+{'loss': '0.3991', 'grad_norm': '2.109', 'learning_rate': '4.08e-05', 'epoch': '14.45'}
+{'eval_loss': '0.3131', 'eval_wer': '0.3552', 'eval_cer': '0.06299', 'eval_runtime': '25.95', 'eval_samples_per_second': '5.703', 'eval_steps_per_second': '2.852', 'epoch': '14.45'}
+{'loss': '0.4021', 'grad_norm': '0.006785', 'learning_rate': '8e-07', 'epoch': '15'}
+{'train_runtime': '6431', 'train_samples_per_second': '3.324', 'train_steps_per_second': '0.21', 'train_loss': '3.751', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all/adapter_ttj.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.3598
+  Greedy CER: 0.0650
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.3486
+  Test CER (greedy): 0.0633
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_ttj_all_20260301_205016.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.3603
+  LM CER: 0.0711
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.3467
+  Test LM CER: 0.0640
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_ttj_all_20260301_205016.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_ttj_20260301_205016.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-ttj
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ttj
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ttj/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ttj
+
+==========================================
+Training complete for ttj!
+End time: Sun Mar  1 22:55:16 PST 2026
+==========================================

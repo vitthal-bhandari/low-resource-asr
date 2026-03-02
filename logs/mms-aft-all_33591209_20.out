@@ -73,3 +73,63 @@ Starting training...
 {'eval_loss': '0.5943', 'eval_wer': '0.4155', 'eval_cer': '0.1415', 'eval_runtime': '15.08', 'eval_samples_per_second': '9.419', 'eval_steps_per_second': '4.71', 'epoch': '8.698'}
 {'loss': '2.677', 'grad_norm': '15.61', 'learning_rate': '0.0004148', 'epoch': '9.24'}
 {'loss': '2.575', 'grad_norm': '3.687', 'learning_rate': '0.0003758', 'epoch': '9.785'}
+{'eval_loss': '0.6011', 'eval_wer': '0.4356', 'eval_cer': '0.1486', 'eval_runtime': '13.42', 'eval_samples_per_second': '10.58', 'eval_steps_per_second': '5.292', 'epoch': '9.785'}
+{'loss': '2.294', 'grad_norm': '3.115', 'learning_rate': '0.0003367', 'epoch': '10.33'}
+{'loss': '2.076', 'grad_norm': '2.698', 'learning_rate': '0.0002977', 'epoch': '10.87'}
+{'eval_loss': '0.6371', 'eval_wer': '0.4206', 'eval_cer': '0.141', 'eval_runtime': '13.51', 'eval_samples_per_second': '10.51', 'eval_steps_per_second': '5.255', 'epoch': '10.87'}
+{'loss': '1.785', 'grad_norm': '2.963', 'learning_rate': '0.0002586', 'epoch': '11.41'}
+{'loss': '1.741', 'grad_norm': '4.86', 'learning_rate': '0.0002195', 'epoch': '11.96'}
+{'eval_loss': '0.6796', 'eval_wer': '0.437', 'eval_cer': '0.1471', 'eval_runtime': '13.52', 'eval_samples_per_second': '10.51', 'eval_steps_per_second': '5.253', 'epoch': '11.96'}
+{'loss': '1.617', 'grad_norm': '3.04', 'learning_rate': '0.0001805', 'epoch': '12.5'}
+{'loss': '1.491', 'grad_norm': '3.436', 'learning_rate': '0.0001414', 'epoch': '13.04'}
+{'eval_loss': '0.7424', 'eval_wer': '0.43', 'eval_cer': '0.144', 'eval_runtime': '13.45', 'eval_samples_per_second': '10.55', 'eval_steps_per_second': '5.277', 'epoch': '13.04'}
+{'loss': '1.34', 'grad_norm': '3.733', 'learning_rate': '0.0001023', 'epoch': '13.59'}
+{'loss': '1.266', 'grad_norm': '2.954', 'learning_rate': '6.328e-05', 'epoch': '14.13'}
+{'eval_loss': '0.7665', 'eval_wer': '0.4251', 'eval_cer': '0.1429', 'eval_runtime': '18.66', 'eval_samples_per_second': '7.608', 'eval_steps_per_second': '3.804', 'epoch': '14.13'}
+{'loss': '1.054', 'grad_norm': '5.58', 'learning_rate': '2.422e-05', 'epoch': '14.68'}
+{'train_runtime': '4580', 'train_samples_per_second': '4.807', 'train_steps_per_second': '0.301', 'train_loss': '5.707', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all/adapter_ukv.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4233
+  Greedy CER: 0.1417
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.3936
+  Test CER (greedy): 0.1266
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_ukv_all_20260301_212640.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.4060
+  LM CER: 0.1368
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.3815
+  Test LM CER: 0.1242
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_ukv_all_20260301_212640.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_ukv_20260301_212640.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-ukv
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ukv
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ukv
+
+==========================================
+Training complete for ukv!
+End time: Sun Mar  1 22:58:49 PST 2026
+==========================================
