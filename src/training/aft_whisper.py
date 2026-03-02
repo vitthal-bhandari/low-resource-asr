@@ -348,6 +348,7 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 
     processor: Any
     decoder_start_token_id: int
+    input_dtype: torch.dtype | None = None
 
     def __call__(
         self,
@@ -359,6 +360,8 @@ class DataCollatorSpeechSeq2SeqWithPadding:
         batch = self.processor.feature_extractor.pad(
             input_features, return_tensors="pt"
         )
+        if self.input_dtype is not None:
+            batch["input_features"] = batch["input_features"].to(dtype=self.input_dtype)
 
         label_features = [{"input_ids": feature["labels"]} for feature in features]
         labels_batch = self.processor.tokenizer.pad(
@@ -675,26 +678,15 @@ def main():
             )
 
     ############################################################################
-    # Determine training precision first (needed for model loading dtype)
-    use_fp16 = torch.cuda.is_available()
-    use_bf16 = False
-    if torch.cuda.is_available() and torch.cuda.is_bf16_supported():
-        use_bf16 = True
-        use_fp16 = False
-
-    if use_bf16:
-        compute_dtype = torch.bfloat16
-    elif use_fp16:
-        compute_dtype = torch.float16
-    else:
-        compute_dtype = torch.float32
-
-    ############################################################################
-    # Load pretrained Whisper model in the matching dtype to avoid
-    # "Input type (float) and bias type (c10::Half) should be the same"
-    print(f"\nLoading Whisper model ({BASE_MODEL}) in {compute_dtype}...")
+    # Load pretrained Whisper model in full float32.
+    # Mixed precision (fp16/bf16) has caused dtype mismatches between
+    # input features and convolution biases on some GPUs, so we keep the
+    # training numerically stable and simple by default. If you want to
+    # enable bf16/fp16 later, make sure to cast input_features to the
+    # same dtype as model.dtype in the data collator.
+    print(f"\nLoading Whisper model ({BASE_MODEL}) in float32...")
     model = WhisperForConditionalGeneration.from_pretrained(
-        BASE_MODEL, torch_dtype=compute_dtype
+        BASE_MODEL, torch_dtype=torch.float32
     )
 
     model.generation_config.language = whisper_language
@@ -718,10 +710,11 @@ def main():
     data_collator = DataCollatorSpeechSeq2SeqWithPadding(
         processor=processor,
         decoder_start_token_id=model.config.decoder_start_token_id,
+        input_dtype=model.dtype,
     )
 
     ############################################################################
-    # Training configuration
+    # Training configuration (pure float32 to avoid dtype mismatch issues)
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=str(output_dir),
@@ -733,8 +726,8 @@ def main():
         generation_max_length=args.generation_max_length,
         num_train_epochs=args.num_epochs,
         gradient_checkpointing=True,
-        fp16=use_fp16,
-        bf16=use_bf16,
+        fp16=False,
+        bf16=False,
         save_steps=200,
         eval_steps=100,
         logging_steps=50,
@@ -753,7 +746,7 @@ def main():
     print(f"  Gradient accumulation: {args.gradient_accumulation_steps}")
     print(f"  Effective batch size: {args.batch_size * args.gradient_accumulation_steps}")
     print(f"  Learning rate: {args.learning_rate}")
-    print(f"  FP16: {use_fp16}, BF16: {use_bf16}")
+    print("  Precision: float32 (no AMP)")
     print(f"  Generation max length: {args.generation_max_length}")
 
     ############################################################################
