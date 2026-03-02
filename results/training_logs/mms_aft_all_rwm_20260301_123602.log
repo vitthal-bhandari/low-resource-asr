@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-01T12:36:02.494209
+run_end=2026-03-01T13:51:15.436840
+model=facebook/mms-1b-all
+language=rwm
+split=all
+language_name=Amba
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all
+num_train_samples=1326
+num_validation_samples=140
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.0001
+validation_wer=1.000850
+validation_cer=0.878355
+test_wer=0.998394
+test_cer=0.867302
+use_lm=True
+validation_lm_wer=1.217120
+validation_lm_cer=0.749564
+test_lm_wer=1.179116
+test_lm_cer=0.748788
+best_validation_wer=1.000000

@@ -1,0 +1,117 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: tob  Split: all (task 17 of 21)
+Job ID: 33596093 (Array Job: 33591209)
+Node: g3095
+GPUs: 0
+Start time: Sun Mar  1 20:15:00 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for tob (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for tob (Toba Qom) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-tob
+
+Loading data for tob (Toba Qom) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: 836 samples (4.67 h)
+  Validation: 306 samples (1.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/vocab.json (74 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for tob): 59.55s
+  Dropped 17 train, 12 val samples (over 59.55s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,751,244 / 994,248,652 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '82.06', 'grad_norm': '36.32', 'learning_rate': '0.00049', 'epoch': '0.9756'}
+{'loss': '22.17', 'grad_norm': '35.35', 'learning_rate': '0.00099', 'epoch': '1.937'}
+{'eval_loss': '2.278', 'eval_wer': '1', 'eval_cer': '0.7897', 'eval_runtime': '52.71', 'eval_samples_per_second': '5.578', 'eval_steps_per_second': '2.789', 'epoch': '1.937'}
+{'loss': '10.06', 'grad_norm': '6.721', 'learning_rate': '0.0009279', 'epoch': '2.898'}
+{'loss': '6.299', 'grad_norm': '5.668', 'learning_rate': '0.0008544', 'epoch': '3.859'}
+{'eval_loss': '0.9897', 'eval_wer': '0.7831', 'eval_cer': '0.2392', 'eval_runtime': '52.8', 'eval_samples_per_second': '5.569', 'eval_steps_per_second': '2.784', 'epoch': '3.859'}
+{'loss': '5', 'grad_norm': '4.285', 'learning_rate': '0.0007809', 'epoch': '4.82'}
+{'loss': '4.29', 'grad_norm': '3.14', 'learning_rate': '0.0007074', 'epoch': '5.78'}
+{'eval_loss': '0.9006', 'eval_wer': '0.6962', 'eval_cer': '0.2086', 'eval_runtime': '52.87', 'eval_samples_per_second': '5.561', 'eval_steps_per_second': '2.781', 'epoch': '5.78'}
+{'loss': '3.657', 'grad_norm': '3.93', 'learning_rate': '0.0006338', 'epoch': '6.741'}
+{'loss': '3.253', 'grad_norm': '4.889', 'learning_rate': '0.0005603', 'epoch': '7.702'}
+{'eval_loss': '0.9158', 'eval_wer': '0.6794', 'eval_cer': '0.2066', 'eval_runtime': '52.95', 'eval_samples_per_second': '5.552', 'eval_steps_per_second': '2.776', 'epoch': '7.702'}
+{'loss': '2.95', 'grad_norm': '3.96', 'learning_rate': '0.0004868', 'epoch': '8.663'}
+{'loss': '2.442', 'grad_norm': '3.092', 'learning_rate': '0.0004132', 'epoch': '9.624'}
+{'eval_loss': '0.9376', 'eval_wer': '0.6567', 'eval_cer': '0.1986', 'eval_runtime': '53.24', 'eval_samples_per_second': '5.522', 'eval_steps_per_second': '2.761', 'epoch': '9.624'}
+{'loss': '2.095', 'grad_norm': '3.052', 'learning_rate': '0.0003397', 'epoch': '10.59'}
+{'loss': '1.771', 'grad_norm': '3.28', 'learning_rate': '0.0002662', 'epoch': '11.55'}
+{'eval_loss': '1.046', 'eval_wer': '0.6487', 'eval_cer': '0.1982', 'eval_runtime': '53.5', 'eval_samples_per_second': '5.495', 'eval_steps_per_second': '2.747', 'epoch': '11.55'}
+{'loss': '1.415', 'grad_norm': '3.237', 'learning_rate': '0.0001926', 'epoch': '12.51'}
+{'loss': '1.219', 'grad_norm': '3.12', 'learning_rate': '0.0001191', 'epoch': '13.47'}
+{'eval_loss': '1.128', 'eval_wer': '0.6771', 'eval_cer': '0.2061', 'eval_runtime': '53.6', 'eval_samples_per_second': '5.485', 'eval_steps_per_second': '2.742', 'epoch': '13.47'}
+{'loss': '1.015', 'grad_norm': '3.519', 'learning_rate': '4.559e-05', 'epoch': '14.43'}
+{'train_runtime': '4472', 'train_samples_per_second': '2.747', 'train_steps_per_second': '0.174', 'train_loss': '9.632', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/adapter_tob.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.6492
+  Greedy CER: 0.1983
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6567
+  Test CER (greedy): 0.2028
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_tob_all_20260301_201621.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.6469
+  LM CER: 0.2180
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.6534
+  Test LM CER: 0.3379
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_tob_all_20260301_201621.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_tob_20260301_201621.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-tob
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-tob
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-tob
+
+==========================================
+Training complete for tob!
+End time: Sun Mar  1 21:46:41 PST 2026
+==========================================

@@ -1,0 +1,114 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: el-CY  Split: all (task 4 of 21)
+Job ID: 33589107 (Array Job: 33589036)
+Node: g3113
+GPUs: 0
+Start time: Sun Mar  1 09:36:51 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for el-CY (split=all)...
+============================================================
+MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 782 samples (7.15 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/vocab.json (141 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 29 train, 0 val samples (over 79.43s).
+
+Loading MMS model...
+  Trainable parameters: 2,334,351 / 964,831,759 (0.24%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.0001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '174.8', 'grad_norm': '412', 'learning_rate': '4.9e-05', 'epoch': '1.042'}
+{'loss': '95.59', 'grad_norm': '27.67', 'learning_rate': '9.9e-05', 'epoch': '2.085'}
+{'eval_loss': '7.285', 'eval_wer': '1', 'eval_cer': '0.9823', 'eval_runtime': '28.64', 'eval_samples_per_second': '9.672', 'eval_steps_per_second': '4.854', 'epoch': '2.085'}
+{'loss': '91.87', 'grad_norm': '19.56', 'learning_rate': '9.21e-05', 'epoch': '3.127'}
+{'loss': '63', 'grad_norm': '9.338', 'learning_rate': '8.403e-05', 'epoch': '4.17'}
+{'eval_loss': '6.016', 'eval_wer': '0.9989', 'eval_cer': '0.9254', 'eval_runtime': '28.5', 'eval_samples_per_second': '9.72', 'eval_steps_per_second': '4.878', 'epoch': '4.17'}
+{'loss': '55.25', 'grad_norm': '18.72', 'learning_rate': '7.597e-05', 'epoch': '5.212'}
+{'loss': '55.54', 'grad_norm': '20.51', 'learning_rate': '6.79e-05', 'epoch': '6.255'}
+{'eval_loss': '4.049', 'eval_wer': '1', 'eval_cer': '0.9511', 'eval_runtime': '28.6', 'eval_samples_per_second': '9.686', 'eval_steps_per_second': '4.86', 'epoch': '6.255'}
+{'loss': '39.92', 'grad_norm': '16.5', 'learning_rate': '5.984e-05', 'epoch': '7.297'}
+{'loss': '31.73', 'grad_norm': '11.61', 'learning_rate': '5.177e-05', 'epoch': '8.34'}
+{'eval_loss': '2.207', 'eval_wer': '0.8838', 'eval_cer': '0.438', 'eval_runtime': '28.7', 'eval_samples_per_second': '9.653', 'eval_steps_per_second': '4.844', 'epoch': '8.34'}
+{'loss': '19.54', 'grad_norm': '6.222', 'learning_rate': '4.371e-05', 'epoch': '9.382'}
+{'loss': '19.81', 'grad_norm': '8.326', 'learning_rate': '3.565e-05', 'epoch': '10.42'}
+{'eval_loss': '1.777', 'eval_wer': '0.6648', 'eval_cer': '0.2394', 'eval_runtime': '28.83', 'eval_samples_per_second': '9.608', 'eval_steps_per_second': '4.821', 'epoch': '10.42'}
+{'loss': '9.485', 'grad_norm': '10.56', 'learning_rate': '2.758e-05', 'epoch': '11.47'}
+{'loss': '21.63', 'grad_norm': '4.207', 'learning_rate': '1.952e-05', 'epoch': '12.51'}
+{'eval_loss': '1.717', 'eval_wer': '0.6326', 'eval_cer': '0.2244', 'eval_runtime': '28.91', 'eval_samples_per_second': '9.583', 'eval_steps_per_second': '4.809', 'epoch': '12.51'}
+{'loss': '16.03', 'grad_norm': '4.484', 'learning_rate': '1.145e-05', 'epoch': '13.55'}
+{'loss': '15.69', 'grad_norm': '5.803', 'learning_rate': '3.387e-06', 'epoch': '14.59'}
+{'eval_loss': '1.705', 'eval_wer': '0.6215', 'eval_cer': '0.2194', 'eval_runtime': '29.07', 'eval_samples_per_second': '9.527', 'eval_steps_per_second': '4.781', 'epoch': '14.59'}
+{'train_runtime': '3722', 'train_samples_per_second': '3.035', 'train_steps_per_second': '0.193', 'train_loss': '49.61', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/adapter.el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.6325
+  Greedy CER: 0.2244
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6175
+  Test CER (greedy): 0.2095
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_all_20260301_093732.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.6346
+  LM CER: 0.2237
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.6226
+  Test LM CER: 0.2168
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_el-CY_all_20260301_093732.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_el-CY_20260301_093732.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-el-CY
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-el-CY
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-el-CY
+
+==========================================
+Training complete for el-CY!
+End time: Sun Mar  1 10:47:59 PST 2026
+==========================================
