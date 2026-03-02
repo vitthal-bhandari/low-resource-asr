@@ -1,0 +1,115 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: hch  Split: all (task 5 of 21)
+Job ID: 33603690 (Array Job: 33600007)
+Node: g3122
+GPUs: 0
+Start time: Mon Mar  2 02:32:13 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for hch (split=all)...
+============================================================
+MMS Adapter Fine-tuning for hch (Wixárika) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-hch
+
+Loading data for hch (Wixárika) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-all_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 844 samples (6.27 h)
+  Validation: 310 samples (0.97 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/all/vocab.json (78 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for hch): 70.46s
+  Dropped 33 train, 0 val samples (over 70.46s).
+
+Loading MMS model...
+  Trainable parameters: 2,253,648 / 964,751,056 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '90.07', 'grad_norm': '49.64', 'learning_rate': '0.00049', 'epoch': '0.9852'}
+{'loss': '12.04', 'grad_norm': '8.046', 'learning_rate': '0.00099', 'epoch': '1.966'}
+{'eval_loss': '0.9466', 'eval_wer': '0.957', 'eval_cer': '0.2601', 'eval_runtime': '37.06', 'eval_samples_per_second': '8.365', 'eval_steps_per_second': '4.183', 'epoch': '1.966'}
+{'loss': '6.885', 'grad_norm': '9.427', 'learning_rate': '0.0009263', 'epoch': '2.946'}
+{'loss': '5.848', 'grad_norm': '9.939', 'learning_rate': '0.0008511', 'epoch': '3.926'}
+{'eval_loss': '0.7046', 'eval_wer': '0.857', 'eval_cer': '0.2038', 'eval_runtime': '33.89', 'eval_samples_per_second': '9.148', 'eval_steps_per_second': '4.574', 'epoch': '3.926'}
+{'loss': '5.34', 'grad_norm': '7.58', 'learning_rate': '0.0007759', 'epoch': '4.906'}
+{'loss': '4.83', 'grad_norm': '4.269', 'learning_rate': '0.0007008', 'epoch': '5.887'}
+{'eval_loss': '0.6097', 'eval_wer': '0.7846', 'eval_cer': '0.1757', 'eval_runtime': '34.12', 'eval_samples_per_second': '9.086', 'eval_steps_per_second': '4.543', 'epoch': '5.887'}
+{'loss': '4.481', 'grad_norm': '4.872', 'learning_rate': '0.0006256', 'epoch': '6.867'}
+{'loss': '4.188', 'grad_norm': '17.6', 'learning_rate': '0.0005504', 'epoch': '7.847'}
+{'eval_loss': '0.5596', 'eval_wer': '0.7326', 'eval_cer': '0.1615', 'eval_runtime': '31.51', 'eval_samples_per_second': '9.839', 'eval_steps_per_second': '4.92', 'epoch': '7.847'}
+{'loss': '3.893', 'grad_norm': '5.845', 'learning_rate': '0.0004752', 'epoch': '8.828'}
+{'loss': '3.776', 'grad_norm': '4.42', 'learning_rate': '0.0004', 'epoch': '9.808'}
+{'eval_loss': '0.5462', 'eval_wer': '0.7189', 'eval_cer': '0.1533', 'eval_runtime': '36.89', 'eval_samples_per_second': '8.404', 'eval_steps_per_second': '4.202', 'epoch': '9.808'}
+{'loss': '3.668', 'grad_norm': '5.914', 'learning_rate': '0.0003248', 'epoch': '10.79'}
+{'loss': '3.408', 'grad_norm': '5.084', 'learning_rate': '0.0002496', 'epoch': '11.77'}
+{'eval_loss': '0.5296', 'eval_wer': '0.6953', 'eval_cer': '0.1479', 'eval_runtime': '37.85', 'eval_samples_per_second': '8.191', 'eval_steps_per_second': '4.096', 'epoch': '11.77'}
+{'loss': '3.315', 'grad_norm': '3.57', 'learning_rate': '0.0001744', 'epoch': '12.75'}
+{'loss': '3.164', 'grad_norm': '3.629', 'learning_rate': '9.925e-05', 'epoch': '13.73'}
+{'eval_loss': '0.533', 'eval_wer': '0.6805', 'eval_cer': '0.1473', 'eval_runtime': '37.88', 'eval_samples_per_second': '8.183', 'eval_steps_per_second': '4.092', 'epoch': '13.73'}
+{'loss': '3.178', 'grad_norm': '6.977', 'learning_rate': '2.406e-05', 'epoch': '14.71'}
+{'train_runtime': '4750', 'train_samples_per_second': '2.561', 'train_steps_per_second': '0.161', 'train_loss': '10.39', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/all/adapter.hch.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.6939
+  Greedy CER: 0.1477
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6774
+  Test CER (greedy): 0.1616
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_hch_all_20260302_023818.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.6933
+  LM CER: 0.1464
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.6734
+  Test LM CER: 0.1600
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_hch_all_20260302_023818.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_hch_20260302_023818.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-hch
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-hch
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-hch
+
+==========================================
+Training complete for hch!
+End time: Mon Mar  2 04:16:11 PST 2026
+==========================================

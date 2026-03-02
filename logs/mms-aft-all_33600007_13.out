@@ -1,0 +1,37 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: pne  Split: all (task 13 of 21)
+Job ID: 33603831 (Array Job: 33600007)
+Node: g3109
+GPUs: 0
+Start time: Mon Mar  2 03:23:54 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for pne (split=all)...
+============================================================
+MMS Adapter Fine-tuning for pne (Western Penan) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-pne
+
+Loading data for pne (Western Penan) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: 1811 samples (8.48 h)
+  Validation: 310 samples (1.30 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/vocab.json (61 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for pne): 24.19s
+  Dropped 44 train, 0 val samples (over 24.19s).
+
+Loading MMS model...
+  Trainable parameters: 2,231,871 / 964,729,279 (0.23%)

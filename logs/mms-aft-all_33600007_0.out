@@ -65,3 +65,56 @@ Starting training...
 {'eval_loss': '0.8136', 'eval_wer': '0.4932', 'eval_cer': '0.1712', 'eval_runtime': '21.89', 'eval_samples_per_second': '5.756', 'eval_steps_per_second': '2.878', 'epoch': '10'}
 {'loss': '7.78', 'grad_norm': '6.833', 'learning_rate': '0.0003137', 'epoch': '10.84'}
 {'loss': '7.765', 'grad_norm': '5.009', 'learning_rate': '0.0002512', 'epoch': '11.67'}
+{'eval_loss': '0.8009', 'eval_wer': '0.4855', 'eval_cer': '0.1683', 'eval_runtime': '21.96', 'eval_samples_per_second': '5.737', 'eval_steps_per_second': '2.869', 'epoch': '11.67'}
+{'loss': '7.573', 'grad_norm': '10.22', 'learning_rate': '0.0001888', 'epoch': '12.5'}
+{'loss': '7.378', 'grad_norm': '6.88', 'learning_rate': '0.0001263', 'epoch': '13.33'}
+{'eval_loss': '0.7944', 'eval_wer': '0.4825', 'eval_cer': '0.1684', 'eval_runtime': '22.12', 'eval_samples_per_second': '5.695', 'eval_steps_per_second': '2.848', 'epoch': '13.33'}
+{'loss': '7.453', 'grad_norm': '6.235', 'learning_rate': '6.375e-05', 'epoch': '14.17'}
+{'loss': '7.163', 'grad_norm': '7.126', 'learning_rate': '1.25e-06', 'epoch': '15'}
+{'eval_loss': '0.7929', 'eval_wer': '0.4775', 'eval_cer': '0.1678', 'eval_runtime': '22.17', 'eval_samples_per_second': '5.683', 'eval_steps_per_second': '2.841', 'epoch': '15'}
+{'train_runtime': '3756', 'train_samples_per_second': '3.813', 'train_steps_per_second': '0.24', 'train_loss': '19.35', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/all/adapter.aln.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4779
+  Greedy CER: 0.1678
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6158
+  Test CER (greedy): 0.2752
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_aln_all_20260301_223632.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.4694
+  LM CER: 0.1664
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.6072
+  Test LM CER: 0.2732
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_aln_all_20260301_223632.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_aln_20260301_223632.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-aln
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-aln
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-aln
+
+==========================================
+Training complete for aln!
+End time: Sun Mar  1 23:55:43 PST 2026
+==========================================

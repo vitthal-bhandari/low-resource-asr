@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-02T02:35:34.314229
+run_end=2026-03-02T04:04:03.100675
+model=facebook/mms-1b-all
+language=cgg
+split=all
+language_name=Chiga
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all
+num_train_samples=1769
+num_validation_samples=308
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.401583
+validation_cer=0.087890
+test_wer=0.473136
+test_cer=0.118420
+use_lm=True
+validation_lm_wer=0.399292
+validation_lm_cer=0.090694
+test_lm_wer=0.475090
+test_lm_cer=0.121665
+best_validation_wer=0.397834
