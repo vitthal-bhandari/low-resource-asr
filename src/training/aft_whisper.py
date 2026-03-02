@@ -746,7 +746,7 @@ def main():
     print(f"  Gradient accumulation: {args.gradient_accumulation_steps}")
     print(f"  Effective batch size: {args.batch_size * args.gradient_accumulation_steps}")
     print(f"  Learning rate: {args.learning_rate}")
-    print(f"  FP16: {use_fp16}, BF16: {use_bf16}")
+    print("  Precision: float32 (no AMP)")
     print(f"  Generation max length: {args.generation_max_length}")
 
     ############################################################################
