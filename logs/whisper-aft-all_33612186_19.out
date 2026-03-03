@@ -1,0 +1,52 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: all (task 19 of 21)
+Job ID: 33613158 (Array Job: 33612186)
+Node: g3111
+GPUs: 0
+Start time: Mon Mar  2 13:45:10 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ttj (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for ttj (Rutoro) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-ttj
+
+Loading data for ttj (Rutoro) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 1436 samples (7.26 h)
+  Validation: 156 samples (0.92 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ttj): 32.31s
+  Dropped 11 train, 8 val samples (over 32.31s).
+
+Loading Whisper model (openai/whisper-large-v3) in torch.bfloat16...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  FP16: False, BF16: True
+  Generation max length: 225
+
+Starting training...
+{'loss': '17.86', 'grad_norm': '55.75', 'learning_rate': '4.9e-06', 'epoch': '0.561'}
+{'loss': '11.63', 'grad_norm': '38', 'learning_rate': '9.9e-06', 'epoch': '1.112'}

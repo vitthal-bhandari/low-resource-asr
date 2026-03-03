@@ -1,0 +1,32 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: led  Split: all (task 8 of 21)
+Job ID: 33611106 (Array Job: 33611071)
+Node: g3106
+GPUs: 0
+Start time: Mon Mar  2 11:34:45 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for led (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for led (Lendu) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-led
+
+Loading data for led (Lendu) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/train-all_led.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/validation_led.tsv
+  Train: 1491 samples (7.84 h)
+  Validation: 104 samples (0.56 h)
+
+Loading WhisperProcessor (language=english)...

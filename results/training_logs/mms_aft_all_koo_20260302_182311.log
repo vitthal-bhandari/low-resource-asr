@@ -1,0 +1,25 @@
+# MMS Adapter Fine-tuning Run Log
+run_start=2026-03-02T18:23:11.033409
+run_end=2026-03-02T19:49:46.036842
+model=facebook/mms-1b-all
+language=koo
+split=all
+language_name=Konzo
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/all
+num_train_samples=1739
+num_validation_samples=99
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=0.001
+validation_wer=0.799599
+validation_cer=0.264680
+test_wer=0.681785
+test_cer=0.174997
+use_lm=True
+validation_lm_wer=0.800802
+validation_lm_cer=0.278151
+test_lm_wer=0.686139
+test_lm_cer=0.185278
+best_validation_wer=0.797996

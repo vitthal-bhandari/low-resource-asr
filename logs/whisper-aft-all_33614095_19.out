@@ -1,0 +1,95 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: all (task 19 of 21)
+Job ID: 33616394 (Array Job: 33614095)
+Node: g3104
+GPUs: 0
+Start time: Mon Mar  2 18:04:15 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ttj (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for ttj (Rutoro) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-ttj
+
+Loading data for ttj (Rutoro) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 1436 samples (7.26 h)
+  Validation: 156 samples (0.92 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ttj): 32.31s
+  Dropped 11 train, 8 val samples (over 32.31s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '12.12', 'grad_norm': '35.53', 'learning_rate': '4.9e-06', 'epoch': '0.561'}
+{'loss': '4.724', 'grad_norm': '26.4', 'learning_rate': '9.9e-06', 'epoch': '1.112'}
+{'eval_loss': '0.4473', 'eval_wer': '0.3905', 'eval_cer': '0.07975', 'eval_runtime': '160.4', 'eval_samples_per_second': '0.923', 'eval_steps_per_second': '0.461', 'epoch': '1.112'}
+{'loss': '3.097', 'grad_norm': '35.21', 'learning_rate': '8.6e-06', 'epoch': '1.673'}
+{'loss': '2.239', 'grad_norm': '19.89', 'learning_rate': '7.171e-06', 'epoch': '2.224'}
+{'eval_loss': '0.3398', 'eval_wer': '0.2929', 'eval_cer': '0.06164', 'eval_runtime': '154.6', 'eval_samples_per_second': '0.957', 'eval_steps_per_second': '0.479', 'epoch': '2.224'}
+{'loss': '1.524', 'grad_norm': '17.6', 'learning_rate': '5.743e-06', 'epoch': '2.785'}
+{'loss': '1.073', 'grad_norm': '16.19', 'learning_rate': '4.314e-06', 'epoch': '3.337'}
+{'eval_loss': '0.3347', 'eval_wer': '0.2707', 'eval_cer': '0.05711', 'eval_runtime': '155.1', 'eval_samples_per_second': '0.954', 'eval_steps_per_second': '0.477', 'epoch': '3.337'}
+{'loss': '0.7172', 'grad_norm': '17.91', 'learning_rate': '2.886e-06', 'epoch': '3.898'}
+{'loss': '0.4525', 'grad_norm': '12.67', 'learning_rate': '1.457e-06', 'epoch': '4.449'}
+{'eval_loss': '0.3474', 'eval_wer': '0.2559', 'eval_cer': '0.0553', 'eval_runtime': '155.2', 'eval_samples_per_second': '0.954', 'eval_steps_per_second': '0.477', 'epoch': '4.449'}
+{'loss': '0.361', 'grad_norm': '4.692', 'learning_rate': '2.857e-08', 'epoch': '5'}
+{'train_runtime': '4390', 'train_samples_per_second': '1.623', 'train_steps_per_second': '0.103', 'train_loss': '2.923', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+
+Final evaluation (validation):
+  WER: 0.2559
+  CER: 0.0553
+
+Evaluating on test set...
+  Test WER: 0.2874
+  Test CER: 0.0917
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_ttj_all_20260302_180558.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_ttj_20260302_180558.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-ttj
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ttj
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ttj
+
+==========================================
+Training complete for ttj!
+End time: Mon Mar  2 19:31:46 PST 2026
+==========================================

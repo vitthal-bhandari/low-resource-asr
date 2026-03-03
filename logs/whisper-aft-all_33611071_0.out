@@ -1,0 +1,32 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: aln  Split: all (task 0 of 21)
+Job ID: 33611075 (Array Job: 33611071)
+Node: g3100
+GPUs: 0
+Start time: Mon Mar  2 11:31:30 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for aln (Gheg Albanian) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: albanian
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-aln
+
+Loading data for aln (Gheg Albanian) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 965 samples (6.39 h)
+  Validation: 150 samples (1.45 h)
+
+Loading WhisperProcessor (language=albanian)...

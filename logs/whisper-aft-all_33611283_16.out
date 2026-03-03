@@ -1,0 +1,50 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: sco  Split: all (task 16 of 21)
+Job ID: 33611977 (Array Job: 33611283)
+Node: g3103
+GPUs: 0
+Start time: Mon Mar  2 12:27:14 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for sco (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for sco (Scots) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-sco
+
+Loading data for sco (Scots) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 3 train, 12 val samples (over 129.64s).
+
+Loading Whisper model (openai/whisper-large-v3)...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  FP16: False, BF16: True
+  Generation max length: 225
+
+Starting training...

@@ -1,0 +1,97 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: lke  Split: all (task 9 of 21)
+Job ID: 33615273 (Array Job: 33614095)
+Node: g3106
+GPUs: 0
+Start time: Mon Mar  2 16:15:53 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for lke (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for lke (Kenyi) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lke/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-lke
+
+Loading data for lke (Kenyi) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/train-all_lke.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
+  Train: 1712 samples (7.44 h)
+  Validation: 146 samples (0.66 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for lke): 27.53s
+  Dropped 22 train, 6 val samples (over 27.53s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '17.02', 'grad_norm': '49.33', 'learning_rate': '4.9e-06', 'epoch': '0.4734'}
+{'loss': '10.71', 'grad_norm': '41.79', 'learning_rate': '9.9e-06', 'epoch': '0.9467'}
+{'eval_loss': '1.283', 'eval_wer': '0.8879', 'eval_cer': '0.3366', 'eval_runtime': '132.2', 'eval_samples_per_second': '1.059', 'eval_steps_per_second': '0.529', 'epoch': '0.9467'}
+{'loss': '8.039', 'grad_norm': '33.77', 'learning_rate': '8.86e-06', 'epoch': '1.417'}
+{'loss': '7.405', 'grad_norm': '33.36', 'learning_rate': '7.698e-06', 'epoch': '1.89'}
+{'eval_loss': '1.121', 'eval_wer': '0.8616', 'eval_cer': '0.3531', 'eval_runtime': '128.2', 'eval_samples_per_second': '1.092', 'eval_steps_per_second': '0.546', 'epoch': '1.89'}
+{'loss': '5.762', 'grad_norm': '35.18', 'learning_rate': '6.535e-06', 'epoch': '2.36'}
+{'loss': '5.311', 'grad_norm': '33.83', 'learning_rate': '5.372e-06', 'epoch': '2.833'}
+{'eval_loss': '1.095', 'eval_wer': '0.6779', 'eval_cer': '0.2644', 'eval_runtime': '121.9', 'eval_samples_per_second': '1.149', 'eval_steps_per_second': '0.574', 'epoch': '2.833'}
+{'loss': '4.149', 'grad_norm': '27.86', 'learning_rate': '4.209e-06', 'epoch': '3.303'}
+{'loss': '3.648', 'grad_norm': '31.05', 'learning_rate': '3.047e-06', 'epoch': '3.776'}
+{'eval_loss': '1.143', 'eval_wer': '0.5886', 'eval_cer': '0.1891', 'eval_runtime': '112.9', 'eval_samples_per_second': '1.24', 'eval_steps_per_second': '0.62', 'epoch': '3.776'}
+{'loss': '2.978', 'grad_norm': '30.94', 'learning_rate': '1.884e-06', 'epoch': '4.246'}
+{'loss': '2.534', 'grad_norm': '29.06', 'learning_rate': '7.209e-07', 'epoch': '4.72'}
+{'eval_loss': '1.213', 'eval_wer': '0.6384', 'eval_cer': '0.2292', 'eval_runtime': '117.4', 'eval_samples_per_second': '1.192', 'eval_steps_per_second': '0.596', 'epoch': '4.72'}
+{'train_runtime': '4977', 'train_samples_per_second': '1.698', 'train_steps_per_second': '0.106', 'train_loss': '6.51', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lke/all
+
+Final evaluation (validation):
+  WER: 0.5886
+  CER: 0.1891
+
+Evaluating on test set...
+  Test WER: 0.5855
+  Test CER: 0.1716
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_lke_all_20260302_162116.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lke/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_lke_20260302_162116.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-lke
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-lke
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lke/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-lke
+
+==========================================
+Training complete for lke!
+End time: Mon Mar  2 17:57:15 PST 2026
+==========================================

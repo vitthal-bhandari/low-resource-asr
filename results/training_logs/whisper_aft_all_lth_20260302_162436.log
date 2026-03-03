@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-02T16:24:36.690272
+run_end=2026-03-02T17:43:10.584519
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=lth
+split=all
+language_name=Thur
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lth/all
+num_train_samples=1434
+num_validation_samples=52
+num_epochs=5
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.423574
+validation_cer=0.213842
+test_wer=0.344228
+test_cer=0.167014
+best_validation_wer=0.337776

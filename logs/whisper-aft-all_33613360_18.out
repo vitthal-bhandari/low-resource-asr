@@ -1,0 +1,46 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: top  Split: all (task 18 of 21)
+Job ID: 33613693 (Array Job: 33613360)
+Node: g3112
+GPUs: 0
+Start time: Mon Mar  2 14:22:13 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for top (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for top (Papantla Totonac) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/top/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-top
+
+Loading data for top (Papantla Totonac) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: 189 samples (5.87 h)
+  Validation: 59 samples (1.68 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for top): 253.01s
+  Dropped 8 train, 0 val samples (over 253.01s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05

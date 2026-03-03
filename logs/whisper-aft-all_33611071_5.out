@@ -1,0 +1,32 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: hch  Split: all (task 5 of 21)
+Job ID: 33611101 (Array Job: 33611071)
+Node: g3112
+GPUs: 0
+Start time: Mon Mar  2 11:34:11 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for hch (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for hch (Wixárika) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/hch/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-hch
+
+Loading data for hch (Wixárika) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-all_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 844 samples (6.27 h)
+  Validation: 310 samples (0.97 h)
+
+Loading WhisperProcessor (language=english)...

@@ -1,0 +1,52 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: bxk  Split: all (task 2 of 21)
+Job ID: 33612192 (Array Job: 33612186)
+Node: g3105
+GPUs: 0
+Start time: Mon Mar  2 13:11:01 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for bxk (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for bxk (Bukusu) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/bxk/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-bxk
+
+Loading data for bxk (Bukusu) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/train-all_bxk.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/validation_bxk.tsv
+  Train: 1642 samples (7.85 h)
+  Validation: 118 samples (0.61 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for bxk): 29.27s
+  Dropped 38 train, 2 val samples (over 29.27s).
+
+Loading Whisper model (openai/whisper-large-v3) in torch.bfloat16...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  FP16: False, BF16: True
+  Generation max length: 225
+
+Starting training...
+{'loss': '18.9', 'grad_norm': '60.25', 'learning_rate': '4.9e-06', 'epoch': '0.4988'}
+{'loss': '12.78', 'grad_norm': '50.75', 'learning_rate': '9.9e-06', 'epoch': '0.9975'}
