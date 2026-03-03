@@ -389,6 +389,14 @@ def create_prepare_dataset_fn(processor: WhisperProcessor):
     tokenised label IDs.
     """
     TARGET_SR = 16_000
+    # Whisper-large-v3 has a maximum target length (e.g. 448 tokens).  We
+    # truncate labels to the tokenizer's configured max length to avoid
+    # "Labels' sequence length ... cannot exceed the maximum allowed length"
+    # errors on very long transcriptions.
+    max_label_length = getattr(processor.tokenizer, "model_max_length", None)
+    if max_label_length is None or max_label_length > 1024:
+        # Fall back to a safe default if the tokenizer does not define it
+        max_label_length = 448
 
     def prepare_dataset(batch: dict) -> dict:
         path = batch["audio"]["path"]
@@ -404,7 +412,12 @@ def create_prepare_dataset_fn(processor: WhisperProcessor):
         # Raw sample count for optional length-based filtering
         batch["input_length"] = len(array)
 
-        batch["labels"] = processor.tokenizer(batch["sentence"]).input_ids
+        tokenized = processor.tokenizer(
+            batch["sentence"],
+            max_length=max_label_length,
+            truncation=True,
+        )
+        batch["labels"] = tokenized.input_ids
         return batch
 
     return prepare_dataset
