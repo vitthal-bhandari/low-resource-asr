@@ -1,0 +1,50 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: mmc  Split: all (task 12 of 21)
+Job ID: 33615688 (Array Job: 33614095)
+Node: g3107
+GPUs: 0
+Start time: Mon Mar  2 16:54:59 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for mmc (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for mmc (Michoacán Mazahua) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/mmc/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-mmc
+
+Loading data for mmc (Michoacán Mazahua) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/train-all_mmc.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/validation_mmc.tsv
+  Train: 473 samples (7.22 h)
+  Validation: 172 samples (1.54 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for mmc): 144.61s
+  Dropped 14 train, 2 val samples (over 144.61s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...

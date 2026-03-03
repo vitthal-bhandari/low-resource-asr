@@ -1,0 +1,52 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: pne  Split: all (task 13 of 21)
+Job ID: 33613013 (Array Job: 33612186)
+Node: g3111
+GPUs: 0
+Start time: Mon Mar  2 13:34:03 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for pne (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for pne (Western Penan) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: malay
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-pne
+
+Loading data for pne (Western Penan) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: 1811 samples (8.48 h)
+  Validation: 310 samples (1.30 h)
+
+Loading WhisperProcessor (language=malay)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for pne): 24.19s
+  Dropped 44 train, 0 val samples (over 24.19s).
+
+Loading Whisper model (openai/whisper-large-v3) in torch.bfloat16...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  FP16: False, BF16: True
+  Generation max length: 225
+
+Starting training...
+{'loss': '16.87', 'grad_norm': '60.5', 'learning_rate': '4.9e-06', 'epoch': '0.4525'}
+{'loss': '11.14', 'grad_norm': '50.75', 'learning_rate': '9.9e-06', 'epoch': '0.905'}

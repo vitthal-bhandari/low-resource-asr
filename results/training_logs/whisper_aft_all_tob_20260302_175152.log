@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-02T17:51:52.658869
+run_end=2026-03-02T18:46:40.527181
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=tob
+split=all
+language_name=Toba Qom
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/tob/all
+num_train_samples=836
+num_validation_samples=306
+num_epochs=5
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.694494
+validation_cer=0.318737
+test_wer=0.630801
+test_cer=0.286057
+best_validation_wer=0.694494

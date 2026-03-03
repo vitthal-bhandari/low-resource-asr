@@ -1,0 +1,52 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: koo  Split: all (task 7 of 21)
+Job ID: 33611524 (Array Job: 33611283)
+Node: g3123
+GPUs: 0
+Start time: Mon Mar  2 12:06:13 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for koo (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for koo (Konzo) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/koo/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-koo
+
+Loading data for koo (Konzo) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-all_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: 1739 samples (7.83 h)
+  Validation: 99 samples (0.59 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for koo): 31.86s
+  Dropped 35 train, 1 val samples (over 31.86s).
+
+Loading Whisper model (openai/whisper-large-v3)...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  FP16: False, BF16: True
+  Generation max length: 225
+
+Starting training...
+{'loss': '278.9', 'grad_norm': '825', 'learning_rate': '4.9e-06', 'epoch': '0.4695'}
+{'loss': '2626', 'grad_norm': '3.309e+04', 'learning_rate': '9.9e-06', 'epoch': '0.939'}

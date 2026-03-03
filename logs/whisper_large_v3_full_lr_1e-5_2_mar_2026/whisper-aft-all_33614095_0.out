@@ -1,0 +1,91 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: aln  Split: all (task 0 of 21)
+Job ID: 33614100 (Array Job: 33614095)
+Node: g3112
+GPUs: 0
+Start time: Mon Mar  2 14:31:59 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for aln (Gheg Albanian) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: albanian
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-aln
+
+Loading data for aln (Gheg Albanian) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 965 samples (6.39 h)
+  Validation: 150 samples (1.45 h)
+
+Loading WhisperProcessor (language=albanian)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for aln): 38.86s
+  Dropped 10 train, 24 val samples (over 38.86s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '15.41', 'grad_norm': '32.58', 'learning_rate': '4.9e-06', 'epoch': '0.8368'}
+{'loss': '8.726', 'grad_norm': '33.88', 'learning_rate': '9.9e-06', 'epoch': '1.669'}
+{'eval_loss': '1.135', 'eval_wer': '0.4745', 'eval_cer': '0.2487', 'eval_runtime': '158.3', 'eval_samples_per_second': '0.796', 'eval_steps_per_second': '0.398', 'epoch': '1.669'}
+{'loss': '6.514', 'grad_norm': '25.92', 'learning_rate': '7.55e-06', 'epoch': '2.502'}
+{'loss': '4.81', 'grad_norm': '30.39', 'learning_rate': '5.05e-06', 'epoch': '3.335'}
+{'eval_loss': '1.11', 'eval_wer': '0.4455', 'eval_cer': '0.2443', 'eval_runtime': '159.8', 'eval_samples_per_second': '0.789', 'eval_steps_per_second': '0.394', 'epoch': '3.335'}
+{'loss': '3.423', 'grad_norm': '31.19', 'learning_rate': '2.55e-06', 'epoch': '4.167'}
+{'loss': '2.54', 'grad_norm': '23.57', 'learning_rate': '5e-08', 'epoch': '5'}
+{'eval_loss': '1.166', 'eval_wer': '0.4471', 'eval_cer': '0.2387', 'eval_runtime': '162.3', 'eval_samples_per_second': '0.776', 'eval_steps_per_second': '0.388', 'epoch': '5'}
+{'train_runtime': '3121', 'train_samples_per_second': '1.53', 'train_steps_per_second': '0.096', 'train_loss': '6.904', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+
+Final evaluation (validation):
+  WER: 0.4455
+  CER: 0.2443
+
+Evaluating on test set...
+  Test WER: 0.4743
+  Test CER: 0.2530
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_aln_all_20260302_143253.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_aln_20260302_143253.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-aln
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-aln
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-aln
+
+==========================================
+Training complete for aln!
+End time: Mon Mar  2 15:34:34 PST 2026
+==========================================

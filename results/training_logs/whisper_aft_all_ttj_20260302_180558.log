@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-02T18:05:58.096344
+run_end=2026-03-02T19:29:49.887749
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=ttj
+split=all
+language_name=Rutoro
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+num_train_samples=1436
+num_validation_samples=156
+num_epochs=5
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.255921
+validation_cer=0.055302
+test_wer=0.287408
+test_cer=0.091749
+best_validation_wer=0.255921

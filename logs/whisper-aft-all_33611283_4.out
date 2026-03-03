@@ -1,0 +1,50 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: el-CY  Split: all (task 4 of 21)
+Job ID: 33611438 (Array Job: 33611283)
+Node: g3123
+GPUs: 0
+Start time: Mon Mar  2 12:01:14 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for el-CY (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for el-CY (Cypriot Greek) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: greek
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/el-CY/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 782 samples (7.15 h)
+  Validation: 277 samples (1.47 h)
+
+Loading WhisperProcessor (language=greek)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 29 train, 0 val samples (over 79.43s).
+
+Loading Whisper model (openai/whisper-large-v3)...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  FP16: False, BF16: True
+  Generation max length: 225
+
+Starting training...

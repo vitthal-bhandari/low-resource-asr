@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-02T14:36:02.143659
+run_end=2026-03-02T16:44:06.077237
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=cgg
+split=all
+language_name=Chiga
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/cgg/all
+num_train_samples=1769
+num_validation_samples=308
+num_epochs=5
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.428006
+validation_cer=0.105110
+test_wer=0.544329
+test_cer=0.168284
+best_validation_wer=0.428006

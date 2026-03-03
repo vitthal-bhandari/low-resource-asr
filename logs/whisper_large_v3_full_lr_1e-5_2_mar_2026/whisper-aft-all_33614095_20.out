@@ -1,0 +1,95 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: ukv  Split: all (task 20 of 21)
+Job ID: 33614095 (Array Job: 33614095)
+Node: g3111
+GPUs: 0
+Start time: Mon Mar  2 18:22:01 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ukv (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for ukv (Kuku) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ukv/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-ukv
+
+Loading data for ukv (Kuku) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-all_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: 1505 samples (7.21 h)
+  Validation: 142 samples (0.65 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ukv): 33.85s
+  Dropped 37 train, 0 val samples (over 33.85s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '15.31', 'grad_norm': '37.49', 'learning_rate': '4.9e-06', 'epoch': '0.545'}
+{'loss': '7.808', 'grad_norm': '31.45', 'learning_rate': '9.9e-06', 'epoch': '1.087'}
+{'eval_loss': '0.8783', 'eval_wer': '0.4941', 'eval_cer': '0.1796', 'eval_runtime': '116.4', 'eval_samples_per_second': '1.22', 'eval_steps_per_second': '0.61', 'epoch': '1.087'}
+{'loss': '5.874', 'grad_norm': '28.32', 'learning_rate': '8.639e-06', 'epoch': '1.632'}
+{'loss': '5.206', 'grad_norm': '27.66', 'learning_rate': '7.25e-06', 'epoch': '2.174'}
+{'eval_loss': '0.7622', 'eval_wer': '0.4704', 'eval_cer': '0.1748', 'eval_runtime': '115.7', 'eval_samples_per_second': '1.228', 'eval_steps_per_second': '0.614', 'epoch': '2.174'}
+{'loss': '4.029', 'grad_norm': '31.33', 'learning_rate': '5.861e-06', 'epoch': '2.719'}
+{'loss': '3.634', 'grad_norm': '24.15', 'learning_rate': '4.472e-06', 'epoch': '3.262'}
+{'eval_loss': '0.769', 'eval_wer': '0.423', 'eval_cer': '0.1492', 'eval_runtime': '111.7', 'eval_samples_per_second': '1.271', 'eval_steps_per_second': '0.636', 'epoch': '3.262'}
+{'loss': '2.839', 'grad_norm': '24.19', 'learning_rate': '3.083e-06', 'epoch': '3.807'}
+{'loss': '2.232', 'grad_norm': '21.1', 'learning_rate': '1.694e-06', 'epoch': '4.349'}
+{'eval_loss': '0.8054', 'eval_wer': '0.4273', 'eval_cer': '0.154', 'eval_runtime': '112', 'eval_samples_per_second': '1.268', 'eval_steps_per_second': '0.634', 'epoch': '4.349'}
+{'loss': '1.984', 'grad_norm': '24.3', 'learning_rate': '3.056e-07', 'epoch': '4.894'}
+{'train_runtime': '4285', 'train_samples_per_second': '1.713', 'train_steps_per_second': '0.107', 'train_loss': '5.352', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ukv/all
+
+Final evaluation (validation):
+  WER: 0.4704
+  CER: 0.1748
+
+Evaluating on test set...
+  Test WER: 0.4382
+  Test CER: 0.1611
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_ukv_all_20260302_182359.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ukv/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_ukv_20260302_182359.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-ukv
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ukv
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ukv/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ukv
+
+==========================================
+Training complete for ukv!
+End time: Mon Mar  2 19:46:33 PST 2026
+==========================================

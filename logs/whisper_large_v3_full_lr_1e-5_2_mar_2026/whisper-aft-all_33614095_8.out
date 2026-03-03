@@ -1,0 +1,95 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: led  Split: all (task 8 of 21)
+Job ID: 33614725 (Array Job: 33614095)
+Node: g3110
+GPUs: 0
+Start time: Mon Mar  2 15:34:36 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for led (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for led (Lendu) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-led
+
+Loading data for led (Lendu) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/train-all_led.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/validation_led.tsv
+  Train: 1491 samples (7.84 h)
+  Validation: 104 samples (0.56 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for led): 26.64s
+  Dropped 30 train, 3 val samples (over 26.64s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '12.53', 'grad_norm': '31.81', 'learning_rate': '4.9e-06', 'epoch': '0.5472'}
+{'loss': '4.456', 'grad_norm': '21.84', 'learning_rate': '9.9e-06', 'epoch': '1.088'}
+{'eval_loss': '0.4876', 'eval_wer': '0.3593', 'eval_cer': '0.1321', 'eval_runtime': '117.9', 'eval_samples_per_second': '0.857', 'eval_steps_per_second': '0.433', 'epoch': '1.088'}
+{'loss': '3.089', 'grad_norm': '20.47', 'learning_rate': '8.639e-06', 'epoch': '1.635'}
+{'loss': '2.486', 'grad_norm': '17.02', 'learning_rate': '7.25e-06', 'epoch': '2.175'}
+{'eval_loss': '0.4101', 'eval_wer': '0.305', 'eval_cer': '0.1078', 'eval_runtime': '111.3', 'eval_samples_per_second': '0.907', 'eval_steps_per_second': '0.458', 'epoch': '2.175'}
+{'loss': '1.987', 'grad_norm': '16.69', 'learning_rate': '5.861e-06', 'epoch': '2.722'}
+{'loss': '1.579', 'grad_norm': '15.05', 'learning_rate': '4.472e-06', 'epoch': '3.263'}
+{'eval_loss': '0.4012', 'eval_wer': '0.2865', 'eval_cer': '0.09883', 'eval_runtime': '109.7', 'eval_samples_per_second': '0.921', 'eval_steps_per_second': '0.465', 'epoch': '3.263'}
+{'loss': '1.247', 'grad_norm': '17.44', 'learning_rate': '3.083e-06', 'epoch': '3.81'}
+{'loss': '0.9741', 'grad_norm': '13.19', 'learning_rate': '1.694e-06', 'epoch': '4.35'}
+{'eval_loss': '0.4364', 'eval_wer': '0.2911', 'eval_cer': '0.1029', 'eval_runtime': '111.1', 'eval_samples_per_second': '0.909', 'eval_steps_per_second': '0.459', 'epoch': '4.35'}
+{'loss': '0.764', 'grad_norm': '13.6', 'learning_rate': '3.056e-07', 'epoch': '4.897'}
+{'train_runtime': '4357', 'train_samples_per_second': '1.677', 'train_steps_per_second': '0.106', 'train_loss': '3.182', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all
+
+Final evaluation (validation):
+  WER: 0.3050
+  CER: 0.1078
+
+Evaluating on test set...
+  Test WER: 0.3122
+  Test CER: 0.1330
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_led_all_20260302_153552.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_led_20260302_153552.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-led
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-led
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-led
+
+==========================================
+Training complete for led!
+End time: Mon Mar  2 17:02:20 PST 2026
+==========================================

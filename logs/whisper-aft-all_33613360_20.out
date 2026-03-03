@@ -1,0 +1,35 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: ukv  Split: all (task 20 of 21)
+Job ID: 33613360 (Array Job: 33613360)
+Node: g3122
+GPUs: 0
+Start time: Mon Mar  2 14:23:05 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ukv (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for ukv (Kuku) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ukv/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-ukv
+
+Loading data for ukv (Kuku) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-all_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: 1505 samples (7.21 h)
+  Validation: 142 samples (0.65 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ukv): 33.85s

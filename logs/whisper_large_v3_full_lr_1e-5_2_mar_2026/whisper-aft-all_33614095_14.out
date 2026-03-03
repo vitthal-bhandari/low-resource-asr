@@ -1,0 +1,94 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: ruc  Split: all (task 14 of 21)
+Job ID: 33615717 (Array Job: 33614095)
+Node: g3124
+GPUs: 0
+Start time: Mon Mar  2 17:02:39 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ruc (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for ruc (Ruuli) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-ruc
+
+Loading data for ruc (Ruuli) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: 1346 samples (8.30 h)
+  Validation: 77 samples (0.27 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ruc): 54.37s
+  Dropped 27 train, 0 val samples (over 54.37s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '16.03', 'grad_norm': '39.86', 'learning_rate': '4.9e-06', 'epoch': '0.6061'}
+{'loss': '9.034', 'grad_norm': '34.13', 'learning_rate': '9.9e-06', 'epoch': '1.206'}
+{'eval_loss': '1.115', 'eval_wer': '0.7296', 'eval_cer': '0.2132', 'eval_runtime': '100.4', 'eval_samples_per_second': '0.767', 'eval_steps_per_second': '0.388', 'epoch': '1.206'}
+{'loss': '7.384', 'grad_norm': '27.29', 'learning_rate': '8.444e-06', 'epoch': '1.812'}
+{'loss': '5.714', 'grad_norm': '31.88', 'learning_rate': '6.857e-06', 'epoch': '2.412'}
+{'eval_loss': '0.9597', 'eval_wer': '0.8268', 'eval_cer': '0.2867', 'eval_runtime': '109.6', 'eval_samples_per_second': '0.702', 'eval_steps_per_second': '0.356', 'epoch': '2.412'}
+{'loss': '5.018', 'grad_norm': '21.34', 'learning_rate': '5.27e-06', 'epoch': '3.012'}
+{'loss': '3.871', 'grad_norm': '28.25', 'learning_rate': '3.683e-06', 'epoch': '3.618'}
+{'eval_loss': '0.9699', 'eval_wer': '0.6872', 'eval_cer': '0.2359', 'eval_runtime': '100.7', 'eval_samples_per_second': '0.764', 'eval_steps_per_second': '0.387', 'epoch': '3.618'}
+{'loss': '3.136', 'grad_norm': '27.6', 'learning_rate': '2.095e-06', 'epoch': '4.218'}
+{'loss': '2.528', 'grad_norm': '22.71', 'learning_rate': '5.079e-07', 'epoch': '4.824'}
+{'eval_loss': '1.029', 'eval_wer': '0.6444', 'eval_cer': '0.194', 'eval_runtime': '96.86', 'eval_samples_per_second': '0.795', 'eval_steps_per_second': '0.403', 'epoch': '4.824'}
+{'train_runtime': '4428', 'train_samples_per_second': '1.489', 'train_steps_per_second': '0.094', 'train_loss': '6.454', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
+
+Final evaluation (validation):
+  WER: 0.6444
+  CER: 0.1940
+
+Evaluating on test set...
+  Test WER: 0.6338
+  Test CER: 0.2115
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_ruc_all_20260302_170702.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_ruc_20260302_170702.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-ruc
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ruc
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ruc
+
+==========================================
+Training complete for ruc!
+End time: Mon Mar  2 18:34:32 PST 2026
+==========================================

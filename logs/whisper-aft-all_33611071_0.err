@@ -1,0 +1,73 @@
+Could not set the permissions on the file '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/dd6ae819ad738ac1a546e9f9282ef325c33b9ea0.incomplete'. Error: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/dd6ae819ad738ac1a546e9f9282ef325c33b9ea0.incomplete'.
+Continuing without setting permissions.
+Could not set the permissions on the file '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/1b33526d33aaa60d79f78ae8651dae50b730185a.incomplete'. Error: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/1b33526d33aaa60d79f78ae8651dae50b730185a.incomplete'.
+Continuing without setting permissions.
+Traceback (most recent call last):
+  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/shutil.py", line 847, in move
+    os.rename(src, real_dst)
+FileNotFoundError: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/1b33526d33aaa60d79f78ae8651dae50b730185a.incomplete' -> '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/1b33526d33aaa60d79f78ae8651dae50b730185a'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1942, in _copy_no_matter_what
+    shutil.copy2(src, dst)
+  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/shutil.py", line 475, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/1b33526d33aaa60d79f78ae8651dae50b730185a.incomplete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 887, in <module>
+    main()
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 613, in main
+    processor = WhisperProcessor.from_pretrained(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1413, in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, processor_dict, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1527, in _get_arguments_from_pretrained
+    tokenizer = cls._load_tokenizer_from_pretrained(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1474, in _load_tokenizer_from_pretrained
+    tokenizer = auto_processor_class.from_pretrained(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 702, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1720, in from_pretrained
+    resolved_vocab_files[file_id] = cached_file(
+                                    ^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 276, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 507, in cached_files
+    raise e
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 419, in cached_files
+    hf_hub_download(
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1024, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1240, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1890, in _download_to_tmp_and_move
+    _chmod_and_move(incomplete_path, destination_path)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1931, in _chmod_and_move
+    shutil.move(str(src), str(dst), copy_function=_copy_no_matter_what)
+  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/shutil.py", line 867, in move
+    copy_function(src, real_dst)
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1945, in _copy_no_matter_what
+    shutil.copyfile(src, dst)
+  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/1b33526d33aaa60d79f78ae8651dae50b730185a.incomplete'

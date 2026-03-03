@@ -1,0 +1,94 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: rwm  Split: all (task 15 of 21)
+Job ID: 33615729 (Array Job: 33614095)
+Node: g3110
+GPUs: 0
+Start time: Mon Mar  2 17:04:19 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for rwm (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for rwm (Amba) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-rwm
+
+Loading data for rwm (Amba) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: 1326 samples (7.56 h)
+  Validation: 140 samples (0.77 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for rwm): 36.59s
+  Dropped 40 train, 1 val samples (over 36.59s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '16.29', 'grad_norm': '39.87', 'learning_rate': '4.9e-06', 'epoch': '0.6221'}
+{'loss': '9.17', 'grad_norm': '31.8', 'learning_rate': '9.9e-06', 'epoch': '1.236'}
+{'eval_loss': '1.177', 'eval_wer': '0.8345', 'eval_cer': '0.4082', 'eval_runtime': '150.3', 'eval_samples_per_second': '0.925', 'eval_steps_per_second': '0.466', 'epoch': '1.236'}
+{'loss': '7.69', 'grad_norm': '29.32', 'learning_rate': '8.393e-06', 'epoch': '1.858'}
+{'loss': '5.509', 'grad_norm': '30.05', 'learning_rate': '6.754e-06', 'epoch': '2.473'}
+{'eval_loss': '1.063', 'eval_wer': '0.6726', 'eval_cer': '0.2766', 'eval_runtime': '128', 'eval_samples_per_second': '1.086', 'eval_steps_per_second': '0.547', 'epoch': '2.473'}
+{'loss': '5.153', 'grad_norm': '24.88', 'learning_rate': '5.115e-06', 'epoch': '3.087'}
+{'loss': '3.586', 'grad_norm': '24.35', 'learning_rate': '3.475e-06', 'epoch': '3.709'}
+{'eval_loss': '1.084', 'eval_wer': '0.642', 'eval_cer': '0.266', 'eval_runtime': '124.5', 'eval_samples_per_second': '1.116', 'eval_steps_per_second': '0.562', 'epoch': '3.709'}
+{'loss': '3.176', 'grad_norm': '26.1', 'learning_rate': '1.836e-06', 'epoch': '4.323'}
+{'loss': '2.505', 'grad_norm': '31.66', 'learning_rate': '1.967e-07', 'epoch': '4.946'}
+{'eval_loss': '1.139', 'eval_wer': '0.6423', 'eval_cer': '0.2652', 'eval_runtime': '124.8', 'eval_samples_per_second': '1.113', 'eval_steps_per_second': '0.561', 'epoch': '4.946'}
+{'train_runtime': '3924', 'train_samples_per_second': '1.639', 'train_steps_per_second': '0.103', 'train_loss': '6.581', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all
+
+Final evaluation (validation):
+  WER: 0.6726
+  CER: 0.2766
+
+Evaluating on test set...
+  Test WER: 0.5716
+  Test CER: 0.2427
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_rwm_all_20260302_170509.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_rwm_20260302_170509.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-rwm
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-rwm
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-rwm
+
+==========================================
+Training complete for rwm!
+End time: Mon Mar  2 18:21:40 PST 2026
+==========================================

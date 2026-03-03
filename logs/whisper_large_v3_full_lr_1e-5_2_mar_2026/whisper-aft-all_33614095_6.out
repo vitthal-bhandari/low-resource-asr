@@ -1,0 +1,94 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: kcn  Split: all (task 6 of 21)
+Job ID: 33614404 (Array Job: 33614095)
+Node: g3103
+GPUs: 0
+Start time: Mon Mar  2 14:53:09 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for kcn (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for kcn (Nubi) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-kcn
+
+Loading data for kcn (Nubi) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 1395 samples (7.21 h)
+  Validation: 152 samples (0.57 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for kcn): 50.22s
+  Dropped 26 train, 1 val samples (over 50.22s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '14.73', 'grad_norm': '50.1', 'learning_rate': '4.9e-06', 'epoch': '0.5839'}
+{'loss': '8.355', 'grad_norm': '42.64', 'learning_rate': '9.9e-06', 'epoch': '1.164'}
+{'eval_loss': '0.8435', 'eval_wer': '0.4907', 'eval_cer': '0.2325', 'eval_runtime': '123.6', 'eval_samples_per_second': '1.221', 'eval_steps_per_second': '0.615', 'epoch': '1.164'}
+{'loss': '6.381', 'grad_norm': '30.47', 'learning_rate': '8.515e-06', 'epoch': '1.747'}
+{'loss': '5.021', 'grad_norm': '23.72', 'learning_rate': '7e-06', 'epoch': '2.327'}
+{'eval_loss': '0.766', 'eval_wer': '0.4123', 'eval_cer': '0.1937', 'eval_runtime': '113.2', 'eval_samples_per_second': '1.334', 'eval_steps_per_second': '0.672', 'epoch': '2.327'}
+{'loss': '4.242', 'grad_norm': '24.03', 'learning_rate': '5.485e-06', 'epoch': '2.911'}
+{'loss': '3.215', 'grad_norm': '25.18', 'learning_rate': '3.97e-06', 'epoch': '3.491'}
+{'eval_loss': '0.7929', 'eval_wer': '0.3677', 'eval_cer': '0.1655', 'eval_runtime': '109', 'eval_samples_per_second': '1.385', 'eval_steps_per_second': '0.697', 'epoch': '3.491'}
+{'loss': '2.704', 'grad_norm': '23.16', 'learning_rate': '2.455e-06', 'epoch': '4.07'}
+{'loss': '2.092', 'grad_norm': '26.31', 'learning_rate': '9.394e-07', 'epoch': '4.654'}
+{'eval_loss': '0.8408', 'eval_wer': '0.3705', 'eval_cer': '0.1582', 'eval_runtime': '107.6', 'eval_samples_per_second': '1.403', 'eval_steps_per_second': '0.706', 'epoch': '4.654'}
+{'train_runtime': '4180', 'train_samples_per_second': '1.638', 'train_steps_per_second': '0.103', 'train_loss': '5.554', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+
+Final evaluation (validation):
+  WER: 0.4123
+  CER: 0.1937
+
+Evaluating on test set...
+  Test WER: 1.0568
+  Test CER: 0.7252
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_kcn_all_20260302_145456.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_kcn_20260302_145456.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-kcn
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-kcn
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-kcn
+
+==========================================
+Training complete for kcn!
+End time: Mon Mar  2 16:15:45 PST 2026
+==========================================
