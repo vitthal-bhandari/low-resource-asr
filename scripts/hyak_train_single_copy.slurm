@@ -74,12 +74,13 @@ echo ""
 
 echo "Starting training for $LANG (split=$SPLIT)..."
 
-uv run python -m src.training.aft_xlsr "$LANG" \
+uv run python -m src.training.aft_mms "$LANG" \
     --split "$SPLIT" \
     --num-epochs 15 \
     --batch-size 2 \
     --gradient-accumulation-steps 8 \
     --learning-rate 1e-3 \
+    --save-to-hf \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
     --use-lm
