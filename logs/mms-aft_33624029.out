@@ -1,0 +1,133 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: all
+Job ID: 33624029
+Node: g3098
+GPUs: 0
+Start time: Tue Mar  3 14:49:50 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for ttj (split=all)...
+============================================================
+MMS Adapter Fine-tuning for ttj (Rutoro) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-ttj
+
+Loading data for ttj (Rutoro) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 1436 samples (7.26 h)
+  Validation: 156 samples (0.92 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/vocab.json (58 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ttj): 32.31s
+  Dropped 11 train, 8 val samples (over 32.31s).
+
+Loading MMS model...
+  Trainable parameters: 2,228,028 / 964,725,436 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '71.54', 'grad_norm': '31.45', 'learning_rate': '0.00049', 'epoch': '0.561'}
+{'loss': '5.231', 'grad_norm': '5.742', 'learning_rate': '0.00099', 'epoch': '1.112'}
+{'eval_loss': '0.273', 'eval_wer': '0.356', 'eval_cer': '0.0621', 'eval_runtime': '27.37', 'eval_samples_per_second': '5.408', 'eval_steps_per_second': '2.704', 'epoch': '1.112'}
+{'loss': '2.995', 'grad_norm': '3.808', 'learning_rate': '0.0009608', 'epoch': '1.673'}
+{'loss': '2.892', 'grad_norm': '52.03', 'learning_rate': '0.0009208', 'epoch': '2.224'}
+{'eval_loss': '0.2421', 'eval_wer': '0.3465', 'eval_cer': '0.06002', 'eval_runtime': '25.87', 'eval_samples_per_second': '5.72', 'eval_steps_per_second': '2.86', 'epoch': '2.224'}
+{'loss': '2.696', 'grad_norm': '3.039', 'learning_rate': '0.0008808', 'epoch': '2.785'}
+{'loss': '2.528', 'grad_norm': '2.977', 'learning_rate': '0.0008408', 'epoch': '3.337'}
+{'eval_loss': '0.2156', 'eval_wer': '0.311', 'eval_cer': '0.05386', 'eval_runtime': '25.93', 'eval_samples_per_second': '5.708', 'eval_steps_per_second': '2.854', 'epoch': '3.337'}
+{'loss': '2.415', 'grad_norm': '4.228', 'learning_rate': '0.0008008', 'epoch': '3.898'}
+{'loss': '2.297', 'grad_norm': '3.042', 'learning_rate': '0.0007608', 'epoch': '4.449'}
+{'eval_loss': '0.2074', 'eval_wer': '0.2905', 'eval_cer': '0.04988', 'eval_runtime': '26.22', 'eval_samples_per_second': '5.645', 'eval_steps_per_second': '2.823', 'epoch': '4.449'}
+{'loss': '2.381', 'grad_norm': '0.7842', 'learning_rate': '0.0007208', 'epoch': '5'}
+{'loss': '2.241', 'grad_norm': '4.175', 'learning_rate': '0.0006808', 'epoch': '5.561'}
+{'eval_loss': '0.2007', 'eval_wer': '0.2818', 'eval_cer': '0.05028', 'eval_runtime': '25.85', 'eval_samples_per_second': '5.725', 'eval_steps_per_second': '2.862', 'epoch': '5.561'}
+{'loss': '2.168', 'grad_norm': '4.823', 'learning_rate': '0.0006408', 'epoch': '6.112'}
+{'loss': '2.021', 'grad_norm': '4.158', 'learning_rate': '0.0006008', 'epoch': '6.673'}
+{'eval_loss': '0.1989', 'eval_wer': '0.2743', 'eval_cer': '0.04822', 'eval_runtime': '26.24', 'eval_samples_per_second': '5.639', 'eval_steps_per_second': '2.82', 'epoch': '6.673'}
+{'loss': '2.044', 'grad_norm': '2.402', 'learning_rate': '0.0005608', 'epoch': '7.224'}
+{'loss': '2.017', 'grad_norm': '2.496', 'learning_rate': '0.0005208', 'epoch': '7.785'}
+{'eval_loss': '0.1892', 'eval_wer': '0.2637', 'eval_cer': '0.04678', 'eval_runtime': '26', 'eval_samples_per_second': '5.692', 'eval_steps_per_second': '2.846', 'epoch': '7.785'}
+{'loss': '1.928', 'grad_norm': '2.741', 'learning_rate': '0.0004808', 'epoch': '8.337'}
+{'loss': '1.98', 'grad_norm': '28.77', 'learning_rate': '0.0004408', 'epoch': '8.898'}
+{'eval_loss': '0.1901', 'eval_wer': '0.274', 'eval_cer': '0.047', 'eval_runtime': '29.47', 'eval_samples_per_second': '5.022', 'eval_steps_per_second': '2.511', 'epoch': '8.898'}
+{'loss': '1.809', 'grad_norm': '13.3', 'learning_rate': '0.0004008', 'epoch': '9.449'}
+{'loss': '1.844', 'grad_norm': '0.285', 'learning_rate': '0.0003608', 'epoch': '10'}
+{'eval_loss': '0.1891', 'eval_wer': '0.2612', 'eval_cer': '0.04605', 'eval_runtime': '29.72', 'eval_samples_per_second': '4.981', 'eval_steps_per_second': '2.49', 'epoch': '10'}
+{'loss': '1.916', 'grad_norm': '2.199', 'learning_rate': '0.0003208', 'epoch': '10.56'}
+{'loss': '1.652', 'grad_norm': '6.808', 'learning_rate': '0.0002808', 'epoch': '11.11'}
+{'eval_loss': '0.1849', 'eval_wer': '0.2579', 'eval_cer': '0.04476', 'eval_runtime': '32.29', 'eval_samples_per_second': '4.583', 'eval_steps_per_second': '2.291', 'epoch': '11.11'}
+{'loss': '1.714', 'grad_norm': '3.726', 'learning_rate': '0.0002408', 'epoch': '11.67'}
+{'loss': '1.737', 'grad_norm': '5.141', 'learning_rate': '0.0002008', 'epoch': '12.22'}
+{'eval_loss': '0.1845', 'eval_wer': '0.2634', 'eval_cer': '0.04522', 'eval_runtime': '31.57', 'eval_samples_per_second': '4.688', 'eval_steps_per_second': '2.344', 'epoch': '12.22'}
+{'loss': '1.618', 'grad_norm': '2.434', 'learning_rate': '0.0001608', 'epoch': '12.79'}
+{'loss': '1.728', 'grad_norm': '3.423', 'learning_rate': '0.0001208', 'epoch': '13.34'}
+{'eval_loss': '0.1836', 'eval_wer': '0.2574', 'eval_cer': '0.04482', 'eval_runtime': '28.5', 'eval_samples_per_second': '5.193', 'eval_steps_per_second': '2.596', 'epoch': '13.34'}
+{'loss': '1.565', 'grad_norm': '7.701', 'learning_rate': '8.08e-05', 'epoch': '13.9'}
+{'loss': '1.646', 'grad_norm': '6.478', 'learning_rate': '4.08e-05', 'epoch': '14.45'}
+{'eval_loss': '0.1823', 'eval_wer': '0.2569', 'eval_cer': '0.04443', 'eval_runtime': '28.69', 'eval_samples_per_second': '5.158', 'eval_steps_per_second': '2.579', 'epoch': '14.45'}
+{'loss': '1.607', 'grad_norm': '0.9942', 'learning_rate': '8e-07', 'epoch': '15'}
+{'train_runtime': '7267', 'train_samples_per_second': '2.942', 'train_steps_per_second': '0.186', 'train_loss': '4.749', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/adapter.ttj.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.2562
+  Greedy CER: 0.0444
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.2421
+  Test CER (greedy): 0.0437
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_ttj_all_20260303_145437.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.2554
+  LM CER: 0.0441
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.2407
+  Test LM CER: 0.0433
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_ttj_all_20260303_145437.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_ttj_20260303_145437.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-ttj
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ttj
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ttj
+
+==========================================
+Training complete!
+End time: Tue Mar  3 17:24:15 PST 2026
+==========================================

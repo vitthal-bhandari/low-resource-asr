@@ -1,0 +1,89 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: hch  Split: all
+Job ID: 33618932
+Node: g3104
+GPUs: 0
+Start time: Tue Mar  3 17:45:03 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for hch (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for hch (Wixárika) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/hch/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-all-hch
+
+Loading data for hch (Wixárika) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-all_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 844 samples (6.27 h)
+  Validation: 310 samples (0.97 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for hch): 70.46s
+  Dropped 33 train, 0 val samples (over 70.46s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '17.18', 'grad_norm': '40.07', 'learning_rate': '4.9e-06', 'epoch': '0.9852'}
+{'loss': '6.853', 'grad_norm': '27.98', 'learning_rate': '9.9e-06', 'epoch': '1.966'}
+{'eval_loss': '0.5715', 'eval_wer': '0.6619', 'eval_cer': '0.1654', 'eval_runtime': '276.8', 'eval_samples_per_second': '1.12', 'eval_steps_per_second': '0.56', 'epoch': '1.966'}
+{'loss': '4.367', 'grad_norm': '23.07', 'learning_rate': '6.839e-06', 'epoch': '2.946'}
+{'loss': '3.048', 'grad_norm': '23.52', 'learning_rate': '3.613e-06', 'epoch': '3.926'}
+{'eval_loss': '0.4625', 'eval_wer': '0.5177', 'eval_cer': '0.1265', 'eval_runtime': '249.5', 'eval_samples_per_second': '1.243', 'eval_steps_per_second': '0.621', 'epoch': '3.926'}
+{'loss': '2.185', 'grad_norm': '19.9', 'learning_rate': '3.871e-07', 'epoch': '4.906'}
+{'train_runtime': '4540', 'train_samples_per_second': '0.893', 'train_steps_per_second': '0.056', 'train_loss': '6.628', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/hch/all
+
+Final evaluation (validation):
+  WER: 0.5177
+  CER: 0.1265
+
+Evaluating on test set...
+  Test WER: 0.5199
+  Test CER: 0.1545
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_hch_all_20260303_175753.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/hch/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_hch_20260303_175753.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-hch
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-hch
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/hch/all
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-hch
+
+==========================================
+Training complete!
+End time: Tue Mar  3 19:46:41 PST 2026
+==========================================
