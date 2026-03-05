@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T01:39:39.144681
+run_end=2026-03-05T02:20:43.059784
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=mmc
+split=all
+language_name=Michoacán Mazahua
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/mmc/all
+num_train_samples=473
+num_validation_samples=172
+num_epochs=5
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.750989
+validation_cer=0.498491
+test_wer=0.847545
+test_cer=0.625100
+best_validation_wer=0.750989

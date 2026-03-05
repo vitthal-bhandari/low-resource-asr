@@ -1,0 +1,115 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: tob  Split: all
+Job ID: 33658717
+Node: g3097
+GPUs: 0
+Start time: Thu Mar  5 01:30:27 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for tob (split=all)...
+============================================================
+MMS Adapter Fine-tuning for tob (Toba Qom) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-tob
+
+Loading data for tob (Toba Qom) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: 836 samples (4.67 h)
+  Validation: 306 samples (1.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all/vocab.json (74 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for tob): 59.55s
+  Dropped 17 train, 12 val samples (over 59.55s).
+
+Loading MMS model...
+  Trainable parameters: 2,248,524 / 964,745,932 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '131.4', 'grad_norm': '36.59', 'learning_rate': '0.00049', 'epoch': '0.9756'}
+{'loss': '26.32', 'grad_norm': '23.84', 'learning_rate': '0.00099', 'epoch': '1.937'}
+{'eval_loss': '2.553', 'eval_wer': '0.9982', 'eval_cer': '0.6551', 'eval_runtime': '58.04', 'eval_samples_per_second': '5.066', 'eval_steps_per_second': '2.533', 'epoch': '1.937'}
+{'loss': '13.77', 'grad_norm': '16.4', 'learning_rate': '0.0009279', 'epoch': '2.898'}
+{'loss': '9.737', 'grad_norm': '13.16', 'learning_rate': '0.0008544', 'epoch': '3.859'}
+{'eval_loss': '1.184', 'eval_wer': '0.6845', 'eval_cer': '0.2557', 'eval_runtime': '54.37', 'eval_samples_per_second': '5.408', 'eval_steps_per_second': '2.704', 'epoch': '3.859'}
+{'loss': '8.348', 'grad_norm': '16.63', 'learning_rate': '0.0007809', 'epoch': '4.82'}
+{'loss': '7.726', 'grad_norm': '6.871', 'learning_rate': '0.0007074', 'epoch': '5.78'}
+{'eval_loss': '1.072', 'eval_wer': '0.6374', 'eval_cer': '0.2318', 'eval_runtime': '56.22', 'eval_samples_per_second': '5.229', 'eval_steps_per_second': '2.615', 'epoch': '5.78'}
+{'loss': '7.035', 'grad_norm': '6.304', 'learning_rate': '0.0006338', 'epoch': '6.741'}
+{'loss': '6.342', 'grad_norm': '17.85', 'learning_rate': '0.0005603', 'epoch': '7.702'}
+{'eval_loss': '0.9488', 'eval_wer': '0.6167', 'eval_cer': '0.2046', 'eval_runtime': '66.26', 'eval_samples_per_second': '4.437', 'eval_steps_per_second': '2.219', 'epoch': '7.702'}
+{'loss': '5.868', 'grad_norm': '9.023', 'learning_rate': '0.0004868', 'epoch': '8.663'}
+{'loss': '5.657', 'grad_norm': '11.14', 'learning_rate': '0.0004132', 'epoch': '9.624'}
+{'eval_loss': '0.9257', 'eval_wer': '0.5981', 'eval_cer': '0.1941', 'eval_runtime': '56.98', 'eval_samples_per_second': '5.16', 'eval_steps_per_second': '2.58', 'epoch': '9.624'}
+{'loss': '5.308', 'grad_norm': '12.33', 'learning_rate': '0.0003397', 'epoch': '10.59'}
+{'loss': '5.19', 'grad_norm': '19.06', 'learning_rate': '0.0002662', 'epoch': '11.55'}
+{'eval_loss': '0.9164', 'eval_wer': '0.6108', 'eval_cer': '0.2026', 'eval_runtime': '54.65', 'eval_samples_per_second': '5.38', 'eval_steps_per_second': '2.69', 'epoch': '11.55'}
+{'loss': '4.79', 'grad_norm': '5.065', 'learning_rate': '0.0001926', 'epoch': '12.51'}
+{'loss': '4.801', 'grad_norm': '10.41', 'learning_rate': '0.0001191', 'epoch': '13.47'}
+{'eval_loss': '0.9136', 'eval_wer': '0.5937', 'eval_cer': '0.1912', 'eval_runtime': '60.23', 'eval_samples_per_second': '4.881', 'eval_steps_per_second': '2.441', 'epoch': '13.47'}
+{'loss': '4.67', 'grad_norm': '10.75', 'learning_rate': '4.559e-05', 'epoch': '14.43'}
+{'train_runtime': '4911', 'train_samples_per_second': '2.502', 'train_steps_per_second': '0.159', 'train_loss': '16.01', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all/adapter.tob.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.5937
+  Greedy CER: 0.1914
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.5952
+  Test CER (greedy): 0.1935
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_tob_all_20260305_013547.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.5958
+  LM CER: 0.2384
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.5947
+  Test LM CER: 0.4126
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_tob_all_20260305_013547.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_tob_20260305_013547.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-tob
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-tob
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-tob
+
+==========================================
+Training complete!
+End time: Thu Mar  5 03:14:58 PST 2026
+==========================================

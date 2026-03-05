@@ -109,11 +109,10 @@ echo "Starting training for $LANG (split=$SPLIT)..."
 
 uv run python -m src.training.aft_whisper "$LANG" \
     --split "$SPLIT" \
-    --num-epochs 5 \
+    --num-epochs 8 \
     --batch-size 2 \
     --gradient-accumulation-steps 8 \
     --learning-rate 1e-5 \
-    --save-to-hf \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv
 
