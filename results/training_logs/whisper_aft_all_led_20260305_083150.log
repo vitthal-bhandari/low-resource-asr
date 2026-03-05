@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T08:31:50.724261
+run_end=2026-03-05T10:49:32.543875
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=led
+split=all
+language_name=Lendu
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all
+num_train_samples=1491
+num_validation_samples=104
+num_epochs=8
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.291961
+validation_cer=0.102424
+test_wer=0.308014
+test_cer=0.125651
+best_validation_wer=0.291961

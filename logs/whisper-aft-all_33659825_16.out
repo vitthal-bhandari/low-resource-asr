@@ -1,0 +1,80 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: sco  Split: all (task 16 of 21)
+Job ID: 33668524 (Array Job: 33659825)
+Node: g3122
+GPUs: 0
+Start time: Thu Mar  5 14:23:04 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for sco (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for sco (Scots) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
+Device: cuda
+Push to HF: False
+
+Loading data for sco (Scots) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 3 train, 12 val samples (over 129.64s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '14.93', 'grad_norm': '21.35', 'learning_rate': '4.9e-06', 'epoch': '1.876'}
+{'loss': '10.73', 'grad_norm': '20.54', 'learning_rate': '9.9e-06', 'epoch': '3.724'}
+{'eval_loss': '1.755', 'eval_wer': '0.6408', 'eval_cer': '0.526', 'eval_runtime': '74.7', 'eval_samples_per_second': '0.335', 'eval_steps_per_second': '0.174', 'epoch': '3.724'}
+{'loss': '8.212', 'grad_norm': '23.93', 'learning_rate': '5.776e-06', 'epoch': '5.571'}
+{'loss': '6.047', 'grad_norm': '31.14', 'learning_rate': '1.466e-06', 'epoch': '7.419'}
+{'eval_loss': '2.083', 'eval_wer': '0.637', 'eval_cer': '0.5192', 'eval_runtime': '73.46', 'eval_samples_per_second': '0.34', 'eval_steps_per_second': '0.177', 'epoch': '7.419'}
+{'train_runtime': '2752', 'train_samples_per_second': '1.221', 'train_steps_per_second': '0.078', 'train_loss': '9.613', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
+
+Final evaluation (validation):
+  WER: 0.6370
+  CER: 0.5192
+
+Evaluating on test set...
+  Test WER: 0.5564
+  Test CER: 0.4177
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_sco_all_20260305_142543.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_sco_20260305_142543.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
+
+==========================================
+Training complete for sco!
+End time: Thu Mar  5 15:20:54 PST 2026
+==========================================

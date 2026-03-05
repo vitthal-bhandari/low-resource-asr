@@ -1,0 +1,73 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: pne  Split: all (task 13 of 21)
+Job ID: 33665944 (Array Job: 33659825)
+Node: g3122
+GPUs: 0
+Start time: Thu Mar  5 12:05:02 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for pne (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for pne (Western Penan) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: malay
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+Device: cuda
+Push to HF: False
+
+Loading data for pne (Western Penan) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: 1811 samples (8.48 h)
+  Validation: 310 samples (1.30 h)
+
+Loading WhisperProcessor (language=malay)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for pne): 24.19s
+  Dropped 44 train, 0 val samples (over 24.19s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '11.42', 'grad_norm': '39.29', 'learning_rate': '4.9e-06', 'epoch': '0.4525'}
+{'loss': '5.369', 'grad_norm': '35.7', 'learning_rate': '9.9e-06', 'epoch': '0.905'}
+{'eval_loss': '0.6157', 'eval_wer': '0.2988', 'eval_cer': '0.1298', 'eval_runtime': '340.3', 'eval_samples_per_second': '0.911', 'eval_steps_per_second': '0.456', 'epoch': '0.905'}
+{'loss': '3.922', 'grad_norm': '24.18', 'learning_rate': '9.378e-06', 'epoch': '1.353'}
+{'loss': '3.312', 'grad_norm': '23.41', 'learning_rate': '8.744e-06', 'epoch': '1.805'}
+{'eval_loss': '0.5356', 'eval_wer': '0.2607', 'eval_cer': '0.1128', 'eval_runtime': '319.8', 'eval_samples_per_second': '0.969', 'eval_steps_per_second': '0.485', 'epoch': '1.805'}
+{'loss': '2.68', 'grad_norm': '18.61', 'learning_rate': '8.109e-06', 'epoch': '2.253'}
+{'loss': '2.15', 'grad_norm': '18.73', 'learning_rate': '7.475e-06', 'epoch': '2.706'}
+{'eval_loss': '0.5256', 'eval_wer': '0.2478', 'eval_cer': '0.1081', 'eval_runtime': '320.8', 'eval_samples_per_second': '0.966', 'eval_steps_per_second': '0.483', 'epoch': '2.706'}
+{'loss': '1.841', 'grad_norm': '16.61', 'learning_rate': '6.84e-06', 'epoch': '3.154'}
+{'loss': '1.228', 'grad_norm': '24.18', 'learning_rate': '6.206e-06', 'epoch': '3.606'}
+{'eval_loss': '0.5467', 'eval_wer': '0.2504', 'eval_cer': '0.1087', 'eval_runtime': '322.8', 'eval_samples_per_second': '0.96', 'eval_steps_per_second': '0.48', 'epoch': '3.606'}
+{'loss': '1.199', 'grad_norm': '11.65', 'learning_rate': '5.571e-06', 'epoch': '4.054'}
+{'loss': '0.6731', 'grad_norm': '18.73', 'learning_rate': '4.937e-06', 'epoch': '4.507'}
+{'eval_loss': '0.5946', 'eval_wer': '0.2472', 'eval_cer': '0.1082', 'eval_runtime': '322.5', 'eval_samples_per_second': '0.961', 'eval_steps_per_second': '0.481', 'epoch': '4.507'}
+{'loss': '0.6649', 'grad_norm': '17.37', 'learning_rate': '4.302e-06', 'epoch': '4.959'}
+{'loss': '0.3403', 'grad_norm': '12.15', 'learning_rate': '3.668e-06', 'epoch': '5.407'}
+{'eval_loss': '0.6399', 'eval_wer': '0.2567', 'eval_cer': '0.1113', 'eval_runtime': '318.4', 'eval_samples_per_second': '0.974', 'eval_steps_per_second': '0.487', 'epoch': '5.407'}
+{'loss': '0.3286', 'grad_norm': '12.82', 'learning_rate': '3.033e-06', 'epoch': '5.86'}
+{'loss': '0.217', 'grad_norm': '5.346', 'learning_rate': '2.398e-06', 'epoch': '6.308'}
+{'eval_loss': '0.6967', 'eval_wer': '0.257', 'eval_cer': '0.1111', 'eval_runtime': '321.3', 'eval_samples_per_second': '0.965', 'eval_steps_per_second': '0.482', 'epoch': '6.308'}
+{'loss': '0.1795', 'grad_norm': '7.562', 'learning_rate': '1.764e-06', 'epoch': '6.76'}
+{'loss': '0.1157', 'grad_norm': '4.472', 'learning_rate': '1.129e-06', 'epoch': '7.208'}
+{'eval_loss': '0.7359', 'eval_wer': '0.2479', 'eval_cer': '0.1066', 'eval_runtime': '319.8', 'eval_samples_per_second': '0.969', 'eval_steps_per_second': '0.485', 'epoch': '7.208'}

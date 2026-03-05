@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T05:41:00.149440
+run_end=2026-03-05T07:19:43.513681
+model=openai/whisper-large-v3
+whisper_language=greek
+freeze_encoder=False
+language=el-CY
+split=all
+language_name=Cypriot Greek
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/el-CY/all
+num_train_samples=782
+num_validation_samples=277
+num_epochs=8
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.318885
+validation_cer=0.149265
+test_wer=0.471610
+test_cer=0.272403
+best_validation_wer=0.318885

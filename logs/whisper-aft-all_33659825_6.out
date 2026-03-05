@@ -1,0 +1,93 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: kcn  Split: all (task 6 of 21)
+Job ID: 33662027 (Array Job: 33659825)
+Node: g3104
+GPUs: 0
+Start time: Thu Mar  5 07:20:15 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for kcn (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for kcn (Nubi) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+Device: cuda
+Push to HF: False
+
+Loading data for kcn (Nubi) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 1395 samples (7.21 h)
+  Validation: 152 samples (0.57 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for kcn): 50.22s
+  Dropped 26 train, 1 val samples (over 50.22s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '14.73', 'grad_norm': '50.07', 'learning_rate': '4.9e-06', 'epoch': '0.5839'}
+{'loss': '8.354', 'grad_norm': '42.57', 'learning_rate': '9.9e-06', 'epoch': '1.164'}
+{'eval_loss': '0.8435', 'eval_wer': '0.4921', 'eval_cer': '0.2325', 'eval_runtime': '115.3', 'eval_samples_per_second': '1.309', 'eval_steps_per_second': '0.659', 'epoch': '1.164'}
+{'loss': '6.39', 'grad_norm': '30.57', 'learning_rate': '9.167e-06', 'epoch': '1.747'}
+{'loss': '5.03', 'grad_norm': '23.68', 'learning_rate': '8.316e-06', 'epoch': '2.327'}
+{'eval_loss': '0.7678', 'eval_wer': '0.4072', 'eval_cer': '0.1923', 'eval_runtime': '111.3', 'eval_samples_per_second': '1.356', 'eval_steps_per_second': '0.683', 'epoch': '2.327'}
+{'loss': '4.277', 'grad_norm': '23.51', 'learning_rate': '7.466e-06', 'epoch': '2.911'}
+{'loss': '3.204', 'grad_norm': '24.78', 'learning_rate': '6.616e-06', 'epoch': '3.491'}
+{'eval_loss': '0.8017', 'eval_wer': '0.3643', 'eval_cer': '0.1613', 'eval_runtime': '108.6', 'eval_samples_per_second': '1.39', 'eval_steps_per_second': '0.7', 'epoch': '3.491'}
+{'loss': '2.713', 'grad_norm': '22.75', 'learning_rate': '5.765e-06', 'epoch': '4.07'}
+{'loss': '1.959', 'grad_norm': '27.45', 'learning_rate': '4.915e-06', 'epoch': '4.654'}
+{'eval_loss': '0.8523', 'eval_wer': '0.3526', 'eval_cer': '0.147', 'eval_runtime': '105.9', 'eval_samples_per_second': '1.426', 'eval_steps_per_second': '0.718', 'epoch': '4.654'}
+{'loss': '1.404', 'grad_norm': '18.84', 'learning_rate': '4.065e-06', 'epoch': '5.234'}
+{'loss': '1.146', 'grad_norm': '15.96', 'learning_rate': '3.214e-06', 'epoch': '5.818'}
+{'eval_loss': '0.9228', 'eval_wer': '0.3687', 'eval_cer': '0.1582', 'eval_runtime': '107.5', 'eval_samples_per_second': '1.405', 'eval_steps_per_second': '0.707', 'epoch': '5.818'}
+{'loss': '0.7269', 'grad_norm': '10.88', 'learning_rate': '2.364e-06', 'epoch': '6.397'}
+{'loss': '0.5837', 'grad_norm': '13.79', 'learning_rate': '1.514e-06', 'epoch': '6.981'}
+{'eval_loss': '1.002', 'eval_wer': '0.3599', 'eval_cer': '0.1487', 'eval_runtime': '107.3', 'eval_samples_per_second': '1.407', 'eval_steps_per_second': '0.708', 'epoch': '6.981'}
+{'loss': '0.3765', 'grad_norm': '17.14', 'learning_rate': '6.633e-07', 'epoch': '7.561'}
+{'train_runtime': '6896', 'train_samples_per_second': '1.588', 'train_steps_per_second': '0.1', 'train_loss': '3.716', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+
+Final evaluation (validation):
+  WER: 0.3526
+  CER: 0.1470
+
+Evaluating on test set...
+  Test WER: 0.6274
+  Test CER: 0.3848
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_kcn_all_20260305_072101.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_kcn_20260305_072101.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+
+==========================================
+Training complete for kcn!
+End time: Thu Mar  5 09:26:18 PST 2026
+==========================================

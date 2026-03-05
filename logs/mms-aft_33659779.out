@@ -10,3 +10,88 @@ Start time: Thu Mar  5 03:17:07 PST 2026
 Checking GPU availability...
 CUDA available: True
 GPU: NVIDIA L40
+
+Starting training for top (split=all)...
+============================================================
+MMS Adapter Fine-tuning for top (Papantla Totonac) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-top
+
+Loading data for top (Papantla Totonac) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: 189 samples (5.87 h)
+  Validation: 59 samples (1.68 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/vocab.json (74 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for top): 253.01s
+  Dropped 8 train, 0 val samples (over 253.01s).
+
+Loading MMS model...
+  Trainable parameters: 2,248,524 / 964,745,932 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '233.7', 'grad_norm': '18.02', 'learning_rate': '0.00049', 'epoch': '4.176'}
+{'loss': '11.11', 'grad_norm': '6.239', 'learning_rate': '0.00099', 'epoch': '8.352'}
+{'eval_loss': '1.116', 'eval_wer': '0.6319', 'eval_cer': '0.1373', 'eval_runtime': '61.24', 'eval_samples_per_second': '0.963', 'eval_steps_per_second': '0.49', 'epoch': '8.352'}
+{'loss': '5.849', 'grad_norm': '5.305', 'learning_rate': '0.0003875', 'epoch': '12.53'}
+{'train_runtime': '5934', 'train_samples_per_second': '0.457', 'train_steps_per_second': '0.03', 'train_loss': '70.52', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/adapter.top.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.6307
+  Greedy CER: 0.1373
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6389
+  Test CER (greedy): 0.1573
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_top_all_20260305_031859.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.6247
+  LM CER: 0.1340
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.6381
+  Test LM CER: 0.1548
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_top_all_20260305_031859.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_top_20260305_031859.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-top
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-top
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-top
+
+==========================================
+Training complete!
+End time: Thu Mar  5 05:13:23 PST 2026
+==========================================

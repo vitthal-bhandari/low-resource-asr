@@ -1,0 +1,99 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: koo  Split: all (task 7 of 21)
+Job ID: 33662058 (Array Job: 33659825)
+Node: g3104
+GPUs: 0
+Start time: Thu Mar  5 07:46:30 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for koo (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for koo (Konzo) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/koo/all
+Device: cuda
+Push to HF: False
+
+Loading data for koo (Konzo) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-all_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: 1739 samples (7.83 h)
+  Validation: 99 samples (0.59 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for koo): 31.86s
+  Dropped 35 train, 1 val samples (over 31.86s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '16.91', 'grad_norm': '41.24', 'learning_rate': '4.9e-06', 'epoch': '0.4695'}
+{'loss': '8.748', 'grad_norm': '41.4', 'learning_rate': '9.9e-06', 'epoch': '0.939'}
+{'eval_loss': '1.386', 'eval_wer': '0.8709', 'eval_cer': '0.3621', 'eval_runtime': '109.2', 'eval_samples_per_second': '0.898', 'eval_steps_per_second': '0.449', 'epoch': '0.939'}
+{'loss': '6.227', 'grad_norm': '35.07', 'learning_rate': '9.352e-06', 'epoch': '1.404'}
+{'loss': '5.897', 'grad_norm': '34.13', 'learning_rate': '8.69e-06', 'epoch': '1.873'}
+{'eval_loss': '1.187', 'eval_wer': '0.9727', 'eval_cer': '0.3282', 'eval_runtime': '105.6', 'eval_samples_per_second': '0.928', 'eval_steps_per_second': '0.464', 'epoch': '1.873'}
+{'loss': '4.471', 'grad_norm': '26.63', 'learning_rate': '8.029e-06', 'epoch': '2.338'}
+{'loss': '3.972', 'grad_norm': '30.48', 'learning_rate': '7.368e-06', 'epoch': '2.808'}
+{'eval_loss': '1.176', 'eval_wer': '0.9114', 'eval_cer': '0.3591', 'eval_runtime': '107.2', 'eval_samples_per_second': '0.914', 'eval_steps_per_second': '0.457', 'epoch': '2.808'}
+{'loss': '3.099', 'grad_norm': '33.39', 'learning_rate': '6.706e-06', 'epoch': '3.272'}
+{'loss': '2.484', 'grad_norm': '26.05', 'learning_rate': '6.045e-06', 'epoch': '3.742'}
+{'eval_loss': '1.214', 'eval_wer': '0.8401', 'eval_cer': '0.3127', 'eval_runtime': '103.5', 'eval_samples_per_second': '0.947', 'eval_steps_per_second': '0.474', 'epoch': '3.742'}
+{'loss': '2.28', 'grad_norm': '25.57', 'learning_rate': '5.384e-06', 'epoch': '4.207'}
+{'loss': '1.559', 'grad_norm': '26.61', 'learning_rate': '4.722e-06', 'epoch': '4.676'}
+{'eval_loss': '1.289', 'eval_wer': '0.7884', 'eval_cer': '0.3002', 'eval_runtime': '102.7', 'eval_samples_per_second': '0.954', 'eval_steps_per_second': '0.477', 'epoch': '4.676'}
+{'loss': '1.342', 'grad_norm': '22.16', 'learning_rate': '4.061e-06', 'epoch': '5.141'}
+{'loss': '0.8264', 'grad_norm': '17.03', 'learning_rate': '3.399e-06', 'epoch': '5.61'}
+{'eval_loss': '1.392', 'eval_wer': '0.792', 'eval_cer': '0.2801', 'eval_runtime': '100.8', 'eval_samples_per_second': '0.972', 'eval_steps_per_second': '0.486', 'epoch': '5.61'}
+{'loss': '0.7812', 'grad_norm': '16.43', 'learning_rate': '2.738e-06', 'epoch': '6.075'}
+{'loss': '0.4576', 'grad_norm': '27.58', 'learning_rate': '2.077e-06', 'epoch': '6.545'}
+{'eval_loss': '1.461', 'eval_wer': '0.7852', 'eval_cer': '0.2843', 'eval_runtime': '100.6', 'eval_samples_per_second': '0.974', 'eval_steps_per_second': '0.487', 'epoch': '6.545'}
+{'loss': '0.4183', 'grad_norm': '10.32', 'learning_rate': '1.415e-06', 'epoch': '7.009'}
+{'loss': '0.2588', 'grad_norm': '6.862', 'learning_rate': '7.54e-07', 'epoch': '7.479'}
+{'eval_loss': '1.551', 'eval_wer': '0.7852', 'eval_cer': '0.2812', 'eval_runtime': '101.4', 'eval_samples_per_second': '0.966', 'eval_steps_per_second': '0.483', 'epoch': '7.479'}
+{'loss': '0.2088', 'grad_norm': '10.19', 'learning_rate': '9.259e-08', 'epoch': '7.948'}
+{'train_runtime': '8421', 'train_samples_per_second': '1.619', 'train_steps_per_second': '0.102', 'train_loss': '3.503', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/koo/all
+
+Final evaluation (validation):
+  WER: 0.7852
+  CER: 0.2843
+
+Evaluating on test set...
+  Test WER: 0.6425
+  Test CER: 0.1993
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_koo_all_20260305_074715.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/koo/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_koo_20260305_074715.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/koo/all
+
+==========================================
+Training complete for koo!
+End time: Thu Mar  5 10:18:46 PST 2026
+==========================================

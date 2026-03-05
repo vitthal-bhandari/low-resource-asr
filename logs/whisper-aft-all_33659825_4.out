@@ -1,0 +1,84 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: el-CY  Split: all (task 4 of 21)
+Job ID: 33661109 (Array Job: 33659825)
+Node: g3104
+GPUs: 0
+Start time: Thu Mar  5 05:39:46 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for el-CY (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for el-CY (Cypriot Greek) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: greek
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/el-CY/all
+Device: cuda
+Push to HF: False
+
+Loading data for el-CY (Cypriot Greek) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 782 samples (7.15 h)
+  Validation: 277 samples (1.47 h)
+
+Loading WhisperProcessor (language=greek)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 29 train, 0 val samples (over 79.43s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '8.421', 'grad_norm': '21.65', 'learning_rate': '4.9e-06', 'epoch': '1.042'}
+{'loss': '4.247', 'grad_norm': '16.26', 'learning_rate': '9.9e-06', 'epoch': '2.085'}
+{'eval_loss': '0.3052', 'eval_wer': '0.3189', 'eval_cer': '0.1493', 'eval_runtime': '367.4', 'eval_samples_per_second': '0.754', 'eval_steps_per_second': '0.378', 'epoch': '2.085'}
+{'loss': '2.95', 'grad_norm': '12.3', 'learning_rate': '8.275e-06', 'epoch': '3.127'}
+{'loss': '2.052', 'grad_norm': '12.39', 'learning_rate': '6.514e-06', 'epoch': '4.17'}
+{'eval_loss': '0.318', 'eval_wer': '0.3519', 'eval_cer': '0.161', 'eval_runtime': '372.3', 'eval_samples_per_second': '0.744', 'eval_steps_per_second': '0.373', 'epoch': '4.17'}
+{'loss': '1.621', 'grad_norm': '9.988', 'learning_rate': '4.754e-06', 'epoch': '5.212'}
+{'loss': '1.159', 'grad_norm': '8.546', 'learning_rate': '2.993e-06', 'epoch': '6.255'}
+{'eval_loss': '0.3486', 'eval_wer': '0.3274', 'eval_cer': '0.1515', 'eval_runtime': '366.5', 'eval_samples_per_second': '0.756', 'eval_steps_per_second': '0.379', 'epoch': '6.255'}
+{'loss': '0.8471', 'grad_norm': '13.32', 'learning_rate': '1.232e-06', 'epoch': '7.297'}
+{'train_runtime': '4986', 'train_samples_per_second': '1.208', 'train_steps_per_second': '0.077', 'train_loss': '2.836', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/el-CY/all
+
+Final evaluation (validation):
+  WER: 0.3189
+  CER: 0.1493
+
+Evaluating on test set...
+  Test WER: 0.4716
+  Test CER: 0.2724
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_el-CY_all_20260305_054100.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/el-CY/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_el-CY_20260305_054100.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/el-CY/all
+
+==========================================
+Training complete for el-CY!
+End time: Thu Mar  5 07:20:13 PST 2026
+==========================================
