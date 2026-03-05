@@ -1,0 +1,12 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: top  Split: all
+Job ID: 33659779
+Node: g3097
+GPUs: 0
+Start time: Thu Mar  5 03:17:07 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40

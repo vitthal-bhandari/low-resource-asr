@@ -1,0 +1,105 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: mmc  Split: all
+Job ID: 33642537
+Node: g3090
+GPUs: 0
+Start time: Wed Mar  4 22:23:28 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+Starting training for mmc (split=all)...
+============================================================
+MMS Adapter Fine-tuning for mmc (Michoacán Mazahua) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-mmc
+
+Loading data for mmc (Michoacán Mazahua) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/train-all_mmc.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/validation_mmc.tsv
+  Train: 473 samples (7.22 h)
+  Validation: 172 samples (1.54 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all/vocab.json (91 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for mmc): 144.61s
+  Dropped 14 train, 2 val samples (over 144.61s).
+
+Loading MMS model...
+  Trainable parameters: 2,270,301 / 964,767,709 (0.24%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '136.2', 'grad_norm': '371.5', 'learning_rate': '0.00049', 'epoch': '1.73'}
+{'loss': '51.74', 'grad_norm': '164.5', 'learning_rate': '0.00099', 'epoch': '3.452'}
+{'eval_loss': '5.72', 'eval_wer': '1.215', 'eval_cer': '0.7976', 'eval_runtime': '48.53', 'eval_samples_per_second': '3.503', 'eval_steps_per_second': '1.752', 'epoch': '3.452'}
+{'loss': '41.95', 'grad_norm': '53.54', 'learning_rate': '0.0008537', 'epoch': '5.174'}
+{'loss': '31.11', 'grad_norm': '10.09', 'learning_rate': '0.0007045', 'epoch': '6.904'}
+{'eval_loss': '3.492', 'eval_wer': '0.9985', 'eval_cer': '0.7973', 'eval_runtime': '46.11', 'eval_samples_per_second': '3.687', 'eval_steps_per_second': '1.844', 'epoch': '6.904'}
+{'loss': '19.83', 'grad_norm': '8.747', 'learning_rate': '0.0005552', 'epoch': '8.626'}
+{'loss': '12.22', 'grad_norm': '8.326', 'learning_rate': '0.000406', 'epoch': '10.35'}
+{'eval_loss': '1.99', 'eval_wer': '0.771', 'eval_cer': '0.3525', 'eval_runtime': '49.89', 'eval_samples_per_second': '3.407', 'eval_steps_per_second': '1.704', 'epoch': '10.35'}
+{'loss': '10.7', 'grad_norm': '4.456', 'learning_rate': '0.0002567', 'epoch': '12.07'}
+{'loss': '10.2', 'grad_norm': '9.028', 'learning_rate': '0.0001075', 'epoch': '13.8'}
+{'eval_loss': '1.855', 'eval_wer': '0.7236', 'eval_cer': '0.3325', 'eval_runtime': '45.8', 'eval_samples_per_second': '3.711', 'eval_steps_per_second': '1.856', 'epoch': '13.8'}
+{'train_runtime': '6232', 'train_samples_per_second': '1.105', 'train_steps_per_second': '0.07', 'train_loss': '36.9', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all/adapter.mmc.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.7246
+  Greedy CER: 0.3323
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.7643
+  Test CER (greedy): 0.3315
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_mmc_all_20260304_222932.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.7101
+  LM CER: 0.6125
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.7648
+  Test LM CER: 1.1210
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_mmc_all_20260304_222932.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_mmc_20260304_222932.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-mmc
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-mmc
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-mmc
+
+==========================================
+Training complete!
+End time: Thu Mar  5 00:34:20 PST 2026
+==========================================
