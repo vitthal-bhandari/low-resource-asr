@@ -746,7 +746,7 @@ def main():
         logging_steps=50,
         learning_rate=args.learning_rate,
         warmup_steps=100,
-        save_total_limit=3,
+        save_total_limit=4,
         load_best_model_at_end=True,
         metric_for_best_model="wer",
         greater_is_better=False,
