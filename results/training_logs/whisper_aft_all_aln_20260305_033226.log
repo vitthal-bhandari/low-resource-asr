@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T03:32:26.960331
+run_end=2026-03-05T05:38:08.395392
+model=openai/whisper-large-v3
+whisper_language=albanian
+freeze_encoder=False
+language=aln
+split=all
+language_name=Gheg Albanian
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+num_train_samples=965
+num_validation_samples=150
+num_epochs=8
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.422331
+validation_cer=0.222367
+test_wer=0.456211
+test_cer=0.243225
+best_validation_wer=0.422331

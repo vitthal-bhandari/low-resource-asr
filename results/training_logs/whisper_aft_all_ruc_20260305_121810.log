@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T12:18:10.109742
+run_end=2026-03-05T14:21:43.172658
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=ruc
+split=all
+language_name=Ruuli
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
+num_train_samples=1346
+num_validation_samples=77
+num_epochs=8
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.635220
+validation_cer=0.187784
+test_wer=0.633763
+test_cer=0.203249
+best_validation_wer=0.635220

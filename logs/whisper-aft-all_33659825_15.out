@@ -1,0 +1,60 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: rwm  Split: all (task 15 of 21)
+Job ID: 33668337 (Array Job: 33659825)
+Node: g3124
+GPUs: 0
+Start time: Thu Mar  5 13:54:33 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for rwm (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for rwm (Amba) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all
+Device: cuda
+Push to HF: False
+
+Loading data for rwm (Amba) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: 1326 samples (7.56 h)
+  Validation: 140 samples (0.77 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for rwm): 36.59s
+  Dropped 40 train, 1 val samples (over 36.59s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '16.29', 'grad_norm': '39.7', 'learning_rate': '4.9e-06', 'epoch': '0.6221'}
+{'loss': '9.17', 'grad_norm': '31.82', 'learning_rate': '9.9e-06', 'epoch': '1.236'}
+{'eval_loss': '1.177', 'eval_wer': '0.8319', 'eval_cer': '0.407', 'eval_runtime': '248', 'eval_samples_per_second': '0.56', 'eval_steps_per_second': '0.282', 'epoch': '1.236'}
+{'loss': '7.698', 'grad_norm': '28.66', 'learning_rate': '9.106e-06', 'epoch': '1.858'}
+{'loss': '5.517', 'grad_norm': '29.18', 'learning_rate': '8.193e-06', 'epoch': '2.473'}
+{'eval_loss': '1.06', 'eval_wer': '0.7296', 'eval_cer': '0.3047', 'eval_runtime': '186.7', 'eval_samples_per_second': '0.744', 'eval_steps_per_second': '0.375', 'epoch': '2.473'}
+{'loss': '5.17', 'grad_norm': '23.95', 'learning_rate': '7.281e-06', 'epoch': '3.087'}
+{'loss': '3.55', 'grad_norm': '24.14', 'learning_rate': '6.369e-06', 'epoch': '3.709'}
+{'eval_loss': '1.091', 'eval_wer': '0.6341', 'eval_cer': '0.2582', 'eval_runtime': '178.4', 'eval_samples_per_second': '0.779', 'eval_steps_per_second': '0.392', 'epoch': '3.709'}
+{'loss': '3.05', 'grad_norm': '25.94', 'learning_rate': '5.456e-06', 'epoch': '4.323'}
+{'loss': '2.34', 'grad_norm': '30.69', 'learning_rate': '4.544e-06', 'epoch': '4.946'}

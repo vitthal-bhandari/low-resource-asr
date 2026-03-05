@@ -1,0 +1,86 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: bew  Split: all (task 1 of 21)
+Job ID: 33659828 (Array Job: 33659825)
+Node: g3105
+GPUs: 0
+Start time: Thu Mar  5 03:26:27 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for bew (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for bew (Betawi) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: indonesian
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/bew/all
+Device: cuda
+Push to HF: False
+
+Loading data for bew (Betawi) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-all_bew.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
+  Train: 814 samples (5.79 h)
+  Validation: 240 samples (2.23 h)
+
+Loading WhisperProcessor (language=indonesian)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for bew): 70.47s
+  Dropped 8 train, 14 val samples (over 70.47s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '10.16', 'grad_norm': '26.85', 'learning_rate': '4.9e-06', 'epoch': '0.9926'}
+{'loss': '6.97', 'grad_norm': '24.28', 'learning_rate': '9.9e-06', 'epoch': '1.973'}
+{'eval_loss': '1.06', 'eval_wer': '0.497', 'eval_cer': '0.2892', 'eval_runtime': '234', 'eval_samples_per_second': '0.966', 'eval_steps_per_second': '0.483', 'epoch': '1.973'}
+{'loss': '5.325', 'grad_norm': '25.78', 'learning_rate': '8.409e-06', 'epoch': '2.953'}
+{'loss': '3.585', 'grad_norm': '26.88', 'learning_rate': '6.786e-06', 'epoch': '3.933'}
+{'eval_loss': '1.117', 'eval_wer': '0.531', 'eval_cer': '0.293', 'eval_runtime': '242.4', 'eval_samples_per_second': '0.932', 'eval_steps_per_second': '0.466', 'epoch': '3.933'}
+{'loss': '2.596', 'grad_norm': '31.07', 'learning_rate': '5.162e-06', 'epoch': '4.913'}
+{'loss': '1.688', 'grad_norm': '19.55', 'learning_rate': '3.539e-06', 'epoch': '5.893'}
+{'eval_loss': '1.274', 'eval_wer': '0.555', 'eval_cer': '0.3145', 'eval_runtime': '252.1', 'eval_samples_per_second': '0.897', 'eval_steps_per_second': '0.448', 'epoch': '5.893'}
+{'loss': '1.077', 'grad_norm': '22.56', 'learning_rate': '1.916e-06', 'epoch': '6.873'}
+{'loss': '0.7089', 'grad_norm': '11.42', 'learning_rate': '2.922e-07', 'epoch': '7.854'}
+{'eval_loss': '1.408', 'eval_wer': '0.5086', 'eval_cer': '0.2741', 'eval_runtime': '241.3', 'eval_samples_per_second': '0.937', 'eval_steps_per_second': '0.468', 'epoch': '7.854'}
+{'train_runtime': '4910', 'train_samples_per_second': '1.313', 'train_steps_per_second': '0.083', 'train_loss': '3.949', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/bew/all
+
+Final evaluation (validation):
+  WER: 0.4970
+  CER: 0.2892
+
+Evaluating on test set...
+  Test WER: 0.5475
+  Test CER: 0.3490
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_bew_all_20260305_033233.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/bew/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_bew_20260305_033233.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/bew/all
+
+==========================================
+Training complete for bew!
+End time: Thu Mar  5 05:09:41 PST 2026
+==========================================

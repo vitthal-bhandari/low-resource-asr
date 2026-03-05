@@ -1,0 +1,99 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: cgg  Split: all (task 3 of 21)
+Job ID: 33660488 (Array Job: 33659825)
+Node: g3105
+GPUs: 0
+Start time: Thu Mar  5 05:10:55 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for cgg (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for cgg (Chiga) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/cgg/all
+Device: cuda
+Push to HF: False
+
+Loading data for cgg (Chiga) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/train-all_cgg.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/validation_cgg.tsv
+  Train: 1769 samples (7.02 h)
+  Validation: 308 samples (0.99 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for cgg): 34.11s
+  Dropped 49 train, 0 val samples (over 34.11s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '14.95', 'grad_norm': '49.24', 'learning_rate': '4.9e-06', 'epoch': '0.4651'}
+{'loss': '7.098', 'grad_norm': '38.56', 'learning_rate': '9.9e-06', 'epoch': '0.9302'}
+{'eval_loss': '0.7885', 'eval_wer': '0.5685', 'eval_cer': '0.1493', 'eval_runtime': '225.5', 'eval_samples_per_second': '1.366', 'eval_steps_per_second': '0.683', 'epoch': '0.9302'}
+{'loss': '4.882', 'grad_norm': '33.37', 'learning_rate': '9.359e-06', 'epoch': '1.391'}
+{'loss': '4.125', 'grad_norm': '27.25', 'learning_rate': '8.704e-06', 'epoch': '1.856'}
+{'eval_loss': '0.6383', 'eval_wer': '0.4607', 'eval_cer': '0.1138', 'eval_runtime': '218.9', 'eval_samples_per_second': '1.407', 'eval_steps_per_second': '0.704', 'epoch': '1.856'}
+{'loss': '3.18', 'grad_norm': '26.01', 'learning_rate': '8.05e-06', 'epoch': '2.316'}
+{'loss': '2.547', 'grad_norm': '29.19', 'learning_rate': '7.395e-06', 'epoch': '2.781'}
+{'eval_loss': '0.6152', 'eval_wer': '0.4476', 'eval_cer': '0.1133', 'eval_runtime': '220.2', 'eval_samples_per_second': '1.399', 'eval_steps_per_second': '0.699', 'epoch': '2.781'}
+{'loss': '1.999', 'grad_norm': '20.6', 'learning_rate': '6.741e-06', 'epoch': '3.242'}
+{'loss': '1.59', 'grad_norm': '27.15', 'learning_rate': '6.086e-06', 'epoch': '3.707'}
+{'eval_loss': '0.6306', 'eval_wer': '0.4374', 'eval_cer': '0.1196', 'eval_runtime': '222.3', 'eval_samples_per_second': '1.386', 'eval_steps_per_second': '0.693', 'epoch': '3.707'}
+{'loss': '1.229', 'grad_norm': '18.38', 'learning_rate': '5.432e-06', 'epoch': '4.167'}
+{'loss': '0.8651', 'grad_norm': '21.06', 'learning_rate': '4.777e-06', 'epoch': '4.633'}
+{'eval_loss': '0.6695', 'eval_wer': '0.4328', 'eval_cer': '0.1046', 'eval_runtime': '219.5', 'eval_samples_per_second': '1.403', 'eval_steps_per_second': '0.702', 'epoch': '4.633'}
+{'loss': '0.7866', 'grad_norm': '12.46', 'learning_rate': '4.123e-06', 'epoch': '5.093'}
+{'loss': '0.4346', 'grad_norm': '13.11', 'learning_rate': '3.469e-06', 'epoch': '5.558'}
+{'eval_loss': '0.7267', 'eval_wer': '0.4378', 'eval_cer': '0.1084', 'eval_runtime': '220.6', 'eval_samples_per_second': '1.396', 'eval_steps_per_second': '0.698', 'epoch': '5.558'}
+{'loss': '0.4384', 'grad_norm': '11.51', 'learning_rate': '2.814e-06', 'epoch': '6.019'}
+{'loss': '0.2098', 'grad_norm': '15.42', 'learning_rate': '2.16e-06', 'epoch': '6.484'}
+{'eval_loss': '0.7748', 'eval_wer': '0.434', 'eval_cer': '0.1064', 'eval_runtime': '220.5', 'eval_samples_per_second': '1.397', 'eval_steps_per_second': '0.698', 'epoch': '6.484'}
+{'loss': '0.2034', 'grad_norm': '12.85', 'learning_rate': '1.505e-06', 'epoch': '6.949'}
+{'loss': '0.108', 'grad_norm': '7.11', 'learning_rate': '8.508e-07', 'epoch': '7.409'}
+{'eval_loss': '0.8056', 'eval_wer': '0.4315', 'eval_cer': '0.1054', 'eval_runtime': '222.9', 'eval_samples_per_second': '1.381', 'eval_steps_per_second': '0.691', 'epoch': '7.409'}
+{'loss': '0.1041', 'grad_norm': '3.728', 'learning_rate': '1.963e-07', 'epoch': '7.874'}
+{'train_runtime': '1.028e+04', 'train_samples_per_second': '1.338', 'train_steps_per_second': '0.084', 'train_loss': '2.592', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/cgg/all
+
+Final evaluation (validation):
+  WER: 0.4315
+  CER: 0.1054
+
+Evaluating on test set...
+  Test WER: 0.5235
+  Test CER: 0.1652
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_cgg_all_20260305_051302.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/cgg/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_cgg_20260305_051302.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/cgg/all
+
+==========================================
+Training complete for cgg!
+End time: Thu Mar  5 08:25:18 PST 2026
+==========================================

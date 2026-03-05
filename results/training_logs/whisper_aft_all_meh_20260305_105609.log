@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T10:56:09.103741
+run_end=2026-03-05T12:04:02.695086
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=meh
+split=all
+language_name=Southwestern Tlaxiaco Mixtec
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/meh/all
+num_train_samples=666
+num_validation_samples=93
+num_epochs=8
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.538768
+validation_cer=0.375280
+test_wer=0.633902
+test_cer=0.466097
+best_validation_wer=0.538768

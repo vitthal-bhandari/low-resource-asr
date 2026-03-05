@@ -1,0 +1,87 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: aln  Split: all (task 0 of 21)
+Job ID: 33659827 (Array Job: 33659825)
+Node: g3124
+GPUs: 0
+Start time: Thu Mar  5 03:25:43 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for aln (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for aln (Gheg Albanian) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: albanian
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+Device: cuda
+Push to HF: False
+
+Loading data for aln (Gheg Albanian) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 965 samples (6.39 h)
+  Validation: 150 samples (1.45 h)
+
+Loading WhisperProcessor (language=albanian)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for aln): 38.86s
+  Dropped 10 train, 24 val samples (over 38.86s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '15.41', 'grad_norm': '31.96', 'learning_rate': '4.9e-06', 'epoch': '0.8368'}
+{'loss': '8.724', 'grad_norm': '33.6', 'learning_rate': '9.9e-06', 'epoch': '1.669'}
+{'eval_loss': '1.135', 'eval_wer': '0.4771', 'eval_cer': '0.2497', 'eval_runtime': '237.1', 'eval_samples_per_second': '0.531', 'eval_steps_per_second': '0.266', 'epoch': '1.669'}
+{'loss': '6.511', 'grad_norm': '25.74', 'learning_rate': '8.711e-06', 'epoch': '2.502'}
+{'loss': '4.806', 'grad_norm': '29.76', 'learning_rate': '7.395e-06', 'epoch': '3.335'}
+{'eval_loss': '1.113', 'eval_wer': '0.4448', 'eval_cer': '0.2394', 'eval_runtime': '229.2', 'eval_samples_per_second': '0.55', 'eval_steps_per_second': '0.275', 'epoch': '3.335'}
+{'loss': '3.401', 'grad_norm': '33.91', 'learning_rate': '6.079e-06', 'epoch': '4.167'}
+{'loss': '2.396', 'grad_norm': '28.82', 'learning_rate': '4.763e-06', 'epoch': '5'}
+{'eval_loss': '1.172', 'eval_wer': '0.4668', 'eval_cer': '0.2562', 'eval_runtime': '239.2', 'eval_samples_per_second': '0.527', 'eval_steps_per_second': '0.263', 'epoch': '5'}
+{'loss': '1.409', 'grad_norm': '24.35', 'learning_rate': '3.447e-06', 'epoch': '5.837'}
+{'loss': '0.9142', 'grad_norm': '27.03', 'learning_rate': '2.132e-06', 'epoch': '6.669'}
+{'eval_loss': '1.388', 'eval_wer': '0.4223', 'eval_cer': '0.2224', 'eval_runtime': '221.8', 'eval_samples_per_second': '0.568', 'eval_steps_per_second': '0.284', 'epoch': '6.669'}
+{'loss': '0.584', 'grad_norm': '12.45', 'learning_rate': '8.158e-07', 'epoch': '7.502'}
+{'train_runtime': '6428', 'train_samples_per_second': '1.189', 'train_steps_per_second': '0.075', 'train_loss': '4.626', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+
+Final evaluation (validation):
+  WER: 0.4223
+  CER: 0.2224
+
+Evaluating on test set...
+  Test WER: 0.4562
+  Test CER: 0.2432
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_aln_all_20260305_033226.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_aln_20260305_033226.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/aln/all
+
+==========================================
+Training complete for aln!
+End time: Thu Mar  5 05:39:12 PST 2026
+==========================================
