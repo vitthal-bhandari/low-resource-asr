@@ -3,14 +3,15 @@ name = "low-resource-asr"
 version = "0.1.0"
 description = "ASR for Endangered Languages - Term Project"
 readme = "README.md"
-requires-python = ">=3.11"
+# kenlm (pyctcdecode dep) does not build on Python 3.13+ due to CPython API changes
+requires-python = ">=3.11,<3.13"
 license = { text = "MIT" }
 
 dependencies = [
     # Core ML
     "torch>=2.0.0",
     "transformers>=4.36.0",
-    "datasets[audio]>=2.16.0",   # [audio] pulls in torchcodec for decoding (needs Python 3.11–3.13 on some platforms)
+    "datasets[audio]>=2.16.0", # [audio] pulls in torchcodec for decoding (needs Python 3.11–3.13 on some platforms)
     "accelerate>=0.25.0",
     # Audio processing
     "librosa>=0.10.0",
@@ -30,6 +31,8 @@ dependencies = [
     "requests>=2.31.0",
     "pyctcdecode>=0.5.0",
     "kenlm>=0.3.0",
+    "cartopy>=0.25.0",
+    "matplotlib>=3.10.8",
 ]
 
 [project.optional-dependencies]
