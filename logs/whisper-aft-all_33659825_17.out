@@ -47,3 +47,40 @@ Training configuration:
   Generation max length: 225
 
 Starting training...
+{'loss': '18.9', 'grad_norm': '42.55', 'learning_rate': '4.9e-06', 'epoch': '0.9756'}
+{'loss': '7.878', 'grad_norm': '37.49', 'learning_rate': '9.9e-06', 'epoch': '1.937'}
+{'eval_loss': '1.447', 'eval_wer': '0.8664', 'eval_cer': '0.4611', 'eval_runtime': '418.9', 'eval_samples_per_second': '0.702', 'eval_steps_per_second': '0.351', 'epoch': '1.937'}
+{'loss': '5.511', 'grad_norm': '31.75', 'learning_rate': '8.449e-06', 'epoch': '2.898'}
+{'loss': '3.748', 'grad_norm': '25.55', 'learning_rate': '6.867e-06', 'epoch': '3.859'}
+{'eval_loss': '1.367', 'eval_wer': '0.7291', 'eval_cer': '0.3364', 'eval_runtime': '364.3', 'eval_samples_per_second': '0.807', 'eval_steps_per_second': '0.403', 'epoch': '3.859'}
+{'loss': '2.475', 'grad_norm': '31', 'learning_rate': '5.285e-06', 'epoch': '4.82'}
+{'loss': '1.77', 'grad_norm': '25.17', 'learning_rate': '3.703e-06', 'epoch': '5.78'}
+{'eval_loss': '1.55', 'eval_wer': '0.6849', 'eval_cer': '0.3056', 'eval_runtime': '332.6', 'eval_samples_per_second': '0.884', 'eval_steps_per_second': '0.442', 'epoch': '5.78'}
+{'loss': '0.9643', 'grad_norm': '24.1', 'learning_rate': '2.12e-06', 'epoch': '6.741'}
+{'loss': '0.582', 'grad_norm': '8.108', 'learning_rate': '5.38e-07', 'epoch': '7.702'}
+{'eval_loss': '1.744', 'eval_wer': '0.6553', 'eval_cer': '0.2885', 'eval_runtime': '328.4', 'eval_samples_per_second': '0.895', 'eval_steps_per_second': '0.448', 'epoch': '7.702'}
+{'train_runtime': '6053', 'train_samples_per_second': '1.082', 'train_steps_per_second': '0.069', 'train_loss': '5.044', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/tob/all
+
+Final evaluation (validation):
+  WER: 0.6553
+  CER: 0.2885
+
+Evaluating on test set...
+  Test WER: 0.6341
+  Test CER: 0.2796
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_tob_all_20260305_152315.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/tob/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_tob_20260305_152315.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/tob/all
+
+==========================================
+Training complete for tob!
+End time: Thu Mar  5 17:22:01 PST 2026
+==========================================
