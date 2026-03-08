@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-06T17:53:40.777665
+run_end=2026-03-06T18:31:22.101248
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=sco
+split=one
+language_name=Scots
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/one
+num_train_samples=108
+num_validation_samples=37
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.656668
+validation_cer=0.568359
+test_wer=0.298196
+test_cer=0.211618
+best_validation_wer=0.656668

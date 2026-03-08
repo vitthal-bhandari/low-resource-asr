@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-06T17:39:20.145171
+run_end=2026-03-06T20:03:26.276994
+model=openai/whisper-large-v3
+whisper_language=english
+freeze_encoder=False
+language=kcn
+split=mid
+language_name=Nubi
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/mid
+num_train_samples=866
+num_validation_samples=152
+num_epochs=15
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.359945
+validation_cer=0.145687
+test_wer=0.641073
+test_cer=0.384849
+best_validation_wer=0.359945
