@@ -58,3 +58,35 @@ Starting training...
 {'eval_loss': '1.091', 'eval_wer': '0.6341', 'eval_cer': '0.2582', 'eval_runtime': '178.4', 'eval_samples_per_second': '0.779', 'eval_steps_per_second': '0.392', 'epoch': '3.709'}
 {'loss': '3.05', 'grad_norm': '25.94', 'learning_rate': '5.456e-06', 'epoch': '4.323'}
 {'loss': '2.34', 'grad_norm': '30.69', 'learning_rate': '4.544e-06', 'epoch': '4.946'}
+{'eval_loss': '1.163', 'eval_wer': '0.6018', 'eval_cer': '0.2514', 'eval_runtime': '176.9', 'eval_samples_per_second': '0.786', 'eval_steps_per_second': '0.396', 'epoch': '4.946'}
+{'loss': '1.461', 'grad_norm': '27.9', 'learning_rate': '3.631e-06', 'epoch': '5.56'}
+{'loss': '1.233', 'grad_norm': '15.26', 'learning_rate': '2.719e-06', 'epoch': '6.174'}
+{'eval_loss': '1.33', 'eval_wer': '0.6159', 'eval_cer': '0.2502', 'eval_runtime': '176.1', 'eval_samples_per_second': '0.789', 'eval_steps_per_second': '0.397', 'epoch': '6.174'}
+{'loss': '0.7928', 'grad_norm': '16.58', 'learning_rate': '1.807e-06', 'epoch': '6.796'}
+{'loss': '0.6106', 'grad_norm': '12.11', 'learning_rate': '8.942e-07', 'epoch': '7.411'}
+{'eval_loss': '1.407', 'eval_wer': '0.6139', 'eval_cer': '0.2518', 'eval_runtime': '180.5', 'eval_samples_per_second': '0.77', 'eval_steps_per_second': '0.388', 'epoch': '7.411'}
+{'train_runtime': '8226', 'train_samples_per_second': '1.251', 'train_steps_per_second': '0.079', 'train_loss': '4.42', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all
+
+Final evaluation (validation):
+  WER: 0.6018
+  CER: 0.2514
+
+Evaluating on test set...
+  Test WER: 0.5309
+  Test CER: 0.2010
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_rwm_all_20260305_140148.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_rwm_20260305_140148.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/rwm/all
+
+==========================================
+Training complete for rwm!
+End time: Thu Mar  5 16:40:03 PST 2026
+==========================================

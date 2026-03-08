@@ -1,0 +1,22 @@
+# Whisper Large-v3 Fine-tuning Run Log
+run_start=2026-03-05T12:10:19.011053
+run_end=2026-03-05T16:01:03.947976
+model=openai/whisper-large-v3
+whisper_language=malay
+freeze_encoder=False
+language=pne
+split=all
+language_name=Western Penan
+output_dir=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+num_train_samples=1811
+num_validation_samples=310
+num_epochs=8
+batch_size=2
+gradient_accumulation_steps=8
+effective_batch_size=16
+learning_rate=1e-05
+validation_wer=0.247222
+validation_cer=0.108165
+test_wer=0.264234
+test_cer=0.113383
+best_validation_wer=0.247222

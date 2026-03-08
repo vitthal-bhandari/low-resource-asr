@@ -1,0 +1,95 @@
+==========================================
+Whisper Large-v3 Fine-tuning on Hyak
+==========================================
+Language: ttj  Split: all (task 19 of 21)
+Job ID: 33671101 (Array Job: 33659825)
+Node: g3122
+GPUs: 0
+Start time: Thu Mar  5 16:27:49 PST 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for ttj (split=all)...
+============================================================
+Whisper Large-v3 Fine-tuning for ttj (Rutoro) split=all
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+Device: cuda
+Push to HF: False
+
+Loading data for ttj (Rutoro) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: 1436 samples (7.26 h)
+  Validation: 156 samples (0.92 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for ttj): 32.31s
+  Dropped 11 train, 8 val samples (over 32.31s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 8
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '12.12', 'grad_norm': '35.51', 'learning_rate': '4.9e-06', 'epoch': '0.561'}
+{'loss': '4.724', 'grad_norm': '26.38', 'learning_rate': '9.9e-06', 'epoch': '1.112'}
+{'eval_loss': '0.4472', 'eval_wer': '0.3891', 'eval_cer': '0.07948', 'eval_runtime': '221.8', 'eval_samples_per_second': '0.667', 'eval_steps_per_second': '0.334', 'epoch': '1.112'}
+{'loss': '3.105', 'grad_norm': '34.32', 'learning_rate': '9.21e-06', 'epoch': '1.673'}
+{'loss': '2.253', 'grad_norm': '19.38', 'learning_rate': '8.403e-06', 'epoch': '2.224'}
+{'eval_loss': '0.3407', 'eval_wer': '0.2929', 'eval_cer': '0.06174', 'eval_runtime': '218.7', 'eval_samples_per_second': '0.677', 'eval_steps_per_second': '0.338', 'epoch': '2.224'}
+{'loss': '1.551', 'grad_norm': '17.53', 'learning_rate': '7.597e-06', 'epoch': '2.785'}
+{'loss': '1.096', 'grad_norm': '15.5', 'learning_rate': '6.79e-06', 'epoch': '3.337'}
+{'eval_loss': '0.3294', 'eval_wer': '0.2658', 'eval_cer': '0.05521', 'eval_runtime': '219.4', 'eval_samples_per_second': '0.674', 'eval_steps_per_second': '0.337', 'epoch': '3.337'}
+{'loss': '0.7588', 'grad_norm': '17.31', 'learning_rate': '5.984e-06', 'epoch': '3.898'}
+{'loss': '0.472', 'grad_norm': '14.22', 'learning_rate': '5.177e-06', 'epoch': '4.449'}
+{'eval_loss': '0.3534', 'eval_wer': '0.267', 'eval_cer': '0.05518', 'eval_runtime': '219.9', 'eval_samples_per_second': '0.673', 'eval_steps_per_second': '0.337', 'epoch': '4.449'}
+{'loss': '0.398', 'grad_norm': '4.074', 'learning_rate': '4.371e-06', 'epoch': '5'}
+{'loss': '0.2066', 'grad_norm': '6.063', 'learning_rate': '3.565e-06', 'epoch': '5.561'}
+{'eval_loss': '0.3623', 'eval_wer': '0.2465', 'eval_cer': '0.0511', 'eval_runtime': '219', 'eval_samples_per_second': '0.676', 'eval_steps_per_second': '0.338', 'epoch': '5.561'}
+{'loss': '0.1552', 'grad_norm': '8.25', 'learning_rate': '2.758e-06', 'epoch': '6.112'}
+{'loss': '0.09663', 'grad_norm': '6.155', 'learning_rate': '1.952e-06', 'epoch': '6.673'}
+{'eval_loss': '0.383', 'eval_wer': '0.2637', 'eval_cer': '0.05493', 'eval_runtime': '218.4', 'eval_samples_per_second': '0.678', 'eval_steps_per_second': '0.339', 'epoch': '6.673'}
+{'loss': '0.05439', 'grad_norm': '2.519', 'learning_rate': '1.145e-06', 'epoch': '7.224'}
+{'loss': '0.04154', 'grad_norm': '1.725', 'learning_rate': '3.387e-07', 'epoch': '7.785'}
+{'eval_loss': '0.4041', 'eval_wer': '0.2496', 'eval_cer': '0.05184', 'eval_runtime': '218.9', 'eval_samples_per_second': '0.676', 'eval_steps_per_second': '0.338', 'epoch': '7.785'}
+{'train_runtime': '1.046e+04', 'train_samples_per_second': '1.09', 'train_steps_per_second': '0.069', 'train_loss': '1.878', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+
+Final evaluation (validation):
+  WER: 0.2465
+  CER: 0.0511
+
+Evaluating on test set...
+  Test WER: 0.2831
+  Test CER: 0.0880
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_ttj_all_20260305_162906.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_ttj_20260305_162906.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ttj/all
+
+==========================================
+Training complete for ttj!
+End time: Thu Mar  5 19:46:06 PST 2026
+==========================================

@@ -71,3 +71,29 @@ Starting training...
 {'loss': '0.1795', 'grad_norm': '7.562', 'learning_rate': '1.764e-06', 'epoch': '6.76'}
 {'loss': '0.1157', 'grad_norm': '4.472', 'learning_rate': '1.129e-06', 'epoch': '7.208'}
 {'eval_loss': '0.7359', 'eval_wer': '0.2479', 'eval_cer': '0.1066', 'eval_runtime': '319.8', 'eval_samples_per_second': '0.969', 'eval_steps_per_second': '0.485', 'epoch': '7.208'}
+{'loss': '0.09348', 'grad_norm': '5.725', 'learning_rate': '4.949e-07', 'epoch': '7.661'}
+{'train_runtime': '1.24e+04', 'train_samples_per_second': '1.14', 'train_steps_per_second': '0.072', 'train_loss': '2.014', 'epoch': '8'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+
+Final evaluation (validation):
+  WER: 0.2472
+  CER: 0.1082
+
+Evaluating on test set...
+  Test WER: 0.2642
+  Test CER: 0.1134
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_pne_all_20260305_121019.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_pne_20260305_121019.log
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+
+==========================================
+Training complete for pne!
+End time: Thu Mar  5 16:01:37 PST 2026
+==========================================
