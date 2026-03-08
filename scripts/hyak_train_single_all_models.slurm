@@ -82,7 +82,7 @@ for SPLIT in "${SPLITS[@]}"; do
 
     uv run python -m src.training.aft_mms "$LANG" \
         --split "$SPLIT" \
-        --num-epochs 5 \
+        --num-epochs 15 \
         --batch-size 2 \
         --gradient-accumulation-steps 8 \
         --learning-rate 1e-3 \
@@ -103,7 +103,7 @@ for SPLIT in "${SPLITS[@]}"; do
 
     uv run python -m src.training.aft_xlsr "$LANG" \
         --split "$SPLIT" \
-        --num-epochs 5 \
+        --num-epochs 15 \
         --batch-size 2 \
         --gradient-accumulation-steps 8 \
         --learning-rate 1e-3 \
@@ -124,7 +124,7 @@ for SPLIT in "${SPLITS[@]}"; do
 
     uv run python -m src.training.aft_whisper "$LANG" \
         --split "$SPLIT" \
-        --num-epochs 15 \
+        --num-epochs 5 \
         --batch-size 2 \
         --gradient-accumulation-steps 8 \
         --learning-rate 1e-5 \
