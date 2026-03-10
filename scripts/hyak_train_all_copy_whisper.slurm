@@ -90,6 +90,7 @@ export HF_DATASETS_CACHE="$HF_CACHE_BASE/datasets"
 export TRANSFORMERS_CACHE="$HF_CACHE_BASE/transformers"
 export TORCH_HOME="/gscratch/scrubbed/$USER/.cache/torch"
 export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+export PYTHONPATH="$PROJECT_DIR:$PYTHONPATH"
 mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
 
