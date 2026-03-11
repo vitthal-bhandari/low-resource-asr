@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=all-models-aft
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=ckpt-g2      # L40s: 48 GB VRAM; fits all 3 models
+#SBATCH --partition=gpu-l40s      # L40s: 48 GB VRAM; fits all 3 models
 #SBATCH --nodes=1
 #SBATCH --mem=128G                   # Whisper-large-v3 needs ~128G; MMS/XLS-R are fine with less
-#SBATCH --gpus=l40s:1
+#SBATCH --gpus=1
 #SBATCH --time=6:00:00             # 3 models x 3 splits — allow up to 72 hours
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
@@ -21,8 +21,22 @@
 
 set -e  # Exit on error
 
-# Configuration
-PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
+# Configuration: project root = directory containing pyproject.toml
+# Prefer SLURM_SUBMIT_DIR (set by sbatch to the directory you submitted from).
+# Always submit from project root:  cd /path/to/low-resource-asr && sbatch scripts/...
+if [[ -n "${SLURM_SUBMIT_DIR:-}" && -f "${SLURM_SUBMIT_DIR}/pyproject.toml" ]]; then
+  PROJECT_DIR="$SLURM_SUBMIT_DIR"
+elif [[ -f "pyproject.toml" ]]; then
+  PROJECT_DIR="$(pwd)"
+else
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  if [[ -f "$SCRIPT_DIR/../pyproject.toml" ]]; then
+    PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+  else
+    echo "ERROR: No pyproject.toml found. Submit from project root: cd /path/to/low-resource-asr && sbatch scripts/$0 <lang_code>" >&2
+    exit 1
+  fi
+fi
 
 LANG=${1:?"Usage: sbatch $0 <lang_code>  (e.g. aln, sco, bxk)"}
 
@@ -55,16 +69,44 @@ export HF_DATASETS_CACHE="$HF_CACHE_BASE/datasets"
 export TRANSFORMERS_CACHE="$HF_CACHE_BASE/transformers"
 export TORCH_HOME="/gscratch/scrubbed/$USER/.cache/torch"
 export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
-export PYTHONPATH="$PROJECT_DIR:$PYTHONPATH"
+export PYTHONPATH="$PROJECT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
+echo "PROJECT_DIR=$PROJECT_DIR"
+echo "PYTHONPATH=$PYTHONPATH"
+
+# Ensure project venv has all dependencies (required after fresh .venv or partition change)
+echo "Syncing project environment (uv sync)..."
+uv sync
+echo ""
+
+# Remove stale installed project package if present (its 'src' shadows the local src/)
+uv pip uninstall low-resource-asr 2>/dev/null || true
+
+# Activate the venv so plain `python` uses it and respects PYTHONPATH
+source "$PROJECT_DIR/.venv/bin/activate"
+
+# Diagnostic: verify Python can find the local src package
+echo "--- Import diagnostics ---"
+python -c "
+import sys, os
+print('CWD:', os.getcwd())
+print('PYTHONPATH env:', os.environ.get('PYTHONPATH','(unset)'))
+print('sys.path:')
+for p in sys.path: print('  ', p)
+print('src/config.py exists:', os.path.exists('src/config.py'))
+print('src/__init__.py exists:', os.path.exists('src/__init__.py'))
+import src.config as _c; print('src.config loaded from:', _c.__file__)
+"
+echo "--- end diagnostics ---"
+echo ""
 
 # =============================================================================
 # GPU Check
 # =============================================================================
 
 echo "Checking GPU availability..."
-uv run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
+python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
 echo ""
 
 # =============================================================================
@@ -80,7 +122,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[MMS] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    uv run python -m src.training.aft_mms "$LANG" \
+    python -m src.training.aft_mms "$LANG" \
         --split "$SPLIT" \
         --num-epochs 15 \
         --batch-size 2 \
@@ -101,7 +143,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[XLS-R] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    uv run python -m src.training.aft_xlsr "$LANG" \
+    python -m src.training.aft_xlsr "$LANG" \
         --split "$SPLIT" \
         --num-epochs 15 \
         --batch-size 2 \
@@ -122,7 +164,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[Whisper] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    uv run python -m src.training.aft_whisper "$LANG" \
+    python -m src.training.aft_whisper "$LANG" \
         --split "$SPLIT" \
         --num-epochs 5 \
         --batch-size 2 \
