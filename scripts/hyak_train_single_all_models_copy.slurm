@@ -62,6 +62,11 @@ cd "$PROJECT_DIR"
 echo "PROJECT_DIR=$PROJECT_DIR"
 echo "PYTHONPATH=$PYTHONPATH"
 
+# Ensure project venv has all dependencies (required after fresh .venv or partition change)
+echo "Syncing project environment (uv sync)..."
+uv sync
+echo ""
+
 # =============================================================================
 # GPU Check
 # =============================================================================
