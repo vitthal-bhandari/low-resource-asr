@@ -1,11 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=all-models-aft
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=gpu-l40      # L40s: 48 GB VRAM; fits all 3 models
+#SBATCH --partition=ckpt-g2      # L40s: 48 GB VRAM; fits all 3 models
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
 #SBATCH --mem=128G                   # Whisper-large-v3 needs ~128G; MMS/XLS-R are fine with less
-#SBATCH --gpus=1
+#SBATCH --gpus=l40s:1
 #SBATCH --time=6:00:00             # 3 models x 3 splits — allow up to 72 hours
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
