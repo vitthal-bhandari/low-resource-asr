@@ -21,9 +21,22 @@
 
 set -e  # Exit on error
 
-# Configuration: derive project root from this script's location (works on any partition/path)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Configuration: project root = directory containing pyproject.toml
+# Prefer SLURM_SUBMIT_DIR (set by sbatch to the directory you submitted from).
+# Always submit from project root:  cd /path/to/low-resource-asr && sbatch scripts/...
+if [[ -n "${SLURM_SUBMIT_DIR:-}" && -f "${SLURM_SUBMIT_DIR}/pyproject.toml" ]]; then
+  PROJECT_DIR="$SLURM_SUBMIT_DIR"
+elif [[ -f "pyproject.toml" ]]; then
+  PROJECT_DIR="$(pwd)"
+else
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  if [[ -f "$SCRIPT_DIR/../pyproject.toml" ]]; then
+    PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+  else
+    echo "ERROR: No pyproject.toml found. Submit from project root: cd /path/to/low-resource-asr && sbatch scripts/$0 <lang_code>" >&2
+    exit 1
+  fi
+fi
 
 LANG=${1:?"Usage: sbatch $0 <lang_code>  (e.g. aln, sco, bxk)"}
 
