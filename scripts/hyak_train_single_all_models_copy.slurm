@@ -80,8 +80,26 @@ echo "Syncing project environment (uv sync)..."
 uv sync
 echo ""
 
+# Remove stale installed project package if present (its 'src' shadows the local src/)
+uv pip uninstall low-resource-asr 2>/dev/null || true
+
 # Activate the venv so plain `python` uses it and respects PYTHONPATH
 source "$PROJECT_DIR/.venv/bin/activate"
+
+# Diagnostic: verify Python can find the local src package
+echo "--- Import diagnostics ---"
+python -c "
+import sys, os
+print('CWD:', os.getcwd())
+print('PYTHONPATH env:', os.environ.get('PYTHONPATH','(unset)'))
+print('sys.path:')
+for p in sys.path: print('  ', p)
+print('src/config.py exists:', os.path.exists('src/config.py'))
+print('src/__init__.py exists:', os.path.exists('src/__init__.py'))
+import src.config as _c; print('src.config loaded from:', _c.__file__)
+"
+echo "--- end diagnostics ---"
+echo ""
 
 # =============================================================================
 # GPU Check
