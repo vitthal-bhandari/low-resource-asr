@@ -21,8 +21,9 @@
 
 set -e  # Exit on error
 
-# Configuration
-PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
+# Configuration: derive project root from this script's location (works on any partition/path)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 LANG=${1:?"Usage: sbatch $0 <lang_code>  (e.g. aln, sco, bxk)"}
 
@@ -55,16 +56,18 @@ export HF_DATASETS_CACHE="$HF_CACHE_BASE/datasets"
 export TRANSFORMERS_CACHE="$HF_CACHE_BASE/transformers"
 export TORCH_HOME="/gscratch/scrubbed/$USER/.cache/torch"
 export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
-export PYTHONPATH="$PROJECT_DIR:$PYTHONPATH"
+export PYTHONPATH="$PROJECT_DIR${PYTHONPATH:+:$PYTHONPATH}"
 mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
+echo "PROJECT_DIR=$PROJECT_DIR"
+echo "PYTHONPATH=$PYTHONPATH"
 
 # =============================================================================
 # GPU Check
 # =============================================================================
 
 echo "Checking GPU availability..."
-uv run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
+PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
 echo ""
 
 # =============================================================================
@@ -80,7 +83,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[MMS] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    uv run python -m src.training.aft_mms "$LANG" \
+    PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -m src.training.aft_mms "$LANG" \
         --split "$SPLIT" \
         --num-epochs 15 \
         --batch-size 2 \
@@ -101,7 +104,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[XLS-R] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    uv run python -m src.training.aft_xlsr "$LANG" \
+    PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -m src.training.aft_xlsr "$LANG" \
         --split "$SPLIT" \
         --num-epochs 15 \
         --batch-size 2 \
@@ -122,7 +125,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[Whisper] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    uv run python -m src.training.aft_whisper "$LANG" \
+    PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -m src.training.aft_whisper "$LANG" \
         --split "$SPLIT" \
         --num-epochs 5 \
         --batch-size 2 \
