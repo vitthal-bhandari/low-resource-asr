@@ -80,12 +80,15 @@ echo "Syncing project environment (uv sync)..."
 uv sync
 echo ""
 
+# Activate the venv so plain `python` uses it and respects PYTHONPATH
+source "$PROJECT_DIR/.venv/bin/activate"
+
 # =============================================================================
 # GPU Check
 # =============================================================================
 
 echo "Checking GPU availability..."
-PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
+python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}'); print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
 echo ""
 
 # =============================================================================
@@ -101,7 +104,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[MMS] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -m src.training.aft_mms "$LANG" \
+    python -m src.training.aft_mms "$LANG" \
         --split "$SPLIT" \
         --num-epochs 15 \
         --batch-size 2 \
@@ -122,7 +125,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[XLS-R] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -m src.training.aft_xlsr "$LANG" \
+    python -m src.training.aft_xlsr "$LANG" \
         --split "$SPLIT" \
         --num-epochs 15 \
         --batch-size 2 \
@@ -143,7 +146,7 @@ for SPLIT in "${SPLITS[@]}"; do
     echo "[Whisper] Language=$LANG  Split=$SPLIT  Start: $(date)"
     echo "=========================================="
 
-    PYTHONPATH="$PROJECT_DIR:$PYTHONPATH" uv run python -m src.training.aft_whisper "$LANG" \
+    python -m src.training.aft_whisper "$LANG" \
         --split "$SPLIT" \
         --num-epochs 5 \
         --batch-size 2 \
