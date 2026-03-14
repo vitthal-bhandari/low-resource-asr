@@ -96,7 +96,11 @@ print('sys.path:')
 for p in sys.path: print('  ', p)
 print('src/config.py exists:', os.path.exists('src/config.py'))
 print('src/__init__.py exists:', os.path.exists('src/__init__.py'))
-import src.config as _c; print('src.config loaded from:', _c.__file__)
+import importlib
+_m = importlib.import_module('src.config')
+from src.config import config as _cfg
+print('src.config module file:', getattr(_m, '__file__', '(no __file__)'))
+print('config.project_root:', getattr(_cfg, 'project_root', '(missing)'))
 "
 echo "--- end diagnostics ---"
 echo ""
