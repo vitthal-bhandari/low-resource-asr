@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --mem=128G                   # Whisper-large-v3 needs ~128G; MMS/XLS-R are fine with less
 #SBATCH --gpus=1
-#SBATCH --time=6:00:00             # 3 models x 3 splits — allow up to 72 hours
+#SBATCH --time=10:00:00             # 3 models x 3 splits — allow up to 72 hours
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
