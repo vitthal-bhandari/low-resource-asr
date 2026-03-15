@@ -1,0 +1,11 @@
+==========================================
+Combined Fine-tuning (MMS + XLS-R + Whisper)
+==========================================
+Language: scripts/
+Splits: one mid all
+Job ID: 33864803
+Node: g3092
+GPUs: 0
+Start time: Sat Mar 14 16:02:24 PDT 2026
+
+Checking GPU availability...

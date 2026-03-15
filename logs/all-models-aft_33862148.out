@@ -1,0 +1,24 @@
+==========================================
+Combined Fine-tuning (MMS + XLS-R + Whisper)
+==========================================
+Language: kcn
+Splits: one mid all
+Job ID: 33862148
+Node: g3115
+GPUs: 0
+Start time: Sat Mar 14 13:55:35 PDT 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+==========================================
+[MMS] Language=kcn  Split=one  Start: Sat Mar 14 13:57:14 PDT 2026
+==========================================
+============================================================
+MMS Adapter Fine-tuning for kcn (Nubi) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/one
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-one-kcn

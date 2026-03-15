@@ -1,0 +1,604 @@
+==========================================
+Combined Fine-tuning (MMS + XLS-R + Whisper)
+==========================================
+Language: sco
+Splits: one mid all
+Job ID: 33864804
+Node: g3092
+GPUs: 0
+Start time: Sat Mar 14 16:03:43 PDT 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40
+
+==========================================
+[MMS] Language=sco  Split=one  Start: Sat Mar 14 16:06:07 PDT 2026
+==========================================
+============================================================
+MMS Adapter Fine-tuning for sco (Scots) split=one
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-one-sco
+
+Loading data for sco (Scots) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-one_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 108 samples (0.99 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one/vocab.json (66 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 0 train, 12 val samples (over 129.64s).
+
+Loading MMS model...
+  Trainable parameters: 2,238,276 / 964,735,684 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '66.84', 'grad_norm': '24.66', 'learning_rate': '0.00049', 'epoch': '7.148'}
+{'loss': '27.36', 'grad_norm': '21.58', 'learning_rate': '0.00099', 'epoch': '14.3'}
+{'eval_loss': '3.13', 'eval_wer': '0.9997', 'eval_cer': '0.9487', 'eval_runtime': '19.32', 'eval_samples_per_second': '1.294', 'eval_steps_per_second': '0.673', 'epoch': '14.3'}
+{'train_runtime': '1011', 'train_samples_per_second': '1.602', 'train_steps_per_second': '0.104', 'train_loss': '45.98', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one/adapter.sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.9995
+  Greedy CER: 0.9492
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.9994
+  Test CER (greedy): 0.9483
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_sco_one_20260314_161130.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.9967
+  LM CER: 0.7833
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.9959
+  Test LM CER: 0.8079
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_sco_one_20260314_161130.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_sco_20260314_161130.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-one-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-one-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/one
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-one-sco
+[MMS] Done: sco / one  Sat Mar 14 17:03:30 PDT 2026
+
+==========================================
+[XLS-R] Language=sco  Split=one  Start: Sat Mar 14 17:03:30 PDT 2026
+==========================================
+============================================================
+XLS-R 1B Adapter Fine-tuning for sco (Scots) split=one
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/one
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-one-sco
+
+Loading data for sco (Scots) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-one_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 108 samples (0.99 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/one/vocab.json (66 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 0 train, 12 val samples (over 129.64s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,740,996 / 994,238,404 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '42.7', 'grad_norm': '24.13', 'learning_rate': '0.00049', 'epoch': '7.148'}
+{'loss': '22.98', 'grad_norm': '21.18', 'learning_rate': '0.00099', 'epoch': '14.3'}
+{'eval_loss': '2.959', 'eval_wer': '0.995', 'eval_cer': '0.9881', 'eval_runtime': '23.03', 'eval_samples_per_second': '1.086', 'eval_steps_per_second': '0.565', 'epoch': '14.3'}
+{'train_runtime': '954.6', 'train_samples_per_second': '1.697', 'train_steps_per_second': '0.11', 'train_loss': '32.19', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/one/adapter_sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.9950
+  Greedy CER: 0.9877
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.9909
+  Test CER (greedy): 0.9844
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_sco_one_20260314_170535.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.9842
+  LM CER: 0.9037
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.9890
+  Test LM CER: 0.9037
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_sco_one_20260314_170535.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_one_sco_20260314_170535.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-one-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-one-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/one
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-one-sco
+[XLS-R] Done: sco / one  Sat Mar 14 17:43:11 PDT 2026
+
+==========================================
+[Whisper] Language=sco  Split=one  Start: Sat Mar 14 17:43:11 PDT 2026
+==========================================
+============================================================
+Whisper Large-v3 Fine-tuning for sco (Scots) split=one
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/one
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-one-sco
+
+Loading data for sco (Scots) split=one...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-one_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 108 samples (0.99 h)
+  Validation: 37 samples (0.99 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 0 train, 12 val samples (over 129.64s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'train_runtime': '466.8', 'train_samples_per_second': '1.157', 'train_steps_per_second': '0.075', 'train_loss': '8.367', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/one
+
+Final evaluation (validation):
+  WER: 0.6406
+  CER: 0.5553
+
+Evaluating on test set...
+  Test WER: 0.3528
+  Test CER: 0.2701
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_sco_one_20260314_174421.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_one_sco_20260314_174421.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-one-sco
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-one-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/one
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-one-sco
+[Whisper] Done: sco / one  Sat Mar 14 18:00:33 PDT 2026
+
+==========================================
+[MMS] Language=sco  Split=mid  Start: Sat Mar 14 18:00:33 PDT 2026
+==========================================
+============================================================
+MMS Adapter Fine-tuning for sco (Scots) split=mid
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-mid-sco
+
+Loading data for sco (Scots) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-mid_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 242 samples (2.94 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid/vocab.json (69 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 0 train, 12 val samples (over 129.64s).
+
+Loading MMS model...
+  Trainable parameters: 2,242,119 / 964,739,527 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '59.37', 'grad_norm': '19.68', 'learning_rate': '0.00049', 'epoch': '3.132'}
+{'loss': '8.752', 'grad_norm': '2.749', 'learning_rate': '0.00099', 'epoch': '6.264'}
+{'eval_loss': '0.7238', 'eval_wer': '0.4194', 'eval_cer': '0.1698', 'eval_runtime': '18.73', 'eval_samples_per_second': '1.335', 'eval_steps_per_second': '0.694', 'epoch': '6.264'}
+{'loss': '3.537', 'grad_norm': '10.04', 'learning_rate': '0.00065', 'epoch': '9.397'}
+{'loss': '3.02', 'grad_norm': '6.12', 'learning_rate': '0.0002929', 'epoch': '12.53'}
+{'eval_loss': '0.6436', 'eval_wer': '0.389', 'eval_cer': '0.1561', 'eval_runtime': '17.23', 'eval_samples_per_second': '1.451', 'eval_steps_per_second': '0.754', 'epoch': '12.53'}
+{'train_runtime': '2576', 'train_samples_per_second': '1.409', 'train_steps_per_second': '0.093', 'train_loss': '16.02', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid/adapter.sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.3893
+  Greedy CER: 0.1563
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.3461
+  Test CER (greedy): 0.1294
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_sco_mid_20260314_180146.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.3873
+  LM CER: 0.1549
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.3384
+  Test LM CER: 0.1273
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_sco_mid_20260314_180146.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_sco_20260314_180146.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-sco
+[MMS] Done: sco / mid  Sat Mar 14 18:57:36 PDT 2026
+
+==========================================
+[XLS-R] Language=sco  Split=mid  Start: Sat Mar 14 18:57:36 PDT 2026
+==========================================
+============================================================
+XLS-R 1B Adapter Fine-tuning for sco (Scots) split=mid
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-mid-sco
+
+Loading data for sco (Scots) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-mid_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 242 samples (2.94 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/mid/vocab.json (69 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 0 train, 12 val samples (over 129.64s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,744,839 / 994,242,247 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '40.88', 'grad_norm': '15.87', 'learning_rate': '0.00049', 'epoch': '3.132'}
+{'loss': '23.09', 'grad_norm': '14.71', 'learning_rate': '0.00099', 'epoch': '6.264'}
+{'eval_loss': '3.012', 'eval_wer': '0.9975', 'eval_cer': '0.9988', 'eval_runtime': '17.32', 'eval_samples_per_second': '1.443', 'eval_steps_per_second': '0.75', 'epoch': '6.264'}
+{'loss': '16.75', 'grad_norm': '4.976', 'learning_rate': '0.00065', 'epoch': '9.397'}
+{'loss': '3.568', 'grad_norm': '2.265', 'learning_rate': '0.0002929', 'epoch': '12.53'}
+{'eval_loss': '0.8464', 'eval_wer': '0.4964', 'eval_cer': '0.1908', 'eval_runtime': '17.2', 'eval_samples_per_second': '1.454', 'eval_steps_per_second': '0.756', 'epoch': '12.53'}
+{'train_runtime': '2518', 'train_samples_per_second': '1.442', 'train_steps_per_second': '0.095', 'train_loss': '17.81', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/mid/adapter_sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4951
+  Greedy CER: 0.1903
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.4931
+  Test CER (greedy): 0.1937
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_sco_mid_20260314_185837.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.4876
+  LM CER: 0.1840
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.4817
+  Test LM CER: 0.1869
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_sco_mid_20260314_185837.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_mid_sco_20260314_185837.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-mid-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-mid-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-mid-sco
+[XLS-R] Done: sco / mid  Sat Mar 14 19:53:27 PDT 2026
+
+==========================================
+[Whisper] Language=sco  Split=mid  Start: Sat Mar 14 19:53:27 PDT 2026
+==========================================
+============================================================
+Whisper Large-v3 Fine-tuning for sco (Scots) split=mid
+============================================================
+Base model: openai/whisper-large-v3
+Whisper language token: english
+Freeze encoder: False
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/mid
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/whisper-large-v3-aft-mid-sco
+
+Loading data for sco (Scots) split=mid...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-mid_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 242 samples (2.94 h)
+  Validation: 37 samples (0.99 h)
+
+Loading WhisperProcessor (language=english)...
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 0 train, 12 val samples (over 129.64s).
+
+Loading Whisper model (openai/whisper-large-v3) in float32...
+  Trainable parameters: 1,543,490,560 / 1,543,490,560 (100.00%)
+
+Training configuration:
+  Epochs: 5
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 1e-05
+  Precision: float32 (no AMP)
+  Generation max length: 225
+
+Starting training...
+{'loss': '11.32', 'grad_norm': '17.04', 'learning_rate': '4.9e-06', 'epoch': '3.132'}
+{'train_runtime': '922', 'train_samples_per_second': '1.312', 'train_steps_per_second': '0.087', 'train_loss': '9.788', 'epoch': '5'}
+
+Saving model and processor...
+  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/mid
+
+Final evaluation (validation):
+  WER: 0.6418
+  CER: 0.5457
+
+Evaluating on test set...
+  Test WER: 0.4757
+  Test CER: 0.3381
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_sco_mid_20260314_195618.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_mid_sco_20260314_195618.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-mid-sco
+  Pushing model...
+  Pushing processor...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-mid-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/mid
+Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-mid-sco
+[Whisper] Done: sco / mid  Sat Mar 14 20:19:44 PDT 2026
+
+==========================================
+[MMS] Language=sco  Split=all  Start: Sat Mar 14 20:19:44 PDT 2026
+==========================================
+============================================================
+MMS Adapter Fine-tuning for sco (Scots) split=all
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-all-sco
+
+Loading data for sco (Scots) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/all/vocab.json (72 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 3 train, 12 val samples (over 129.64s).
+
+Loading MMS model...
+  Trainable parameters: 2,245,962 / 964,743,370 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '66.19', 'grad_norm': '21.51', 'learning_rate': '0.00049', 'epoch': '1.876'}
+{'loss': '31.68', 'grad_norm': '20.52', 'learning_rate': '0.00099', 'epoch': '3.724'}
+{'eval_loss': '3.184', 'eval_wer': '1', 'eval_cer': '0.9681', 'eval_runtime': '17.3', 'eval_samples_per_second': '1.445', 'eval_steps_per_second': '0.751', 'epoch': '3.724'}
+{'loss': '20.65', 'grad_norm': '4.665', 'learning_rate': '0.0008393', 'epoch': '5.571'}
+{'loss': '5.059', 'grad_norm': '5.548', 'learning_rate': '0.0006754', 'epoch': '7.419'}
+{'eval_loss': '0.6592', 'eval_wer': '0.3943', 'eval_cer': '0.1589', 'eval_runtime': '17.85', 'eval_samples_per_second': '1.4', 'eval_steps_per_second': '0.728', 'epoch': '7.419'}
+{'loss': '4.17', 'grad_norm': '3.065', 'learning_rate': '0.0005115', 'epoch': '9.267'}
+{'loss': '3.758', 'grad_norm': '2.622', 'learning_rate': '0.0003475', 'epoch': '11.11'}
+{'eval_loss': '0.6155', 'eval_wer': '0.3701', 'eval_cer': '0.1508', 'eval_runtime': '16.92', 'eval_samples_per_second': '1.477', 'eval_steps_per_second': '0.768', 'epoch': '11.11'}
+{'loss': '3.656', 'grad_norm': '3.86', 'learning_rate': '0.0001836', 'epoch': '12.99'}
+{'loss': '3.491', 'grad_norm': '2.13', 'learning_rate': '1.967e-05', 'epoch': '14.84'}
+{'eval_loss': '0.5923', 'eval_wer': '0.3603', 'eval_cer': '0.1457', 'eval_runtime': '16.99', 'eval_samples_per_second': '1.472', 'eval_steps_per_second': '0.765', 'epoch': '14.84'}
+{'train_runtime': '5240', 'train_samples_per_second': '1.202', 'train_steps_per_second': '0.077', 'train_loss': '17.16', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/all/adapter.sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.3596
+  Greedy CER: 0.1457
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.3235
+  Test CER (greedy): 0.1215
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_sco_all_20260314_202028.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.3565
+  LM CER: 0.1441
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.3204
+  Test LM CER: 0.1205
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_sco_all_20260314_202028.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_sco_20260314_202028.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/all
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-sco
+[MMS] Done: sco / all  Sat Mar 14 22:01:41 PDT 2026
+
+==========================================
+[XLS-R] Language=sco  Split=all  Start: Sat Mar 14 22:01:41 PDT 2026
+==========================================
+============================================================
+XLS-R 1B Adapter Fine-tuning for sco (Scots) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-sco
+
+Loading data for sco (Scots) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/vocab.json (72 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
