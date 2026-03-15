@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 1157, in <module>
+    main()
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 792, in main
+    train, val = load_and_preprocess_data(lang, args.split)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 256, in load_and_preprocess_data
+    raise FileNotFoundError(
+FileNotFoundError: Train split TSV not found: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-one_kcn.tsv. Run: uv run python scripts/create_splits.py --all
