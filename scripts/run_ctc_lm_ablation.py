@@ -223,6 +223,7 @@ def main() -> None:
             per_device_eval_batch_size=args.batch_size,
             report_to="none",
         ),
+        data_collator=impl.DataCollatorCTCWithPadding(processor=processor, padding=True),
         processing_class=processor.feature_extractor,
     )
 
