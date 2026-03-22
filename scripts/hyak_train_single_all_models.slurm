@@ -39,6 +39,10 @@ else
 fi
 
 LANG=${1:?"Usage: sbatch $0 <lang_code>  (e.g. aln, sco, bxk)"}
+LM_ORDER=${2:-"3"}
+LM_ALPHA=${3:-"0.5"}
+LM_BETA=${4:-"1.0"}
+LM_BEAM_WIDTH=${5:-"100"}
 
 SPLITS=("one" "mid" "all")
 
@@ -47,6 +51,7 @@ echo "Combined Fine-tuning (MMS + XLS-R + Whisper)"
 echo "=========================================="
 echo "Language: $LANG"
 echo "Splits: ${SPLITS[*]}"
+echo "LM params for CTC models: n=$LM_ORDER alpha=$LM_ALPHA beta=$LM_BETA beam=$LM_BEAM_WIDTH"
 echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $SLURMD_NODENAME"
 echo "GPUs: $CUDA_VISIBLE_DEVICES"
@@ -103,7 +108,11 @@ for SPLIT in "${SPLITS[@]}"; do
         --save-to-hf \
         --save-transcriptions \
         --max-audio-sec-from-csv corpus_stats.csv \
-        --use-lm
+        --use-lm \
+        --lm-order "$LM_ORDER" \
+        --lm-alpha "$LM_ALPHA" \
+        --lm-beta "$LM_BETA" \
+        --beam-width "$LM_BEAM_WIDTH"
 
     echo "[MMS] Done: $LANG / $SPLIT  $(date)"
     echo ""
@@ -124,7 +133,11 @@ for SPLIT in "${SPLITS[@]}"; do
         --save-to-hf \
         --save-transcriptions \
         --max-audio-sec-from-csv corpus_stats.csv \
-        --use-lm
+        --use-lm \
+        --lm-order "$LM_ORDER" \
+        --lm-alpha "$LM_ALPHA" \
+        --lm-beta "$LM_BETA" \
+        --beam-width "$LM_BEAM_WIDTH"
 
     echo "[XLS-R] Done: $LANG / $SPLIT  $(date)"
     echo ""

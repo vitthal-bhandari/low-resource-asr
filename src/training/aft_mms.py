@@ -169,6 +169,12 @@ def parse_args() -> argparse.Namespace:
         default=1.0,
         help="Word insertion bonus (beta) for beam search (default: 1.0).",
     )
+    parser.add_argument(
+        "--lm-order",
+        type=int,
+        default=3,
+        help="Order n for auto-built n-gram ARPA LM (default: 3). Only used when --use-lm and --lm-arpa-path is not provided.",
+    )
     return parser.parse_args()
 
 
@@ -528,6 +534,7 @@ def _build_lm_processor(
     arpa_path: str | None = None,
     alpha: float = 0.5,
     beta: float = 1.0,
+    lm_order: int = 3,
 ):
     """
     Build a Wav2Vec2ProcessorWithLM for beam-search decoding.
@@ -567,7 +574,7 @@ def _build_lm_processor(
             print(f"  WARNING: --lm-arpa-path {arpa_path} not found, attempting auto-build.")
 
     if resolved_arpa is None:
-        built = _build_arpa_from_text(sentences, output_dir)
+        built = _build_arpa_from_text(sentences, output_dir, order=lm_order)
         if built is not None:
             resolved_arpa = str(built)
 
@@ -763,6 +770,8 @@ def main():
     """Main training function."""
     run_start_time = datetime.now()
     args = parse_args()
+    if args.lm_order < 1:
+        raise ValueError("--lm-order must be >= 1")
     
     # Validate language code
     lang = args.lang
@@ -1030,6 +1039,7 @@ def main():
     # LM-decoded evaluation (only after training, does not affect training loop)
     lm_val_wer, lm_val_cer = float("nan"), float("nan")
     lm_test_wer, lm_test_cer = float("nan"), float("nan")
+    lm_desc = "disabled"
 
     if args.use_lm:
         print("\nBuilding LM decoder...")
@@ -1040,6 +1050,7 @@ def main():
             arpa_path=args.lm_arpa_path,
             alpha=args.lm_alpha,
             beta=args.lm_beta,
+            lm_order=args.lm_order,
         )
         if lm_processor is None:
             print(f"  WARNING: Could not build LM processor ({lm_desc}). Skipping LM evaluation.")
@@ -1126,6 +1137,11 @@ def main():
         f"test_wer={test_wer:.6f}",
         f"test_cer={test_cer:.6f}",
         f"use_lm={args.use_lm}",
+        f"lm_order={args.lm_order}",
+        f"lm_beam_width={args.beam_width}",
+        f"lm_alpha={args.lm_alpha}",
+        f"lm_beta={args.lm_beta}",
+        f"lm_decoder={lm_desc}",
         f"validation_lm_wer={lm_val_wer:.6f}",
         f"validation_lm_cer={lm_val_cer:.6f}",
         f"test_lm_wer={lm_test_wer:.6f}",
