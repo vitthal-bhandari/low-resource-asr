@@ -1,0 +1,37 @@
+{
+  "description": "First LM ablation pilot set requested for decode-only experiments.",
+  "selection_criteria": [
+    "Use requested languages for first-pass experiment",
+    "Keep CTC-only external LM scope (MMS/XLS-R)",
+    "Reuse latest fine-tuned checkpoints from Hugging Face"
+  ],
+  "languages": [
+    {
+      "lang": "sco",
+      "name": "Scots",
+      "region": "Europe",
+      "sample_count": 569,
+      "mean_sec": 54.26,
+      "tier": "low_resource",
+      "rationale": "Requested by user; low-resource setting with long utterances."
+    },
+    {
+      "lang": "kcn",
+      "name": "Nubi",
+      "region": "Africa",
+      "sample_count": 2369,
+      "mean_sec": 18.68,
+      "tier": "higher_resource",
+      "rationale": "Requested by user; stronger-resource contrast against Scots."
+    },
+    {
+      "lang": "ukv",
+      "name": "Kuku",
+      "region": "Africa",
+      "sample_count": 2109,
+      "mean_sec": 17.26,
+      "tier": "higher_resource",
+      "rationale": "Requested by user; similar tier to Nubi for stability checks."
+    }
+  ]
+}

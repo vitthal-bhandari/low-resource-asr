@@ -29,11 +29,16 @@ PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
 # Language and split (one=1h, mid=tier 3/5/10h, all=full)
 LANG=${1:-"aln"}
 SPLIT=${2:-"all"}
+LM_ORDER=${3:-"3"}
+LM_ALPHA=${4:-"0.5"}
+LM_BETA=${5:-"1.0"}
+LM_BEAM_WIDTH=${6:-"100"}
 
 echo "=========================================="
 echo "MMS Adapter Fine-tuning on Hyak"
 echo "=========================================="
 echo "Language: $LANG  Split: $SPLIT"
+echo "LM params: n=$LM_ORDER alpha=$LM_ALPHA beta=$LM_BETA beam=$LM_BEAM_WIDTH"
 echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $SLURMD_NODENAME"
 echo "GPUs: $CUDA_VISIBLE_DEVICES"
@@ -83,7 +88,11 @@ uv run python -m src.training.aft_xlsr "$LANG" \
     --learning-rate 1e-4 \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
-    --use-lm
+    --use-lm \
+    --lm-order "$LM_ORDER" \
+    --lm-alpha "$LM_ALPHA" \
+    --lm-beta "$LM_BETA" \
+    --beam-width "$LM_BEAM_WIDTH"
 
 echo ""
 echo "=========================================="
