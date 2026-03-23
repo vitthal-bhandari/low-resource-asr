@@ -1,0 +1,55 @@
+==========================================
+CTC LM Confirmatory Ablation (decode-only)
+==========================================
+Task: 2
+Model: mms
+Language: bxk
+Split: all
+Set A: n=4 alpha=0.5 beta=1.0 beam=100
+Set B: n=3 alpha=0.2 beta=1.0 beam=50
+Start time: Sun Mar 22 23:57:07 PDT 2026
+
+Checking lmplz availability...
+/gscratch/scrubbed/vitthal1/tools/kenlm/build/bin/lmplz
+lmplz sanity build OK
+Running Set A decoding...
+
+Loading data for bxk (Bukusu) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/train-all_bxk.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/validation_bxk.tsv
+  Train: 1642 samples (7.85 h)
+  Validation: 118 samples (0.61 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/bxk/all/lm_4gram.arpa
+========================================================================
+Saved results to: results/lm_ablation/two_settings/34052631/mms_bxk_all_setA.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-bxk @ main)
+Selection split: test
+Greedy test WER:   0.5184
+Unigram test WER:  0.5122
+Best n-gram test WER: 0.5285
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================
+Running Set B decoding...
+
+Loading data for bxk (Bukusu) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/train-all_bxk.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/validation_bxk.tsv
+  Train: 1642 samples (7.85 h)
+  Validation: 118 samples (0.61 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/bxk/all/lm_3gram.arpa
+========================================================================
+Saved results to: results/lm_ablation/two_settings/34052631/mms_bxk_all_setB.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-bxk @ main)
+Selection split: test
+Greedy test WER:   0.5184
+Unigram test WER:  0.5122
+Best n-gram test WER: 0.5696
+Best params: n=3, alpha=0.2, beta=1.0, beam=50
+========================================================================
+Refreshing combined test-WER CSV summary...
