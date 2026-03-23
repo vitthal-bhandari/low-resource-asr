@@ -1,0 +1,55 @@
+==========================================
+CTC LM Confirmatory Ablation (decode-only)
+==========================================
+Task: 14
+Model: mms
+Language: ruc
+Split: all
+Set A: n=4 alpha=0.5 beta=1.0 beam=100
+Set B: n=3 alpha=0.2 beta=1.0 beam=50
+Start time: Mon Mar 23 00:08:43 PDT 2026
+
+Checking lmplz availability...
+/gscratch/scrubbed/vitthal1/tools/kenlm/build/bin/lmplz
+lmplz sanity build OK
+Running Set A decoding...
+
+Loading data for ruc (Ruuli) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: 1346 samples (8.30 h)
+  Validation: 77 samples (0.27 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/ruc/all/lm_4gram.arpa
+========================================================================
+Saved results to: results/lm_ablation/two_settings/34052631/mms_ruc_all_setA.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-ruc @ main)
+Selection split: test
+Greedy test WER:   0.5899
+Unigram test WER:  0.5827
+Best n-gram test WER: 0.5716
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================
+Running Set B decoding...
+
+Loading data for ruc (Ruuli) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: 1346 samples (8.30 h)
+  Validation: 77 samples (0.27 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/ruc/all/lm_3gram.arpa
+========================================================================
+Saved results to: results/lm_ablation/two_settings/34052631/mms_ruc_all_setB.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-ruc @ main)
+Selection split: test
+Greedy test WER:   0.5899
+Unigram test WER:  0.5827
+Best n-gram test WER: 0.6116
+Best params: n=3, alpha=0.2, beta=1.0, beam=50
+========================================================================
+Refreshing combined test-WER CSV summary...

@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "model": "mms",
+    "lang": "meh",
+    "split": "all",
+    "checkpoint_source": "hf",
+    "checkpoint_ref": "vitthalbhandari/mms-1b-all-aft-all-meh",
+    "hf_revision": "main",
+    "selection_split_requested": "test",
+    "selection_split_used": "test",
+    "lm_orders": [
+      3
+    ],
+    "lm_alphas": [
+      0.2
+    ],
+    "lm_betas": [
+      1.0
+    ],
+    "beam_widths": [
+      50
+    ]
+  },
+  "greedy": {
+    "val": {
+      "wer": 0.36238658234808907,
+      "cer": 0.13771532184950136
+    },
+    "test": {
+      "wer": 0.422543135783946,
+      "cer": 0.17001776485788114
+    }
+  },
+  "unigram_beam": {
+    "val": {
+      "wer": 0.3607368710475667,
+      "cer": 0.13816863100634633
+    },
+    "val_decode_sec": 9.143490481888875,
+    "beam_width": 100,
+    "test": {
+      "wer": 0.41822955738934736,
+      "cer": 0.16856427648578812
+    },
+    "test_decode_sec": 8.956574959913269
+  },
+  "ngram_beam": [
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/meh/all/lm_3gram.arpa)",
+      "val": {
+        "wer": 0.3333791586472367,
+        "cer": 0.1339981867633726
+      },
+      "val_decode_sec": 5.600720820017159,
+      "test": {
+        "wer": 0.38803450862715677,
+        "cer": 0.16513242894056848
+      },
+      "test_decode_sec": 5.468604650115594
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+==========================================
+CTC LM Confirmatory Ablation (decode-only)
+==========================================
+Task: 26
+Model: xlsr
+Language: hch
+Split: all
+Set A: n=4 alpha=0.5 beta=1.0 beam=100
+Set B: n=3 alpha=0.2 beta=1.0 beam=50
+Start time: Mon Mar 23 00:21:10 PDT 2026
+
+Checking lmplz availability...
+/gscratch/scrubbed/vitthal1/tools/kenlm/build/bin/lmplz
+lmplz sanity build OK
+Running Set A decoding...
+
+Loading data for hch (Wixárika) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-all_hch.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 844 samples (6.27 h)
+  Validation: 310 samples (0.97 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/hch/all/lm_4gram.arpa
+========================================================================
+Saved results to: results/lm_ablation/two_settings/34052631/xlsr_hch_all_setA.json
+Checkpoint source: hf (vitthalbhandari/xlsr-1b-aft-all-hch @ main)
+Selection split: test
+Greedy test WER:   0.5605
+Unigram test WER:  0.5560
+Best n-gram test WER: 0.5060
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================
+Running Set B decoding...
+
+Loading data for hch (Wixárika) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-all_hch.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 844 samples (6.27 h)
+  Validation: 310 samples (0.97 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/hch/all/lm_3gram.arpa
+========================================================================
+Saved results to: results/lm_ablation/two_settings/34052631/xlsr_hch_all_setB.json
+Checkpoint source: hf (vitthalbhandari/xlsr-1b-aft-all-hch @ main)
+Selection split: test
+Greedy test WER:   0.5605
+Unigram test WER:  0.5560
+Best n-gram test WER: 0.5207
+Best params: n=3, alpha=0.2, beta=1.0, beam=50
+========================================================================
+Refreshing combined test-WER CSV summary...
