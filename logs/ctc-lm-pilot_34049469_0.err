@@ -1,0 +1,5 @@
+=== 1/5 Counting and sorting n-grams ===
+File stdin isn't normal.  Using slower read() instead of mmap().  No progress bar.
+/var/spool/slurmd/job34049470/slurm_script: line 74: 20236 Done                    echo "quick sanity line for lmplz build test"
+     20237 Killed                  | lmplz -o 3 --discount_fallback > /tmp/lm_sanity_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}.arpa
+[2026-03-22T19:49:27.677] error: Detected 1 oom_kill event in StepId=34049470.batch. Some of the step tasks have been OOM Killed.
