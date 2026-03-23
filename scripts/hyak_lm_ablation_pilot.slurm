@@ -56,6 +56,7 @@ module load cesg/boost/1.76.0
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
 export LD_LIBRARY_PATH="$BOOST_ROOT/lib:$LD_LIBRARY_PATH"
+export LMPLZ_MEMORY="512M"
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
 export HF_CACHE_BASE="/gscratch/scrubbed/$USER/.cache/huggingface"
 export HF_HOME="$HF_CACHE_BASE"
@@ -71,7 +72,7 @@ cd "$PROJECT_DIR"
 
 echo "Checking lmplz availability..."
 which lmplz
-echo "quick sanity line for lmplz build test" | lmplz -o 3 --discount_fallback > /tmp/lm_sanity_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}.arpa
+echo "quick sanity line for lmplz build test" | lmplz -S 64M -o 3 --discount_fallback > /tmp/lm_sanity_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}.arpa
 echo "lmplz sanity build OK"
 
 if [[ "$MODEL" == "mms" ]]; then

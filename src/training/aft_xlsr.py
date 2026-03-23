@@ -32,6 +32,7 @@ Dependencies for LM decoding:
 
 import argparse
 import json
+import os
 import re
 from dataclasses import dataclass
 from datetime import datetime
@@ -503,6 +504,7 @@ def _build_arpa_from_text(
     output_dir.mkdir(parents=True, exist_ok=True)
     text_path = output_dir / "lm_train.txt"
     arpa_path = output_dir / f"lm_{order}gram.arpa"
+    lmplz_memory = os.environ.get("LMPLZ_MEMORY", "1G")
 
     with open(text_path, "w", encoding="utf-8") as f:
         for s in sentences:
@@ -513,7 +515,7 @@ def _build_arpa_from_text(
     try:
         with open(text_path, "r") as stdin, open(arpa_path, "w") as stdout:
             subprocess.run(
-                [lmplz, "-o", str(order), "--discount_fallback"],
+                [lmplz, "-S", lmplz_memory, "-o", str(order), "--discount_fallback"],
                 stdin=stdin,
                 stdout=stdout,
                 check=True,
