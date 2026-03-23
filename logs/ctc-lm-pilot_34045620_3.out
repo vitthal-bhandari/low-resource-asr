@@ -1,0 +1,28 @@
+==========================================
+CTC LM Pilot Ablation (decode-only)
+==========================================
+Task: 3
+Model: xlsr
+Language: sco
+Split: all
+Start time: Sun Mar 22 14:19:37 PDT 2026
+
+
+Loading data for sco (Scots) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+========================================================================
+Saved results to: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/xlsr_sco_all_lm_ablation.json
+Checkpoint source: hf (vitthalbhandari/xlsr-1b-aft-all-sco @ main)
+Greedy val WER:   1.0000
+Unigram val WER:  0.9986
+Best n-gram val WER: 0.9982
+Best params: n=3, alpha=0.2, beta=0.0, beam=50
+========================================================================
+
+Completed at: Sun Mar 22 16:14:26 PDT 2026

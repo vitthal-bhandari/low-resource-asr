@@ -9,10 +9,10 @@
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/%x_%A_%a.out
 #SBATCH --error=logs/%x_%A_%a.err
-#SBATCH --array=0-5
+#SBATCH --array=0-1
 
 # =============================================================================
-# Decode-only pilot LM ablation: 3 pilot languages x 2 CTC models = 6 tasks
+# Decode-only pilot LM ablation: Scots-only x 2 CTC models = 2 tasks
 # Pulls latest fine-tuned checkpoints from Hugging Face; no retraining.
 # =============================================================================
 
@@ -21,7 +21,7 @@ set -e
 PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
 SPLIT=${1:-"all"}
 
-LANGUAGES=("sco" "kcn" "ukv")
+LANGUAGES=("sco")
 MODELS=("mms" "xlsr")
 
 NUM_LANGS=${#LANGUAGES[@]}
@@ -48,8 +48,15 @@ echo ""
 
 mkdir -p logs
 
+# Ensure runtime dependencies for KenLM binary (lmplz) are available.
+module purge
+module load gcc
+module load cesg/boost/1.76.0
+
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
+export LD_LIBRARY_PATH="$BOOST_ROOT/lib:$LD_LIBRARY_PATH"
+export LMPLZ_MEMORY="512M"
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
 export HF_CACHE_BASE="/gscratch/scrubbed/$USER/.cache/huggingface"
 export HF_HOME="$HF_CACHE_BASE"
@@ -62,6 +69,11 @@ export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
 export PYTHONPATH="$PROJECT_DIR:$PYTHONPATH"
 mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
+
+echo "Checking lmplz availability..."
+which lmplz
+echo "quick sanity line for lmplz build test" | lmplz -S 64M -o 3 --discount_fallback > /tmp/lm_sanity_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}.arpa
+echo "lmplz sanity build OK"
 
 if [[ "$MODEL" == "mms" ]]; then
   HF_REPO_ID="vitthalbhandari/mms-1b-all-aft-${SPLIT}-${LANG}"
@@ -76,6 +88,7 @@ uv run python scripts/run_ctc_lm_ablation.py \
   --hf-repo-id "$HF_REPO_ID" \
   --hf-revision "main" \
   --selection-split "test" \
+  --require-arpa \
   --lm-orders "3,4,5" \
   --lm-alphas "0.2,0.5,0.8" \
   --lm-betas "0.0,1.0,2.0" \

@@ -1,0 +1,18 @@
+==========================================
+CTC LM Pilot Ablation (decode-only)
+==========================================
+Task: 2
+Model: mms
+Language: ukv
+Split: all
+Start time: Sun Mar 22 06:31:51 PDT 2026
+
+
+Loading data for ukv (Kuku) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-all_ukv.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: 1505 samples (7.21 h)
+  Validation: 142 samples (0.65 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...

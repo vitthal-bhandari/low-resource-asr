@@ -16,6 +16,7 @@ import argparse
 import itertools
 import json
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable
 
@@ -81,6 +82,11 @@ def parse_args() -> argparse.Namespace:
         "--allow-val-fallback",
         action="store_true",
         help="If --selection-split=test and test split is unavailable, allow fallback to validation instead of failing.",
+    )
+    parser.add_argument(
+        "--require-arpa",
+        action="store_true",
+        help="Fail if any n-gram setting falls back to unigram (no ARPA). Recommended for strict LM ablations.",
     )
     return parser.parse_args()
 
@@ -315,6 +321,11 @@ def main() -> None:
         )
         if lm_processor is None:
             raise RuntimeError(f"Failed to build LM processor: {lm_desc}")
+        if args.require_arpa and "no ARPA" in lm_desc:
+            raise RuntimeError(
+                "ARPA LM was required, but decoder fell back to unigram. "
+                "Check lmplz availability and KenLM build/runtime dependencies on this node."
+            )
 
         val_metrics, val_decode_sec = _lm_metrics(
             val_pred, processor, lm_processor, impl._decode_with_lm, impl.compute_wer_cer, beam_width=beam_width
@@ -346,7 +357,7 @@ def main() -> None:
         if args.output_json
         else config.results_dir
         / "lm_ablation"
-        / f"{args.model}_{args.lang}_{args.split}_lm_ablation.json"
+        / f"{args.model}_{args.lang}_{args.split}_lm_ablation_{datetime.now():%Y%m%d_%H%M%S}.json"
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
