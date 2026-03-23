@@ -49,6 +49,7 @@ echo ""
 mkdir -p logs
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
 export HF_CACHE_BASE="/gscratch/scrubbed/$USER/.cache/huggingface"
 export HF_HOME="$HF_CACHE_BASE"
@@ -74,6 +75,7 @@ uv run python scripts/run_ctc_lm_ablation.py \
   --split "$SPLIT" \
   --hf-repo-id "$HF_REPO_ID" \
   --hf-revision "main" \
+  --selection-split "test" \
   --lm-orders "3,4,5" \
   --lm-alphas "0.2,0.5,0.8" \
   --lm-betas "0.0,1.0,2.0" \

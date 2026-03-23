@@ -71,6 +71,17 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Skip test split evaluation (val only).",
     )
+    parser.add_argument(
+        "--selection-split",
+        choices=["val", "test"],
+        default="test",
+        help="Split used to select/report the final best LM setting (default: test).",
+    )
+    parser.add_argument(
+        "--allow-val-fallback",
+        action="store_true",
+        help="If --selection-split=test and test split is unavailable, allow fallback to validation instead of failing.",
+    )
     return parser.parse_args()
 
 
@@ -213,6 +224,12 @@ def main() -> None:
         raw_test = impl.load_test_data(args.lang)
         if raw_test is not None and len(raw_test) > 0:
             test_ds = _prepare_eval_dataset(raw_test, prepare_dataset_fn, keep_audio_file=False)
+    test_available = test_ds is not None
+    if args.selection_split == "test" and not test_available and not args.allow_val_fallback:
+        raise ValueError(
+            "selection-split=test requires an available test split. "
+            "Provide test data for this language/split, or pass --allow-val-fallback."
+        )
 
     eval_tmp_dir = config.results_dir / "lm_ablation" / "tmp_trainer"
     eval_tmp_dir.mkdir(parents=True, exist_ok=True)
@@ -239,6 +256,12 @@ def main() -> None:
             "checkpoint_source": checkpoint_source,
             "checkpoint_ref": checkpoint_ref,
             "hf_revision": args.hf_revision if checkpoint_source == "hf" else None,
+            "selection_split_requested": args.selection_split,
+            "selection_split_used": (
+                args.selection_split
+                if (args.selection_split == "val" or test_available)
+                else "val"
+            ),
             "lm_orders": lm_orders,
             "lm_alphas": lm_alphas,
             "lm_betas": lm_betas,
@@ -329,7 +352,8 @@ def main() -> None:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
 
-    best_entry = min(results["ngram_beam"], key=lambda x: x["val"]["wer"])
+    selection_split = results["meta"]["selection_split_used"]
+    best_entry = min(results["ngram_beam"], key=lambda x: x[selection_split]["wer"])
     print("=" * 72)
     print(f"Saved results to: {out_path}")
     print(
@@ -337,9 +361,13 @@ def main() -> None:
         f"{checkpoint_source} ({checkpoint_ref}"
         f"{' @ ' + args.hf_revision if checkpoint_source == 'hf' else ''})"
     )
-    print(f"Greedy val WER:   {results['greedy']['val']['wer']:.4f}")
-    print(f"Unigram val WER:  {results['unigram_beam']['val']['wer']:.4f}")
-    print(f"Best n-gram val WER: {best_entry['val']['wer']:.4f}")
+    print(
+        f"Selection split: {selection_split}"
+        + (" (fallback from test)" if args.selection_split == "test" and selection_split == "val" else "")
+    )
+    print(f"Greedy {selection_split} WER:   {results['greedy'][selection_split]['wer']:.4f}")
+    print(f"Unigram {selection_split} WER:  {results['unigram_beam'][selection_split]['wer']:.4f}")
+    print(f"Best n-gram {selection_split} WER: {best_entry[selection_split]['wer']:.4f}")
     print(
         "Best params: "
         f"n={best_entry['lm_order']}, alpha={best_entry['alpha']}, "
