@@ -9,10 +9,10 @@
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/%x_%A_%a.out
 #SBATCH --error=logs/%x_%A_%a.err
-#SBATCH --array=0-5
+#SBATCH --array=0-1
 
 # =============================================================================
-# Decode-only pilot LM ablation: 3 pilot languages x 2 CTC models = 6 tasks
+# Decode-only pilot LM ablation: Scots-only x 2 CTC models = 2 tasks
 # Pulls latest fine-tuned checkpoints from Hugging Face; no retraining.
 # =============================================================================
 
@@ -21,7 +21,7 @@ set -e
 PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
 SPLIT=${1:-"all"}
 
-LANGUAGES=("sco" "kcn" "ukv")
+LANGUAGES=("sco")
 MODELS=("mms" "xlsr")
 
 NUM_LANGS=${#LANGUAGES[@]}
