@@ -16,3 +16,14 @@ Loading data for kcn (Nubi) split=all...
 Running greedy predictions...
 Running unigram beam baseline...
 Running n-gram sweep...
+========================================================================
+Saved results to: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/mms_kcn_all_lm_ablation.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-kcn @ main)
+Selection split: test
+Greedy test WER:   0.6053
+Unigram test WER:  0.6006
+Best n-gram test WER: 0.6006
+Best params: n=3, alpha=0.2, beta=0.0, beam=100
+========================================================================
+
+Completed at: Sun Mar 22 19:20:51 PDT 2026

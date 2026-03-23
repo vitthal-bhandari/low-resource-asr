@@ -1,0 +1,11 @@
+==========================================
+CTC LM Pilot Ablation (decode-only)
+==========================================
+Task: 1
+Model: xlsr
+Language: sco
+Split: all
+Start time: Sun Mar 22 19:49:47 PDT 2026
+
+Checking lmplz availability...
+/gscratch/scrubbed/vitthal1/tools/kenlm/build/bin/lmplz
