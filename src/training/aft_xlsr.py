@@ -579,13 +579,26 @@ def _build_lm_processor(
             resolved_arpa = str(built)
 
     if resolved_arpa is not None:
-        decoder = build_ctcdecoder(
-            labels=labels,
-            kenlm_model=resolved_arpa,
-            unigrams=unigrams,
-            alpha=alpha,
-            beta=beta,
-        )
+        # pyctcdecode API differs by version:
+        # - newer: kenlm_model=
+        # - older: kenlm_model_path=
+        # Try both for compatibility across environments.
+        try:
+            decoder = build_ctcdecoder(
+                labels=labels,
+                kenlm_model=resolved_arpa,
+                unigrams=unigrams,
+                alpha=alpha,
+                beta=beta,
+            )
+        except TypeError:
+            decoder = build_ctcdecoder(
+                labels=labels,
+                kenlm_model_path=resolved_arpa,
+                unigrams=unigrams,
+                alpha=alpha,
+                beta=beta,
+            )
         desc = f"n-gram LM ({resolved_arpa})"
     else:
         decoder = build_ctcdecoder(
