@@ -48,8 +48,14 @@ echo ""
 
 mkdir -p logs
 
+# Ensure runtime dependencies for KenLM binary (lmplz) are available.
+module purge
+module load gcc
+module load cesg/boost/1.76.0
+
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
+export LD_LIBRARY_PATH="$BOOST_ROOT/lib:$LD_LIBRARY_PATH"
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
 export HF_CACHE_BASE="/gscratch/scrubbed/$USER/.cache/huggingface"
 export HF_HOME="$HF_CACHE_BASE"
