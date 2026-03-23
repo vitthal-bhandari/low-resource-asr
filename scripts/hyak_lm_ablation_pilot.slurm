@@ -63,6 +63,11 @@ export PYTHONPATH="$PROJECT_DIR:$PYTHONPATH"
 mkdir -p "$UV_CACHE_DIR" "$HF_HUB_CACHE" "$HF_DATASETS_CACHE" "$TRANSFORMERS_CACHE" "$TORCH_HOME"
 cd "$PROJECT_DIR"
 
+echo "Checking lmplz availability..."
+which lmplz
+echo "quick sanity line for lmplz build test" | lmplz -o 3 --discount_fallback > /tmp/lm_sanity_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}.arpa
+echo "lmplz sanity build OK"
+
 if [[ "$MODEL" == "mms" ]]; then
   HF_REPO_ID="vitthalbhandari/mms-1b-all-aft-${SPLIT}-${LANG}"
 else
@@ -76,6 +81,7 @@ uv run python scripts/run_ctc_lm_ablation.py \
   --hf-repo-id "$HF_REPO_ID" \
   --hf-revision "main" \
   --selection-split "test" \
+  --require-arpa \
   --lm-orders "3,4,5" \
   --lm-alphas "0.2,0.5,0.8" \
   --lm-betas "0.0,1.0,2.0" \
