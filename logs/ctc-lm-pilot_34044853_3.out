@@ -1,0 +1,16 @@
+==========================================
+CTC LM Pilot Ablation (decode-only)
+==========================================
+Task: 3
+Model: xlsr
+Language: sco
+Split: all
+Start time: Sun Mar 22 00:20:03 PDT 2026
+
+
+Loading data for sco (Scots) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+Running greedy predictions...

@@ -1,0 +1,972 @@
+{
+  "meta": {
+    "model": "xlsr",
+    "lang": "sco",
+    "split": "all",
+    "checkpoint_source": "hf",
+    "checkpoint_ref": "vitthalbhandari/xlsr-1b-aft-all-sco",
+    "hf_revision": "main",
+    "lm_orders": [
+      3,
+      4,
+      5
+    ],
+    "lm_alphas": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "lm_betas": [
+      0.0,
+      1.0,
+      2.0
+    ],
+    "beam_widths": [
+      50,
+      100
+    ]
+  },
+  "greedy": {
+    "val": {
+      "wer": 1.0,
+      "cer": 0.9810282580018052
+    },
+    "test": {
+      "wer": 1.0,
+      "cer": 0.9752267197522672
+    }
+  },
+  "unigram_beam": {
+    "val": {
+      "wer": 0.9986308403217525,
+      "cer": 0.8053704089425814
+    },
+    "val_decode_sec": 105.1224369769916,
+    "beam_width": 100,
+    "test": {
+      "wer": 0.999756275895686,
+      "cer": 0.811595271449286
+    },
+    "test_decode_sec": 73.82543817092665
+  },
+  "ngram_beam": [
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.31318405410275,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.938434718875214
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 113.32075606496073,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.59756813710555
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.34694956894964,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.97927124798298
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.54003618308343,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.81765660690144
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.899690767982975,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.751141066895798
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.2,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.54492269991897,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.40050520189106
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.5,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.243555350927636,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.43086781911552
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.5,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.17047431319952,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 72.31168700312264
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.5,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.545587884960696,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.304823306156322
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.5,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.0355033238884,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 71.57780280802399
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.5,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.80113143194467,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.57160551007837
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.5,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 102.39959126384929,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 71.40173119306564
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.8,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.01203508209437,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.343244747025892
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.8,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 102.31213792902417,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.29937105905265
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.8,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.20898592681624,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.180600490886718
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.8,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 109.50088398694061,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 76.81543827499263
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.8,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.6551701000426,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.048296731198207
+    },
+    {
+      "lm_order": 3,
+      "alpha": 0.8,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.36853512306698,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 71.82086323597468
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.2,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.55118412012234,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.938002923037857
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.2,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.43601755890995,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 71.12264071311802
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.08038244419731,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.626521941972896
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 107.31680617900565,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 71.04753533191979
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.2,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.46349764592014,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.88410601997748
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.2,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 105.37255591596477,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 74.11090584285557
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.5,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.819340754067525,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.9144958879333
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.5,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 105.76871635904536,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 74.91011680895463
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.5,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.63326866389252,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.294774749083444
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.5,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.18614153400995,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 73.45796726690605
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.5,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.023081346880645,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.743928018026054
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.5,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 105.03637962811626,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 75.44843806000426
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.8,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.86988561297767,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.01869814703241
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.8,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.80913737602532,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 73.97498550498858
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.8,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.159814957063645,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.288896831916645
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.8,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.46165767591447,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 74.51279475400224
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.8,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.55540886102244,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.346582774072886
+    },
+    {
+      "lm_order": 4,
+      "alpha": 0.8,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.32403263705783,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 73.95544037804939
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.2,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.357588606188074,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.251317214919254
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.2,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.22812230582349,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 74.12594680394977
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 33.65099367196672,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 26.607284271158278
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.2,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.80418482213281,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 73.09825569810346
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.2,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.24478527694009,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.908862496027723
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.2,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 103.424313708907,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 72.36442919285037
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.5,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.637397459940985,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.15536894905381
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.5,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.85002489201725,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.90103820292279
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.5,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.07097942219116,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.28474636306055
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.5,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 106.56094447895885,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 69.24405827815644
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.5,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.99532809690572,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 25.806527534034103
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.5,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 105.09913607290946,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 73.14770339103416
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.8,
+      "beta": 0.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 35.01112452894449,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.482832006877288
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.8,
+      "beta": 0.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 106.7326505179517,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.41753658489324
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.8,
+      "beta": 1.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 33.13414762704633,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.122222494799644
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.8,
+      "beta": 1.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 102.90842294180766,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 70.99730143905617
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.8,
+      "beta": 2.0,
+      "beam_width": 50,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9982029779223002,
+        "cer": 0.8076095257932375
+      },
+      "val_decode_sec": 34.67644977802411,
+      "test": {
+        "wer": 0.9993906897392152,
+        "cer": 0.813807171471405
+      },
+      "test_decode_sec": 24.577918632188812
+    },
+    {
+      "lm_order": 5,
+      "alpha": 0.8,
+      "beta": 2.0,
+      "beam_width": 100,
+      "decoder_desc": "beam search with unigrams (no ARPA)",
+      "val": {
+        "wer": 0.9986308403217525,
+        "cer": 0.8053704089425814
+      },
+      "val_decode_sec": 104.75122021790594,
+      "test": {
+        "wer": 0.999756275895686,
+        "cer": 0.811595271449286
+      },
+      "test_decode_sec": 77.13155226688832
+    }
+  ]
+}

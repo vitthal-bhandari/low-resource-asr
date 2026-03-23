@@ -1,0 +1,28 @@
+==========================================
+CTC LM Pilot Ablation (decode-only)
+==========================================
+Task: 1
+Model: mms
+Language: kcn
+Split: all
+Start time: Sun Mar 22 06:10:53 PDT 2026
+
+
+Loading data for kcn (Nubi) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 1395 samples (7.21 h)
+  Validation: 152 samples (0.57 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+========================================================================
+Saved results to: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/mms_kcn_all_lm_ablation.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-kcn @ main)
+Greedy val WER:   0.4160
+Unigram val WER:  0.4052
+Best n-gram val WER: 0.4052
+Best params: n=3, alpha=0.2, beta=0.0, beam=100
+========================================================================
+
+Completed at: Sun Mar 22 06:31:43 PDT 2026

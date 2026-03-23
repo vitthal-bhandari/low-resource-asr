@@ -1,0 +1,16 @@
+==========================================
+CTC LM Pilot Ablation (decode-only)
+==========================================
+Task: 4
+Model: xlsr
+Language: kcn
+Split: all
+Start time: Sun Mar 22 00:22:49 PDT 2026
+
+
+Loading data for kcn (Nubi) split=all...
+  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 1395 samples (7.21 h)
+  Validation: 152 samples (0.57 h)
+Running greedy predictions...
