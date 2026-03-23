@@ -16,6 +16,7 @@ import argparse
 import itertools
 import json
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable
 
@@ -356,7 +357,7 @@ def main() -> None:
         if args.output_json
         else config.results_dir
         / "lm_ablation"
-        / f"{args.model}_{args.lang}_{args.split}_lm_ablation.json"
+        / f"{args.model}_{args.lang}_{args.split}_lm_ablation_{datetime.now():%Y%m%d_%H%M%S}.json"
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
