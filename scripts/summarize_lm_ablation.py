@@ -47,13 +47,9 @@ def _safe_get(dct: dict[str, Any], *keys: str) -> Any:
 
 def _best_entry(entries: list[dict[str, Any]], split: str) -> dict[str, Any] | None:
     candidates = [e for e in entries if _safe_get(e, split, "wer") is not None]
-    if candidates:
-        return min(candidates, key=lambda e: float(e[split]["wer"]))
-    # Fallback to validation if requested split is unavailable
-    candidates = [e for e in entries if _safe_get(e, "val", "wer") is not None]
-    if candidates:
-        return min(candidates, key=lambda e: float(e["val"]["wer"]))
-    return None
+    if not candidates:
+        return None
+    return min(candidates, key=lambda e: float(e[split]["wer"]))
 
 
 def _rel_improvement(base: float | None, new: float | None) -> float | None:
@@ -89,7 +85,7 @@ def main() -> None:
         if best is None:
             continue
 
-        target_split = args.metric_split if _safe_get(best, args.metric_split, "wer") is not None else "val"
+        target_split = args.metric_split
         greedy_wer = _safe_get(greedy, target_split, "wer")
         greedy_cer = _safe_get(greedy, target_split, "cer")
         unigram_wer = _safe_get(unigram, target_split, "wer")
@@ -124,7 +120,9 @@ def main() -> None:
         )
 
         for entry in ngram_entries:
-            metric_split = args.metric_split if _safe_get(entry, args.metric_split, "wer") is not None else "val"
+            if _safe_get(entry, args.metric_split, "wer") is None:
+                continue
+            metric_split = args.metric_split
             detail_rows.append(
                 {
                     "model": model,
