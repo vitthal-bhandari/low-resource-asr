@@ -88,6 +88,7 @@ uv run python -m src.training.aft_xlsr "$LANG" \
     --learning-rate 1e-4 \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
+    --save-to-hf \
     --use-lm \
     --lm-order "$LM_ORDER" \
     --lm-alpha "$LM_ALPHA" \
