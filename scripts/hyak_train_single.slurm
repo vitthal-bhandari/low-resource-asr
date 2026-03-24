@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH --gpus=1
-#SBATCH --time=12:00:00             # 12 hours per language
+#SBATCH --time=3:00:00             # 12 hours per language
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
