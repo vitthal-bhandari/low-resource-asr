@@ -108,17 +108,19 @@ def main() -> None:
         f"{args.set_a_label}_alpha",
         f"{args.set_a_label}_beta",
         f"{args.set_a_label}_beam",
+        f"{args.set_a_label}_decoder_desc",
         f"{args.set_b_label}_test_wer",
         f"{args.set_b_label}_n",
         f"{args.set_b_label}_alpha",
         f"{args.set_b_label}_beta",
         f"{args.set_b_label}_beam",
+        f"{args.set_b_label}_decoder_desc",
         f"{args.set_a_label}_json",
         f"{args.set_b_label}_json",
     ]
 
     with open(output_csv, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
+        writer = csv.DictWriter(f, fieldnames=headers, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 
