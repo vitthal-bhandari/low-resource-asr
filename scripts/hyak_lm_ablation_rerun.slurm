@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=ctc-lm-rerun
 #SBATCH --account=stf
-#SBATCH --partition=gpu-l40s
+#SBATCH --partition=ckpt-all
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=8
+#SBATCH --ntasks-per-node=8
 #SBATCH --mem=64G
-#SBATCH --gpus=1
-#SBATCH --time=08:00:00
+#SBATCH --gpus=l40s:1
+#SBATCH --time=2:00:00
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
@@ -14,19 +14,21 @@
 # Targeted single (model, language) LM ablation rerun.
 # Writes setA/setB JSONs into an existing results directory.
 # Usage:
-#   sbatch scripts/hyak_lm_ablation_rerun.slurm <model> <lang> <run_dir> [split]
+#   sbatch scripts/hyak_lm_ablation_rerun.slurm <model> <lang> <run_dir> [split] [hf_revision]
 #   sbatch scripts/hyak_lm_ablation_rerun.slurm mms hch results/lm_ablation/two_settings/34052631
 #   sbatch scripts/hyak_lm_ablation_rerun.slurm xlsr sco results/lm_ablation/two_settings/34052631 all
+#   sbatch scripts/hyak_lm_ablation_rerun.slurm xlsr sco results/lm_ablation/two_settings/recover_sco all 8dad75bbf283ef5976763da84748a2537fe11cbb
 # =============================================================================
 
 set -e
 
 PROJECT_DIR="/gscratch/scrubbed/$USER/low-resource-asr"
 
-MODEL=${1:?"Usage: $0 <model> <lang> <run_dir> [split]"}
-LANG=${2:?"Usage: $0 <model> <lang> <run_dir> [split]"}
-RUN_DIR=${3:?"Usage: $0 <model> <lang> <run_dir> [split]"}
+MODEL=${1:?"Usage: $0 <model> <lang> <run_dir> [split] [hf_revision]"}
+LANG=${2:?"Usage: $0 <model> <lang> <run_dir> [split] [hf_revision]"}
+RUN_DIR=${3:?"Usage: $0 <model> <lang> <run_dir> [split] [hf_revision]"}
 SPLIT=${4:-"all"}
+HF_REVISION=${5:-"main"}
 
 # Set A (MMS-favored from pilot)
 SETA_ORDER="4"
@@ -47,6 +49,7 @@ echo "Model: $MODEL"
 echo "Language: $LANG"
 echo "Split: $SPLIT"
 echo "Output dir: $RUN_DIR"
+echo "HF revision: $HF_REVISION"
 echo "Set A: n=$SETA_ORDER alpha=$SETA_ALPHA beta=$SETA_BETA beam=$SETA_BEAM"
 echo "Set B: n=$SETB_ORDER alpha=$SETB_ALPHA beta=$SETB_BETA beam=$SETB_BEAM"
 echo "Start time: $(date)"
@@ -97,7 +100,7 @@ uv run python scripts/run_ctc_lm_ablation.py \
   --lang "$LANG" \
   --split "$SPLIT" \
   --hf-repo-id "$HF_REPO_ID" \
-  --hf-revision "main" \
+  --hf-revision "$HF_REVISION" \
   --selection-split "test" \
   --require-arpa \
   --lm-orders "$SETA_ORDER" \
@@ -112,7 +115,7 @@ uv run python scripts/run_ctc_lm_ablation.py \
   --lang "$LANG" \
   --split "$SPLIT" \
   --hf-repo-id "$HF_REPO_ID" \
-  --hf-revision "main" \
+  --hf-revision "$HF_REVISION" \
   --selection-split "test" \
   --require-arpa \
   --lm-orders "$SETB_ORDER" \
