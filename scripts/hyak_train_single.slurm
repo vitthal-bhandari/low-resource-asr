@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=gpu-l40s      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
+#SBATCH --partition=ckpt-g2      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=8
+#SBATCH --ntasks-per-node=8
 #SBATCH --mem=64G
-#SBATCH --gpus=1
-#SBATCH --time=3:00:00             # 12 hours per language
+#SBATCH --gpus=l40s:1
+#SBATCH --time=2:00:00             # 12 hours per language
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
@@ -85,7 +85,7 @@ uv run python -m src.training.aft_xlsr "$LANG" \
     --num-epochs 15 \
     --batch-size 2 \
     --gradient-accumulation-steps 8 \
-    --learning-rate 1e-4 \
+    --learning-rate 1e-3 \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
     --save-to-hf \
