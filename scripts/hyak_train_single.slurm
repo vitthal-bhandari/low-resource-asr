@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH --gpus=1
-#SBATCH --time=12:00:00             # 12 hours per language
+#SBATCH --time=3:00:00             # 12 hours per language
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
@@ -88,6 +88,7 @@ uv run python -m src.training.aft_xlsr "$LANG" \
     --learning-rate 1e-4 \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
+    --save-to-hf \
     --use-lm \
     --lm-order "$LM_ORDER" \
     --lm-alpha "$LM_ALPHA" \
