@@ -1,0 +1,108 @@
+==========================================
+MMS Adapter Fine-tuning on Hyak
+==========================================
+Language: sco  Split: all
+LM params: n=3 alpha=0.5 beta=1.0 beam=100
+Job ID: 34096882
+Node: g3100
+GPUs: 0
+Start time: Wed Mar 25 11:39:32 PDT 2026
+
+Checking GPU availability...
+CUDA available: True
+GPU: NVIDIA L40S
+
+Starting training for sco (split=all)...
+============================================================
+XLS-R 1B Adapter Fine-tuning for sco (Scots) split=all
+============================================================
+Base model: facebook/wav2vec2-xls-r-1b
+Adapter attn dim: 256
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/xlsr-1b-aft-all-sco
+
+Loading data for sco (Scots) split=all...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/vocab.json (72 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 3 train, 12 val samples (over 129.64s).
+
+Loading XLS-R model (facebook/wav2vec2-xls-r-1b)...
+  Trainable parameters: 31,748,682 / 994,246,090 (3.19%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '47.45', 'grad_norm': '84.08', 'learning_rate': '0.00049', 'epoch': '1.876'}
+{'loss': '23.94', 'grad_norm': '23.07', 'learning_rate': '0.00099', 'epoch': '3.724'}
+{'eval_loss': '2.976', 'eval_wer': '1', 'eval_cer': '1', 'eval_runtime': '13.52', 'eval_samples_per_second': '1.849', 'eval_steps_per_second': '0.961', 'epoch': '3.724'}
+{'loss': '23.66', 'grad_norm': '48.81', 'learning_rate': '0.0008393', 'epoch': '5.571'}
+{'loss': '23.38', 'grad_norm': '17.52', 'learning_rate': '0.0006754', 'epoch': '7.419'}
+{'eval_loss': '2.95', 'eval_wer': '0.997', 'eval_cer': '0.9989', 'eval_runtime': '11.05', 'eval_samples_per_second': '2.263', 'eval_steps_per_second': '1.177', 'epoch': '7.419'}
+{'loss': '23.26', 'grad_norm': '6.589', 'learning_rate': '0.0005115', 'epoch': '9.267'}
+{'loss': '23.06', 'grad_norm': '44.15', 'learning_rate': '0.0003475', 'epoch': '11.11'}
+{'eval_loss': '2.922', 'eval_wer': '0.994', 'eval_cer': '0.9709', 'eval_runtime': '10.87', 'eval_samples_per_second': '2.3', 'eval_steps_per_second': '1.196', 'epoch': '11.11'}
+{'loss': '23.07', 'grad_norm': '3.108', 'learning_rate': '0.0001836', 'epoch': '12.99'}
+{'loss': '18.48', 'grad_norm': '5.498', 'learning_rate': '1.967e-05', 'epoch': '14.84'}
+{'eval_loss': '1.992', 'eval_wer': '0.9746', 'eval_cer': '0.6506', 'eval_runtime': '11.03', 'eval_samples_per_second': '2.266', 'eval_steps_per_second': '1.178', 'epoch': '14.84'}
+{'train_runtime': '3735', 'train_samples_per_second': '1.687', 'train_steps_per_second': '0.108', 'train_loss': '25.64', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/adapter_sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.9741
+  Greedy CER: 0.6505
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.9787
+  Test CER (greedy): 0.6253
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_sco_all_20260325_114411.tsv
+
+Building LM decoder...
+  LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
+
+Final evaluation (validation, LM decoding)...
+  LM WER: 0.9602
+  LM CER: 0.7163
+
+Evaluating on test set (LM decoding)...
+  Test LM WER: 0.9616
+  Test LM CER: 0.5661
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_sco_all_20260325_114411.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_sco_20260325_114411.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all
+Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-sco
+
+==========================================
+Training complete!
+End time: Wed Mar 25 12:55:18 PDT 2026
+==========================================

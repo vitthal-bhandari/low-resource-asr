@@ -34,7 +34,7 @@ LANGUAGES = [
     # Americas
     ("hch", "Wixárika",           -104.00,  22.00, "Americas"),
     ("meh", "Southwestern\nTlaxiaco Mixtec", -97.70,  17.10, "Americas"),
-    ("mmc", "Michoacán\nMazahua",  -100.20,  19.60, "Americas"),
+    ("mmc", "Michoacán Mazahua",  -100.20,  19.60, "Americas"),
     ("tob", "Toba Qom",            -60.70, -24.80, "Americas"),
     ("top", "Papantla\nTotonac",    -97.30,  20.40, "Americas"),
     # Asia / Pacific
@@ -86,24 +86,24 @@ LABEL_OFFSETS = {
     # Africa — evenly clocked around the dense Uganda/DRC cluster
     "lth": (  0,  14),   # Thur    → N
     "ukv": (  9,  12),   # Kuku    → NNE
-    "kcn": ( 21,   12),   # Nubi    → ENE
+    "kcn": ( 23,   13),   # Nubi    → ENE
     "lke": ( 15,   0),   # Kenyi   → E
     "ruc": ( 15,  -6),   # Ruuli   → ESE
-    "bxk": (  9, -14),   # Bukusu  → SSE
-    "cgg": (  0, -14),   # Chiga   → S
+    "bxk": (  10, -17),   # Bukusu  → SSE
+    "cgg": (  0, -20),   # Chiga   → S
     "koo": ( -9, -10),   # Konzo   → SSW
-    "rwm": (-18,  -2),   # Amba    → WSW
+    "rwm": (-21,  -2),   # Amba    → WSW
     "ttj": (-13,   6),   # Rutoro  → WNW
     "led": ( -8,  15),   # Lendu   → NNW
     # Americas
     "hch": (  0,  12),   # Wixárika  → N  (↑ upward)
-    "mmc": (  -7, -13),   # Mazahua   → S  (↓ downward)
-    "top": ( 16,   12),   # Totonac   → NE
-    "meh": ( 30,  -2),   # SW Mixtec → SE
+    "mmc": (  4, -13),   # Mazahua   → S  (↓ downward)
+    "top": ( 21,   17),   # Totonac   → NE
+    "meh": ( 35,  -2),   # SW Mixtec → SE
     "tob": (-10,   8),   # Toba Qom  → NW (↑ upward, away from bottom edge)
     # Asia/Pacific
-    "bew": ( 10,  -7),   # Betawi   → SE
-    "pne": ( 6,   11),   # W. Penan → NE
+    "bew": ( 11,  -9),   # Betawi   → SE
+    "pne": ( 4,   12),   # W. Penan → NE
     # Europe
     "aln":   (-9,   5),  # Gheg Albanian → NW
     "el-CY": ( 17,  -2),  # Cypriot Greek → SE
@@ -111,9 +111,9 @@ LABEL_OFFSETS = {
 }
 
 # ── 6. Fonts — 20% larger than previous (6.5 → 7.8pt, 5.5 → 6.6pt) ──────────
-NAME_FONT = {"fontfamily": "DejaVu Sans", "fontsize": 11.9,
+NAME_FONT = {"fontfamily": "DejaVu Sans", "fontsize": 12.9,
              "fontweight": "bold",   "fontstyle": "normal"}
-ISO_FONT  = {"fontfamily": "DejaVu Sans", "fontsize": 7.6,
+ISO_FONT  = {"fontfamily": "DejaVu Sans", "fontsize": 8.6,
              "fontweight": "normal", "fontstyle": "italic"}
 
 # ── 7. Plot pins + leader lines + labels ─────────────────────────────────────

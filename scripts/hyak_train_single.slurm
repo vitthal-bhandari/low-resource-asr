@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft
 #SBATCH --account=stf               # From hyakalloc (free student allocation)
-#SBATCH --partition=gpu-l40s      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
+#SBATCH --partition=ckpt-g2      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=8
+#SBATCH --ntasks-per-node=8
 #SBATCH --mem=64G
-#SBATCH --gpus=1
-#SBATCH --time=3:00:00             # 12 hours per language
+#SBATCH --gpus=l40s:1
+#SBATCH --time=2:00:00             # 12 hours per language
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
@@ -34,11 +34,24 @@ LM_ALPHA=${4:-"0.5"}
 LM_BETA=${5:-"1.0"}
 LM_BEAM_WIDTH=${6:-"100"}
 
+# ---------------------------------------------------------------------------
+# TEMP HF override for single recovery experiment (easy to undo):
+# - Active only for xlsr sco all
+# - Delete this block after the rerun is complete
+HF_REPO_ID_OVERRIDE=""
+if [[ "$LANG" == "sco" && "$SPLIT" == "all" ]]; then
+  HF_REPO_ID_OVERRIDE="vitthalbhandari/xlsr-1b-aft-all-sco-recovery-temp"
+fi
+# ---------------------------------------------------------------------------
+
 echo "=========================================="
 echo "MMS Adapter Fine-tuning on Hyak"
 echo "=========================================="
 echo "Language: $LANG  Split: $SPLIT"
 echo "LM params: n=$LM_ORDER alpha=$LM_ALPHA beta=$LM_BETA beam=$LM_BEAM_WIDTH"
+if [[ -n "$HF_REPO_ID_OVERRIDE" ]]; then
+  echo "TEMP HF repo override enabled: $HF_REPO_ID_OVERRIDE"
+fi
 echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $SLURMD_NODENAME"
 echo "GPUs: $CUDA_VISIBLE_DEVICES"
@@ -80,15 +93,21 @@ echo ""
 
 echo "Starting training for $LANG (split=$SPLIT)..."
 
+HF_REPO_ARGS=()
+if [[ -n "$HF_REPO_ID_OVERRIDE" ]]; then
+  HF_REPO_ARGS=(--hf-repo-id "$HF_REPO_ID_OVERRIDE")
+fi
+
 uv run python -m src.training.aft_xlsr "$LANG" \
     --split "$SPLIT" \
     --num-epochs 15 \
     --batch-size 2 \
     --gradient-accumulation-steps 8 \
-    --learning-rate 1e-4 \
+    --learning-rate 1e-3 \
     --save-transcriptions \
     --max-audio-sec-from-csv corpus_stats.csv \
     --save-to-hf \
+    "${HF_REPO_ARGS[@]}" \
     --use-lm \
     --lm-order "$LM_ORDER" \
     --lm-alpha "$LM_ALPHA" \

@@ -124,6 +124,12 @@ def parse_args() -> argparse.Namespace:
         help="Push the fine-tuned model to Hugging Face Hub",
     )
     parser.add_argument(
+        "--hf-repo-id",
+        type=str,
+        default=None,
+        help="Optional Hugging Face repo override. If omitted, defaults to xlsr-1b-aft-{split}-{lang}.",
+    )
+    parser.add_argument(
         "--split",
         type=str,
         choices=["one", "mid", "all"],
@@ -195,6 +201,13 @@ HF_USERNAME = "vitthalbhandari"
 def get_hf_repo_id(lang: str, split: str = "all") -> str:
     """Get the Hugging Face repo ID for a language and split."""
     return f"{HF_USERNAME}/xlsr-1b-aft-{split}-{lang}"
+
+
+def resolve_hf_repo_id(lang: str, split: str, override: str | None) -> str:
+    """Resolve Hugging Face repo ID, honoring optional user override."""
+    if override is not None and override.strip():
+        return override.strip()
+    return get_hf_repo_id(lang, split)
 
 
 def _max_sec_from_corpus_csv(csv_path: Path, lang: str) -> float | None:
@@ -794,9 +807,10 @@ def main():
     print(f"Adapter attn dim: {ADAPTER_ATTN_DIM}")
     print(f"Output directory: {output_dir}")
     print(f"Device: {get_device()}")
+    hf_repo_id = resolve_hf_repo_id(lang, args.split, args.hf_repo_id)
     print(f"Push to HF: {args.save_to_hf}")
     if args.save_to_hf:
-        print(f"HF Repo: {get_hf_repo_id(lang, args.split)}")
+        print(f"HF Repo: {hf_repo_id}")
 
     ############################################################################
     # Load and preprocess data (train/val from precomputed split TSVs)
@@ -1149,15 +1163,14 @@ def main():
     ############################################################################
     # Push to Hugging Face Hub (if requested)
     if args.save_to_hf:
-        repo_id = get_hf_repo_id(lang, args.split)
-        push_to_hub(model, processor, output_dir, repo_id, lang)
+        push_to_hub(model, processor, output_dir, hf_repo_id, lang)
 
     print("\n" + "=" * 60)
     print("Training complete!")
     print("=" * 60)
     print(f"Model saved to: {output_dir}")
     if args.save_to_hf:
-        print(f"Model pushed to: https://huggingface.co/{get_hf_repo_id(lang, args.split)}")
+        print(f"Model pushed to: https://huggingface.co/{hf_repo_id}")
 
 
 if __name__ == "__main__":
