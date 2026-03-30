@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: sco  Split: all (task 16 of 21)
 Job ID: 33595908 (Array Job: 33591209)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for sco (Scots) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/sco/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-sco
+HF Repo: anonymous/xlsr-1b-aft-all-sco
 
 Loading data for sco (Scots) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
   Train: 423 samples (6.35 h)
   Validation: 37 samples (0.99 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/vocab.json (72 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/sco/all/vocab.json (72 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for sco): 129.64s
@@ -62,7 +62,7 @@ Starting training...
 {'train_runtime': '4580', 'train_samples_per_second': '1.375', 'train_steps_per_second': '0.088', 'train_loss': '11.33', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/adapter_sco.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/sco/all/adapter_sco.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -72,7 +72,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.3021
   Test CER (greedy): 0.1146
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_sco_all_20260301_195411.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_sco_all_20260301_195411.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -84,22 +84,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.2967
   Test LM CER: 0.1127
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_sco_all_20260301_195411.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_sco_20260301_195411.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_sco_all_20260301_195411.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/sco/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_sco_20260301_195411.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-sco
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-sco
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-sco
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-sco
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/sco/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-sco
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/sco/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-sco
 
 ==========================================
 Training complete for sco!

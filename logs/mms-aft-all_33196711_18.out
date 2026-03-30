@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: top  Split: one (task 18 of 21)
 Job ID: 33204630 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for top (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for top (Papantla Totonac) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/top/one
 Device: cuda
 Push to HF: False
 
 Loading data for top (Papantla Totonac) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-one_top.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/top/train-one_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
   Train: 46 samples (0.99 h)
   Validation: 59 samples (1.68 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/one/vocab.json (63 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/top/one/vocab.json (63 tokens)
 
 Preparing datasets...
 
@@ -45,7 +45,7 @@ Starting training...
 {'train_runtime': '313.9', 'train_samples_per_second': '0.733', 'train_steps_per_second': '0.048', 'train_loss': '87.67', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/one/adapter.top.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/top/one/adapter.top.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -55,13 +55,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0954
   Test CER: 1.7328
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_top_20260216_085212.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/top/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_top_20260216_085212.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/top/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/top/one
 
 ==========================================
 Training complete for top!

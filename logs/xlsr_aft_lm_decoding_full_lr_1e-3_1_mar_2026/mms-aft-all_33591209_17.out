@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: tob  Split: all (task 17 of 21)
 Job ID: 33596093 (Array Job: 33591209)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for tob (Toba Qom) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/tob/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-tob
+HF Repo: anonymous/xlsr-1b-aft-all-tob
 
 Loading data for tob (Toba Qom) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
   Train: 836 samples (4.67 h)
   Validation: 306 samples (1.99 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/vocab.json (74 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/tob/all/vocab.json (74 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for tob): 59.55s
@@ -72,7 +72,7 @@ Starting training...
 {'train_runtime': '4472', 'train_samples_per_second': '2.747', 'train_steps_per_second': '0.174', 'train_loss': '9.632', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/adapter_tob.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/tob/all/adapter_tob.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -82,7 +82,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.6567
   Test CER (greedy): 0.2028
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_tob_all_20260301_201621.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_tob_all_20260301_201621.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -94,22 +94,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.6534
   Test LM CER: 0.3379
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_tob_all_20260301_201621.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_tob_20260301_201621.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_tob_all_20260301_201621.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/tob/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_tob_20260301_201621.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-tob
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-tob
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-tob
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-tob
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/tob/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-tob
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/tob/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-tob
 
 ==========================================
 Training complete for tob!

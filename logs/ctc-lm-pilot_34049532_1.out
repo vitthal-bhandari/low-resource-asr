@@ -8,74 +8,74 @@ Split: all
 Start time: Sun Mar 22 20:27:06 PDT 2026
 
 Checking lmplz availability...
-/gscratch/scrubbed/vitthal1/tools/kenlm/build/bin/lmplz
+/gscratch/scrubbed/anonymous_user/tools/kenlm/build/bin/lmplz
 lmplz sanity build OK
 
 Loading data for sco (Scots) split=all...
-  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
-  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
   Train: 423 samples (6.35 h)
   Validation: 37 samples (0.99 h)
 Running greedy predictions...
 Running unigram beam baseline...
 Running n-gram sweep...
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
-  Built 5-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_3gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_4gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
+  Built 5-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/sco/all/lm_5gram.arpa
 ========================================================================
-Saved results to: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/xlsr_sco_all_lm_ablation_20260322_214400.json
-Checkpoint source: hf (vitthalbhandari/xlsr-1b-aft-all-sco @ main)
+Saved results to: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/xlsr_sco_all_lm_ablation_20260322_214400.json
+Checkpoint source: hf (anonymous/xlsr-1b-aft-all-sco @ main)
 Selection split: test
 Greedy test WER:   1.0000
 Unigram test WER:  0.9998

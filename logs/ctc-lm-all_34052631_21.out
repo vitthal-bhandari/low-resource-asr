@@ -10,22 +10,22 @@ Set B: n=3 alpha=0.2 beta=1.0 beam=50
 Start time: Mon Mar 23 00:17:48 PDT 2026
 
 Checking lmplz availability...
-/gscratch/scrubbed/vitthal1/tools/kenlm/build/bin/lmplz
+/gscratch/scrubbed/anonymous_user/tools/kenlm/build/bin/lmplz
 lmplz sanity build OK
 Running Set A decoding...
 
 Loading data for aln (Gheg Albanian) split=all...
-  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
-  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
   Train: 965 samples (6.39 h)
   Validation: 150 samples (1.45 h)
 Running greedy predictions...
 Running unigram beam baseline...
 Running n-gram sweep...
-  Built 4-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/aln/all/lm_4gram.arpa
+  Built 4-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/aln/all/lm_4gram.arpa
 ========================================================================
 Saved results to: results/lm_ablation/two_settings/34052631/xlsr_aln_all_setA.json
-Checkpoint source: hf (vitthalbhandari/xlsr-1b-aft-all-aln @ main)
+Checkpoint source: hf (anonymous/xlsr-1b-aft-all-aln @ main)
 Selection split: test
 Greedy test WER:   0.8134
 Unigram test WER:  0.7633
@@ -35,17 +35,17 @@ Best params: n=4, alpha=0.5, beta=1.0, beam=100
 Running Set B decoding...
 
 Loading data for aln (Gheg Albanian) split=all...
-  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
-  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
   Train: 965 samples (6.39 h)
   Validation: 150 samples (1.45 h)
 Running greedy predictions...
 Running unigram beam baseline...
 Running n-gram sweep...
-  Built 3-gram ARPA LM: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/aln/all/lm_3gram.arpa
+  Built 3-gram ARPA LM: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/aln/all/lm_3gram.arpa
 ========================================================================
 Saved results to: results/lm_ablation/two_settings/34052631/xlsr_aln_all_setB.json
-Checkpoint source: hf (vitthalbhandari/xlsr-1b-aft-all-aln @ main)
+Checkpoint source: hf (anonymous/xlsr-1b-aft-all-aln @ main)
 Selection split: test
 Greedy test WER:   0.8134
 Unigram test WER:  0.7633

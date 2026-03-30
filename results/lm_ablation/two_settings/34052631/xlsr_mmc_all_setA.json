@@ -4,7 +4,7 @@
     "lang": "mmc",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/xlsr-1b-aft-all-mmc",
+    "checkpoint_ref": "anonymous/xlsr-1b-aft-all-mmc",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",
@@ -50,7 +50,7 @@
       "alpha": 0.5,
       "beta": 1.0,
       "beam_width": 100,
-      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/mmc/all/lm_4gram.arpa)",
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/mmc/all/lm_4gram.arpa)",
       "val": {
         "wer": 0.556449485623846,
         "cer": 0.31788182312291324

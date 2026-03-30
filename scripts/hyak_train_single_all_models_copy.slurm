@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=all-models-aft
-#SBATCH --account=stf               # From hyakalloc (free student allocation)
+#SBATCH --account=myaccount               # From cluster allocation
 #SBATCH --partition=gpu-l40      # L40s: 48 GB VRAM; fits all 3 models
 #SBATCH --nodes=1
 #SBATCH --mem=128G                   # Whisper-large-v3 needs ~128G; MMS/XLS-R are fine with less
@@ -10,7 +10,7 @@
 #SBATCH --error=logs/%x_%j.err
 
 # =============================================================================
-# Combined Fine-tuning Script for Hyak
+# Combined Fine-tuning Script for HPC
 # Trains ALL 3 models (MMS, XLS-R, Whisper) on ALL 3 splits (one, mid, all)
 # for a SINGLE language — 9 training runs total.
 #

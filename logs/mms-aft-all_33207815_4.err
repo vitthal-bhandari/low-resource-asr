@@ -264,9 +264,9 @@ Note: Environment variable`HF_TOKEN` is set and is the current active token inde
 New Data Upload               : 100%|██████████| 5.68MB / 5.68MB, 1.87MB/s  
   ...adapter.el-CY.safetensors: 100%|██████████| 9.36MB / 9.36MB            
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 657, in hf_raise_for_status
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 657, in hf_raise_for_status
     response.raise_for_status()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
     raise HTTPStatusError(message, request=request, response=self)
 httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://huggingface.co/api/validate-yaml'
 For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
@@ -274,9 +274,9 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 9771, in _validate_yaml
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 9771, in _validate_yaml
     hf_raise_for_status(response)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 716, in hf_raise_for_status
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 716, in hf_raise_for_status
     raise _format(BadRequestError, message, response) from e
 huggingface_hub.errors.BadRequestError: (Request ID: Root=1-69938915-1108c5c071e50d3c65dbc466;4ceb38d1-dca7-483d-8118-e0ae5b5fa9e4)
 
@@ -288,30 +288,30 @@ The above exception was the direct cause of the following exception:
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 796, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 796, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 785, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 785, in main
     push_to_hub(model, processor, output_dir, repo_id, lang)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 511, in push_to_hub
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 511, in push_to_hub
     api.upload_file(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 1751, in _inner
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 1751, in _inner
     return fn(self, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4788, in upload_file
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4788, in upload_file
     return self.create_commit(
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 1751, in _inner
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 1751, in _inner
     return fn(self, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4344, in create_commit
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4344, in create_commit
     self._validate_yaml(content, repo_type=repo_type, token=token)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 9775, in _validate_yaml
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 9775, in _validate_yaml
     raise ValueError(f"Invalid metadata in README.md.\n{message}") from e
 ValueError: Invalid metadata in README.md.
 - "language_bcp47" must be an array

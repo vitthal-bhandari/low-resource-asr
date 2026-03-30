@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: bxk  Split: all (task 2 of 21)
 Job ID: 33585662 (Array Job: 33585633)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for bxk (Bukusu) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bxk/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/bxk/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-bxk
+HF Repo: anonymous/xlsr-1b-aft-all-bxk
 
 Loading data for bxk (Bukusu) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/train-all_bxk.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bxk/validation_bxk.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/bxk/train-all_bxk.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/bxk/validation_bxk.tsv
   Train: 1642 samples (7.85 h)
   Validation: 118 samples (0.61 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bxk/all/vocab.json (59 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/bxk/all/vocab.json (59 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for bxk): 29.27s
@@ -95,7 +95,7 @@ Starting training...
 {'train_runtime': '4301', 'train_samples_per_second': '5.594', 'train_steps_per_second': '0.352', 'train_loss': '7.653', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bxk/all/adapter_bxk.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/bxk/all/adapter_bxk.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -105,7 +105,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.9795
   Test CER (greedy): 0.4440
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_bxk_all_20260228_212633.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_bxk_all_20260228_212633.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -117,22 +117,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.9566
   Test LM CER: 0.3940
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_bxk_all_20260228_212633.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bxk/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_bxk_20260228_212633.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_bxk_all_20260228_212633.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/bxk/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_bxk_20260228_212633.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-bxk
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-bxk
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-bxk
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-bxk
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/bxk/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-bxk
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/bxk/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-bxk
 
 ==========================================
 Training complete for bxk!

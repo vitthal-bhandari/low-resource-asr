@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: meh  Split: all (task 11 of 21)
 Job ID: 33603797 (Array Job: 33600007)
@@ -15,19 +15,19 @@ Starting training for meh (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for meh (Southwestern Tlaxiaco Mixtec) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-meh
+HF Repo: anonymous/mms-1b-all-aft-all-meh
 
 Loading data for meh (Southwestern Tlaxiaco Mixtec) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
   Train: 666 samples (6.64 h)
   Validation: 93 samples (1.00 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/all/vocab.json (62 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/all/vocab.json (62 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for meh): 118.16s

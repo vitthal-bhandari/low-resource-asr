@@ -73,7 +73,7 @@ WHISPER_LANGUAGE_MAP: dict[str, str] = {
 
 WHISPER_LANGUAGE_FALLBACK = "english"
 
-HF_USERNAME = "vitthalbhandari"
+HF_USERNAME = "anonymous"
 
 
 def parse_args() -> argparse.Namespace:

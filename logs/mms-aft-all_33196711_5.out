@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: hch  Split: one (task 5 of 21)
 Job ID: 33201489 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for hch (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for hch (Wixárika) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/hch/one
 Device: cuda
 Push to HF: False
 
 Loading data for hch (Wixárika) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-one_hch.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/hch/train-one_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
   Train: 185 samples (0.99 h)
   Validation: 310 samples (0.97 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one/vocab.json (60 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/hch/one/vocab.json (60 tokens)
 
 Preparing datasets...
 
@@ -46,7 +46,7 @@ Starting training...
 {'train_runtime': '191.4', 'train_samples_per_second': '4.832', 'train_steps_per_second': '0.313', 'train_loss': '43.15', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one/adapter.hch.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/hch/one/adapter.hch.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -56,13 +56,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.9987
   Test CER: 0.3734
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_hch_20260216_065456.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/hch/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_hch_20260216_065456.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/hch/one
 
 ==========================================
 Training complete for hch!

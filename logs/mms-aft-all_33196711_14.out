@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ruc  Split: one (task 14 of 21)
 Job ID: 33203171 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for ruc (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for ruc (Ruuli) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/one
 Device: cuda
 Push to HF: False
 
 Loading data for ruc (Ruuli) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-one_ruc.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/train-one_ruc.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
   Train: 137 samples (1.00 h)
   Validation: 77 samples (0.27 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/one/vocab.json (46 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/one/vocab.json (46 tokens)
 
 Preparing datasets...
 
@@ -45,7 +45,7 @@ Starting training...
 {'train_runtime': '261.8', 'train_samples_per_second': '2.616', 'train_steps_per_second': '0.172', 'train_loss': '34.93', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/one/adapter.ruc.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/one/adapter.ruc.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -55,13 +55,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0000
   Test CER: 0.9958
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_ruc_20260216_081255.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_ruc_20260216_081255.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/one
 
 ==========================================
 Training complete for ruc!

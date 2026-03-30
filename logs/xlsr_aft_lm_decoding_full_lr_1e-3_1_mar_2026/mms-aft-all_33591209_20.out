@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ukv  Split: all (task 20 of 21)
 Job ID: 33591209 (Array Job: 33591209)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for ukv (Kuku) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ukv/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-ukv
+HF Repo: anonymous/xlsr-1b-aft-all-ukv
 
 Loading data for ukv (Kuku) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-all_ukv.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ukv/train-all_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
   Train: 1505 samples (7.21 h)
   Validation: 142 samples (0.65 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all/vocab.json (61 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ukv/all/vocab.json (61 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for ukv): 33.85s
@@ -90,7 +90,7 @@ Starting training...
 {'train_runtime': '4580', 'train_samples_per_second': '4.807', 'train_steps_per_second': '0.301', 'train_loss': '5.707', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all/adapter_ukv.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ukv/all/adapter_ukv.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -100,7 +100,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.3936
   Test CER (greedy): 0.1266
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_ukv_all_20260301_212640.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_ukv_all_20260301_212640.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -112,22 +112,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.3815
   Test LM CER: 0.1242
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_ukv_all_20260301_212640.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_ukv_20260301_212640.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_ukv_all_20260301_212640.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ukv/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_ukv_20260301_212640.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-ukv
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-ukv
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ukv
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-ukv
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ukv/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ukv
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ukv/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-ukv
 
 ==========================================
 Training complete for ukv!

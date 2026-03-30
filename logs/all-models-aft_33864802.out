@@ -18,19 +18,19 @@ GPU: NVIDIA L40S
 ============================================================
 MMS Adapter Fine-tuning for kcn (Nubi) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/one
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-one-kcn
+HF Repo: anonymous/mms-1b-all-aft-one-kcn
 
 Loading data for kcn (Nubi) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-one_kcn.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/train-one_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
   Train: 135 samples (1.00 h)
   Validation: 152 samples (0.57 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/one/vocab.json (56 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/one/vocab.json (56 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for kcn): 50.22s

@@ -4,7 +4,7 @@
     "lang": "sco",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/mms-1b-all-aft-all-sco",
+    "checkpoint_ref": "anonymous/mms-1b-all-aft-all-sco",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",

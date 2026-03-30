@@ -28,33 +28,33 @@ Notes:
 Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
 Exception in thread Thread-auto_conversion:
 Traceback (most recent call last):
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
     self.run()
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1012, in run
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1012, in run
     self._target(*self._args, **self._kwargs)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
     raise e
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 112, in auto_conversion
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 112, in auto_conversion
     resolved_archive_file = cached_file(pretrained_model_name_or_path, filename, **cached_file_kwargs)
                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 276, in cached_file
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 276, in cached_file
     file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 507, in cached_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 507, in cached_files
     raise e
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 419, in cached_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 419, in cached_files
     hf_hub_download(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1024, in hf_hub_download
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1024, in hf_hub_download
     return _hf_hub_download_to_cache_dir(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1240, in _hf_hub_download_to_cache_dir
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1240, in _hf_hub_download_to_cache_dir
     _download_to_tmp_and_move(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1864, in _download_to_tmp_and_move
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1864, in _download_to_tmp_and_move
     xet_get(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 588, in xet_get
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 588, in xet_get
     download_files(
 RuntimeError: Data processing error: CAS service error : IO Error: Disk quota exceeded (os error 122)
   0%|          | 0/305 [00:00<?, ?it/s]  0%|          | 1/305 [00:25<2:07:39, 25.20s/it]  1%|          | 2/305 [00:30<1:08:33, 13.58s/it]  1%|          | 3/305 [00:35<48:19,  9.60s/it]    1%|▏         | 4/305 [00:39<37:29,  7.47s/it]  2%|▏         | 5/305 [00:43<31:25,  6.28s/it]  2%|▏         | 6/305 [00:47<27:18,  5.48s/it]  2%|▏         | 7/305 [00:51<24:34,  4.95s/it]  3%|▎         | 8/305 [00:55<22:31,  4.55s/it]  3%|▎         | 9/305 [00:58<21:00,  4.26s/it]  3%|▎         | 10/305 [01:03<20:41,  4.21s/it]  4%|▎         | 11/305 [01:06<19:36,  4.00s/it]  4%|▍         | 12/305 [01:09<18:31,  3.79s/it]  4%|▍         | 13/305 [01:13<17:28,  3.59s/it]  5%|▍         | 14/305 [01:15<15:53,  3.28s/it]  5%|▍         | 15/305 [01:17<14:24,  2.98s/it]  5%|▌         | 16/305 [01:24<20:09,  4.18s/it]  6%|▌         | 17/305 [01:30<21:47,  4.54s/it]  6%|▌         | 18/305 [01:34<21:51,  4.57s/it]  6%|▌         | 19/305 [01:39<21:09,  4.44s/it]  7%|▋         | 20/305 [01:42<20:25,  4.30s/it]  7%|▋         | 21/305 [01:47<20:00,  4.23s/it]  7%|▋         | 22/305 [01:50<19:18,  4.09s/it]  8%|▊         | 23/305 [01:54<18:45,  3.99s/it]  8%|▊         | 24/305 [01:58<18:09,  3.88s/it]  8%|▊         | 25/305 [02:01<17:22,  3.72s/it]  9%|▊         | 26/305 [02:05<16:58,  3.65s/it]  9%|▉         | 27/305 [02:08<16:27,  3.55s/it]  9%|▉         | 28/305 [02:11<15:47,  3.42s/it] 10%|▉         | 29/305 [02:13<14:16,  3.10s/it] 10%|▉         | 30/305 [02:15<12:21,  2.69s/it] 10%|█         | 31/305 [02:21<17:14,  3.78s/it] 10%|█         | 32/305 [02:27<19:23,  4.26s/it] 11%|█         | 33/305 [02:32<19:57,  4.40s/it] 11%|█         | 34/305 [02:36<19:44,  4.37s/it] 11%|█▏        | 35/305 [02:40<19:15,  4.28s/it] 12%|█▏        | 36/305 [02:44<18:49,  4.20s/it] 12%|█▏        | 37/305 [02:48<18:11,  4.07s/it] 12%|█▏        | 38/305 [02:51<17:34,  3.95s/it] 13%|█▎        | 39/305 [02:55<17:08,  3.87s/it] 13%|█▎        | 40/305 [02:58<16:34,  3.75s/it] 13%|█▎        | 41/305 [03:02<16:12,  3.68s/it] 14%|█▍        | 42/305 [03:05<15:39,  3.57s/it] 14%|█▍        | 43/305 [03:09<15:06,  3.46s/it] 14%|█▍        | 44/305 [03:11<14:01,  3.22s/it] 15%|█▍        | 45/305 [03:14<12:52,  2.97s/it] 15%|█▌        | 46/305 [03:20<17:23,  4.03s/it] 15%|█▌        | 47/305 [03:25<18:59,  4.42s/it] 16%|█▌        | 48/305 [03:30<18:59,  4.43s/it] 16%|█▌        | 49/305 [03:34<18:31,  4.34s/it] 16%|█▋        | 50/305 [03:38<18:02,  4.24s/it]                                                 16%|█▋        | 50/305 [03:38<18:02,  4.24s/it] 17%|█▋        | 51/305 [03:42<17:39,  4.17s/it] 17%|█▋        | 52/305 [03:46<17:13,  4.08s/it] 17%|█▋        | 53/305 [03:50<16:43,  3.98s/it] 18%|█▊        | 54/305 [03:53<16:10,  3.86s/it] 18%|█▊        | 55/305 [03:57<15:39,  3.76s/it] 18%|█▊        | 56/305 [04:00<15:10,  3.66s/it] 19%|█▊        | 57/305 [04:04<14:49,  3.59s/it] 19%|█▉        | 58/305 [04:07<14:02,  3.41s/it] 19%|█▉        | 59/305 [04:09<12:15,  2.99s/it] 20%|█▉        | 60/305 [04:11<11:03,  2.71s/it] 20%|██        | 61/305 [04:12<09:26,  2.32s/it] 20%|██        | 62/305 [04:20<15:53,  3.92s/it] 21%|██        | 63/305 [04:25<17:39,  4.38s/it] 21%|██        | 64/305 [04:30<17:56,  4.47s/it] 21%|██▏       | 65/305 [04:34<17:28,  4.37s/it] 22%|██▏       | 66/305 [04:38<16:59,  4.26s/it] 22%|██▏       | 67/305 [04:42<16:30,  4.16s/it] 22%|██▏       | 68/305 [04:46<16:02,  4.06s/it] 23%|██▎       | 69/305 [04:49<15:29,  3.94s/it] 23%|██▎       | 70/305 [04:53<14:56,  3.81s/it] 23%|██▎       | 71/305 [04:56<14:23,  3.69s/it] 24%|██▎       | 72/305 [05:00<13:51,  3.57s/it] 24%|██▍       | 73/305 [05:03<13:27,  3.48s/it] 24%|██▍       | 74/305 [05:06<13:09,  3.42s/it] 25%|██▍       | 75/305 [05:08<11:42,  3.06s/it] 25%|██▍       | 76/305 [05:10<10:11,  2.67s/it] 25%|██▌       | 77/305 [05:17<14:32,  3.83s/it] 26%|██▌       | 78/305 [05:22<16:22,  4.33s/it] 26%|██▌       | 79/305 [05:27<16:40,  4.43s/it] 26%|██▌       | 80/305 [05:31<16:20,  4.36s/it] 27%|██▋       | 81/305 [05:35<15:50,  4.24s/it] 27%|██▋       | 82/305 [05:39<15:29,  4.17s/it] 27%|██▋       | 83/305 [05:43<15:05,  4.08s/it] 28%|██▊       | 84/305 [05:47<14:46,  4.01s/it] 28%|██▊       | 85/305 [05:50<14:20,  3.91s/it] 28%|██▊       | 86/305 [05:54<13:48,  3.78s/it] 29%|██▊       | 87/305 [05:57<13:21,  3.68s/it] 29%|██▉       | 88/305 [06:01<12:55,  3.57s/it] 29%|██▉       | 89/305 [06:04<12:34,  3.49s/it] 30%|██▉       | 90/305 [06:06<11:04,  3.09s/it] 30%|██▉       | 91/305 [06:08<09:40,  2.71s/it] 30%|███       | 92/305 [06:15<14:04,  3.96s/it] 30%|███       | 93/305 [06:20<15:21,  4.34s/it] 31%|███       | 94/305 [06:25<15:42,  4.47s/it] 31%|███       | 95/305 [06:29<15:19,  4.38s/it] 31%|███▏      | 96/305 [06:33<14:48,  4.25s/it] 32%|███▏      | 97/305 [06:37<14:21,  4.14s/it] 32%|███▏      | 98/305 [06:41<13:53,  4.02s/it] 32%|███▏      | 99/305 [06:44<13:31,  3.94s/it] 33%|███▎      | 100/305 [06:48<13:07,  3.84s/it]                                                  33%|███▎      | 100/305 [06:48<13:07,  3.84s/it]
@@ -199,41 +199,41 @@ Note: Environment variable`HF_TOKEN` is set and is the current active token inde
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_xlsr.py", line 798, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_xlsr.py", line 798, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_xlsr.py", line 787, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_xlsr.py", line 787, in main
     push_to_hub(model, processor, output_dir, repo_id, lang)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_xlsr.py", line 487, in push_to_hub
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_xlsr.py", line 487, in push_to_hub
     model.push_to_hub(repo_id, token=hf_token)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3482, in push_to_hub
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3482, in push_to_hub
     return super().push_to_hub(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 782, in push_to_hub
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 782, in push_to_hub
     return self._upload_modified_files(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 701, in _upload_modified_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 701, in _upload_modified_files
     return create_commit(
            ^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 1751, in _inner
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 1751, in _inner
     return fn(self, *args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4351, in create_commit
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4351, in create_commit
     self.preupload_lfs_files(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4618, in preupload_lfs_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/hf_api.py", line 4618, in preupload_lfs_files
     _upload_files(**upload_kwargs, num_threads=num_threads, create_pr=create_pr)  # type: ignore [arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/_commit_api.py", line 428, in _upload_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/_commit_api.py", line 428, in _upload_files
     _upload_xet_files(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/_commit_api.py", line 641, in _upload_xet_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/_commit_api.py", line 641, in _upload_xet_files
     upload_files(
 RuntimeError: Data processing error: MerkleDB Shard error: File I/O error
 Fatal Python error: _PyImport_Init: global import state already initialized

@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: kcn  Split: all (task 6 of 21)
 Job ID: 33603713 (Array Job: 33600007)
@@ -15,19 +15,19 @@ Starting training for kcn (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for kcn (Nubi) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-kcn
+HF Repo: anonymous/mms-1b-all-aft-all-kcn
 
 Loading data for kcn (Nubi) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
   Train: 1395 samples (7.21 h)
   Validation: 152 samples (0.57 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/all/vocab.json (62 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/all/vocab.json (62 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for kcn): 50.22s
@@ -85,7 +85,7 @@ Starting training...
 {'train_runtime': '4112', 'train_samples_per_second': '4.994', 'train_steps_per_second': '0.314', 'train_loss': '13.7', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/all/adapter.kcn.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/all/adapter.kcn.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -95,7 +95,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.6248
   Test CER (greedy): 0.2919
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_kcn_all_20260302_024917.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_mms_kcn_all_20260302_024917.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -107,22 +107,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.6221
   Test LM CER: 0.2875
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_kcn_all_20260302_024917.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_kcn_20260302_024917.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_mms_lm_kcn_all_20260302_024917.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_kcn_20260302_024917.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-kcn
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-kcn
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-kcn
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-kcn
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-kcn
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-kcn
 
 ==========================================
 Training complete for kcn!

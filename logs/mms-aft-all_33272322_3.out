@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: cgg  Split: all (task 3 of 21)
 Job ID: 33274713 (Array Job: 33272322)
@@ -15,19 +15,19 @@ Starting training for cgg (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for cgg (Chiga) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/cgg/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-cgg
+HF Repo: anonymous/mms-1b-all-aft-all-cgg
 
 Loading data for cgg (Chiga) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/train-all_cgg.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/cgg/validation_cgg.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/cgg/train-all_cgg.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/cgg/validation_cgg.tsv
   Train: 1769 samples (7.02 h)
   Validation: 308 samples (0.99 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all/vocab.json (59 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/cgg/all/vocab.json (59 tokens)
 
 Preparing datasets...
 
@@ -62,7 +62,7 @@ Starting training...
 {'train_runtime': '2064', 'train_samples_per_second': '4.286', 'train_steps_per_second': '0.269', 'train_loss': '7.623', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all/adapter.cgg.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/cgg/all/adapter.cgg.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -72,22 +72,22 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.5148
   Test CER: 0.1286
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_cgg_all_20260218_193709.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_cgg_20260218_193709.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_cgg_all_20260218_193709.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/cgg/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_cgg_20260218_193709.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-cgg
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-cgg
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-cgg
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-cgg
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/cgg/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-cgg
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/cgg/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-cgg
 
 ==========================================
 Training complete for cgg!

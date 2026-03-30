@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: tob  Split: mid (task 17 of 21)
 Job ID: 33215062 (Array Job: 33207815)
@@ -15,19 +15,19 @@ Starting training for tob (split=mid)...
 ============================================================
 MMS Adapter Fine-tuning for tob (Toba Qom) split=mid
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/mid
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-mid-tob
+HF Repo: anonymous/mms-1b-all-aft-mid-tob
 
 Loading data for tob (Toba Qom) split=mid...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-mid_tob.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/tob/train-mid_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
   Train: 688 samples (2.98 h)
   Validation: 306 samples (1.99 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid/vocab.json (71 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/mid/vocab.json (71 tokens)
 
 Preparing datasets...
 
@@ -52,7 +52,7 @@ Starting training...
 {'train_runtime': '993.7', 'train_samples_per_second': '3.462', 'train_steps_per_second': '0.216', 'train_loss': '31.08', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid/adapter.tob.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/mid/adapter.tob.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -62,21 +62,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0004
   Test CER: 0.8988
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_tob_20260216_170318.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_mid_tob_20260216_170318.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-tob
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-mid-tob
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-tob
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-tob
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/mid
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-tob
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/mid
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-tob
 
 ==========================================
 Training complete for tob!

@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: sco  Split: all
 Job ID: 33632215
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for sco (Scots) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/sco/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-sco
+HF Repo: anonymous/whisper-large-v3-aft-all-sco
 
 Loading data for sco (Scots) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/train-all_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
   Train: 423 samples (6.35 h)
   Validation: 37 samples (0.99 h)
 
@@ -54,7 +54,7 @@ Starting training...
 {'train_runtime': '2405', 'train_samples_per_second': '0.873', 'train_steps_per_second': '0.056', 'train_loss': '11.71', 'epoch': '5'}
 
 Saving model and processor...
-  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
+  Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/sco/all
 
 Final evaluation (validation):
   WER: 0.6263
@@ -63,21 +63,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.4598
   Test CER: 0.3389
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_sco_all_20260303_205916.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_sco_20260303_205916.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_whisper_sco_all_20260303_205916.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/sco/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/whisper_aft_all_sco_20260303_205916.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-sco
+Pushing to Hugging Face Hub: anonymous/whisper-large-v3-aft-all-sco
   Pushing model...
   Pushing processor...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-sco
+  Successfully pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-sco
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/sco/all
-Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-sco
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/sco/all
+Model pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-sco
 
 ==========================================
 Training complete!

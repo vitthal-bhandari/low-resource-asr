@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ctc-lm-rerun
-#SBATCH --account=stf
+#SBATCH --account=myaccount
 #SBATCH --partition=ckpt-all
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
@@ -84,9 +84,9 @@ echo "quick sanity line for lmplz build test" | lmplz -S 64M -o 3 --discount_fal
 echo "lmplz sanity build OK"
 
 if [[ "$MODEL" == "mms" ]]; then
-  HF_REPO_ID="vitthalbhandari/mms-1b-all-aft-${SPLIT}-${LANG}"
+  HF_REPO_ID="anonymous/mms-1b-all-aft-${SPLIT}-${LANG}"
 else
-  HF_REPO_ID="vitthalbhandari/xlsr-1b-aft-${SPLIT}-${LANG}"
+  HF_REPO_ID="anonymous/xlsr-1b-aft-${SPLIT}-${LANG}"
 fi
 
 mkdir -p "$RUN_DIR"

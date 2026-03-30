@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ttj  Split: all (task 19 of 21)
 Job ID: 33593952 (Array Job: 33589036)
@@ -15,19 +15,19 @@ Starting training for ttj (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for ttj (Rutoro) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-ttj
+HF Repo: anonymous/mms-1b-all-aft-all-ttj
 
 Loading data for ttj (Rutoro) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ttj/train-all_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
   Train: 1436 samples (7.26 h)
   Validation: 156 samples (0.92 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/vocab.json (58 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/all/vocab.json (58 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for ttj): 32.31s
@@ -88,7 +88,7 @@ Starting training...
 {'train_runtime': '4062', 'train_samples_per_second': '5.262', 'train_steps_per_second': '0.332', 'train_loss': '14.36', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/adapter.ttj.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/all/adapter.ttj.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -98,7 +98,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.3287
   Test CER (greedy): 0.0579
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_ttj_all_20260301_162506.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_mms_ttj_all_20260301_162506.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -110,22 +110,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.3216
   Test LM CER: 0.0599
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_ttj_all_20260301_162506.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_ttj_20260301_162506.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_mms_lm_ttj_all_20260301_162506.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_ttj_20260301_162506.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-ttj
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-ttj
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ttj
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-ttj
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-ttj
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-ttj
 
 ==========================================
 Training complete for ttj!

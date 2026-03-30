@@ -1,34 +1,34 @@
-Could not set the permissions on the file '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61.incomplete'. Error: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61.incomplete'.
+Could not set the permissions on the file '/gscratch/scrubbed/anonymous_user/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61.incomplete'. Error: [Errno 2] No such file or directory: '/gscratch/scrubbed/anonymous_user/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61.incomplete'.
 Continuing without setting permissions.
-Could not set the permissions on the file '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/6038932a2a1f09a66991b1c2adae0d14066fa29e.incomplete'. Error: [Errno 2] No such file or directory: '/gscratch/scrubbed/vitthal1/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/6038932a2a1f09a66991b1c2adae0d14066fa29e.incomplete'.
+Could not set the permissions on the file '/gscratch/scrubbed/anonymous_user/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/6038932a2a1f09a66991b1c2adae0d14066fa29e.incomplete'. Error: [Errno 2] No such file or directory: '/gscratch/scrubbed/anonymous_user/.cache/huggingface/hub/models--openai--whisper-large-v3/blobs/6038932a2a1f09a66991b1c2adae0d14066fa29e.incomplete'.
 Continuing without setting permissions.
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 887, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_whisper.py", line 887, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 613, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_whisper.py", line 613, in main
     processor = WhisperProcessor.from_pretrained(
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1413, in from_pretrained
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1413, in from_pretrained
     args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, processor_dict, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1527, in _get_arguments_from_pretrained
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1527, in _get_arguments_from_pretrained
     tokenizer = cls._load_tokenizer_from_pretrained(
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1474, in _load_tokenizer_from_pretrained
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1474, in _load_tokenizer_from_pretrained
     tokenizer = auto_processor_class.from_pretrained(
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 702, in from_pretrained
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 702, in from_pretrained
     return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1751, in from_pretrained
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1751, in from_pretrained
     return cls._from_pretrained(
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 2000, in _from_pretrained
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 2000, in _from_pretrained
     init_kwargs = cls.convert_to_native_format(**init_kwargs)
                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_tokenizers.py", line 119, in convert_to_native_format
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_tokenizers.py", line 119, in convert_to_native_format
     processor = TokenizerFast.from_file(fast_tokenizer_file).post_processor
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Exception: trailing characters at line 114861 column 2

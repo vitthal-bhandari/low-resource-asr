@@ -100,7 +100,7 @@ def main() -> None:
     parser.add_argument(
         "--results-splits-dir",
         type=Path,
-        default=Path("/Users/vitthalbhandari/Code/low-resource-asr/results/splits"),
+        default=Path(__file__).resolve().parent.parent / "results" / "splits",
         help="Directory containing *_filenames.txt split lists.",
     )
     args = parser.parse_args()

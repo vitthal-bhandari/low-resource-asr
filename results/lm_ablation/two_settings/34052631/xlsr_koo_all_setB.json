@@ -4,7 +4,7 @@
     "lang": "koo",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/xlsr-1b-aft-all-koo",
+    "checkpoint_ref": "anonymous/xlsr-1b-aft-all-koo",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",
@@ -50,7 +50,7 @@
       "alpha": 0.2,
       "beta": 1.0,
       "beam_width": 50,
-      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/koo/all/lm_3gram.arpa)",
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/koo/all/lm_3gram.arpa)",
       "val": {
         "wer": 0.9806706114398422,
         "cer": 0.3602570622774978

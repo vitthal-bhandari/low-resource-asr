@@ -6,9 +6,9 @@
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 890, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_whisper.py", line 890, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 749, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_whisper.py", line 749, in main
     print(f"  FP16: {use_fp16}, BF16: {use_bf16}")
                      ^^^^^^^^
 NameError: name 'use_fp16' is not defined

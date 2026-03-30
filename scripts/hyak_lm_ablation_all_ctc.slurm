@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ctc-lm-all
-#SBATCH --account=stf
+#SBATCH --account=myaccount
 #SBATCH --partition=gpu-l40s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -96,9 +96,9 @@ echo "quick sanity line for lmplz build test" | lmplz -S 64M -o 3 --discount_fal
 echo "lmplz sanity build OK"
 
 if [[ "$MODEL" == "mms" ]]; then
-  HF_REPO_ID="vitthalbhandari/mms-1b-all-aft-${SPLIT}-${LANG}"
+  HF_REPO_ID="anonymous/mms-1b-all-aft-${SPLIT}-${LANG}"
 else
-  HF_REPO_ID="vitthalbhandari/xlsr-1b-aft-${SPLIT}-${LANG}"
+  HF_REPO_ID="anonymous/xlsr-1b-aft-${SPLIT}-${LANG}"
 fi
 
 RUN_DIR="results/lm_ablation/two_settings/${SLURM_ARRAY_JOB_ID}"

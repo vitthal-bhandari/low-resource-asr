@@ -4,7 +4,7 @@
     "lang": "led",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/mms-1b-all-aft-all-led",
+    "checkpoint_ref": "anonymous/mms-1b-all-aft-all-led",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",
@@ -50,7 +50,7 @@
       "alpha": 0.2,
       "beta": 1.0,
       "beam_width": 50,
-      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/led/all/lm_3gram.arpa)",
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/led/all/lm_3gram.arpa)",
       "val": {
         "wer": 0.2886381527158226,
         "cer": 0.09642581640524557

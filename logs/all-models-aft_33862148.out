@@ -18,7 +18,7 @@ GPU: NVIDIA L40
 ============================================================
 MMS Adapter Fine-tuning for kcn (Nubi) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/kcn/one
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-one-kcn
+HF Repo: anonymous/mms-1b-all-aft-one-kcn

@@ -1,6 +1,6 @@
 ---
 name: Low-resource finetuning tasks plan
-overview: "A structured plan covering: (1) Hyak setup compatibility for non-lab users and uv vs Miniconda; (2) running MMS finetuning for two languages with validation-only evaluation; (3) adding datetime-named performance logging in aft_mms; (4–5) future validation/test split and WER/CER logging; (6) deferred 1/5/10-hour data splits."
+overview: "A structured plan covering: (1) HPC setup compatibility for non-lab users and uv vs Miniconda; (2) running MMS finetuning for two languages with validation-only evaluation; (3) adding datetime-named performance logging in aft_mms; (4–5) future validation/test split and WER/CER logging; (6) deferred 1/5/10-hour data splits."
 todos:
   - id: todo-1771116151459-nxj36t9zh
     content: ensure that whenever in this workflow the validation set is split into a new test + validation set, the filenames are saved for both new splits separately. when all is said and done, we will only share training filenames, val filenames, and test filenames w the users on github. the actual audio files will only be accessible through official mozilla website download.
@@ -12,22 +12,22 @@ isProject: false
 
 ## Scope
 
-- **Implement now (Steps 1–3):** Hyak setup fixes, 2-language finetune run, logging in `aft_mms.py`.
+- **Implement now (Steps 1–3):** HPC setup fixes, 2-language finetune run, logging in `aft_mms.py`.
 - **After manual validation (Steps 4–5):** Discard current test set; split validation into 45-min test + new validation; add WER/CER on train/val/test and richer logs.
 - **Later (Step 6):** 1/5/10-hour training splits – out of scope until 1–3 are done.
 
 ---
 
-## 1. Hyak setup scripts – platform compatibility
+## 1. HPC setup scripts – platform compatibility
 
-**Goal:** Make [hyak_setup.sh](scripts/hyak_setup.sh) and SLURM scripts correct for Hyak and for your case (no lab, project dir specific to you).
+**Goal:** Make [hyak_setup.sh](scripts/hyak_setup.sh) and SLURM scripts correct for the HPC cluster and for your case (no lab, project dir specific to you).
 
 ### 1.1 Variables to fix
 
 
 | Variable        | Current                               | Correct for “no lab”                                                                                                    |
 | --------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| **ACCOUNT**     | `YOUR_ACCOUNT`                        | Whatever `hyakalloc` shows (e.g. `stf` for free student). Must be set for `#SBATCH --account`.                          |
+| **ACCOUNT**     | `YOUR_ACCOUNT`                        | Whatever your cluster allocation shows (e.g. `myaccount` for free student). Must be set for `#SBATCH --account`.                          |
 | **PROJECT_DIR** | `/gscratch/$ACCOUNT/low-resource-asr` | **Without lab:** `/gscratch/scrubbed/$USER/low-resource-asr`. Scrubbed is available to all users; 21-day purge applies. |
 
 
@@ -41,19 +41,19 @@ isProject: false
 
 **Why the script used Miniconda:** Common on HPC, no extra install, and the [hyak-hpc agent](.cursor/agents/hyak-hpc.md) suggests conda in scratch.
 
-**Why use uv on Hyak:**
+**Why use uv on HPC:**
 
-- Matches your Mac workflow and [pyproject.toml](pyproject.toml) + lockfile.
-- Reproducible installs; no env drift between local and Hyak.
+- Matches your local workflow and [pyproject.toml](pyproject.toml) + lockfile.
+- Reproducible installs; no env drift between local and HPC.
 - Faster dependency installs and smaller envs.
 
-**Recommendation:** Prefer **uv on Hyak** for this project. In setup:
+**Recommendation:** Prefer **uv on HPC** for this project. In setup:
 
 1. Install uv once (e.g. in scratch): `curl -LsSf https://astral.sh/uv/install.sh | sh` (or install to `$HOME/.cargo/bin` or `/gscratch/scrubbed/$USER/.local/bin` and add to `PATH`).
 2. In project dir: `uv sync` (or `uv sync --no-dev` for smaller env).
 3. Run training with `uv run python -m src.training.aft_mms ...` (as in your current SLURM).
 
-**If you keep Miniconda:** Use it only for Hyak; ensure `PROJECT_DIR` and all paths in SLURM point to the same place and that conda env is created under `/gscratch/scrubbed/$USER/` so you don’t fill home.
+**If you keep Miniconda:** Use it only for HPC; ensure `PROJECT_DIR` and all paths in SLURM point to the same place and that conda env is created under `/gscratch/scrubbed/$USER/` so you don’t fill home.
 
 **Concrete plan:** Update [hyak_setup.sh](scripts/hyak_setup.sh) to an **uv-first** path: create project dir under `/gscratch/scrubbed/$USER/low-resource-asr`, install uv, run `uv sync`, and optionally keep a short “conda alternative” comment. Then in SLURM scripts use only uv: `cd $PROJECT_DIR`, `uv run python -m src.training.aft_mms ...`, and remove or comment the conda block.
 
@@ -61,7 +61,7 @@ isProject: false
 
 ## 2. Finetune MMS for two languages (train + validation only)
 
-**Goal:** Run [aft_mms.py](src/training/aft_mms.py) for two languages on Hyak using [hyak_train_single.slurm](scripts/hyak_train_single.slurm). Training on train set only; final metric on **validation set only** (no test).
+**Goal:** Run [aft_mms.py](src/training/aft_mms.py) for two languages on HPC using [hyak_train_single.slurm](scripts/hyak_train_single.slurm). Training on train set only; final metric on **validation set only** (no test).
 
 ### 2.1 Current behavior (no changes required for “no test”)
 
@@ -76,7 +76,7 @@ So for “finetune on train, WER on validation only,” the script is already co
 - **Environment:** After section 1, use uv only: `cd $PROJECT_DIR`, `uv run python -m src.training.aft_mms "$LANG" ...`.
 - **Two languages:** Run twice, e.g. `sbatch scripts/hyak_train_single.slurm aln` and `sbatch scripts/hyak_train_single.slurm sco` (or any two from [LANGUAGES](src/data/download.py)).
 
-### 2.3 Data on Hyak
+### 2.3 Data on HPC
 
 - Ensure `data/mozilla_speech_data/<lang>/ss-corpus-<lang>.tsv` and `shared_train_validation_audios/` are present under `$PROJECT_DIR` (upload or sync from local).
 
@@ -156,7 +156,7 @@ Not in scope for “today’s” implementation.
 ```mermaid
 flowchart LR
     subgraph today [Today]
-        A[1. Hyak setup]
+        A[1. HPC setup]
         B[2. Finetune 2 langs]
         C[3. Logging in aft_mms]
     end
@@ -193,7 +193,7 @@ flowchart LR
 
 ## Summary
 
-1. **Hyak:** Use `/gscratch/scrubbed/$USER/low-resource-asr` and `ACCOUNT` from `hyakalloc`; make setup uv-first and SLURM scripts use a single `PROJECT_DIR` + uv.
+1. **HPC:** Use `/gscratch/scrubbed/$USER/low-resource-asr` and `ACCOUNT` from cluster allocation; make setup uv-first and SLURM scripts use a single `PROJECT_DIR` + uv.
 2. **Two-language run:** Use existing train/dev-only logic; fix only account/path in SLURM and run two `sbatch` jobs.
 3. **Logging:** Add a datetime-named log file under `results/training_logs/` (or similar) with model name, language, validation WER, and basic run stats.
 4. **Manual check:** You compare logged metrics to ground truth.
