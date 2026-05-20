@@ -40,10 +40,11 @@ def load_corpus_duration_sec(lang: str) -> pd.Series | None:
 
 
 def corpus_stats(sec: pd.Series) -> dict:
-    """Return median, mean, p95, p97.5, max in seconds (rounded to 2 decimals)."""
+    """Return p5, median, mean, p95, p97.5, max in seconds (rounded to 2 decimals)."""
     if len(sec) == 0:
-        return {"median_sec": None, "mean_sec": None, "p95_sec": None, "p97_5_sec": None, "max_sec": None}
+        return {"p5_sec": None, "median_sec": None, "mean_sec": None, "p95_sec": None, "p97_5_sec": None, "max_sec": None}
     return {
+        "p5_sec": round(sec.quantile(0.05), 2),
         "median_sec": round(sec.median(), 2),
         "mean_sec": round(sec.mean(), 2),
         "p95_sec": round(sec.quantile(0.95), 2),
@@ -96,6 +97,7 @@ def main() -> None:
                 "lang": lang,
                 "name": name,
                 "n": 0,
+                "p5_sec": None,
                 "median_sec": None,
                 "mean_sec": None,
                 "p95_sec": None,
@@ -109,6 +111,7 @@ def main() -> None:
             "lang": lang,
             "name": name,
             "n": n,
+            "p5_sec": st["p5_sec"],
             "median_sec": st["median_sec"],
             "mean_sec": st["mean_sec"],
             "p95_sec": st["p95_sec"],
@@ -118,7 +121,7 @@ def main() -> None:
 
     if args.csv:
         # Machine-readable: one header row, then one row per language
-        cols = ["lang", "name", "n", "median_sec", "mean_sec", "p95_sec", "p97_5_sec", "max_sec"]
+        cols = ["lang", "name", "n", "p5_sec", "median_sec", "mean_sec", "p95_sec", "p97_5_sec", "max_sec"]
         print(",".join(cols))
         for r in results:
             print(",".join(str(r[k]) for k in cols))
@@ -129,6 +132,7 @@ def main() -> None:
         ("lang", "lang"),
         ("name", "name"),
         ("n", "n"),
+        ("p5_sec", "p5_s"),
         ("median_sec", "median_s"),
         ("mean_sec", "mean_s"),
         ("p95_sec", "p95_s"),
@@ -137,7 +141,7 @@ def main() -> None:
     ]
     # Format floats for display
     for r in results:
-        for k in ["median_sec", "mean_sec", "p95_sec", "p97_5_sec", "max_sec"]:
+        for k in ["p5_sec", "median_sec", "mean_sec", "p95_sec", "p97_5_sec", "max_sec"]:
             r[k] = format_float(r[k]) if r.get("n", 0) else "—"
     print_table(results, columns)
 
