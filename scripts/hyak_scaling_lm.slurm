@@ -1,11 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=scaling-lm
 #SBATCH --account=stf
-#SBATCH --partition=gpu-l40s
+#SBATCH --partition=ckpt-all
 #SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --gpus=1
+#SBATCH --gpus=l40s:1
 #SBATCH --time=04:00:00
 #SBATCH --output=logs/%x_%A_%a.out
 #SBATCH --error=logs/%x_%A_%a.err
@@ -60,6 +61,27 @@ if [ -f "$OUT_JSON" ]; then
   echo "Output already exists — skipping."; exit 0
 fi
 
+# Resolve ARPA: reuse the pre-existing full-data ARPA for this language so that
+# the LM quality is held constant across all training-data splits. This isolates
+# the acoustic model improvement and avoids very sparse LMs for small splits.
+# Fallback chain: mms/all → xlsr/all (same transcriptions; handles hch gap) → auto-build.
+ARPA_BASE="$PROJECT_DIR/results/lm_ablation/arpa_artifacts"
+ARPA_PATH=""
+if [ -f "$ARPA_BASE/mms/$LANG/all/lm_4gram.arpa" ]; then
+  ARPA_PATH="$ARPA_BASE/mms/$LANG/all/lm_4gram.arpa"
+  echo "  ARPA: reusing pre-existing MMS full-data ARPA"
+elif [ -f "$ARPA_BASE/xlsr/$LANG/all/lm_4gram.arpa" ]; then
+  ARPA_PATH="$ARPA_BASE/xlsr/$LANG/all/lm_4gram.arpa"
+  echo "  ARPA: no MMS ARPA found — using XLSR full-data ARPA (same transcriptions)"
+else
+  echo "  ARPA: no pre-existing ARPA found — will build from training sentences"
+fi
+echo "  arpa=$ARPA_PATH"
+
+# Build the --lm-arpa-path argument conditionally
+LM_ARPA_ARG=()
+[ -n "$ARPA_PATH" ] && LM_ARPA_ARG=(--lm-arpa-path "$ARPA_PATH")
+
 uv run python scripts/run_ctc_lm_ablation.py \
     --model mms \
     --lang "$LANG" \
@@ -69,4 +91,5 @@ uv run python scripts/run_ctc_lm_ablation.py \
     --lm-betas 1.0 \
     --beam-widths 100 \
     --require-arpa \
+    "${LM_ARPA_ARG[@]}" \
     --output-json "$OUT_JSON"

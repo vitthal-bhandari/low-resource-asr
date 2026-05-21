@@ -40,7 +40,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--model", choices=["mms", "xlsr"], required=True)
     parser.add_argument("--lang", required=True, help="Language code, e.g. aln")
-    parser.add_argument("--split", choices=["one", "mid", "all"], default="all")
+    parser.add_argument("--split", default="all",
+                        help="Training split name used to locate the HF checkpoint (e.g. 1h, curated-2h, full).")
     parser.add_argument(
         "--checkpoint-dir",
         default=None,
