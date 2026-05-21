@@ -1,0 +1,26 @@
+==========================================
+MMS Scaling LM Decode
+  lang=aln  split=2h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_aln_2h_lm.json
+==========================================
+  ARPA: reusing pre-existing MMS full-data ARPA
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/aln/all/lm_4gram.arpa
+
+Loading data for aln (Gheg Albanian) split=2h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-2h_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 318 samples (2.00 h)
+  Validation: 150 samples (1.45 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Using provided ARPA: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/aln/all/lm_4gram.arpa
+========================================================================
+Saved results to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_aln_2h_lm.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-2h-aln @ main)
+Selection split: test
+Greedy test WER:   0.6392
+Unigram test WER:  0.6311
+Best n-gram test WER: 0.5348
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================

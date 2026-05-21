@@ -1,0 +1,26 @@
+==========================================
+MMS Scaling LM Decode
+  lang=bew  split=curated-3h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_bew_curated-3h_lm.json
+==========================================
+  ARPA: reusing pre-existing MMS full-data ARPA
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/bew/all/lm_4gram.arpa
+
+Loading data for bew (Betawi) split=curated-3h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-curated-3h_bew.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
+  Train: 436 samples (2.95 h)
+  Validation: 240 samples (2.23 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Using provided ARPA: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/bew/all/lm_4gram.arpa
+========================================================================
+Saved results to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_bew_curated-3h_lm.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-curated-3h-bew @ main)
+Selection split: test
+Greedy test WER:   0.4978
+Unigram test WER:  0.4933
+Best n-gram test WER: 0.4645
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================

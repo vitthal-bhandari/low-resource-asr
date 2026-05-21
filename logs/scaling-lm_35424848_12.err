@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/scripts/run_ctc_lm_ablation.py", line 398, in <module>
+    main()
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/scripts/run_ctc_lm_ablation.py", line 223, in main
+    processor = Wav2Vec2Processor.from_pretrained(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1413, in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, processor_dict, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/processing_utils.py", line 1534, in _get_arguments_from_pretrained
+    sub_processor = auto_processor_class.from_pretrained(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/auto/feature_extraction_auto.py", line 313, in from_pretrained
+    config_dict, _ = FeatureExtractionMixin.get_feature_extractor_dict(pretrained_model_name_or_path, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 525, in get_feature_extractor_dict
+    raise OSError(
+OSError: Can't load feature extractor for 'vitthalbhandari/mms-1b-all-aft-5h-kcn'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'vitthalbhandari/mms-1b-all-aft-5h-kcn' is the correct path to a directory containing a preprocessor_config.json file

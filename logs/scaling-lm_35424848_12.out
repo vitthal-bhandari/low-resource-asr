@@ -1,0 +1,13 @@
+==========================================
+MMS Scaling LM Decode
+  lang=kcn  split=5h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_kcn_5h_lm.json
+==========================================
+  ARPA: reusing pre-existing MMS full-data ARPA
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/kcn/all/lm_4gram.arpa
+
+Loading data for kcn (Nubi) split=5h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-5h_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 866 samples (5.00 h)
+  Validation: 152 samples (0.57 h)

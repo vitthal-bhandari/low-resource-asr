@@ -1,0 +1,26 @@
+==========================================
+MMS Scaling LM Decode
+  lang=sco  split=5h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_sco_5h_lm.json
+==========================================
+  ARPA: reusing pre-existing MMS full-data ARPA
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/sco/all/lm_4gram.arpa
+
+Loading data for sco (Scots) split=5h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-5h_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 352 samples (4.99 h)
+  Validation: 37 samples (0.99 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Using provided ARPA: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/sco/all/lm_4gram.arpa
+========================================================================
+Saved results to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_sco_5h_lm.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-5h-sco @ main)
+Selection split: test
+Greedy test WER:   0.3474
+Unigram test WER:  0.3429
+Best n-gram test WER: 0.2880
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================

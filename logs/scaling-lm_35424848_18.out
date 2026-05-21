@@ -1,0 +1,26 @@
+==========================================
+MMS Scaling LM Decode
+  lang=el-CY  split=1h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_el-CY_1h_lm.json
+==========================================
+  ARPA: reusing pre-existing MMS full-data ARPA
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/el-CY/all/lm_4gram.arpa
+
+Loading data for el-CY (Cypriot Greek) split=1h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-1h_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 61 samples (1.00 h)
+  Validation: 277 samples (1.47 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Using provided ARPA: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/el-CY/all/lm_4gram.arpa
+========================================================================
+Saved results to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_el-CY_1h_lm.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-1h-el-CY @ main)
+Selection split: test
+Greedy test WER:   1.0000
+Unigram test WER:  1.2693
+Best n-gram test WER: 0.9942
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================
