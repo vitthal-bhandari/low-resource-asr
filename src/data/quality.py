@@ -37,7 +37,7 @@ def char_4gram_repetition_ratio(text: str) -> float:
     return 1.0 - len(set(grams)) / len(grams)
 
 
-def build_char_kenlm(sentences: list[str], output_dir: Path, order: int = 4) -> Path | None:
+def build_char_kenlm(sentences: list[str], output_dir: Path, order: int = 4) -> Path:
     """
     Build a character-level KenLM ARPA from sentences.
 
@@ -45,14 +45,19 @@ def build_char_kenlm(sentences: list[str], output_dir: Path, order: int = 4) -> 
     lmplz, so KenLM treats each character as a token.
 
     Writes:
-        output_dir/char_train.txt   — character-tokenised training text
+        output_dir/char_train.txt        — character-tokenised training text
         output_dir/char_{order}gram.arpa — ARPA file
 
-    Returns the ARPA path on success, None if lmplz is unavailable.
+    Raises RuntimeError if lmplz is not on PATH.
     """
     lmplz_bin = shutil.which("lmplz")
     if lmplz_bin is None:
-        return None
+        raise RuntimeError(
+            "lmplz not found on PATH. "
+            "On Hyak: module load gcc && module load cesg/boost/1.76.0 && "
+            "export PATH=/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
+        )
+    print(f"  lmplz: {lmplz_bin}")
 
     output_dir.mkdir(parents=True, exist_ok=True)
     text_path = output_dir / "char_train.txt"
@@ -126,11 +131,6 @@ def compute_quality_scores(
     df["quality_keep"] = False
 
     arpa_path = build_char_kenlm(survivors["transcription"].tolist(), output_dir, order=lm_order)
-    if arpa_path is None:
-        print("  WARNING: lmplz not available — marking all survivors as quality_keep=True")
-        df.loc[survivor_mask, "quality_keep"] = True
-        return df
-
     ppl = score_perplexity(survivors["transcription"].tolist(), arpa_path)
     df.loc[survivor_mask, "ppl_score"] = ppl
     df.loc[survivor_mask, "ppl_pct"] = df.loc[survivor_mask, "ppl_score"].rank(pct=True)
