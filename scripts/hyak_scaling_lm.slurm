@@ -1,11 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=scaling-lm
 #SBATCH --account=stf
-#SBATCH --partition=gpu-l40s
+#SBATCH --partition=ckpt-all
 #SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --gpus=1
+#SBATCH --gpus=l40s:1
 #SBATCH --time=04:00:00
 #SBATCH --output=logs/%x_%A_%a.out
 #SBATCH --error=logs/%x_%A_%a.err
@@ -41,7 +42,9 @@ export PATH="/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
 export LD_LIBRARY_PATH="$BOOST_ROOT/lib:${LD_LIBRARY_PATH:-}"
 export LMPLZ_MEMORY="1G"
 
-JOBS_FILE="$PROJECT_DIR/results/splits/scaling_jobs.txt"
+# Override with SCALING_JOBS_FILE to decode a subset (e.g. only completed training jobs):
+#   SCALING_JOBS_FILE=results/splits/scaling_jobs_lm_ready.txt sbatch --array=0-N ...
+JOBS_FILE="${SCALING_JOBS_FILE:-$PROJECT_DIR/results/splits/scaling_jobs.txt}"
 JOB=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" "$JOBS_FILE")
 LANG="${JOB%%:*}"
 SPLIT="${JOB##*:}"
@@ -60,6 +63,38 @@ if [ -f "$OUT_JSON" ]; then
   echo "Output already exists — skipping."; exit 0
 fi
 
+# Resolve ARPA: reuse the pre-existing full-data ARPA for this language so that
+# the LM quality is held constant across all training-data splits. This isolates
+# the acoustic model improvement and avoids very sparse LMs for small splits.
+# Fallback chain: mms/all → xlsr/all (same transcriptions; handles hch gap) → auto-build.
+ARPA_BASE="$PROJECT_DIR/results/lm_ablation/arpa_artifacts"
+ARPA_PATH=""
+if [ -f "$ARPA_BASE/mms/$LANG/all/lm_4gram.arpa" ]; then
+  ARPA_PATH="$ARPA_BASE/mms/$LANG/all/lm_4gram.arpa"
+  echo "  ARPA: reusing pre-existing MMS full-data ARPA"
+elif [ -f "$ARPA_BASE/xlsr/$LANG/all/lm_4gram.arpa" ]; then
+  ARPA_PATH="$ARPA_BASE/xlsr/$LANG/all/lm_4gram.arpa"
+  echo "  ARPA: no MMS ARPA found — using XLSR full-data ARPA (same transcriptions)"
+else
+  echo "  ARPA: no pre-existing ARPA found — will build from training sentences"
+fi
+echo "  arpa=$ARPA_PATH"
+
+# Resolve checkpoint: prefer local directory (avoids HF push failures on restarted jobs).
+# Falls back to HF if local doesn't exist.
+LOCAL_CKPT="$PROJECT_DIR/models/mms/$LANG/$SPLIT"
+CKPT_ARG=()
+if [ -d "$LOCAL_CKPT" ] && [ -f "$LOCAL_CKPT/config.json" ]; then
+  CKPT_ARG=(--checkpoint-dir "$LOCAL_CKPT")
+  echo "  checkpoint: local ($LOCAL_CKPT)"
+else
+  echo "  checkpoint: HF (vitthalbhandari/mms-1b-all-aft-${SPLIT}-${LANG})"
+fi
+
+# Build the --lm-arpa-path argument conditionally
+LM_ARPA_ARG=()
+[ -n "$ARPA_PATH" ] && LM_ARPA_ARG=(--lm-arpa-path "$ARPA_PATH")
+
 uv run python scripts/run_ctc_lm_ablation.py \
     --model mms \
     --lang "$LANG" \
@@ -69,4 +104,6 @@ uv run python scripts/run_ctc_lm_ablation.py \
     --lm-betas 1.0 \
     --beam-widths 100 \
     --require-arpa \
+    "${CKPT_ARG[@]}" \
+    "${LM_ARPA_ARG[@]}" \
     --output-json "$OUT_JSON"

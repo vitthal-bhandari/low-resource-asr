@@ -15,10 +15,15 @@ from __future__ import annotations
 import argparse
 import itertools
 import json
+import sys
 import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable
+
+_project_root = Path(__file__).resolve().parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
 
 import numpy as np
 from transformers import Trainer, TrainingArguments, Wav2Vec2ForCTC, Wav2Vec2Processor
@@ -40,7 +45,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--model", choices=["mms", "xlsr"], required=True)
     parser.add_argument("--lang", required=True, help="Language code, e.g. aln")
-    parser.add_argument("--split", choices=["one", "mid", "all"], default="all")
+    parser.add_argument("--split", default="all",
+                        help="Training split name used to locate the HF checkpoint (e.g. 1h, curated-2h, full).")
     parser.add_argument(
         "--checkpoint-dir",
         default=None,
@@ -87,6 +93,12 @@ def parse_args() -> argparse.Namespace:
         "--require-arpa",
         action="store_true",
         help="Fail if any n-gram setting falls back to unigram (no ARPA). Recommended for strict LM ablations.",
+    )
+    parser.add_argument(
+        "--lm-arpa-path",
+        default=None,
+        metavar="PATH",
+        help="Path to a pre-built KenLM ARPA file. If omitted, one is built from training sentences.",
     )
     return parser.parse_args()
 
@@ -314,7 +326,7 @@ def main() -> None:
             processor=processor,
             sentences=train_sentences,
             output_dir=lm_artifacts_dir,
-            arpa_path=None,
+            arpa_path=args.lm_arpa_path,
             alpha=alpha,
             beta=beta,
             lm_order=lm_order,

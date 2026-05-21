@@ -1,0 +1,87 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=aln  split=5h
+  node=g3124  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-5h_aln.tsv (737 rows)
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=5h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/5h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-5h-aln
+
+Loading data for aln (Gheg Albanian) split=5h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-5h_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 736 samples (5.00 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/5h/vocab.json (86 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for aln): 38.86s
+  Dropped 3 train, 24 val samples (over 38.86s).
+
+Loading MMS model...
+  Trainable parameters: 2,263,896 / 964,761,304 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '101', 'grad_norm': '57.19', 'learning_rate': '0.00049', 'epoch': '1.087'}
+{'loss': '38.66', 'grad_norm': '21.46', 'learning_rate': '0.00099', 'epoch': '2.174'}
+{'eval_loss': '3.297', 'eval_wer': '0.9841', 'eval_cer': '0.9322', 'eval_runtime': '34.94', 'eval_samples_per_second': '3.606', 'eval_steps_per_second': '1.803', 'epoch': '2.174'}
+{'loss': '31.52', 'grad_norm': '28.77', 'learning_rate': '0.0009169', 'epoch': '3.262'}
+{'loss': '23.61', 'grad_norm': '14.5', 'learning_rate': '0.0008322', 'epoch': '4.349'}
+{'eval_loss': '2.623', 'eval_wer': '0.9814', 'eval_cer': '0.7898', 'eval_runtime': '34.62', 'eval_samples_per_second': '3.64', 'eval_steps_per_second': '1.82', 'epoch': '4.349'}
+{'loss': '16.29', 'grad_norm': '6.454', 'learning_rate': '0.0007475', 'epoch': '5.436'}
+{'loss': '11.48', 'grad_norm': '22.49', 'learning_rate': '0.0006627', 'epoch': '6.523'}
+{'eval_loss': '0.9869', 'eval_wer': '0.7087', 'eval_cer': '0.2537', 'eval_runtime': '34.88', 'eval_samples_per_second': '3.613', 'eval_steps_per_second': '1.806', 'epoch': '6.523'}
+{'loss': '10.12', 'grad_norm': '14.83', 'learning_rate': '0.000578', 'epoch': '7.61'}
+{'loss': '9.299', 'grad_norm': '8.168', 'learning_rate': '0.0004932', 'epoch': '8.698'}
+{'eval_loss': '0.8793', 'eval_wer': '0.5237', 'eval_cer': '0.1826', 'eval_runtime': '34.63', 'eval_samples_per_second': '3.638', 'eval_steps_per_second': '1.819', 'epoch': '8.698'}
+{'loss': '9.109', 'grad_norm': '18.44', 'learning_rate': '0.0004085', 'epoch': '9.785'}
+{'loss': '8.681', 'grad_norm': '7.392', 'learning_rate': '0.0003237', 'epoch': '10.87'}
+{'eval_loss': '0.8486', 'eval_wer': '0.5159', 'eval_cer': '0.1786', 'eval_runtime': '36.23', 'eval_samples_per_second': '3.478', 'eval_steps_per_second': '1.739', 'epoch': '10.87'}
+{'loss': '8.297', 'grad_norm': '19.71', 'learning_rate': '0.000239', 'epoch': '11.96'}
+{'loss': '8.097', 'grad_norm': '7.066', 'learning_rate': '0.0001542', 'epoch': '13.04'}
+{'eval_loss': '0.8234', 'eval_wer': '0.503', 'eval_cer': '0.1755', 'eval_runtime': '34.85', 'eval_samples_per_second': '3.616', 'eval_steps_per_second': '1.808', 'epoch': '13.04'}
+{'loss': '7.955', 'grad_norm': '7.135', 'learning_rate': '6.949e-05', 'epoch': '14.13'}
+{'train_runtime': '3989', 'train_samples_per_second': '2.756', 'train_steps_per_second': '0.173', 'train_loss': '21.04', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/5h/adapter.aln.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.5027
+  Greedy CER: 0.1754
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6156
+  Test CER (greedy): 0.2787
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_aln_5h_20260520_234103.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/5h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_5h_aln_20260520_234103.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-5h-aln
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-5h-aln
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/5h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-5h-aln

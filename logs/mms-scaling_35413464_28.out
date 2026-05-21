@@ -1,0 +1,77 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=aln  split=2h
+  node=g3121  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-2h_aln.tsv (319 rows)
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=2h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/2h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-2h-aln
+
+Loading data for aln (Gheg Albanian) split=2h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-2h_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 318 samples (2.00 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/2h/vocab.json (72 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for aln): 38.86s
+  Dropped 0 train, 24 val samples (over 38.86s).
+
+Loading MMS model...
+  Trainable parameters: 2,245,962 / 964,743,370 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '78.46', 'grad_norm': '33.03', 'learning_rate': '0.00049', 'epoch': '2.503'}
+{'loss': '12.02', 'grad_norm': '7.664', 'learning_rate': '0.00099', 'epoch': '5'}
+{'eval_loss': '0.8839', 'eval_wer': '0.5328', 'eval_cer': '0.186', 'eval_runtime': '39.64', 'eval_samples_per_second': '3.178', 'eval_steps_per_second': '1.589', 'epoch': '5'}
+{'loss': '8.297', 'grad_norm': '4.865', 'learning_rate': '0.000755', 'epoch': '7.503'}
+{'loss': '7.473', 'grad_norm': '5.288', 'learning_rate': '0.000505', 'epoch': '10'}
+{'eval_loss': '0.8331', 'eval_wer': '0.5015', 'eval_cer': '0.174', 'eval_runtime': '38.18', 'eval_samples_per_second': '3.3', 'eval_steps_per_second': '1.65', 'epoch': '10'}
+{'loss': '7.051', 'grad_norm': '7.362', 'learning_rate': '0.000255', 'epoch': '12.5'}
+{'loss': '6.67', 'grad_norm': '4.588', 'learning_rate': '5e-06', 'epoch': '15'}
+{'eval_loss': '0.824', 'eval_wer': '0.4836', 'eval_cer': '0.1696', 'eval_runtime': '39.69', 'eval_samples_per_second': '3.175', 'eval_steps_per_second': '1.587', 'epoch': '15'}
+{'train_runtime': '1767', 'train_samples_per_second': '2.699', 'train_steps_per_second': '0.17', 'train_loss': '19.99', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/2h/adapter.aln.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4836
+  Greedy CER: 0.1696
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6390
+  Test CER (greedy): 0.2895
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_aln_2h_20260520_233642.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/2h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_2h_aln_20260520_233642.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-2h-aln
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-2h-aln
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/2h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-2h-aln

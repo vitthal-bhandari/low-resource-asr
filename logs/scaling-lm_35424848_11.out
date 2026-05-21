@@ -1,0 +1,26 @@
+==========================================
+MMS Scaling LM Decode
+  lang=kcn  split=3h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_kcn_3h_lm.json
+==========================================
+  ARPA: reusing pre-existing MMS full-data ARPA
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/kcn/all/lm_4gram.arpa
+
+Loading data for kcn (Nubi) split=3h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-3h_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 437 samples (2.99 h)
+  Validation: 152 samples (0.57 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Using provided ARPA: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/kcn/all/lm_4gram.arpa
+========================================================================
+Saved results to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_kcn_3h_lm.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-3h-kcn @ main)
+Selection split: test
+Greedy test WER:   0.7965
+Unigram test WER:  0.7794
+Best n-gram test WER: 0.5701
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================

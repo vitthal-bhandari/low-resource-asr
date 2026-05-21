@@ -1,0 +1,26 @@
+==========================================
+MMS Scaling LM Decode
+  lang=hch  split=curated-1h
+  output=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_hch_curated-1h_lm.json
+==========================================
+  ARPA: no MMS ARPA found — using XLSR full-data ARPA (same transcriptions)
+  arpa=/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/hch/all/lm_4gram.arpa
+
+Loading data for hch (Wixárika) split=curated-1h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-curated-1h_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 157 samples (1.00 h)
+  Validation: 310 samples (0.97 h)
+Running greedy predictions...
+Running unigram beam baseline...
+Running n-gram sweep...
+  Using provided ARPA: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/xlsr/hch/all/lm_4gram.arpa
+========================================================================
+Saved results to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/scaling_exp/mms_hch_curated-1h_lm.json
+Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-curated-1h-hch @ main)
+Selection split: test
+Greedy test WER:   0.9424
+Unigram test WER:  0.9349
+Best n-gram test WER: 0.7108
+Best params: n=4, alpha=0.5, beta=1.0, beam=100
+========================================================================

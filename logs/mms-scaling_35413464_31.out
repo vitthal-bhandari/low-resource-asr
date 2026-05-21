@@ -1,0 +1,95 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=aln  split=full
+  node=g3103  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-full_aln.tsv (966 rows)
+============================================================
+MMS Adapter Fine-tuning for aln (Gheg Albanian) split=full
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/full
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-full-aln
+
+Loading data for aln (Gheg Albanian) split=full...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-full_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: 965 samples (6.39 h)
+  Validation: 150 samples (1.45 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/full/vocab.json (87 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for aln): 38.86s
+  Dropped 10 train, 24 val samples (over 38.86s).
+
+Loading MMS model...
+  Trainable parameters: 2,265,177 / 964,762,585 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '109.3', 'grad_norm': '47.79', 'learning_rate': '0.00049', 'epoch': '0.8368'}
+{'loss': '49.19', 'grad_norm': '49.29', 'learning_rate': '0.00099', 'epoch': '1.669'}
+{'eval_loss': '3.576', 'eval_wer': '0.9992', 'eval_cer': '0.959', 'eval_runtime': '22.37', 'eval_samples_per_second': '5.631', 'eval_steps_per_second': '2.816', 'epoch': '1.669'}
+{'loss': '40.98', 'grad_norm': '58.65', 'learning_rate': '0.0009388', 'epoch': '2.502'}
+{'loss': '27.83', 'grad_norm': '28.77', 'learning_rate': '0.0008762', 'epoch': '3.335'}
+{'eval_loss': '2.928', 'eval_wer': '0.9932', 'eval_cer': '0.827', 'eval_runtime': '21.65', 'eval_samples_per_second': '5.821', 'eval_steps_per_second': '2.911', 'epoch': '3.335'}
+{'loss': '18.88', 'grad_norm': '6.5', 'learning_rate': '0.0008138', 'epoch': '4.167'}
+{'loss': '11.49', 'grad_norm': '19.65', 'learning_rate': '0.0007512', 'epoch': '5'}
+{'eval_loss': '0.9619', 'eval_wer': '0.7075', 'eval_cer': '0.2466', 'eval_runtime': '21.79', 'eval_samples_per_second': '5.782', 'eval_steps_per_second': '2.891', 'epoch': '5'}
+{'loss': '10.09', 'grad_norm': '29.56', 'learning_rate': '0.0006888', 'epoch': '5.837'}
+{'loss': '9.286', 'grad_norm': '25.47', 'learning_rate': '0.0006262', 'epoch': '6.669'}
+{'eval_loss': '0.8511', 'eval_wer': '0.5702', 'eval_cer': '0.1943', 'eval_runtime': '22.52', 'eval_samples_per_second': '5.595', 'eval_steps_per_second': '2.798', 'epoch': '6.669'}
+{'loss': '8.815', 'grad_norm': '6.656', 'learning_rate': '0.0005638', 'epoch': '7.502'}
+{'loss': '8.47', 'grad_norm': '20.64', 'learning_rate': '0.0005012', 'epoch': '8.335'}
+{'eval_loss': '0.8439', 'eval_wer': '0.5146', 'eval_cer': '0.1805', 'eval_runtime': '21.99', 'eval_samples_per_second': '5.731', 'eval_steps_per_second': '2.866', 'epoch': '8.335'}
+{'loss': '8.501', 'grad_norm': '13.48', 'learning_rate': '0.0004387', 'epoch': '9.167'}
+{'loss': '7.996', 'grad_norm': '7.466', 'learning_rate': '0.0003762', 'epoch': '10'}
+{'eval_loss': '0.8226', 'eval_wer': '0.5024', 'eval_cer': '0.1746', 'eval_runtime': '22.04', 'eval_samples_per_second': '5.716', 'eval_steps_per_second': '2.858', 'epoch': '10'}
+{'loss': '7.871', 'grad_norm': '5.377', 'learning_rate': '0.0003137', 'epoch': '10.84'}
+{'loss': '7.788', 'grad_norm': '5.639', 'learning_rate': '0.0002512', 'epoch': '11.67'}
+{'eval_loss': '0.817', 'eval_wer': '0.496', 'eval_cer': '0.1719', 'eval_runtime': '22.13', 'eval_samples_per_second': '5.694', 'eval_steps_per_second': '2.847', 'epoch': '11.67'}
+{'loss': '7.537', 'grad_norm': '9.083', 'learning_rate': '0.0001888', 'epoch': '12.5'}
+{'loss': '7.4', 'grad_norm': '8.156', 'learning_rate': '0.0001263', 'epoch': '13.33'}
+{'eval_loss': '0.8154', 'eval_wer': '0.4819', 'eval_cer': '0.1674', 'eval_runtime': '22.22', 'eval_samples_per_second': '5.671', 'eval_steps_per_second': '2.835', 'epoch': '13.33'}
+{'loss': '7.435', 'grad_norm': '7.395', 'learning_rate': '6.375e-05', 'epoch': '14.17'}
+{'loss': '7.13', 'grad_norm': '7.739', 'learning_rate': '1.25e-06', 'epoch': '15'}
+{'eval_loss': '0.8043', 'eval_wer': '0.4798', 'eval_cer': '0.1672', 'eval_runtime': '22.23', 'eval_samples_per_second': '5.667', 'eval_steps_per_second': '2.834', 'epoch': '15'}
+{'train_runtime': '3549', 'train_samples_per_second': '4.037', 'train_steps_per_second': '0.254', 'train_loss': '19.78', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/full/adapter.aln.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4799
+  Greedy CER: 0.1672
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.6108
+  Test CER (greedy): 0.2728
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_aln_full_20260520_235049.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/full/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_full_aln_20260520_235049.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-full-aln
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-full-aln
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln/full
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-full-aln

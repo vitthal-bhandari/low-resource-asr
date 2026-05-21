@@ -1,0 +1,74 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=el-CY  split=3h
+  node=g3121  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-3h_el-CY.tsv (271 rows)
+============================================================
+MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=3h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/3h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-3h-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=3h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-3h_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 270 samples (2.99 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/3h/vocab.json (128 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 16 train, 0 val samples (over 79.43s).
+
+Loading MMS model...
+  Trainable parameters: 2,317,698 / 964,815,106 (0.24%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '177.6', 'grad_norm': '115.1', 'learning_rate': '0.00049', 'epoch': '3.126'}
+{'loss': '93.7', 'grad_norm': '29.5', 'learning_rate': '0.00099', 'epoch': '6.252'}
+{'eval_loss': '8.78', 'eval_wer': '1.015', 'eval_cer': '0.9197', 'eval_runtime': '51.74', 'eval_samples_per_second': '5.353', 'eval_steps_per_second': '2.686', 'epoch': '6.252'}
+{'loss': '63.8', 'grad_norm': '11.28', 'learning_rate': '0.00065', 'epoch': '9.378'}
+{'loss': '50.26', 'grad_norm': '10.89', 'learning_rate': '0.0002929', 'epoch': '12.5'}
+{'eval_loss': '6.284', 'eval_wer': '0.9912', 'eval_cer': '0.8247', 'eval_runtime': '49.79', 'eval_samples_per_second': '5.563', 'eval_steps_per_second': '2.791', 'epoch': '12.5'}
+{'train_runtime': '2138', 'train_samples_per_second': '1.782', 'train_steps_per_second': '0.112', 'train_loss': '89.36', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/3h/adapter.el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.9914
+  Greedy CER: 0.8247
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.9897
+  Test CER (greedy): 0.8319
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_3h_20260520_232650.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/3h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_3h_el-CY_20260520_232650.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-3h-el-CY
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-3h-el-CY
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/3h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-3h-el-CY

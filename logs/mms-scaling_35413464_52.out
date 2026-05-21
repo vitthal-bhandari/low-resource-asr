@@ -1,0 +1,79 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=hch  split=curated-3h
+  node=g3112  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-curated-3h_hch.tsv (423 rows)
+============================================================
+MMS Adapter Fine-tuning for hch (Wixárika) split=curated-3h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-3h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-curated-3h-hch
+
+Loading data for hch (Wixárika) split=curated-3h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-curated-3h_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 422 samples (2.99 h)
+  Validation: 310 samples (0.97 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-3h/vocab.json (70 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for hch): 70.46s
+
+Loading MMS model...
+  Trainable parameters: 2,243,400 / 964,740,808 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '108.9', 'grad_norm': '116.5', 'learning_rate': '0.00049', 'epoch': '1.872'}
+{'loss': '34.34', 'grad_norm': '27.5', 'learning_rate': '0.00099', 'epoch': '3.72'}
+{'eval_loss': '2.953', 'eval_wer': '1', 'eval_cer': '0.9882', 'eval_runtime': '19.27', 'eval_samples_per_second': '16.08', 'eval_steps_per_second': '8.042', 'epoch': '3.72'}
+{'loss': '14.05', 'grad_norm': '7.208', 'learning_rate': '0.0008393', 'epoch': '5.569'}
+{'loss': '6.815', 'grad_norm': '10.76', 'learning_rate': '0.0006754', 'epoch': '7.417'}
+{'eval_loss': '0.8146', 'eval_wer': '0.9206', 'eval_cer': '0.229', 'eval_runtime': '19.21', 'eval_samples_per_second': '16.14', 'eval_steps_per_second': '8.069', 'epoch': '7.417'}
+{'loss': '5.798', 'grad_norm': '5.255', 'learning_rate': '0.0005115', 'epoch': '9.265'}
+{'loss': '5.086', 'grad_norm': '4.166', 'learning_rate': '0.0003475', 'epoch': '11.11'}
+{'eval_loss': '0.7034', 'eval_wer': '0.8419', 'eval_cer': '0.1969', 'eval_runtime': '19.36', 'eval_samples_per_second': '16.01', 'eval_steps_per_second': '8.006', 'epoch': '11.11'}
+{'loss': '4.787', 'grad_norm': '6.431', 'learning_rate': '0.0001836', 'epoch': '12.99'}
+{'loss': '4.453', 'grad_norm': '4.92', 'learning_rate': '1.967e-05', 'epoch': '14.83'}
+{'eval_loss': '0.6581', 'eval_wer': '0.8201', 'eval_cer': '0.1862', 'eval_runtime': '19.51', 'eval_samples_per_second': '15.89', 'eval_steps_per_second': '7.944', 'epoch': '14.83'}
+{'train_runtime': '1815', 'train_samples_per_second': '3.488', 'train_steps_per_second': '0.223', 'train_loss': '22.79', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-3h/adapter.hch.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.8203
+  Greedy CER: 0.1862
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.8166
+  Test CER (greedy): 0.1996
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_hch_curated-3h_20260521_003452.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-3h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_curated-3h_hch_20260521_003452.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-curated-3h-hch
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-3h-hch
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-3h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-3h-hch
