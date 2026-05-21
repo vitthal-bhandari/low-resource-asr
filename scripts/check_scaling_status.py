@@ -161,24 +161,35 @@ def main() -> None:
             print(f"  ?  {r['lang']:8s}  {r['split']}")
         print()
 
-    # ── Re-submission helper ───────────────────────────────────────────────────
+    # ── LM-ready job list (completed training → safe to decode now) ───────────
+    if completed:
+        lm_ready_file = config.results_dir / "splits" / "scaling_jobs_lm_ready.txt"
+        lm_ready_file.parent.mkdir(parents=True, exist_ok=True)
+        lm_ready_file.write_text(
+            "\n".join(f"{r['lang']}:{r['split']}" for r in completed) + "\n"
+        )
+        n_lm = len(completed)
+        print(f"LM-ready job list → {lm_ready_file}  ({n_lm} jobs)")
+        print(f"  N=$(( $(wc -l < {lm_ready_file}) - 1 ))")
+        print(f"  SCALING_JOBS_FILE={lm_ready_file} \\")
+        print(f"    sbatch --array=0-$N scripts/hyak_scaling_lm.slurm")
+        print()
+
+    # ── Re-submission helper (failed / still running) ─────────────────────────
     needs_rerun = failed + missing
     if needs_rerun:
-        print("To resubmit failed/missing jobs, write a new jobs file and submit:")
-        print()
         rerun_file = config.results_dir / "splits" / "scaling_jobs_rerun.txt"
         rerun_file.parent.mkdir(parents=True, exist_ok=True)
         rerun_file.write_text(
             "\n".join(f"{r['lang']}:{r['split']}" for r in needs_rerun) + "\n"
         )
         n = len(needs_rerun)
-        print(f"  # {rerun_file} written with {n} job(s)")
-        print(f"  sbatch --array=0-{n-1} scripts/hyak_scaling_exp.slurm")
-        print()
-        print("  NOTE: hyak_scaling_exp.slurm reads scaling_jobs.txt by default.")
-        print("  Temporarily point it at the rerun file or rename it before submitting.")
+        print(f"Rerun job list → {rerun_file}  ({n} jobs)")
+        print(f"  N=$(( $(wc -l < {rerun_file}) - 1 ))")
+        print(f"  SCALING_JOBS_FILE={rerun_file} \\")
+        print(f"    sbatch --array=0-$N scripts/hyak_scaling_exp.slurm")
     else:
-        print("All jobs accounted for. Safe to submit LM decoding array.")
+        print("All jobs accounted for. Safe to submit full LM decoding array.")
 
 
 if __name__ == "__main__":

@@ -89,6 +89,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Fail if any n-gram setting falls back to unigram (no ARPA). Recommended for strict LM ablations.",
     )
+    parser.add_argument(
+        "--lm-arpa-path",
+        default=None,
+        metavar="PATH",
+        help="Path to a pre-built KenLM ARPA file. If omitted, one is built from training sentences.",
+    )
     return parser.parse_args()
 
 
@@ -315,7 +321,7 @@ def main() -> None:
             processor=processor,
             sentences=train_sentences,
             output_dir=lm_artifacts_dir,
-            arpa_path=None,
+            arpa_path=args.lm_arpa_path,
             alpha=alpha,
             beta=beta,
             lm_order=lm_order,

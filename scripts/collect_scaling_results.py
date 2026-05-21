@@ -38,6 +38,19 @@ OUT_CSV = OUT_DIR / "scaling_results.csv"
 
 # Splits produced by create_curated_splits.py
 HOUR_TARGETS = ["1h", "2h", "3h", "5h", "full"]
+MS_PER_HOUR = 3_600_000
+
+
+def compute_hours_from_tsv(lang: str, split: str) -> float:
+    """Fallback: compute training hours directly from the split TSV."""
+    tsv = config.mozilla_data_dir / lang / f"train-{split}_{lang}.tsv"
+    if not tsv.exists():
+        return float("nan")
+    try:
+        df = pd.read_csv(tsv, sep="\t", usecols=["duration_ms"])
+        return df["duration_ms"].sum() / MS_PER_HOUR
+    except Exception:
+        return float("nan")
 
 
 def parse_split(split: str) -> tuple[bool, str]:
@@ -84,6 +97,23 @@ def collect_greedy(verbose: bool = False) -> pd.DataFrame:
         "test_cer": "greedy_test_cer",
     }
     df = df.rename(columns=rename)
+
+    # n_train_hours is only present in jobs that ran after the aft_mms patch.
+    # For the rest, compute directly from the split TSV.
+    if "n_train_hours" not in df.columns:
+        df["n_train_hours"] = float("nan")
+    missing_hours = df["n_train_hours"].isna()
+    if missing_hours.any():
+        df.loc[missing_hours, "n_train_hours"] = df[missing_hours].apply(
+            lambda r: compute_hours_from_tsv(r["lang"], r["split"]), axis=1
+        )
+        n_filled = missing_hours.sum()
+        print(f"  [info] computed n_train_hours from TSV for {n_filled} rows missing it")
+
+    # n_train similarly — fill from TSV row count if absent
+    if "n_train" not in df.columns:
+        df["n_train"] = float("nan")
+
     keep = [
         "lang", "split", "n_train", "n_train_hours",
         "greedy_val_wer", "greedy_val_cer",

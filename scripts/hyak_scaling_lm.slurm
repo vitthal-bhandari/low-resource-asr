@@ -42,7 +42,9 @@ export PATH="/gscratch/scrubbed/$USER/tools/kenlm/build/bin:$PATH"
 export LD_LIBRARY_PATH="$BOOST_ROOT/lib:${LD_LIBRARY_PATH:-}"
 export LMPLZ_MEMORY="1G"
 
-JOBS_FILE="$PROJECT_DIR/results/splits/scaling_jobs.txt"
+# Override with SCALING_JOBS_FILE to decode a subset (e.g. only completed training jobs):
+#   SCALING_JOBS_FILE=results/splits/scaling_jobs_lm_ready.txt sbatch --array=0-N ...
+JOBS_FILE="${SCALING_JOBS_FILE:-$PROJECT_DIR/results/splits/scaling_jobs.txt}"
 JOB=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" "$JOBS_FILE")
 LANG="${JOB%%:*}"
 SPLIT="${JOB##*:}"
