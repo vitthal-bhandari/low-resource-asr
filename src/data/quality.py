@@ -71,16 +71,19 @@ def build_char_kenlm(sentences: list[str], output_dir: Path, order: int = 4) -> 
 
     try:
         with open(text_path) as stdin, open(arpa_path, "w") as stdout:
-            subprocess.run(
+            result = subprocess.run(
                 [lmplz_bin, "-S", "1G", "-o", str(order), "--discount_fallback"],
                 stdin=stdin,
                 stdout=stdout,
                 check=True,
-                stderr=subprocess.DEVNULL,
+                capture_output=False,
+                stderr=subprocess.PIPE,
             )
+        print(f"  Built char-{order}gram ARPA: {arpa_path}")
         return arpa_path
-    except (subprocess.CalledProcessError, OSError):
-        return None
+    except subprocess.CalledProcessError as e:
+        stderr_msg = e.stderr.decode(errors="replace").strip() if e.stderr else "(no stderr)"
+        raise RuntimeError(f"lmplz failed (exit {e.returncode}): {stderr_msg}") from e
 
 
 def score_perplexity(sentences: list[str], arpa_path: Path) -> list[float]:
