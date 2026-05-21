@@ -47,6 +47,7 @@ from evaluate import load as load_metric
 from huggingface_hub import HfApi, login
 from safetensors.torch import save_file as safe_save_file
 from transformers import (
+    EarlyStoppingCallback,
     Trainer,
     TrainingArguments,
     Wav2Vec2CTCTokenizer,
@@ -116,9 +117,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--split",
         type=str,
-        choices=["one", "mid", "all"],
         default="all",
-        help="Training data split: one=1h, mid=tier-dependent (3/5/10h), all=full (default: all)",
+        help="Training data split name; used to resolve train-{split}_{lang}.tsv (default: all)",
+    )
+    parser.add_argument(
+        "--early-stopping-patience",
+        type=int,
+        default=3,
+        help="Stop training if eval WER does not improve for this many eval steps (default: 3). Set 0 to disable.",
     )
     parser.add_argument(
         "--save-transcriptions",
@@ -971,6 +977,10 @@ def main():
     #
     compute_metrics = create_compute_metrics_fn(processor)
     
+    callbacks = []
+    if args.early_stopping_patience > 0:
+        callbacks.append(EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience))
+
     trainer = Trainer(
         model=model,
         data_collator=data_collator,
@@ -979,6 +989,7 @@ def main():
         train_dataset=train,
         eval_dataset=val,
         processing_class=processor.feature_extractor,
+        callbacks=callbacks or None,
     )
     
     print("\nStarting training...")

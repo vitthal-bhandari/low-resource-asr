@@ -63,4 +63,11 @@ echo "Train TSV: $TRAIN_TSV ($(wc -l < "$TRAIN_TSV") rows)"
 
 uv run python -m src.training.aft_mms "$LANG" \
     --split "$SPLIT" \
+    --num-epochs 15 \
+    --batch-size 2 \
+    --gradient-accumulation-steps 8 \
+    --learning-rate 1e-3 \
+    --early-stopping-patience 3 \
+    --max-audio-sec-from-csv corpus_stats.csv \
+    --save-transcriptions \
     --save-to-hf
