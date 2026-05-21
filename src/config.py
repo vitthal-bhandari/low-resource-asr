@@ -39,7 +39,7 @@ class Config:
     results_dir: Path = field(default_factory=lambda: PROJECT_ROOT / "results")
     
     # Mozilla Data Collective API
-    mdc_api_base_url: str = "https://datacollective.mozillafoundation.org/api"
+    mdc_api_base_url: str = "https://mozilladatacollective.com/api"
     mdc_train_dev_dataset_id: str = "cmfzu8u8wa555eq8onrk334h4"
     mdc_test_dataset_id: str = "cminc35no007no707hql26lzk"
     
