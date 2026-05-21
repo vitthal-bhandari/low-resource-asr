@@ -821,6 +821,10 @@ def main():
     train, val = load_and_preprocess_data(lang, args.split)
     n_train, n_val = len(train), len(val)
 
+    # Capture training hours from TSV before duration_ms is dropped during preprocessing
+    _train_tsv = config.mozilla_data_dir / lang / f"train-{args.split}_{lang}.tsv"
+    n_train_hours = pd.read_csv(_train_tsv, sep="\t")["duration_ms"].sum() / 3_600_000
+
     # Snapshot training sentences for LM building (before columns are removed)
     train_sentences: list[str] = train["sentence"]
 
@@ -1132,6 +1136,14 @@ def main():
 
             # Save the LM decoder artifacts alongside the model
             lm_processor.save_pretrained(str(output_dir))
+
+    # Inject metadata so eval_results.json is self-contained for aggregation
+    eval_results.update({
+        "lang": lang,
+        "split": args.split,
+        "n_train": n_train,
+        "n_train_hours": round(n_train_hours, 4),
+    })
 
     # Save eval results
     results_path = output_dir / "eval_results.json"
