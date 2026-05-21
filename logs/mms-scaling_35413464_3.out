@@ -1,0 +1,45 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=sco  split=5h
+  node=g3121  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-5h_sco.tsv (353 rows)
+============================================================
+MMS Adapter Fine-tuning for sco (Scots) split=5h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/5h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-5h-sco
+
+Loading data for sco (Scots) split=5h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-5h_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 352 samples (4.99 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/5h/vocab.json (72 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 3 train, 12 val samples (over 129.64s).
+
+Loading MMS model...
+  Trainable parameters: 2,245,962 / 964,743,370 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '67.95', 'grad_norm': '27.01', 'learning_rate': '0.00049', 'epoch': '2.274'}
+{'loss': '28.65', 'grad_norm': '20.45', 'learning_rate': '0.00099', 'epoch': '4.549'}
+{'eval_loss': '3.092', 'eval_wer': '0.9778', 'eval_cer': '0.9234', 'eval_runtime': '16.41', 'eval_samples_per_second': '1.523', 'eval_steps_per_second': '0.792', 'epoch': '4.549'}
+{'loss': '13.91', 'grad_norm': '6.038', 'learning_rate': '0.000787', 'epoch': '6.823'}
+{'loss': '4.748', 'grad_norm': '6.484', 'learning_rate': '0.0005696', 'epoch': '9.091'}
+{'eval_loss': '0.6503', 'eval_wer': '0.3963', 'eval_cer': '0.1561', 'eval_runtime': '16.78', 'eval_samples_per_second': '1.49', 'eval_steps_per_second': '0.775', 'epoch': '9.091'}

@@ -1,0 +1,76 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=hch  split=curated-2h
+  node=g3124  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-curated-2h_hch.tsv (333 rows)
+============================================================
+MMS Adapter Fine-tuning for hch (Wixárika) split=curated-2h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-2h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-curated-2h-hch
+
+Loading data for hch (Wixárika) split=curated-2h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/train-curated-2h_hch.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/hch/validation_hch.tsv
+  Train: 332 samples (2.00 h)
+  Validation: 310 samples (0.97 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-2h/vocab.json (70 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for hch): 70.46s
+
+Loading MMS model...
+  Trainable parameters: 2,243,400 / 964,740,808 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '92.48', 'grad_norm': '26.82', 'learning_rate': '0.00049', 'epoch': '2.386'}
+{'loss': '13.19', 'grad_norm': '10.74', 'learning_rate': '0.00099', 'epoch': '4.771'}
+{'eval_loss': '0.9433', 'eval_wer': '0.9515', 'eval_cer': '0.2523', 'eval_runtime': '35.16', 'eval_samples_per_second': '8.817', 'eval_steps_per_second': '4.408', 'epoch': '4.771'}
+{'loss': '6.818', 'grad_norm': '10.5', 'learning_rate': '0.0007721', 'epoch': '7.145'}
+{'loss': '5.413', 'grad_norm': '4.485', 'learning_rate': '0.0005395', 'epoch': '9.53'}
+{'eval_loss': '0.716', 'eval_wer': '0.8218', 'eval_cer': '0.1943', 'eval_runtime': '31.16', 'eval_samples_per_second': '9.95', 'eval_steps_per_second': '4.975', 'epoch': '9.53'}
+{'loss': '4.689', 'grad_norm': '8.421', 'learning_rate': '0.000307', 'epoch': '11.92'}
+{'loss': '4.172', 'grad_norm': '2.855', 'learning_rate': '7.442e-05', 'epoch': '14.29'}
+{'eval_loss': '0.6598', 'eval_wer': '0.761', 'eval_cer': '0.1742', 'eval_runtime': '31.31', 'eval_samples_per_second': '9.899', 'eval_steps_per_second': '4.95', 'epoch': '14.29'}
+{'train_runtime': '1808', 'train_samples_per_second': '2.755', 'train_steps_per_second': '0.174', 'train_loss': '20.3', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-2h/adapter.hch.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.7619
+  Greedy CER: 0.1741
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.7929
+  Test CER (greedy): 0.1953
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_hch_curated-2h_20260521_003405.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-2h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_curated-2h_hch_20260521_003405.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-curated-2h-hch
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-2h-hch
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/hch/curated-2h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-2h-hch

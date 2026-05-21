@@ -1,0 +1,77 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=kcn  split=curated-2h
+  node=g3124  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-curated-2h_kcn.tsv (357 rows)
+============================================================
+MMS Adapter Fine-tuning for kcn (Nubi) split=curated-2h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/curated-2h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-curated-2h-kcn
+
+Loading data for kcn (Nubi) split=curated-2h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-curated-2h_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 356 samples (2.00 h)
+  Validation: 152 samples (0.57 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/curated-2h/vocab.json (59 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for kcn): 50.22s
+  Dropped 0 train, 1 val samples (over 50.22s).
+
+Loading MMS model...
+  Trainable parameters: 2,229,309 / 964,726,717 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '68.69', 'grad_norm': '34.62', 'learning_rate': '0.00049', 'epoch': '2.18'}
+{'loss': '20.92', 'grad_norm': '16.54', 'learning_rate': '0.00099', 'epoch': '4.36'}
+{'eval_loss': '2.325', 'eval_wer': '0.8855', 'eval_cer': '0.371', 'eval_runtime': '18.05', 'eval_samples_per_second': '8.368', 'eval_steps_per_second': '4.212', 'epoch': '4.36'}
+{'loss': '10.19', 'grad_norm': '13.16', 'learning_rate': '0.0008', 'epoch': '6.539'}
+{'loss': '8.137', 'grad_norm': '13.18', 'learning_rate': '0.0005959', 'epoch': '8.719'}
+{'eval_loss': '1.139', 'eval_wer': '0.6134', 'eval_cer': '0.2021', 'eval_runtime': '18.12', 'eval_samples_per_second': '8.331', 'eval_steps_per_second': '4.193', 'epoch': '8.719'}
+{'loss': '7.103', 'grad_norm': '7.082', 'learning_rate': '0.0003918', 'epoch': '10.9'}
+{'loss': '6.604', 'grad_norm': '6.796', 'learning_rate': '0.0001878', 'epoch': '13.04'}
+{'eval_loss': '1.13', 'eval_wer': '0.5671', 'eval_cer': '0.188', 'eval_runtime': '17.52', 'eval_samples_per_second': '8.619', 'eval_steps_per_second': '4.338', 'epoch': '13.04'}
+{'train_runtime': '1643', 'train_samples_per_second': '3.25', 'train_steps_per_second': '0.21', 'train_loss': '18.45', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/curated-2h/adapter.kcn.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.5676
+  Greedy CER: 0.1877
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.7223
+  Test CER (greedy): 0.3225
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_kcn_curated-2h_20260520_230350.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/curated-2h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_curated-2h_kcn_20260520_230350.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-curated-2h-kcn
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-2h-kcn
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/curated-2h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-2h-kcn

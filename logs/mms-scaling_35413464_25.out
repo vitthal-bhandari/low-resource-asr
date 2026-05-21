@@ -1,0 +1,76 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=el-CY  split=curated-3h
+  node=g3106  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-curated-3h_el-CY.tsv (357 rows)
+============================================================
+MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=curated-3h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/curated-3h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-curated-3h-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=curated-3h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-curated-3h_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 356 samples (2.99 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/curated-3h/vocab.json (128 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+
+Loading MMS model...
+  Trainable parameters: 2,317,698 / 964,815,106 (0.24%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '127.9', 'grad_norm': '73.59', 'learning_rate': '0.00049', 'epoch': '2.18'}
+{'loss': '24.39', 'grad_norm': '6.565', 'learning_rate': '0.00099', 'epoch': '4.36'}
+{'eval_loss': '1.75', 'eval_wer': '0.5781', 'eval_cer': '0.1975', 'eval_runtime': '32.2', 'eval_samples_per_second': '8.603', 'eval_steps_per_second': '4.317', 'epoch': '4.36'}
+{'loss': '21.25', 'grad_norm': '44.56', 'learning_rate': '0.0008', 'epoch': '6.539'}
+{'loss': '21.51', 'grad_norm': '835.4', 'learning_rate': '0.0005959', 'epoch': '8.719'}
+{'eval_loss': '1.634', 'eval_wer': '0.5063', 'eval_cer': '0.168', 'eval_runtime': '30.35', 'eval_samples_per_second': '9.128', 'eval_steps_per_second': '4.58', 'epoch': '8.719'}
+{'loss': '17.49', 'grad_norm': '26.59', 'learning_rate': '0.0003918', 'epoch': '10.9'}
+{'loss': '15.27', 'grad_norm': '5.529', 'learning_rate': '0.0001878', 'epoch': '13.04'}
+{'eval_loss': '1.343', 'eval_wer': '0.4752', 'eval_cer': '0.1592', 'eval_runtime': '31.82', 'eval_samples_per_second': '8.704', 'eval_steps_per_second': '4.368', 'epoch': '13.04'}
+{'train_runtime': '1849', 'train_samples_per_second': '2.888', 'train_steps_per_second': '0.187', 'train_loss': '34.53', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/curated-3h/adapter.el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.4761
+  Greedy CER: 0.1592
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.4799
+  Test CER (greedy): 0.1532
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_curated-3h_20260520_233616.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/curated-3h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_curated-3h_el-CY_20260520_233616.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-curated-3h-el-CY
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-3h-el-CY
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/curated-3h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-3h-el-CY

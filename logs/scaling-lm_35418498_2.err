@@ -1,0 +1,13 @@
+usage: run_ctc_lm_ablation.py [-h] --model {mms,xlsr} --lang LANG
+                              [--split SPLIT]
+                              [--checkpoint-dir CHECKPOINT_DIR]
+                              [--hf-repo-id HF_REPO_ID]
+                              [--hf-revision HF_REVISION]
+                              [--batch-size BATCH_SIZE]
+                              [--beam-widths BEAM_WIDTHS]
+                              [--lm-orders LM_ORDERS] [--lm-alphas LM_ALPHAS]
+                              [--lm-betas LM_BETAS]
+                              [--output-json OUTPUT_JSON] [--skip-test]
+                              [--selection-split {val,test}]
+                              [--allow-val-fallback] [--require-arpa]
+run_ctc_lm_ablation.py: error: unrecognized arguments: --lm-arpa-path /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/sco/all/lm_4gram.arpa

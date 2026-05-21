@@ -1,0 +1,80 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=sco  split=full
+  node=g3113  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-full_sco.tsv (424 rows)
+============================================================
+MMS Adapter Fine-tuning for sco (Scots) split=full
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/full
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-full-sco
+
+Loading data for sco (Scots) split=full...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-full_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: 423 samples (6.35 h)
+  Validation: 37 samples (0.99 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/full/vocab.json (72 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for sco): 129.64s
+  Dropped 3 train, 12 val samples (over 129.64s).
+
+Loading MMS model...
+  Trainable parameters: 2,245,962 / 964,743,370 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '67.14', 'grad_norm': '18.31', 'learning_rate': '0.00049', 'epoch': '1.876'}
+{'loss': '27.03', 'grad_norm': '46.72', 'learning_rate': '0.00099', 'epoch': '3.724'}
+{'eval_loss': '3.089', 'eval_wer': '0.9998', 'eval_cer': '0.8727', 'eval_runtime': '16.28', 'eval_samples_per_second': '1.535', 'eval_steps_per_second': '0.798', 'epoch': '3.724'}
+{'loss': '23.82', 'grad_norm': '9.554', 'learning_rate': '0.0008393', 'epoch': '5.571'}
+{'loss': '22.34', 'grad_norm': '9.498', 'learning_rate': '0.0006754', 'epoch': '7.419'}
+{'eval_loss': '1.878', 'eval_wer': '0.964', 'eval_cer': '0.5255', 'eval_runtime': '14.61', 'eval_samples_per_second': '1.712', 'eval_steps_per_second': '0.89', 'epoch': '7.419'}
+{'loss': '7.044', 'grad_norm': '3.817', 'learning_rate': '0.0005115', 'epoch': '9.267'}
+{'loss': '4.455', 'grad_norm': '4.447', 'learning_rate': '0.0003475', 'epoch': '11.11'}
+{'eval_loss': '0.6631', 'eval_wer': '0.396', 'eval_cer': '0.1599', 'eval_runtime': '14.56', 'eval_samples_per_second': '1.717', 'eval_steps_per_second': '0.893', 'epoch': '11.11'}
+{'loss': '4.148', 'grad_norm': '4.297', 'learning_rate': '0.0001836', 'epoch': '12.99'}
+{'loss': '3.918', 'grad_norm': '2.84', 'learning_rate': '1.967e-05', 'epoch': '14.84'}
+{'eval_loss': '0.6345', 'eval_wer': '0.3845', 'eval_cer': '0.1533', 'eval_runtime': '14.05', 'eval_samples_per_second': '1.779', 'eval_steps_per_second': '0.925', 'epoch': '14.84'}
+{'train_runtime': '3983', 'train_samples_per_second': '1.582', 'train_steps_per_second': '0.102', 'train_loss': '19.78', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/full/adapter.sco.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.3844
+  Greedy CER: 0.1532
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.3458
+  Test CER (greedy): 0.1288
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_sco_full_20260520_224145.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/full/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_full_sco_20260520_224145.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-full-sco
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-full-sco
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/full
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-full-sco

@@ -1,0 +1,78 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=kcn  split=3h
+  node=g3124  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-3h_kcn.tsv (438 rows)
+============================================================
+MMS Adapter Fine-tuning for kcn (Nubi) split=3h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/3h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-3h-kcn
+
+Loading data for kcn (Nubi) split=3h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-3h_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: 437 samples (2.99 h)
+  Validation: 152 samples (0.57 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/3h/vocab.json (58 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for kcn): 50.22s
+  Dropped 22 train, 1 val samples (over 50.22s).
+
+Loading MMS model...
+  Trainable parameters: 2,228,028 / 964,725,436 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '93.16', 'grad_norm': '197.2', 'learning_rate': '0.00049', 'epoch': '1.923'}
+{'loss': '38.04', 'grad_norm': '98.28', 'learning_rate': '0.00099', 'epoch': '3.846'}
+{'eval_loss': '5.846', 'eval_wer': '1.004', 'eval_cer': '0.8719', 'eval_runtime': '19.12', 'eval_samples_per_second': '7.896', 'eval_steps_per_second': '3.974', 'epoch': '3.846'}
+{'loss': '30.95', 'grad_norm': '71.64', 'learning_rate': '0.000831', 'epoch': '5.769'}
+{'loss': '23.03', 'grad_norm': '26.14', 'learning_rate': '0.0006586', 'epoch': '7.692'}
+{'eval_loss': '1.473', 'eval_wer': '0.9986', 'eval_cer': '0.4145', 'eval_runtime': '18.93', 'eval_samples_per_second': '7.976', 'eval_steps_per_second': '4.015', 'epoch': '7.692'}
+{'loss': '10.15', 'grad_norm': '5.761', 'learning_rate': '0.0004862', 'epoch': '9.615'}
+{'loss': '8.449', 'grad_norm': '15.12', 'learning_rate': '0.0003138', 'epoch': '11.54'}
+{'eval_loss': '0.8208', 'eval_wer': '0.6531', 'eval_cer': '0.2032', 'eval_runtime': '18.34', 'eval_samples_per_second': '8.233', 'eval_steps_per_second': '4.144', 'epoch': '11.54'}
+{'loss': '7.776', 'grad_norm': '10.94', 'learning_rate': '0.0001414', 'epoch': '13.46'}
+{'train_runtime': '2094', 'train_samples_per_second': '2.972', 'train_steps_per_second': '0.186', 'train_loss': '27.9', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/3h/adapter.kcn.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 0.6540
+  Greedy CER: 0.2033
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 0.7923
+  Test CER (greedy): 0.3373
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_kcn_3h_20260520_225904.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/3h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_3h_kcn_20260520_225904.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-3h-kcn
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-3h-kcn
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/kcn/3h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-3h-kcn

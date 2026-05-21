@@ -1,0 +1,69 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=el-CY  split=1h
+  node=g3121  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-1h_el-CY.tsv (62 rows)
+============================================================
+MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=1h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/1h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-1h-el-CY
+
+Loading data for el-CY (Cypriot Greek) split=1h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-1h_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: 61 samples (1.00 h)
+  Validation: 277 samples (1.47 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/1h/vocab.json (118 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for el-CY): 79.43s
+  Dropped 11 train, 0 val samples (over 79.43s).
+
+Loading MMS model...
+  Trainable parameters: 2,304,888 / 964,802,296 (0.24%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '161.3', 'grad_norm': '524', 'learning_rate': '0.00049', 'epoch': '12.64'}
+{'train_runtime': '545.3', 'train_samples_per_second': '1.375', 'train_steps_per_second': '0.11', 'train_loss': '140.6', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/1h/adapter.el-CY.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 1.0002
+  Greedy CER: 0.9749
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 1.0000
+  Test CER (greedy): 0.9742
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_1h_20260520_231940.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/1h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_1h_el-CY_20260520_231940.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-1h-el-CY
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-1h-el-CY
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/1h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-1h-el-CY

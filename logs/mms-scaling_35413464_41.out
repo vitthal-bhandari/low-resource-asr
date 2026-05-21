@@ -1,0 +1,72 @@
+==========================================
+MMS Scaling Experiment — fresh fine-tune
+  lang=bew  split=curated-1h
+  node=g3110  gpu=NVIDIA L40S
+==========================================
+Train TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-curated-1h_bew.tsv (157 rows)
+============================================================
+MMS Adapter Fine-tuning for bew (Betawi) split=curated-1h
+============================================================
+Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/curated-1h
+Device: cuda
+Push to HF: True
+HF Repo: vitthalbhandari/mms-1b-all-aft-curated-1h-bew
+
+Loading data for bew (Betawi) split=curated-1h...
+  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-curated-1h_bew.tsv
+  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
+  Train: 156 samples (0.99 h)
+  Validation: 240 samples (2.23 h)
+
+Building vocabulary...
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/curated-1h/vocab.json (71 tokens)
+
+Preparing datasets...
+  Max audio length from CSV (p97.5 for bew): 70.47s
+  Dropped 0 train, 14 val samples (over 70.47s).
+
+Loading MMS model...
+  Trainable parameters: 2,244,681 / 964,742,089 (0.23%)
+
+Training configuration:
+  Epochs: 15
+  Batch size: 2
+  Gradient accumulation: 8
+  Effective batch size: 16
+  Learning rate: 0.001
+  FP16: False, BF16: True
+
+Starting training...
+{'loss': '59.82', 'grad_norm': '10.19', 'learning_rate': '0.00049', 'epoch': '5'}
+{'loss': '25.62', 'grad_norm': '10.08', 'learning_rate': '0.00099', 'epoch': '10'}
+{'eval_loss': '3.118', 'eval_wer': '1.049', 'eval_cer': '0.6974', 'eval_runtime': '36.91', 'eval_samples_per_second': '6.123', 'eval_steps_per_second': '3.062', 'epoch': '10'}
+{'loss': '22.04', 'grad_norm': '9.106', 'learning_rate': '2e-05', 'epoch': '15'}
+{'train_runtime': '685.8', 'train_samples_per_second': '3.412', 'train_steps_per_second': '0.219', 'train_loss': '35.83', 'epoch': '15'}
+
+Saving adapter weights...
+  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/curated-1h/adapter.bew.safetensors
+  Saving full model...
+
+Final evaluation (validation, greedy):
+  Greedy WER: 1.0496
+  Greedy CER: 0.6975
+
+Evaluating on test set (greedy)...
+  Test WER (greedy): 1.0397
+  Test CER (greedy): 0.7118
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_bew_curated-1h_20260521_000639.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/curated-1h/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_curated-1h_bew_20260521_000639.log
+
+Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-curated-1h-bew
+  Pushing model...
+  Pushing processor...
+  Pushing adapter weights...
+  Pushing model card...
+  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-1h-bew
+
+============================================================
+Training complete!
+============================================================
+Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/bew/curated-1h
+Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-curated-1h-bew
