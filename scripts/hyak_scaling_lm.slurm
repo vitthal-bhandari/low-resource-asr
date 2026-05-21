@@ -80,6 +80,17 @@ else
 fi
 echo "  arpa=$ARPA_PATH"
 
+# Resolve checkpoint: prefer local directory (avoids HF push failures on restarted jobs).
+# Falls back to HF if local doesn't exist.
+LOCAL_CKPT="$PROJECT_DIR/models/mms/$LANG/$SPLIT"
+CKPT_ARG=()
+if [ -d "$LOCAL_CKPT" ] && [ -f "$LOCAL_CKPT/config.json" ]; then
+  CKPT_ARG=(--checkpoint-dir "$LOCAL_CKPT")
+  echo "  checkpoint: local ($LOCAL_CKPT)"
+else
+  echo "  checkpoint: HF (vitthalbhandari/mms-1b-all-aft-${SPLIT}-${LANG})"
+fi
+
 # Build the --lm-arpa-path argument conditionally
 LM_ARPA_ARG=()
 [ -n "$ARPA_PATH" ] && LM_ARPA_ARG=(--lm-arpa-path "$ARPA_PATH")
@@ -93,5 +104,6 @@ uv run python scripts/run_ctc_lm_ablation.py \
     --lm-betas 1.0 \
     --beam-widths 100 \
     --require-arpa \
+    "${CKPT_ARG[@]}" \
     "${LM_ARPA_ARG[@]}" \
     --output-json "$OUT_JSON"
