@@ -1,8 +1,0 @@
----
-alwaysApply: true
----
-
-- Starting point for each interaction ALWAYS: read `.notes/project.md`
-- How to approach tasks: before any action create a MECE task breakdown
-- To make code changes: read relevant code sections before editing, preserve existing functionality, and maintain type safety
-- Follow safety requirements: NEVER break type safety, ALWAYS maintain proper error handling, and ALWAYS document new code
