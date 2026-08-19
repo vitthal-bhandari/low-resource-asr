@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: koo  Split: all (task 7 of 21)
 Job ID: 33613499 (Array Job: 33613360)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for koo (Konzo) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/koo/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/koo/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-koo
+HF Repo: anonymous/whisper-large-v3-aft-all-koo
 
 Loading data for koo (Konzo) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-all_koo.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/koo/train-all_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
   Train: 1739 samples (7.83 h)
   Validation: 99 samples (0.59 h)
 

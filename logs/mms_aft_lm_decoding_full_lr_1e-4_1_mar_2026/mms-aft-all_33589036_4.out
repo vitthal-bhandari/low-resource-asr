@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: el-CY  Split: all (task 4 of 21)
 Job ID: 33589107 (Array Job: 33589036)
@@ -15,19 +15,19 @@ Starting training for el-CY (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for el-CY (Cypriot Greek) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/el-CY/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-el-CY
+HF Repo: anonymous/mms-1b-all-aft-all-el-CY
 
 Loading data for el-CY (Cypriot Greek) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/el-CY/train-all_el-CY.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/el-CY/validation_el-CY.tsv
   Train: 782 samples (7.15 h)
   Validation: 277 samples (1.47 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/vocab.json (141 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/el-CY/all/vocab.json (141 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for el-CY): 79.43s
@@ -69,7 +69,7 @@ Starting training...
 {'train_runtime': '3722', 'train_samples_per_second': '3.035', 'train_steps_per_second': '0.193', 'train_loss': '49.61', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/adapter.el-CY.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/el-CY/all/adapter.el-CY.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -79,7 +79,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.6175
   Test CER (greedy): 0.2095
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_all_20260301_093732.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_mms_el-CY_all_20260301_093732.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -91,22 +91,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.6226
   Test LM CER: 0.2168
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_mms_lm_el-CY_all_20260301_093732.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_el-CY_20260301_093732.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_mms_lm_el-CY_all_20260301_093732.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/el-CY/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_el-CY_20260301_093732.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-el-CY
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-el-CY
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-el-CY
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-el-CY
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/el-CY/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-el-CY
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/el-CY/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-el-CY
 
 ==========================================
 Training complete for el-CY!

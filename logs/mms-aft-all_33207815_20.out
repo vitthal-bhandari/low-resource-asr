@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ukv  Split: mid (task 20 of 21)
 Job ID: 33207815 (Array Job: 33207815)
@@ -15,19 +15,19 @@ Starting training for ukv (split=mid)...
 ============================================================
 MMS Adapter Fine-tuning for ukv (Kuku) split=mid
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ukv/mid
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-mid-ukv
+HF Repo: anonymous/mms-1b-all-aft-mid-ukv
 
 Loading data for ukv (Kuku) split=mid...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/train-mid_ukv.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ukv/train-mid_ukv.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ukv/validation_ukv.tsv
   Train: 922 samples (5.00 h)
   Validation: 142 samples (0.65 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/vocab.json (59 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ukv/mid/vocab.json (59 tokens)
 
 Preparing datasets...
 
@@ -53,7 +53,7 @@ Starting training...
 {'train_runtime': '944.1', 'train_samples_per_second': '4.883', 'train_steps_per_second': '0.307', 'train_loss': '8.509', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/adapter.ukv.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ukv/mid/adapter.ukv.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -63,21 +63,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.4562
   Test CER: 0.1384
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_ukv_20260216_170946.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ukv/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_mid_ukv_20260216_170946.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-ukv
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-mid-ukv
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-ukv
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-ukv
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ukv/mid
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-ukv
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ukv/mid
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-ukv
 
 ==========================================
 Training complete for ukv!

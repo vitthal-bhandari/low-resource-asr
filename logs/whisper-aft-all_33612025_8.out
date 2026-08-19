@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: led  Split: all (task 8 of 21)
 Job ID: 33612110 (Array Job: 33612025)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for led (Lendu) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/led/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/led/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-led
+HF Repo: anonymous/whisper-large-v3-aft-all-led
 
 Loading data for led (Lendu) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/train-all_led.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/led/validation_led.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/led/train-all_led.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/led/validation_led.tsv
   Train: 1491 samples (7.84 h)
   Validation: 104 samples (0.56 h)
 

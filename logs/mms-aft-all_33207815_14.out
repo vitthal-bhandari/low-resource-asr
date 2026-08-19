@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ruc  Split: mid (task 14 of 21)
 Job ID: 33214362 (Array Job: 33207815)
@@ -15,19 +15,19 @@ Starting training for ruc (split=mid)...
 ============================================================
 MMS Adapter Fine-tuning for ruc (Ruuli) split=mid
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/mid
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/mid
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-mid-ruc
+HF Repo: anonymous/mms-1b-all-aft-mid-ruc
 
 Loading data for ruc (Ruuli) split=mid...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-mid_ruc.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/train-mid_ruc.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
   Train: 737 samples (5.00 h)
   Validation: 77 samples (0.27 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/mid/vocab.json (54 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/mid/vocab.json (54 tokens)
 
 Preparing datasets...
 
@@ -52,7 +52,7 @@ Starting training...
 {'train_runtime': '920.9', 'train_samples_per_second': '4.002', 'train_steps_per_second': '0.255', 'train_loss': '8.121', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/mid/adapter.ruc.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/mid/adapter.ruc.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -62,21 +62,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.6216
   Test CER: 0.1462
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/mid/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_ruc_20260216_162630.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_mid_ruc_20260216_162630.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-ruc
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-mid-ruc
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-ruc
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-ruc
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ruc/mid
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-ruc
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ruc/mid
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-ruc
 
 ==========================================
 Training complete for ruc!

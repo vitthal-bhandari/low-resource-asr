@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: rwm  Split: one (task 15 of 21)
 Job ID: 33203904 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for rwm (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for rwm (Amba) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/one
 Device: cuda
 Push to HF: False
 
 Loading data for rwm (Amba) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-one_rwm.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/train-one_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
   Train: 152 samples (0.98 h)
   Validation: 140 samples (0.77 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/one/vocab.json (50 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/one/vocab.json (50 tokens)
 
 Preparing datasets...
 
@@ -46,7 +46,7 @@ Starting training...
 {'train_runtime': '197.2', 'train_samples_per_second': '3.855', 'train_steps_per_second': '0.254', 'train_loss': '44.44', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/one/adapter.rwm.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/one/adapter.rwm.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -56,13 +56,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.9997
   Test CER: 0.9912
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_rwm_20260216_082352.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_rwm_20260216_082352.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/one
 
 ==========================================
 Training complete for rwm!

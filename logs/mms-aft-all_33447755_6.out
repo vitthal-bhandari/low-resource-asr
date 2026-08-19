@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: kcn  Split: all (task 6 of 21)
 Job ID: 33450930 (Array Job: 33447755)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for kcn (Nubi) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/kcn/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/kcn/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-kcn
+HF Repo: anonymous/xlsr-1b-aft-all-kcn
 
 Loading data for kcn (Nubi) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
   Train: 1395 samples (7.21 h)
   Validation: 152 samples (0.57 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/kcn/all/vocab.json (62 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/kcn/all/vocab.json (62 tokens)
 
 Preparing datasets...
 
@@ -60,7 +60,7 @@ Starting training...
 {'train_runtime': '1444', 'train_samples_per_second': '4.831', 'train_steps_per_second': '0.305', 'train_loss': '17.63', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/kcn/all/adapter_kcn.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/kcn/all/adapter_kcn.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -70,9 +70,9 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0097
   Test CER: 0.7773
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_kcn_all_20260223_030204.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/kcn/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_kcn_20260223_030204.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_kcn_all_20260223_030204.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/kcn/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_kcn_20260223_030204.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-kcn
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-kcn
   Pushing model...

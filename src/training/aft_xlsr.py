@@ -195,7 +195,7 @@ def parse_args() -> argparse.Namespace:
 
 
 # Hugging Face configuration
-HF_USERNAME = "vitthalbhandari"
+HF_USERNAME = "anonymous"
 
 
 def get_hf_repo_id(lang: str, split: str = "all") -> str:

@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: lke  Split: all (task 9 of 21)
 Job ID: 33612114 (Array Job: 33612025)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for lke (Kenyi) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lke/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/lke/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-lke
+HF Repo: anonymous/whisper-large-v3-aft-all-lke
 
 Loading data for lke (Kenyi) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/train-all_lke.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lke/train-all_lke.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
   Train: 1712 samples (7.44 h)
   Validation: 146 samples (0.66 h)
 

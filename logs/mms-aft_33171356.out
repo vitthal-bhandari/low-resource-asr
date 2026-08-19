@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: aln
 Job ID: 33171356
@@ -15,14 +15,14 @@ Starting training for aln...
 ============================================================
 MMS Adapter Fine-tuning for aln (Gheg Albanian)
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/aln
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/aln
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-aln
+HF Repo: anonymous/mms-1b-all-aft-aln
 
 Loading data for aln (Gheg Albanian)...
-  TSV: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/ss-corpus-aln.tsv
-  Audio dir: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/shared_train_validation_audios
+  TSV: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/ss-corpus-aln.tsv
+  Audio dir: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/shared_train_validation_audios
   Total rows in TSV: 1367
   Excluded 134 rows with empty transcription
 

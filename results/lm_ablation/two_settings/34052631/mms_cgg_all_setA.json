@@ -4,7 +4,7 @@
     "lang": "cgg",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/mms-1b-all-aft-all-cgg",
+    "checkpoint_ref": "anonymous/mms-1b-all-aft-all-cgg",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",
@@ -50,7 +50,7 @@
       "alpha": 0.5,
       "beta": 1.0,
       "beam_width": 100,
-      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/cgg/all/lm_4gram.arpa)",
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/cgg/all/lm_4gram.arpa)",
       "val": {
         "wer": 0.40324932305769634,
         "cer": 0.11398452510775302

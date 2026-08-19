@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: top  Split: all (task 18 of 21)
 Job ID: 33587327 (Array Job: 33585633)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for top (Papantla Totonac) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-top
+HF Repo: anonymous/xlsr-1b-aft-all-top
 
 Loading data for top (Papantla Totonac) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
   Train: 189 samples (5.87 h)
   Validation: 59 samples (1.68 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/vocab.json (74 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all/vocab.json (74 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for top): 253.01s
@@ -54,7 +54,7 @@ Starting training...
 {'train_runtime': '4183', 'train_samples_per_second': '0.649', 'train_steps_per_second': '0.043', 'train_loss': '112.9', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/adapter_top.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all/adapter_top.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -64,7 +64,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 1.0000
   Test CER (greedy): 0.8630
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_top_all_20260301_010818.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_top_all_20260301_010818.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -76,22 +76,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 1.0791
   Test LM CER: 0.7047
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_top_all_20260301_010818.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_top_20260301_010818.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_top_all_20260301_010818.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_top_20260301_010818.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-top
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-top
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-top
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-top
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-top
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-top
 
 ==========================================
 Training complete for top!

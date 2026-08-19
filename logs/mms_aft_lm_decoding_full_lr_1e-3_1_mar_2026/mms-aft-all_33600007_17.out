@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: tob  Split: all (task 17 of 21)
 Job ID: 33603993 (Array Job: 33600007)
@@ -15,19 +15,19 @@ Starting training for tob (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for tob (Toba Qom) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-tob
+HF Repo: anonymous/mms-1b-all-aft-all-tob
 
 Loading data for tob (Toba Qom) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/tob/train-all_tob.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/tob/validation_tob.tsv
   Train: 836 samples (4.67 h)
   Validation: 306 samples (1.99 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/tob/all/vocab.json (74 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/tob/all/vocab.json (74 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for tob): 59.55s

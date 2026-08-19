@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: lth  Split: one (task 10 of 21)
 Job ID: 33202289 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for lth (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for lth (Thur) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lth/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lth/one
 Device: cuda
 Push to HF: False
 
 Loading data for lth (Thur) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/train-one_lth.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lth/train-one_lth.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
   Train: 90 samples (1.00 h)
   Validation: 52 samples (0.27 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lth/one/vocab.json (53 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lth/one/vocab.json (53 tokens)
 
 Preparing datasets...
 

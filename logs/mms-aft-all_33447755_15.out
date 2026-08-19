@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: rwm  Split: all (task 15 of 21)
 Job ID: 33455823 (Array Job: 33447755)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for rwm (Amba) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/rwm/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/rwm/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-rwm
+HF Repo: anonymous/xlsr-1b-aft-all-rwm
 
 Loading data for rwm (Amba) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
   Train: 1326 samples (7.56 h)
   Validation: 140 samples (0.77 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/rwm/all/vocab.json (57 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/rwm/all/vocab.json (57 tokens)
 
 Preparing datasets...
 
@@ -60,7 +60,7 @@ Starting training...
 {'train_runtime': '2038', 'train_samples_per_second': '3.253', 'train_steps_per_second': '0.204', 'train_loss': '14.39', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/rwm/all/adapter_rwm.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/rwm/all/adapter_rwm.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -70,9 +70,9 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.9566
   Test CER: 0.3465
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_rwm_all_20260223_080534.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/rwm/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_rwm_20260223_080534.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_rwm_all_20260223_080534.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/rwm/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_rwm_20260223_080534.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-rwm
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-rwm
   Pushing model...

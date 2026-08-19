@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: meh  Split: one (task 11 of 21)
 Job ID: 33202404 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for meh (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for meh (Southwestern Tlaxiaco Mixtec) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/one
 Device: cuda
 Push to HF: False
 
 Loading data for meh (Southwestern Tlaxiaco Mixtec) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/train-one_meh.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/meh/train-one_meh.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
   Train: 157 samples (0.98 h)
   Validation: 93 samples (1.00 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/one/vocab.json (53 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/one/vocab.json (53 tokens)
 
 Preparing datasets...
 
@@ -46,7 +46,7 @@ Starting training...
 {'train_runtime': '263.1', 'train_samples_per_second': '2.984', 'train_steps_per_second': '0.19', 'train_loss': '269.1', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/one/adapter.meh.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/one/adapter.meh.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -56,13 +56,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.9998
   Test CER: 0.9699
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_meh_20260216_074232.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_meh_20260216_074232.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/meh/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/meh/one
 
 ==========================================
 Training complete for meh!

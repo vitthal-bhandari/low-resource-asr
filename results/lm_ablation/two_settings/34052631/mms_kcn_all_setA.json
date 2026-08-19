@@ -4,7 +4,7 @@
     "lang": "kcn",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/mms-1b-all-aft-all-kcn",
+    "checkpoint_ref": "anonymous/mms-1b-all-aft-all-kcn",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",
@@ -50,7 +50,7 @@
       "alpha": 0.5,
       "beta": 1.0,
       "beam_width": 100,
-      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/kcn/all/lm_4gram.arpa)",
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/kcn/all/lm_4gram.arpa)",
       "val": {
         "wer": 0.3340812205519408,
         "cer": 0.13883358422765016

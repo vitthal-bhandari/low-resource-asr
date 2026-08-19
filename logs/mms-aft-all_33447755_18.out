@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: top  Split: all (task 18 of 21)
 Job ID: 33458642 (Array Job: 33447755)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for top (Papantla Totonac) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-top
+HF Repo: anonymous/xlsr-1b-aft-all-top
 
 Loading data for top (Papantla Totonac) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/top/train-all_top.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/top/validation_top.tsv
   Train: 189 samples (5.87 h)
   Validation: 59 samples (1.68 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/top/all/vocab.json (74 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/top/all/vocab.json (74 tokens)
 
 Preparing datasets...
 

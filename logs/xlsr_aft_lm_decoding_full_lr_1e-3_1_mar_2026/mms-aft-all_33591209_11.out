@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: meh  Split: all (task 11 of 21)
 Job ID: 33594233 (Array Job: 33591209)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for meh (Southwestern Tlaxiaco Mixtec) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/meh/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-meh
+HF Repo: anonymous/xlsr-1b-aft-all-meh
 
 Loading data for meh (Southwestern Tlaxiaco Mixtec) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/meh/train-all_meh.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/meh/validation_meh.tsv
   Train: 666 samples (6.64 h)
   Validation: 93 samples (1.00 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/vocab.json (62 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/meh/all/vocab.json (62 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for meh): 118.16s
@@ -68,7 +68,7 @@ Starting training...
 {'train_runtime': '5102', 'train_samples_per_second': '1.908', 'train_steps_per_second': '0.121', 'train_loss': '16.98', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/adapter_meh.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/meh/all/adapter_meh.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -78,7 +78,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.4454
   Test CER (greedy): 0.1831
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_meh_all_20260301_170802.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_meh_all_20260301_170802.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -90,22 +90,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.4355
   Test LM CER: 0.1777
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_meh_all_20260301_170802.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_meh_20260301_170802.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_meh_all_20260301_170802.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/meh/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_meh_20260301_170802.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-meh
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-meh
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-meh
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-meh
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/meh/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-meh
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/meh/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-meh
 
 ==========================================
 Training complete for meh!

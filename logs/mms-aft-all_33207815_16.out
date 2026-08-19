@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: sco  Split: mid (task 16 of 21)
 Job ID: 33215057 (Array Job: 33207815)
@@ -15,19 +15,19 @@ Starting training for sco (split=mid)...
 ============================================================
 MMS Adapter Fine-tuning for sco (Scots) split=mid
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/sco/mid
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-mid-sco
+HF Repo: anonymous/mms-1b-all-aft-mid-sco
 
 Loading data for sco (Scots) split=mid...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/train-mid_sco.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/train-mid_sco.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/sco/validation_sco.tsv
   Train: 242 samples (2.94 h)
   Validation: 37 samples (0.99 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid/vocab.json (69 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/sco/mid/vocab.json (69 tokens)
 
 Preparing datasets...
 
@@ -47,7 +47,7 @@ Starting training...
 {'train_runtime': '620.1', 'train_samples_per_second': '1.951', 'train_steps_per_second': '0.129', 'train_loss': '21.64', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid/adapter.sco.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/sco/mid/adapter.sco.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -57,21 +57,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.4194
   Test CER: 0.1700
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_sco_20260216_170308.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/sco/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_mid_sco_20260216_170308.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-sco
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-mid-sco
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-sco
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-sco
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/sco/mid
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-sco
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/sco/mid
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-sco
 
 ==========================================
 Training complete for sco!

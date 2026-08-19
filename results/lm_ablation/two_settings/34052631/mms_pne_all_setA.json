@@ -4,7 +4,7 @@
     "lang": "pne",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/mms-1b-all-aft-all-pne",
+    "checkpoint_ref": "anonymous/mms-1b-all-aft-all-pne",
     "hf_revision": "main",
     "selection_split_requested": "test",
     "selection_split_used": "test",
@@ -50,7 +50,7 @@
       "alpha": 0.5,
       "beta": 1.0,
       "beam_width": 100,
-      "decoder_desc": "n-gram LM (/gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/pne/all/lm_4gram.arpa)",
+      "decoder_desc": "n-gram LM (/gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/arpa_artifacts/mms/pne/all/lm_4gram.arpa)",
       "val": {
         "wer": 0.25898888646764,
         "cer": 0.11015264829423214

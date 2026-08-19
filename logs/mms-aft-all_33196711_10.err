@@ -15,89 +15,89 @@ Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0;
   0%|          | 0/30 [00:00<?, ?it/s]Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 782, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 782, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 683, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 683, in main
     trainer.train()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2174, in train
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2174, in train
     return inner_training_loop(
            ^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2536, in _inner_training_loop
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2536, in _inner_training_loop
     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3809, in training_step
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3809, in training_step
     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3880, in compute_loss
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3880, in compute_loss
     outputs = model(**inputs)
               ^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 819, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 819, in forward
     return model_forward(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 807, in __call__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 807, in __call__
     return convert_to_fp32(self.model_forward(*args, **kwargs))
                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 1695, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 1695, in forward
     outputs = self.wav2vec2(
               ^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 1349, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 1349, in forward
     extract_features = self.feature_extractor(input_values)
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 417, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 417, in forward
     hidden_states = conv_layer(hidden_states)
                     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 92, in __call__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/modeling_layers.py", line 92, in __call__
     return self._gradient_checkpointing_func(partial(super().__call__, **kwargs), *args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_compile.py", line 54, in inner
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_compile.py", line 54, in inner
     return disable_fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/checkpoint.py", line 512, in checkpoint
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/checkpoint.py", line 512, in checkpoint
     ret = function(*args, **kwargs)
           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 295, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/wav2vec2/modeling_wav2vec2.py", line 295, in forward
     hidden_states = self.layer_norm(hidden_states)
                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 229, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 229, in forward
     return F.layer_norm(
            ^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2935, in layer_norm
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2935, in layer_norm
     return torch.layer_norm(
            ^^^^^^^^^^^^^^^^^
 torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.33 GiB. GPU 0 has a total capacity of 44.39 GiB of which 23.29 GiB is free. Including non-PyTorch memory, this process has 21.09 GiB memory in use. Of the allocated memory 20.51 GiB is allocated by PyTorch, and 97.20 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

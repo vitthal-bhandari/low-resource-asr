@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft
-#SBATCH --account=stf               # From hyakalloc (free student allocation)
+#SBATCH --account=myaccount               # From cluster allocation
 #SBATCH --partition=gpu-l40      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -11,7 +11,7 @@
 #SBATCH --error=logs/%x_%j.err
 
 # =============================================================================
-# MMS Adapter Fine-tuning Script for Hyak
+# MMS Adapter Fine-tuning Script for HPC
 # Single language training
 #
 # Usage:
@@ -35,7 +35,7 @@ LM_BETA=${5:-"1.0"}
 LM_BEAM_WIDTH=${6:-"100"}
 
 echo "=========================================="
-echo "MMS Adapter Fine-tuning on Hyak"
+echo "MMS Adapter Fine-tuning on HPC"
 echo "=========================================="
 echo "Language: $LANG  Split: $SPLIT"
 echo "LM params: n=$LM_ORDER alpha=$LM_ALPHA beta=$LM_BETA beam=$LM_BEAM_WIDTH"

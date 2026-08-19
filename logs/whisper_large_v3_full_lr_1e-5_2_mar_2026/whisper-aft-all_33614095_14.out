@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: ruc  Split: all (task 14 of 21)
 Job ID: 33615717 (Array Job: 33614095)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for ruc (Ruuli) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/ruc/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-ruc
+HF Repo: anonymous/whisper-large-v3-aft-all-ruc
 
 Loading data for ruc (Ruuli) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
   Train: 1346 samples (8.30 h)
   Validation: 77 samples (0.27 h)
 
@@ -63,7 +63,7 @@ Starting training...
 {'train_runtime': '4428', 'train_samples_per_second': '1.489', 'train_steps_per_second': '0.094', 'train_loss': '6.454', 'epoch': '5'}
 
 Saving model and processor...
-  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
+  Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/ruc/all
 
 Final evaluation (validation):
   WER: 0.6444
@@ -72,21 +72,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.6338
   Test CER: 0.2115
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_ruc_all_20260302_170702.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_ruc_20260302_170702.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_whisper_ruc_all_20260302_170702.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/ruc/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/whisper_aft_all_ruc_20260302_170702.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-ruc
+Pushing to Hugging Face Hub: anonymous/whisper-large-v3-aft-all-ruc
   Pushing model...
   Pushing processor...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ruc
+  Successfully pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-ruc
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/ruc/all
-Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-ruc
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/ruc/all
+Model pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-ruc
 
 ==========================================
 Training complete for ruc!

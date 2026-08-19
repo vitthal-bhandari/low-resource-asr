@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: kcn  Split: all (task 6 of 21)
 Job ID: 33614404 (Array Job: 33614095)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for kcn (Nubi) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/kcn/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-kcn
+HF Repo: anonymous/whisper-large-v3-aft-all-kcn
 
 Loading data for kcn (Nubi) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
   Train: 1395 samples (7.21 h)
   Validation: 152 samples (0.57 h)
 
@@ -63,7 +63,7 @@ Starting training...
 {'train_runtime': '4180', 'train_samples_per_second': '1.638', 'train_steps_per_second': '0.103', 'train_loss': '5.554', 'epoch': '5'}
 
 Saving model and processor...
-  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
+  Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/kcn/all
 
 Final evaluation (validation):
   WER: 0.4123
@@ -72,21 +72,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0568
   Test CER: 0.7252
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_kcn_all_20260302_145456.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_kcn_20260302_145456.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_whisper_kcn_all_20260302_145456.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/kcn/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/whisper_aft_all_kcn_20260302_145456.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-kcn
+Pushing to Hugging Face Hub: anonymous/whisper-large-v3-aft-all-kcn
   Pushing model...
   Pushing processor...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-kcn
+  Successfully pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-kcn
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/kcn/all
-Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-kcn
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/kcn/all
+Model pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-kcn
 
 ==========================================
 Training complete for kcn!

@@ -9,16 +9,16 @@ Start time: Sun Mar 22 19:03:56 PDT 2026
 
 
 Loading data for kcn (Nubi) split=all...
-  Train: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
-  Val: /gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
+  Train: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/train-all_kcn.tsv
+  Val: /gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/kcn/validation_kcn.tsv
   Train: 1395 samples (7.21 h)
   Validation: 152 samples (0.57 h)
 Running greedy predictions...
 Running unigram beam baseline...
 Running n-gram sweep...
 ========================================================================
-Saved results to: /gscratch/scrubbed/vitthal1/low-resource-asr/results/lm_ablation/mms_kcn_all_lm_ablation.json
-Checkpoint source: hf (vitthalbhandari/mms-1b-all-aft-all-kcn @ main)
+Saved results to: /gscratch/scrubbed/anonymous_user/low-resource-asr/results/lm_ablation/mms_kcn_all_lm_ablation.json
+Checkpoint source: hf (anonymous/mms-1b-all-aft-all-kcn @ main)
 Selection split: test
 Greedy test WER:   0.6053
 Unigram test WER:  0.6006

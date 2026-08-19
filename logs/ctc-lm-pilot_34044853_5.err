@@ -3,10 +3,10 @@
 Processing eval split:   0%|          | 0/165 [00:00<?, ? examples/s]Processing eval split:   2%|▏         | 4/165 [00:00<00:05, 29.09 examples/s]Processing eval split:   5%|▍         | 8/165 [00:00<00:06, 25.68 examples/s]Processing eval split:   8%|▊         | 13/165 [00:00<00:07, 20.66 examples/s]Processing eval split:  11%|█         | 18/165 [00:00<00:05, 26.30 examples/s]Processing eval split:  13%|█▎        | 22/165 [00:00<00:05, 27.45 examples/s]Processing eval split:  16%|█▌        | 26/165 [00:00<00:04, 29.10 examples/s]Processing eval split:  19%|█▉        | 31/165 [00:01<00:05, 26.79 examples/s]Processing eval split:  22%|██▏       | 36/165 [00:01<00:04, 27.83 examples/s]Processing eval split:  24%|██▍       | 40/165 [00:01<00:04, 28.30 examples/s]Processing eval split:  27%|██▋       | 45/165 [00:01<00:03, 31.73 examples/s]Processing eval split:  30%|██▉       | 49/165 [00:01<00:03, 31.64 examples/s]Processing eval split:  32%|███▏      | 53/165 [00:01<00:04, 27.79 examples/s]Processing eval split:  36%|███▌      | 59/165 [00:02<00:03, 29.78 examples/s]Processing eval split:  38%|███▊      | 63/165 [00:02<00:04, 25.14 examples/s]Processing eval split:  41%|████      | 67/165 [00:02<00:04, 20.24 examples/s]Processing eval split:  42%|████▏     | 70/165 [00:02<00:04, 20.98 examples/s]Processing eval split:  44%|████▍     | 73/165 [00:02<00:04, 21.55 examples/s]Processing eval split:  47%|████▋     | 78/165 [00:03<00:03, 25.17 examples/s]Processing eval split:  50%|████▉     | 82/165 [00:03<00:03, 26.20 examples/s]Processing eval split:  52%|█████▏    | 85/165 [00:03<00:03, 22.71 examples/s]Processing eval split:  54%|█████▍    | 89/165 [00:03<00:03, 20.91 examples/s]Processing eval split:  56%|█████▌    | 92/165 [00:03<00:03, 20.51 examples/s]Processing eval split:  58%|█████▊    | 96/165 [00:03<00:03, 22.89 examples/s]Processing eval split:  60%|██████    | 99/165 [00:03<00:02, 22.31 examples/s]Processing eval split:  62%|██████▏   | 103/165 [00:04<00:02, 23.33 examples/s]Processing eval split:  65%|██████▌   | 108/165 [00:04<00:02, 26.82 examples/s]Processing eval split:  69%|██████▉   | 114/165 [00:04<00:01, 30.48 examples/s]Processing eval split:  72%|███████▏  | 118/165 [00:04<00:01, 28.78 examples/s]Processing eval split:  73%|███████▎  | 121/165 [00:04<00:01, 28.57 examples/s]Processing eval split:  76%|███████▌  | 125/165 [00:04<00:01, 29.81 examples/s]Processing eval split:  78%|███████▊  | 129/165 [00:04<00:01, 30.07 examples/s]Processing eval split:  81%|████████  | 134/165 [00:05<00:01, 30.54 examples/s]Processing eval split:  85%|████████▍ | 140/165 [00:05<00:00, 34.96 examples/s]Processing eval split:  87%|████████▋ | 144/165 [00:05<00:00, 35.06 examples/s]Processing eval split:  91%|█████████ | 150/165 [00:05<00:00, 36.16 examples/s]Processing eval split:  94%|█████████▍| 155/165 [00:05<00:00, 36.62 examples/s]Processing eval split:  98%|█████████▊| 161/165 [00:05<00:00, 34.63 examples/s]Processing eval split: 100%|██████████| 165/165 [00:06<00:00, 27.47 examples/s]Processing eval split: 100%|██████████| 165/165 [00:06<00:00, 26.19 examples/s]
 Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 194, in convert_to_tensors
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 194, in convert_to_tensors
     tensor = as_tensor(value)
              ^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 131, in as_tensor
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 131, in as_tensor
     value = np.array(value)
             ^^^^^^^^^^^^^^^
 ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
@@ -14,41 +14,41 @@ ValueError: setting an array element with a sequence. The requested array has an
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/scripts/run_ctc_lm_ablation.py", line 351, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/scripts/run_ctc_lm_ablation.py", line 351, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/scripts/run_ctc_lm_ablation.py", line 230, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/scripts/run_ctc_lm_ablation.py", line 230, in main
     val_pred = trainer.predict(val_ds)
                ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 4364, in predict
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 4364, in predict
     output = self.evaluation_loop(
              ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 4467, in evaluation_loop
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 4467, in evaluation_loop
     for step, inputs in enumerate(dataloader):
                         ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/data_loader.py", line 567, in __iter__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/data_loader.py", line 567, in __iter__
     current_batch = next(dataloader_iter)
                     ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
     data = self._next_data()
            ^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 801, in _next_data
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 801, in _next_data
     data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 57, in fetch
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 57, in fetch
     return self.collate_fn(data)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/data/data_collator.py", line 225, in __call__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/data/data_collator.py", line 225, in __call__
     batch = pad_without_fast_tokenizer_warning(
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/data/data_collator.py", line 56, in pad_without_fast_tokenizer_warning
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/data/data_collator.py", line 56, in pad_without_fast_tokenizer_warning
     return tokenizer.pad(*pad_args, **pad_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_sequence_utils.py", line 219, in pad
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_sequence_utils.py", line 219, in pad
     return BatchFeature(batch_outputs, tensor_type=return_tensors)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 82, in __init__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 82, in __init__
     self.convert_to_tensors(tensor_type=tensor_type, skip_tensor_conversion=skip_tensor_conversion)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 202, in convert_to_tensors
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/feature_extraction_utils.py", line 202, in convert_to_tensors
     raise ValueError(
 ValueError: Unable to convert output 'labels' (type: list) to tensor: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
 You can try:

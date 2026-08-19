@@ -7,38 +7,38 @@ Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0;
   0%|          | 0/135 [00:00<?, ?it/s]  1%|          | 1/135 [00:06<14:29,  6.49s/it]  1%|▏         | 2/135 [00:12<13:26,  6.07s/it]Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 897, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_whisper.py", line 897, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_whisper.py", line 774, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_whisper.py", line 774, in main
     trainer.train()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2174, in train
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2174, in train
     return inner_training_loop(
            ^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2536, in _inner_training_loop
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2536, in _inner_training_loop
     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3809, in training_step
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3809, in training_step
     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3880, in compute_loss
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3880, in compute_loss
     outputs = model(**inputs)
               ^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
     return self._call_impl(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
     return forward_call(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 819, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 819, in forward
     return model_forward(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 807, in __call__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/utils/operations.py", line 807, in __call__
     return convert_to_fp32(self.model_forward(*args, **kwargs))
                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/whisper/modeling_whisper.py", line 1190, in forward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/models/whisper/modeling_whisper.py", line 1190, in forward
     raise ValueError(
 ValueError: Labels' sequence length 507 cannot exceed the maximum allowed length of 448 tokens.
   1%|▏         | 2/135 [00:17<19:13,  8.67s/it]

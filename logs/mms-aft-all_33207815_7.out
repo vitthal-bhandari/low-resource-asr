@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: koo  Split: mid (task 7 of 21)
 Job ID: 33211487 (Array Job: 33207815)
@@ -15,19 +15,19 @@ Starting training for koo (split=mid)...
 ============================================================
 MMS Adapter Fine-tuning for koo (Konzo) split=mid
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/koo/mid
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-mid-koo
+HF Repo: anonymous/mms-1b-all-aft-mid-koo
 
 Loading data for koo (Konzo) split=mid...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/train-mid_koo.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/koo/train-mid_koo.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/koo/validation_koo.tsv
   Train: 1081 samples (5.00 h)
   Validation: 99 samples (0.59 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid/vocab.json (57 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/koo/mid/vocab.json (57 tokens)
 
 Preparing datasets...
 
@@ -55,7 +55,7 @@ Starting training...
 {'train_runtime': '1271', 'train_samples_per_second': '4.252', 'train_steps_per_second': '0.267', 'train_loss': '18.69', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid/adapter.koo.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/koo/mid/adapter.koo.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -65,21 +65,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0243
   Test CER: 0.7728
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_mid_koo_20260216_140535.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/koo/mid/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_mid_koo_20260216_140535.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-mid-koo
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-mid-koo
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-koo
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-koo
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/koo/mid
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-mid-koo
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/koo/mid
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-mid-koo
 
 ==========================================
 Training complete for koo!

@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: lth  Split: all (task 10 of 21)
 Job ID: 33615425 (Array Job: 33614095)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for lth (Thur) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: english
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lth/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/lth/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-lth
+HF Repo: anonymous/whisper-large-v3-aft-all-lth
 
 Loading data for lth (Thur) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/train-all_lth.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lth/train-all_lth.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lth/validation_lth.tsv
   Train: 1434 samples (7.49 h)
   Validation: 52 samples (0.27 h)
 
@@ -63,7 +63,7 @@ Starting training...
 {'train_runtime': '4058', 'train_samples_per_second': '1.688', 'train_steps_per_second': '0.106', 'train_loss': '3.118', 'epoch': '5'}
 
 Saving model and processor...
-  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lth/all
+  Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/lth/all
 
 Final evaluation (validation):
   WER: 0.4236
@@ -72,21 +72,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.3442
   Test CER: 0.1670
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_lth_all_20260302_162436.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lth/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_lth_20260302_162436.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_whisper_lth_all_20260302_162436.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/lth/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/whisper_aft_all_lth_20260302_162436.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-lth
+Pushing to Hugging Face Hub: anonymous/whisper-large-v3-aft-all-lth
   Pushing model...
   Pushing processor...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-lth
+  Successfully pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-lth
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/lth/all
-Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-lth
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/lth/all
+Model pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-lth
 
 ==========================================
 Training complete for lth!

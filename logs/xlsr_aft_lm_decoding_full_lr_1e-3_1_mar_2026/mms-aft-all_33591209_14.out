@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ruc  Split: all (task 14 of 21)
 Job ID: 33594749 (Array Job: 33591209)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for ruc (Ruuli) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ruc/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ruc/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-ruc
+HF Repo: anonymous/xlsr-1b-aft-all-ruc
 
 Loading data for ruc (Ruuli) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/train-all_ruc.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ruc/validation_ruc.tsv
   Train: 1346 samples (8.30 h)
   Validation: 77 samples (0.27 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ruc/all/vocab.json (57 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ruc/all/vocab.json (57 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for ruc): 54.37s
@@ -86,7 +86,7 @@ Starting training...
 {'train_runtime': '6480', 'train_samples_per_second': '3.053', 'train_steps_per_second': '0.192', 'train_loss': '6.196', 'epoch': '15'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ruc/all/adapter_ruc.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ruc/all/adapter_ruc.safetensors
   Saving full model...
 
 Final evaluation (validation, greedy):
@@ -96,7 +96,7 @@ Final evaluation (validation, greedy):
 Evaluating on test set (greedy)...
   Test WER (greedy): 0.6969
   Test CER (greedy): 0.1866
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_ruc_all_20260301_181352.tsv
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_ruc_all_20260301_181352.tsv
 
 Building LM decoder...
   LM decoder: beam search with unigrams (no ARPA) (beam_width=100)
@@ -108,22 +108,22 @@ Final evaluation (validation, LM decoding)...
 Evaluating on test set (LM decoding)...
   Test LM WER: 0.6894
   Test LM CER: 0.2180
-  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_ruc_all_20260301_181352.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ruc/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_ruc_20260301_181352.log
+  LM transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_lm_ruc_all_20260301_181352.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ruc/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_ruc_20260301_181352.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-ruc
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-ruc
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ruc
+  Successfully pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-ruc
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/ruc/all
-Model pushed to: https://huggingface.co/vitthalbhandari/xlsr-1b-aft-all-ruc
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/ruc/all
+Model pushed to: https://huggingface.co/anonymous/xlsr-1b-aft-all-ruc
 
 ==========================================
 Training complete for ruc!

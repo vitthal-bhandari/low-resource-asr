@@ -16,23 +16,23 @@ Notes:
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 1157, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 1157, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 915, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 915, in main
     training_args = TrainingArguments(
                     ^^^^^^^^^^^^^^^^^^
   File "<string>", line 112, in __init__
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/training_args.py", line 1602, in __post_init__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/training_args.py", line 1602, in __post_init__
     self.device
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/training_args.py", line 1857, in device
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/training_args.py", line 1857, in device
     return self._setup_devices
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/functools.py", line 998, in __get__
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/functools.py", line 998, in __get__
     val = self.func(instance)
           ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/training_args.py", line 1848, in _setup_devices
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/training_args.py", line 1848, in _setup_devices
     torch.cuda.set_device(device)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 584, in set_device
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 584, in set_device
     torch._C._cuda_setDevice(device)
 torch.AcceleratorError: CUDA error: uncorrectable ECC error encountered
 Search for `cudaErrorECCUncorrectable' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.

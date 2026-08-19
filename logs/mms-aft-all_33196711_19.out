@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: ttj  Split: one (task 19 of 21)
 Job ID: 33204814 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for ttj (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for ttj (Rutoro) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/one
 Device: cuda
 Push to HF: False
 
 Loading data for ttj (Rutoro) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/train-one_ttj.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ttj/train-one_ttj.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/ttj/validation_ttj.tsv
   Train: 187 samples (1.00 h)
   Validation: 156 samples (0.92 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one/vocab.json (52 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/one/vocab.json (52 tokens)
 
 Preparing datasets...
 
@@ -46,7 +46,7 @@ Starting training...
 {'train_runtime': '252.7', 'train_samples_per_second': '3.7', 'train_steps_per_second': '0.237', 'train_loss': '31.75', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one/adapter.ttj.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/one/adapter.ttj.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -56,13 +56,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.9986
   Test CER: 0.9657
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_ttj_20260216_090321.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_ttj_20260216_090321.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/ttj/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/ttj/one
 
 ==========================================
 Training complete for ttj!

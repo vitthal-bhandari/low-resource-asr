@@ -27,58 +27,58 @@ Notes:
 - MISSING	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
 Exception in thread Thread-auto_conversion:
 Traceback (most recent call last):
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
     self.run()
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1012, in run
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/threading.py", line 1012, in run
     self._target(*self._args, **self._kwargs)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 116, in auto_conversion
     raise e
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 112, in auto_conversion
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/safetensors_conversion.py", line 112, in auto_conversion
     resolved_archive_file = cached_file(pretrained_model_name_or_path, filename, **cached_file_kwargs)
                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 276, in cached_file
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 276, in cached_file
     file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 507, in cached_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 507, in cached_files
     raise e
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 419, in cached_files
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 419, in cached_files
     hf_hub_download(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1024, in hf_hub_download
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1024, in hf_hub_download
     return _hf_hub_download_to_cache_dir(
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1240, in _hf_hub_download_to_cache_dir
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1240, in _hf_hub_download_to_cache_dir
     _download_to_tmp_and_move(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1864, in _download_to_tmp_and_move
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1864, in _download_to_tmp_and_move
     xet_get(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 588, in xet_get
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 588, in xet_get
     download_files(
 RuntimeError: Data processing error: CAS service error : IO Error: Disk quota exceeded (os error 122)
 Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
   0%|          | 0/210 [00:00<?, ?it/s]  0%|          | 1/210 [00:47<2:45:52, 47.62s/it]  1%|          | 2/210 [01:00<1:33:33, 26.99s/it]  1%|▏         | 3/210 [01:09<1:05:35, 19.01s/it]  2%|▏         | 4/210 [01:16<48:53, 14.24s/it]    2%|▏         | 5/210 [01:22<38:01, 11.13s/it]  3%|▎         | 6/210 [01:26<30:21,  8.93s/it]  3%|▎         | 7/210 [01:30<24:34,  7.26s/it]  4%|▍         | 8/210 [01:33<19:51,  5.90s/it]  4%|▍         | 9/210 [01:36<16:03,  4.80s/it]  5%|▍         | 10/210 [01:41<16:37,  4.99s/it]  5%|▌         | 11/210 [02:09<39:36, 11.94s/it]  6%|▌         | 12/210 [02:21<39:21, 11.93s/it]  6%|▌         | 13/210 [02:30<36:14, 11.04s/it]  7%|▋         | 14/210 [02:37<32:09,  9.85s/it]  7%|▋         | 15/210 [02:43<28:12,  8.68s/it]  8%|▊         | 16/210 [02:48<24:42,  7.64s/it]  8%|▊         | 17/210 [02:52<21:03,  6.55s/it]  9%|▊         | 18/210 [02:55<17:48,  5.57s/it]  9%|▉         | 19/210 [02:58<14:48,  4.65s/it] 10%|▉         | 20/210 [03:05<16:52,  5.33s/it] 10%|█         | 21/210 [03:52<57:01, 18.10s/it] 10%|█         | 22/210 [04:09<55:11, 17.61s/it] 11%|█         | 23/210 [04:20<48:41, 15.62s/it] 11%|█▏        | 24/210 [04:28<40:58, 13.22s/it] 12%|█▏        | 25/210 [04:33<33:57, 11.01s/it] 12%|█▏        | 26/210 [04:38<28:00,  9.13s/it] 13%|█▎        | 27/210 [04:42<22:58,  7.53s/it] 13%|█▎        | 28/210 [04:45<18:55,  6.24s/it] 14%|█▍        | 29/210 [04:48<15:32,  5.15s/it] 14%|█▍        | 30/210 [04:55<16:53,  5.63s/it] 15%|█▍        | 31/210 [05:36<48:32, 16.27s/it] 15%|█▌        | 32/210 [05:51<47:36, 16.05s/it] 16%|█▌        | 33/210 [06:02<42:26, 14.38s/it] 16%|█▌        | 34/210 [06:10<37:00, 12.62s/it] 17%|█▋        | 35/210 [06:17<31:28, 10.79s/it] 17%|█▋        | 36/210 [06:22<26:18,  9.07s/it] 18%|█▊        | 37/210 [06:26<22:03,  7.65s/it] 18%|█▊        | 38/210 [06:29<18:06,  6.32s/it] 19%|█▊        | 39/210 [06:32<14:45,  5.18s/it] 19%|█▉        | 40/210 [06:35<13:17,  4.69s/it] 20%|█▉        | 41/210 [06:46<17:53,  6.35s/it] 20%|██        | 42/210 [06:47<13:54,  4.96s/it]Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_xlsr.py", line 798, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_xlsr.py", line 798, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_xlsr.py", line 683, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_xlsr.py", line 683, in main
     trainer.train()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2174, in train
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2174, in train
     return inner_training_loop(
            ^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2536, in _inner_training_loop
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 2536, in _inner_training_loop
     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3837, in training_step
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/trainer.py", line 3837, in training_step
     self.accelerator.backward(loss, **kwargs)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 2852, in backward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/accelerate/accelerator.py", line 2852, in backward
     loss.backward(**kwargs)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_tensor.py", line 630, in backward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_tensor.py", line 630, in backward
     torch.autograd.backward(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/autograd/__init__.py", line 364, in backward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/autograd/__init__.py", line 364, in backward
     _engine_run_backward(
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/autograd/graph.py", line 865, in _engine_run_backward
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/autograd/graph.py", line 865, in _engine_run_backward
     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.73 GiB. GPU 0 has a total capacity of 44.39 GiB of which 2.07 GiB is free. Including non-PyTorch memory, this process has 42.31 GiB memory in use. Of the allocated memory 27.38 GiB is allocated by PyTorch, and 14.42 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

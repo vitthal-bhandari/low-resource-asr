@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: aln  Split: all (task 0 of 21)
 Job ID: 33448619 (Array Job: 33447755)
@@ -17,19 +17,19 @@ XLS-R 1B Adapter Fine-tuning for aln (Gheg Albanian) split=all
 ============================================================
 Base model: facebook/wav2vec2-xls-r-1b
 Adapter attn dim: 256
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/aln/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/aln/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/xlsr-1b-aft-all-aln
+HF Repo: anonymous/xlsr-1b-aft-all-aln
 
 Loading data for aln (Gheg Albanian) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/train-all_aln.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/aln/validation_aln.tsv
   Train: 965 samples (6.39 h)
   Validation: 150 samples (1.45 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/aln/all/vocab.json (87 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/aln/all/vocab.json (87 tokens)
 
 Preparing datasets...
 
@@ -57,7 +57,7 @@ Starting training...
 {'train_runtime': '1351', 'train_samples_per_second': '3.573', 'train_steps_per_second': '0.226', 'train_loss': '10.04', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/aln/all/adapter_aln.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/aln/all/adapter_aln.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -67,9 +67,9 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.7418
   Test CER: 0.3525
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_xlsr_aln_all_20260223_001720.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/xlsr/aln/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/xlsr_aft_all_aln_20260223_001720.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_xlsr_aln_all_20260223_001720.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/xlsr/aln/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/xlsr_aft_all_aln_20260223_001720.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/xlsr-1b-aft-all-aln
+Pushing to Hugging Face Hub: anonymous/xlsr-1b-aft-all-aln
   Pushing model...

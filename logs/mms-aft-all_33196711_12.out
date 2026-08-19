@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: mmc  Split: one (task 12 of 21)
 Job ID: 33202955 (Array Job: 33196711)
@@ -15,18 +15,18 @@ Starting training for mmc (split=one)...
 ============================================================
 MMS Adapter Fine-tuning for mmc (Michoacán Mazahua) split=one
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/one
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/mmc/one
 Device: cuda
 Push to HF: False
 
 Loading data for mmc (Michoacán Mazahua) split=one...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/train-one_mmc.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/mmc/validation_mmc.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/mmc/train-one_mmc.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/mmc/validation_mmc.tsv
   Train: 150 samples (0.99 h)
   Validation: 172 samples (1.54 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/one/vocab.json (85 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/mmc/one/vocab.json (85 tokens)
 
 Preparing datasets...
 
@@ -46,7 +46,7 @@ Starting training...
 {'train_runtime': '235.7', 'train_samples_per_second': '3.182', 'train_steps_per_second': '0.212', 'train_loss': '83.69', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/one/adapter.mmc.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/mmc/one/adapter.mmc.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -56,13 +56,13 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0000
   Test CER: 0.9961
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/one/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_one_mmc_20260216_075337.log
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/mmc/one/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_one_mmc_20260216_075337.log
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/mmc/one
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/mmc/one
 
 ==========================================
 Training complete for mmc!

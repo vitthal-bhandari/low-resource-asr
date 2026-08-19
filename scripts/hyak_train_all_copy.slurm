@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=mms-aft-all
-#SBATCH --account=stf               # From hyakalloc (free student allocation)
+#SBATCH --account=myaccount               # From cluster allocation
 #SBATCH --partition=gpu-l40      # stf: try gpu-2080ti if gpu-l40s is crowded; or gpu-140, gpu-140s
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -12,7 +12,7 @@
 #SBATCH --array=0-20                # 21 languages (indices 0-20)
 
 # =============================================================================
-# MMS Adapter Fine-tuning Script for Hyak
+# MMS Adapter Fine-tuning Script for HPC
 # Job Array: Trains ALL 21 languages (one GPU per language).
 # Primary differentiator: --split (one | mid | all).
 #
@@ -65,7 +65,7 @@ LANGUAGES=(
 LANG=${LANGUAGES[$SLURM_ARRAY_TASK_ID]}
 
 echo "=========================================="
-echo "MMS Adapter Fine-tuning on Hyak"
+echo "MMS Adapter Fine-tuning on HPC"
 echo "=========================================="
 echo "Language: $LANG  Split: $SPLIT (task $SLURM_ARRAY_TASK_ID of ${#LANGUAGES[@]})"
 echo "LM params: n=$LM_ORDER alpha=$LM_ALPHA beta=$LM_BETA beam=$LM_BEAM_WIDTH"

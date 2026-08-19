@@ -239,13 +239,13 @@ Note: Environment variable`HF_TOKEN` is set and is the current active token inde
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 752, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 752, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 741, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 741, in main
     push_to_hub(model, processor, output_dir, repo_id, lang)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 473, in push_to_hub
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 473, in push_to_hub
     model.push_to_hub(repo_id, use_auth_token=hf_token)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3482, in push_to_hub
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3482, in push_to_hub
     return super().push_to_hub(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: PushToHubMixin.push_to_hub() got an unexpected keyword argument 'use_auth_token'

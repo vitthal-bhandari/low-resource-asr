@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: rwm  Split: all (task 15 of 21)
 Job ID: 33603955 (Array Job: 33600007)
@@ -15,19 +15,19 @@ Starting training for rwm (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for rwm (Amba) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-rwm
+HF Repo: anonymous/mms-1b-all-aft-all-rwm
 
 Loading data for rwm (Amba) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
   Train: 1326 samples (7.56 h)
   Validation: 140 samples (0.77 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/vocab.json (57 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all/vocab.json (57 tokens)
 
 Preparing datasets...
   Max audio length from CSV (p97.5 for rwm): 36.59s

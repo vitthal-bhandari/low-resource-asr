@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: pne  Split: all (task 13 of 21)
 Job ID: 33283599 (Array Job: 33272322)
@@ -15,19 +15,19 @@ Starting training for pne (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for pne (Western Penan) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/pne/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-pne
+HF Repo: anonymous/mms-1b-all-aft-all-pne
 
 Loading data for pne (Western Penan) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
   Train: 1811 samples (8.48 h)
   Validation: 310 samples (1.30 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/vocab.json (61 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/pne/all/vocab.json (61 tokens)
 
 Preparing datasets...
 
@@ -62,7 +62,7 @@ Starting training...
 {'train_runtime': '1700', 'train_samples_per_second': '5.328', 'train_steps_per_second': '0.335', 'train_loss': '6.15', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/adapter.pne.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/pne/all/adapter.pne.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -72,22 +72,22 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.3991
   Test CER: 0.1407
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_pne_all_20260219_012800.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_pne_20260219_012800.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_pne_all_20260219_012800.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/pne/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_pne_20260219_012800.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-pne
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-pne
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-pne
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-pne
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/pne/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-pne
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/pne/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-pne
 
 ==========================================
 Training complete for pne!

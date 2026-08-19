@@ -21,62 +21,62 @@ Installed 78 packages in 1.25s
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 757, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 757, in <module>
     main()
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 585, in main
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 585, in main
     train = train.map(
             ^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 562, in wrapper
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 562, in wrapper
     out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3343, in map
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3343, in map
     for rank, done, content in Dataset._map_single(**unprocessed_kwargs):
                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3675, in _map_single
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3675, in _map_single
     for i, example in iter_outputs(shard_iterable):
                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3649, in iter_outputs
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3649, in iter_outputs
     yield i, apply_function(example, i, offset=offset)
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3572, in apply_function
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 3572, in apply_function
     processed_inputs = function(*fn_args, *additional_args, **fn_kwargs)
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/src/training/aft_mms.py", line 351, in prepare_dataset
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/src/training/aft_mms.py", line 351, in prepare_dataset
     audio = batch["audio"]
             ~~~~~^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 285, in __getitem__
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 285, in __getitem__
     value = self.format(key)
             ^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 380, in format
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 380, in format
     return self.formatter.format_column(self.pa_table.select([key]))[0]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 465, in format_column
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 465, in format_column
     column = self.python_features_decoder.decode_column(column, pa_table.column_names[0])
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 228, in decode_column
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/formatting/formatting.py", line 228, in decode_column
     self.features.decode_column(column, column_name, token_per_repo_id=self.token_per_repo_id)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/features.py", line 2135, in decode_column
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/features.py", line 2135, in decode_column
     decode_nested_example(self[column_name], value, token_per_repo_id=token_per_repo_id)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/features.py", line 1419, in decode_nested_example
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/features.py", line 1419, in decode_nested_example
     return schema.decode_example(obj, token_per_repo_id=token_per_repo_id) if obj is not None else None
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/audio.py", line 184, in decode_example
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/audio.py", line 184, in decode_example
     from ._torchcodec import AudioDecoder
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/_torchcodec.py", line 2, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/datasets/features/_torchcodec.py", line 2, in <module>
     from torchcodec.decoders import AudioDecoder as _AudioDecoder
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/__init__.py", line 12, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/__init__.py", line 12, in <module>
     from . import decoders, encoders, samplers, transforms  # noqa
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/decoders/__init__.py", line 7, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/decoders/__init__.py", line 7, in <module>
     from .._core import AudioStreamMetadata, VideoStreamMetadata
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/__init__.py", line 8, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/__init__.py", line 8, in <module>
     from ._metadata import (
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/_metadata.py", line 16, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/_metadata.py", line 16, in <module>
     from torchcodec._core.ops import (
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 109, in <module>
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 109, in <module>
     ffmpeg_major_version, core_library_path = load_torchcodec_shared_libraries()
                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 76, in load_torchcodec_shared_libraries
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 76, in load_torchcodec_shared_libraries
     raise RuntimeError(
 RuntimeError: Could not load libtorchcodec. Likely causes:
           1. FFmpeg is not properly installed in your environment. We support
@@ -96,9 +96,9 @@ RuntimeError: Could not load libtorchcodec. Likely causes:
 [start of libtorchcodec loading traceback]
 FFmpeg version 8:
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
     ctypes.CDLL(path)
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
     self._handle = _dlopen(self._name, mode)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 OSError: libavutil.so.60: cannot open shared object file: No such file or directory
@@ -106,17 +106,17 @@ OSError: libavutil.so.60: cannot open shared object file: No such file or direct
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
     torch.ops.load_library(core_library_path)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
     raise OSError(f"Could not load this library: {path}") from e
-OSError: Could not load this library: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core8.so
+OSError: Could not load this library: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core8.so
 
 FFmpeg version 7:
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
     ctypes.CDLL(path)
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
     self._handle = _dlopen(self._name, mode)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 OSError: libavutil.so.59: cannot open shared object file: No such file or directory
@@ -124,17 +124,17 @@ OSError: libavutil.so.59: cannot open shared object file: No such file or direct
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
     torch.ops.load_library(core_library_path)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
     raise OSError(f"Could not load this library: {path}") from e
-OSError: Could not load this library: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core7.so
+OSError: Could not load this library: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core7.so
 
 FFmpeg version 6:
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
     ctypes.CDLL(path)
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
     self._handle = _dlopen(self._name, mode)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 OSError: libavutil.so.58: cannot open shared object file: No such file or directory
@@ -142,17 +142,17 @@ OSError: libavutil.so.58: cannot open shared object file: No such file or direct
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
     torch.ops.load_library(core_library_path)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
     raise OSError(f"Could not load this library: {path}") from e
-OSError: Could not load this library: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core6.so
+OSError: Could not load this library: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core6.so
 
 FFmpeg version 5:
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
     ctypes.CDLL(path)
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
     self._handle = _dlopen(self._name, mode)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 OSError: libavutil.so.57: cannot open shared object file: No such file or directory
@@ -160,17 +160,17 @@ OSError: libavutil.so.57: cannot open shared object file: No such file or direct
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
     torch.ops.load_library(core_library_path)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
     raise OSError(f"Could not load this library: {path}") from e
-OSError: Could not load this library: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core5.so
+OSError: Could not load this library: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core5.so
 
 FFmpeg version 4:
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
     ctypes.CDLL(path)
-  File "/mmfs1/home/vitthal1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+  File "/mmfs1/home/anonymous_user/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/ctypes/__init__.py", line 379, in __init__
     self._handle = _dlopen(self._name, mode)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 OSError: libavutil.so.56: cannot open shared object file: No such file or directory
@@ -178,9 +178,9 @@ OSError: libavutil.so.56: cannot open shared object file: No such file or direct
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
     torch.ops.load_library(core_library_path)
-  File "/mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+  File "/mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
     raise OSError(f"Could not load this library: {path}") from e
-OSError: Could not load this library: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core4.so
+OSError: Could not load this library: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/.venv/lib/python3.12/site-packages/torchcodec/libtorchcodec_core4.so
 [end of libtorchcodec loading traceback].

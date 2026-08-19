@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: pne  Split: all (task 13 of 21)
 Job ID: 33615716 (Array Job: 33614095)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for pne (Western Penan) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: malay
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/pne/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-pne
+HF Repo: anonymous/whisper-large-v3-aft-all-pne
 
 Loading data for pne (Western Penan) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/pne/train-all_pne.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/pne/validation_pne.tsv
   Train: 1811 samples (8.48 h)
   Validation: 310 samples (1.30 h)
 
@@ -67,7 +67,7 @@ Starting training...
 {'train_runtime': '6957', 'train_samples_per_second': '1.27', 'train_steps_per_second': '0.08', 'train_loss': '3.096', 'epoch': '5'}
 
 Saving model and processor...
-  Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
+  Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/pne/all
 
 Final evaluation (validation):
   WER: 0.2593
@@ -76,21 +76,21 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.2803
   Test CER: 0.1225
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_whisper_pne_all_20260302_170702.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/whisper_aft_all_pne_20260302_170702.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_whisper_pne_all_20260302_170702.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/pne/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/whisper_aft_all_pne_20260302_170702.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/whisper-large-v3-aft-all-pne
+Pushing to Hugging Face Hub: anonymous/whisper-large-v3-aft-all-pne
   Pushing model...
   Pushing processor...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-pne
+  Successfully pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-pne
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/pne/all
-Model pushed to: https://huggingface.co/vitthalbhandari/whisper-large-v3-aft-all-pne
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/pne/all
+Model pushed to: https://huggingface.co/anonymous/whisper-large-v3-aft-all-pne
 
 ==========================================
 Training complete for pne!

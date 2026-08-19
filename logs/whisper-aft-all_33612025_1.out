@@ -1,5 +1,5 @@
 ==========================================
-Whisper Large-v3 Fine-tuning on Hyak
+Whisper Large-v3 Fine-tuning on HPC
 ==========================================
 Language: bew  Split: all (task 1 of 21)
 Job ID: 33612028 (Array Job: 33612025)
@@ -18,14 +18,14 @@ Whisper Large-v3 Fine-tuning for bew (Betawi) split=all
 Base model: openai/whisper-large-v3
 Whisper language token: indonesian
 Freeze encoder: False
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/whisper/bew/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/whisper/bew/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/whisper-large-v3-aft-all-bew
+HF Repo: anonymous/whisper-large-v3-aft-all-bew
 
 Loading data for bew (Betawi) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/train-all_bew.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/bew/train-all_bew.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/bew/validation_bew.tsv
   Train: 814 samples (5.79 h)
   Validation: 240 samples (2.23 h)
 

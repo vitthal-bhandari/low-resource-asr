@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=whisper-aft
-#SBATCH --account=stf               # From hyakalloc (free student allocation)
+#SBATCH --account=myaccount               # From cluster allocation
 #SBATCH --partition=gpu-l40s      # L40s: 48 GB VRAM; fits whisper-large-v3
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -11,7 +11,7 @@
 #SBATCH --error=logs/%x_%j.err
 
 # =============================================================================
-# Whisper Large-v3 Fine-tuning Script for Hyak
+# Whisper Large-v3 Fine-tuning Script for HPC
 # Single-language training (one GPU, one language).
 #
 # Usage:
@@ -31,7 +31,7 @@ LANG=${1:-"aln"}
 SPLIT=${2:-"all"}
 
 echo "=========================================="
-echo "Whisper Large-v3 Fine-tuning on Hyak"
+echo "Whisper Large-v3 Fine-tuning on HPC"
 echo "=========================================="
 echo "Language: $LANG  Split: $SPLIT"
 echo "Job ID: $SLURM_JOB_ID"

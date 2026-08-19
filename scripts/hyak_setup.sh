@@ -1,7 +1,7 @@
 #!/bin/bash
 # =============================================================================
-# Hyak Setup Script
-# Run this once to set up your environment on Hyak
+# HPC Setup Script
+# Run this once to set up your environment on the HPC cluster
 #
 # For users WITHOUT a lab: use PROJECT_DIR under scrubbed (21-day purge).
 # For users WITH a lab: set ACCOUNT and use PROJECT_DIR under /gscratch/$ACCOUNT/.
@@ -10,12 +10,12 @@
 set -e
 
 echo "=========================================="
-echo "Setting up Low-Resource ASR on Hyak"
+echo "Setting up Low-Resource ASR on HPC"
 echo "=========================================="
 
 # Configuration - EDIT THESE
-# ACCOUNT: your Hyak account (UW NetID if no lab, e.g. vitthal1; or lab name if in a lab)
-ACCOUNT="${HYAK_ACCOUNT:-vitthal1}"
+# ACCOUNT: your HPC account name (user ID if no lab; or lab name if in a lab)
+ACCOUNT="${HPC_ACCOUNT:-$USER}"
 
 # PROJECT_DIR: no lab = scrubbed (21-day purge); with lab = /gscratch/$ACCOUNT/low-resource-asr
 # Set USE_LAB=1 if you have a lab and want project under /gscratch/$ACCOUNT/
@@ -68,7 +68,7 @@ echo ""
 
 echo "Step 2: Setting up uv..."
 
-# Use scratch for uv cache to avoid filling home (10GB quota on Hyak)
+# Use scratch for uv cache to avoid filling home (limited home quota)
 export UV_CACHE_DIR="/gscratch/scrubbed/$USER/.cache/uv"
 mkdir -p "$UV_CACHE_DIR"
 echo "  UV cache: $UV_CACHE_DIR"
@@ -121,7 +121,7 @@ echo "=========================================="
 echo ""
 echo "Next steps:"
 echo "  1. Set ACCOUNT in SLURM scripts: edit ACCOUNT= in scripts/hyak_train_single.slurm and hyak_train_all.slurm"
-echo "     (or export HYAK_ACCOUNT=stf before running this script to use scrubbed path)"
+echo "     (or export HPC_ACCOUNT=myaccount before running this script to use scrubbed path)"
 echo "  2. Copy your .env file to $PROJECT_DIR/.env"
 echo "  3. Upload your data to $PROJECT_DIR/data/mozilla_speech_data/"
 echo "  4. Submit jobs: sbatch scripts/hyak_train_single.slurm aln"

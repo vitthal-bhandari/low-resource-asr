@@ -4,7 +4,7 @@
     "lang": "sco",
     "split": "all",
     "checkpoint_source": "hf",
-    "checkpoint_ref": "vitthalbhandari/xlsr-1b-aft-all-sco",
+    "checkpoint_ref": "anonymous/xlsr-1b-aft-all-sco",
     "hf_revision": "main",
     "lm_orders": [
       3,

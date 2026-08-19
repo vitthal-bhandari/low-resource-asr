@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: rwm  Split: all (task 15 of 21)
 Job ID: 33284410 (Array Job: 33272322)
@@ -15,19 +15,19 @@ Starting training for rwm (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for rwm (Amba) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-rwm
+HF Repo: anonymous/mms-1b-all-aft-all-rwm
 
 Loading data for rwm (Amba) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/train-all_rwm.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/rwm/validation_rwm.tsv
   Train: 1326 samples (7.56 h)
   Validation: 140 samples (0.77 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/vocab.json (57 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all/vocab.json (57 tokens)
 
 Preparing datasets...
 
@@ -58,7 +58,7 @@ Starting training...
 {'train_runtime': '1523', 'train_samples_per_second': '4.353', 'train_steps_per_second': '0.272', 'train_loss': '11.56', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/adapter.rwm.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all/adapter.rwm.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -68,22 +68,22 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 1.0000
   Test CER: 0.5350
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_rwm_all_20260219_023359.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_rwm_20260219_023359.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_rwm_all_20260219_023359.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_rwm_20260219_023359.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-rwm
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-rwm
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-rwm
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-rwm
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/rwm/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-rwm
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/rwm/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-rwm
 
 ==========================================
 Training complete for rwm!

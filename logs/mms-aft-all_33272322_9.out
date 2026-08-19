@@ -1,5 +1,5 @@
 ==========================================
-MMS Adapter Fine-tuning on Hyak
+MMS Adapter Fine-tuning on HPC
 ==========================================
 Language: lke  Split: all (task 9 of 21)
 Job ID: 33279439 (Array Job: 33272322)
@@ -15,19 +15,19 @@ Starting training for lke (split=all)...
 ============================================================
 MMS Adapter Fine-tuning for lke (Kenyi) split=all
 ============================================================
-Output directory: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/all
+Output directory: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lke/all
 Device: cuda
 Push to HF: True
-HF Repo: vitthalbhandari/mms-1b-all-aft-all-lke
+HF Repo: anonymous/mms-1b-all-aft-all-lke
 
 Loading data for lke (Kenyi) split=all...
-  Train: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/train-all_lke.tsv
-  Val: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
+  Train: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lke/train-all_lke.tsv
+  Val: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/data/mozilla_speech_data/lke/validation_lke.tsv
   Train: 1712 samples (7.44 h)
   Validation: 146 samples (0.66 h)
 
 Building vocabulary...
-  Vocabulary saved to /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/all/vocab.json (58 tokens)
+  Vocabulary saved to /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lke/all/vocab.json (58 tokens)
 
 Preparing datasets...
 
@@ -61,7 +61,7 @@ Starting training...
 {'train_runtime': '1971', 'train_samples_per_second': '4.342', 'train_steps_per_second': '0.271', 'train_loss': '10.09', 'epoch': '5'}
 
 Saving adapter weights...
-  Adapter saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/all/adapter.lke.safetensors
+  Adapter saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lke/all/adapter.lke.safetensors
   Saving full model...
 
 Final evaluation (validation):
@@ -71,22 +71,22 @@ Final evaluation (validation):
 Evaluating on test set...
   Test WER: 0.6000
   Test CER: 0.1532
-  Transcriptions saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/transcriptions/transcriptions_lke_all_20260218_231959.tsv
-  Results saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/all/eval_results.json
-  Training log saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/results/training_logs/mms_aft_all_lke_20260218_231959.log
+  Transcriptions saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/transcriptions/transcriptions_lke_all_20260218_231959.tsv
+  Results saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lke/all/eval_results.json
+  Training log saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/results/training_logs/mms_aft_all_lke_20260218_231959.log
 
-Pushing to Hugging Face Hub: vitthalbhandari/mms-1b-all-aft-all-lke
+Pushing to Hugging Face Hub: anonymous/mms-1b-all-aft-all-lke
   Pushing model...
   Pushing processor...
   Pushing adapter weights...
   Pushing model card...
-  Successfully pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-lke
+  Successfully pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-lke
 
 ============================================================
 Training complete!
 ============================================================
-Model saved to: /mmfs1/gscratch/scrubbed/vitthal1/low-resource-asr/models/mms/lke/all
-Model pushed to: https://huggingface.co/vitthalbhandari/mms-1b-all-aft-all-lke
+Model saved to: /mmfs1/gscratch/scrubbed/anonymous_user/low-resource-asr/models/mms/lke/all
+Model pushed to: https://huggingface.co/anonymous/mms-1b-all-aft-all-lke
 
 ==========================================
 Training complete for lke!
